@@ -1,0 +1,231 @@
+/* ========================================
+   WEZOM - Theme & Color Palette
+   ======================================== */
+
+/* Base Theme */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Enhanced Color Palette */
+.wezom-gradient {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff8c42 100%);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+}
+
+.wezom-gradient-hover:hover {
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 50%, #f7931e 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.wezom-orange {
+    background-color: #ff6b35;
+}
+
+.wezom-orange-text {
+    background: linear-gradient(135deg, #ff6b35, #f7931e, #ff8c42);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.wezom-dark-bg {
+    background: linear-gradient(135deg, #000000 0%, #0f0f0f 50%, #000000 100%);
+    position: relative;
+}
+
+.wezom-gray-bg {
+    background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 50%, #1f1f1f 100%);
+}
+
+/* Enhanced Typography */
+.text-gradient {
+    background: linear-gradient(135deg, #ff6b35, #f7931e, #ff8c42);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Modern Gradient Backgrounds */
+.gradient-bg-1 {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+}
+
+.gradient-bg-2 {
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
+}
+
+.gradient-bg-3 {
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
+}
+
+/* Glass Morphism Effects */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 107, 53, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card-dark {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.1);
+}
+
+/* Geometric Background */
+.geometric-bg {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%23ff6b35" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+    position: relative;
+}
+
+.geometric-dots {
+    background-image: radial-gradient(circle, rgba(255, 107, 53, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #f7931e, #ff6b35);
+}
+
+/* Theme Variables */
+:root {
+    --primary-color: #ff6b35;
+    --secondary-color: #f7931e;
+    --accent-color: #ff8c42;
+    --dark-bg: #000000;
+    --gray-bg: #1a1a1a;
+    --light-gray: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #999999;
+    --border-color: rgba(255, 107, 53, 0.1);
+    --shadow-color: rgba(255, 107, 53, 0.2);
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+}
+
+/* Utility Classes */
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.bg-accent {
+    background-color: var(--accent-color);
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.text-accent {
+    color: var(--accent-color);
+}
+
+.border-primary {
+    border-color: var(--primary-color);
+}
+
+.border-gradient {
+    border: 1px solid;
+    border-image: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) 1;
+}
+
+/* Shadow Utilities */
+.shadow-primary {
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.15);
+}
+
+.shadow-primary-lg {
+    box-shadow: 0 10px 40px rgba(255, 107, 53, 0.2);
+}
+
+.shadow-glow {
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+}
+
+/* Backdrop Filters */
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+    backdrop-filter: blur(8px);
+}
+
+.backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+}
+
+.backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+}
+
+/* Gradient Text Utilities */
+.gradient-text-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-text-rainbow {
+    background: linear-gradient(135deg, #ff6b35, #f7931e, #ff8c42, #ffb347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --border-color: rgba(255, 107, 53, 0.15);
+        --shadow-color: rgba(255, 107, 53, 0.25);
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #ff8c42;
+        --border-color: rgba(255, 107, 53, 0.3);
+    }
+}

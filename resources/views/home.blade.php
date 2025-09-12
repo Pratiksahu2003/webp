@@ -6,110 +6,96 @@
 @section('content')
 <!-- Hero Section -->
 <section class="wezom-dark-bg min-h-screen flex items-center relative overflow-hidden">
-    <!-- Floating Geometric Elements -->
-    <div class="absolute inset-0 pointer-events-none">
-        <!-- Floating Triangle 1 -->
-        <div class="absolute top-20 left-1/4 w-8 h-8 floating-element" style="animation-delay: 0s;">
-            <svg viewBox="0 0 24 24" fill="none" class="w-full h-full">
-                <polygon points="12,2 22,20 2,20" fill="rgba(255, 107, 53, 0.1)" stroke="rgba(255, 107, 53, 0.3)" stroke-width="1"/>
-            </svg>
-        </div>
-        
-        <!-- Floating Circle 1 -->
-        <div class="absolute top-1/3 left-1/5 w-6 h-6 floating-element" style="animation-delay: 1s;">
-            <div class="w-full h-full rounded-full border border-orange-400 opacity-30"></div>
-        </div>
-        
-        <!-- Floating Diamond -->
-        <div class="absolute bottom-1/3 left-1/6 w-10 h-10 floating-element" style="animation-delay: 2s;">
-            <svg viewBox="0 0 24 24" fill="none" class="w-full h-full">
-                <polygon points="12,1 23,12 12,23 1,12" fill="rgba(247, 147, 30, 0.1)" stroke="rgba(247, 147, 30, 0.3)" stroke-width="1"/>
-            </svg>
-        </div>
-        
-        <!-- Floating Hexagon -->
-        <div class="absolute top-2/3 left-1/3 w-7 h-7 floating-element" style="animation-delay: 3s;">
-            <svg viewBox="0 0 24 24" fill="none" class="w-full h-full">
-                <polygon points="6,2 18,2 23,12 18,22 6,22 1,12" fill="rgba(255, 140, 66, 0.1)" stroke="rgba(255, 140, 66, 0.3)" stroke-width="1"/>
-            </svg>
-        </div>
-        
-        <!-- Right side floating elements -->
-        <div class="absolute top-1/4 right-1/4 w-5 h-5 floating-element" style="animation-delay: 1.5s;">
-            <div class="w-full h-full border border-orange-400 opacity-20 rotate-45"></div>
-        </div>
-        
-        <div class="absolute bottom-1/4 right-1/3 w-9 h-9 floating-element" style="animation-delay: 2.5s;">
-            <svg viewBox="0 0 24 24" fill="none" class="w-full h-full">
-                <polygon points="12,2 22,20 2,20" fill="rgba(255, 107, 53, 0.08)" stroke="rgba(255, 107, 53, 0.2)" stroke-width="1"/>
-            </svg>
-        </div>
-    </div>
-    <!-- 3D Geometric Mesh Background - Exact match from image -->
-    <div class="absolute right-0 top-0 w-2/3 h-full flex items-center justify-center">
+    <!-- Enhanced 3D Geometric Mesh Background - Exact match from image -->
+    <div class="absolute right-0 top-0 w-3/5 h-full flex items-center justify-center">
         <div class="relative w-full h-full">
-            <!-- Main geometric pattern -->
-            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1000 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Advanced 3D Mesh Pattern -->
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="orangeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:#d2691e;stop-opacity:0.6" />
+                    <!-- Enhanced Gradients for 3D Effect -->
+                    <linearGradient id="meshOrange1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:0.9" />
+                        <stop offset="50%" style="stop-color:#ff8c42;stop-opacity:0.7" />
+                        <stop offset="100%" style="stop-color:#d2691e;stop-opacity:0.5" />
                     </linearGradient>
-                    <linearGradient id="orangeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#ff8c42;stop-opacity:0.6" />
-                        <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:0.4" />
+                    <linearGradient id="meshOrange2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff8c42;stop-opacity:0.8" />
+                        <stop offset="50%" style="stop-color:#ff6b35;stop-opacity:0.6" />
+                        <stop offset="100%" style="stop-color:#f7931e;stop-opacity:0.4" />
                     </linearGradient>
-                    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#2d1810;stop-opacity:0.9" />
-                        <stop offset="100%" style="stop-color:#1a0f08;stop-opacity:0.7" />
+                    <linearGradient id="meshDark1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1a0f08;stop-opacity:0.9" />
+                        <stop offset="100%" style="stop-color:#2d1810;stop-opacity:0.7" />
+                    </linearGradient>
+                    <linearGradient id="meshDark2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:0.6" />
                     </linearGradient>
                 </defs>
                 
-                <!-- Large triangular faces forming 3D structure -->
-                <!-- Top pyramid structure -->
-                <polygon points="500,100 600,200 400,200" fill="url(#orangeGrad1)" stroke="#ff6b35" stroke-width="1" opacity="0.9"/>
-                <polygon points="600,200 700,300 500,300" fill="url(#orangeGrad2)" stroke="#ff6b35" stroke-width="1" opacity="0.7"/>
-                <polygon points="400,200 500,300 300,300" fill="url(#darkGrad)" stroke="#ff6b35" stroke-width="1" opacity="0.8"/>
+                <!-- Complex 3D Mesh Structure -->
+                <!-- Main triangular network -->
+                <polygon points="300,80 400,160 250,180" fill="url(#meshOrange1)" stroke="#ff6b35" stroke-width="1.5" opacity="0.8"/>
+                <polygon points="400,160 500,240 350,260" fill="url(#meshOrange2)" stroke="#ff6b35" stroke-width="1.5" opacity="0.7"/>
+                <polygon points="250,180 350,260 200,280" fill="url(#meshDark1)" stroke="#ff6b35" stroke-width="1" opacity="0.6"/>
                 
-                <!-- Middle section -->
-                <polygon points="500,300 600,400 400,400" fill="url(#orangeGrad1)" stroke="#ff6b35" stroke-width="1" opacity="0.8"/>
-                <polygon points="600,400 700,500 500,500" fill="url(#darkGrad)" stroke="#ff6b35" stroke-width="1" opacity="0.6"/>
-                <polygon points="400,400 500,500 300,500" fill="url(#orangeGrad2)" stroke="#ff6b35" stroke-width="1" opacity="0.9"/>
+                <!-- Central complex structure -->
+                <polygon points="350,260 450,340 300,360" fill="url(#meshOrange1)" stroke="#ff6b35" stroke-width="1.5" opacity="0.9"/>
+                <polygon points="450,340 550,420 400,440" fill="url(#meshDark2)" stroke="#ff6b35" stroke-width="1" opacity="0.5"/>
+                <polygon points="300,360 400,440 250,460" fill="url(#meshOrange2)" stroke="#ff6b35" stroke-width="1.5" opacity="0.8"/>
                 
-                <!-- Bottom section -->
-                <polygon points="500,500 600,600 400,600" fill="url(#orangeGrad2)" stroke="#ff6b35" stroke-width="1" opacity="0.7"/>
-                <polygon points="300,500 400,600 200,600" fill="url(#darkGrad)" stroke="#ff6b35" stroke-width="1" opacity="0.5"/>
-                <polygon points="600,600 700,700 500,700" fill="url(#orangeGrad1)" stroke="#ff6b35" stroke-width="1" opacity="0.6"/>
+                <!-- Right side extensions -->
+                <polygon points="500,240 600,320 450,340" fill="url(#meshOrange2)" stroke="#ff6b35" stroke-width="1.5" opacity="0.7"/>
+                <polygon points="600,320 700,400 550,420" fill="url(#meshDark1)" stroke="#ff6b35" stroke-width="1" opacity="0.6"/>
+                <polygon points="700,400 750,480 650,500" fill="url(#meshOrange1)" stroke="#ff6b35" stroke-width="1" opacity="0.4"/>
                 
-                <!-- Side faces for 3D effect -->
-                <polygon points="700,300 800,400 700,500" fill="url(#darkGrad)" stroke="#ff6b35" stroke-width="1" opacity="0.4"/>
-                <polygon points="300,300 200,400 300,500" fill="url(#orangeGrad1)" stroke="#ff6b35" stroke-width="1" opacity="0.5"/>
+                <!-- Upper network -->
+                <polygon points="400,60 500,140 350,160" fill="url(#meshOrange2)" stroke="#ff6b35" stroke-width="1.5" opacity="0.8"/>
+                <polygon points="500,140 600,220 450,240" fill="url(#meshDark2)" stroke="#ff6b35" stroke-width="1" opacity="0.5"/>
+                <polygon points="600,220 700,300 550,320" fill="url(#meshOrange1)" stroke="#ff6b35" stroke-width="1.5" opacity="0.7"/>
                 
-                <!-- Additional depth triangles -->
-                <polygon points="650,250 750,350 650,450" fill="url(#orangeGrad2)" stroke="#ff6b35" stroke-width="0.8" opacity="0.3"/>
-                <polygon points="350,250 250,350 350,450" fill="url(#darkGrad)" stroke="#ff6b35" stroke-width="0.8" opacity="0.4"/>
+                <!-- Lower extensions -->
+                <polygon points="250,460 350,540 200,560" fill="url(#meshDark1)" stroke="#ff6b35" stroke-width="1" opacity="0.5"/>
+                <polygon points="400,440 500,520 350,540" fill="url(#meshOrange2)" stroke="#ff6b35" stroke-width="1.5" opacity="0.6"/>
+                <polygon points="550,420 650,500 500,520" fill="url(#meshOrange1)" stroke="#ff6b35" stroke-width="1" opacity="0.7"/>
                 
-                <!-- Connection points/vertices -->
-                <circle cx="500" cy="100" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="600" cy="200" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="400" cy="200" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="700" cy="300" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="500" cy="300" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="300" cy="300" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="600" cy="400" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="400" cy="400" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="500" cy="500" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="700" cy="500" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="300" cy="500" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="600" cy="600" r="3" fill="#ff6b35" opacity="1"/>
-                <circle cx="400" cy="600" r="3" fill="#ff6b35" opacity="1"/>
+                <!-- Connection nodes with glow -->
+                <circle cx="300" cy="80" r="3" fill="#ff6b35" opacity="1">
+                    <animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="400" cy="160" r="3" fill="#ff6b35" opacity="1">
+                    <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="500" cy="240" r="3" fill="#ff6b35" opacity="1">
+                    <animate attributeName="r" values="3;5;3" dur="2.5s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="350" cy="260" r="4" fill="#ff8c42" opacity="1">
+                    <animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="450" cy="340" r="4" fill="#ff6b35" opacity="1">
+                    <animate attributeName="r" values="4;6;4" dur="2.8s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="600" cy="320" r="3" fill="#ff6b35" opacity="1"/>
+                <circle cx="700" cy="400" r="3" fill="#ff6b35" opacity="0.8"/>
+                <circle cx="300" cy="360" r="3" fill="#ff8c42" opacity="1"/>
+                <circle cx="400" cy="440" r="3" fill="#ff6b35" opacity="1"/>
+                <circle cx="500" cy="520" r="3" fill="#ff6b35" opacity="0.8"/>
                 
-                <!-- Additional connecting lines for wireframe effect -->
-                <line x1="500" y1="100" x2="600" y2="200" stroke="#ff6b35" stroke-width="1" opacity="0.6"/>
-                <line x1="500" y1="100" x2="400" y2="200" stroke="#ff6b35" stroke-width="1" opacity="0.6"/>
-                <line x1="600" y1="200" x2="700" y2="300" stroke="#ff6b35" stroke-width="1" opacity="0.6"/>
-                <line x1="400" y1="200" x2="300" y2="300" stroke="#ff6b35" stroke-width="1" opacity="0.6"/>
-                <line x1="500" y1="300" x2="500" y2="500" stroke="#ff6b35" stroke-width="1" opacity="0.4"/>
+                <!-- Dynamic connecting lines -->
+                <line x1="300" y1="80" x2="400" y2="160" stroke="#ff6b35" stroke-width="1.5" opacity="0.7">
+                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="400" y1="160" x2="500" y2="240" stroke="#ff6b35" stroke-width="1.5" opacity="0.6">
+                    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="350" y1="260" x2="450" y2="340" stroke="#ff8c42" stroke-width="2" opacity="0.8">
+                    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+                </line>
+                <line x1="500" y1="240" x2="600" y2="320" stroke="#ff6b35" stroke-width="1.5" opacity="0.5"/>
+                <line x1="600" y1="320" x2="700" y2="400" stroke="#ff6b35" stroke-width="1" opacity="0.4"/>
+                <line x1="250" y1="180" x2="350" y2="260" stroke="#ff6b35" stroke-width="1" opacity="0.5"/>
+                <line x1="300" y1="360" x2="400" y2="440" stroke="#ff6b35" stroke-width="1" opacity="0.6"/>
+                <line x1="400" y1="440" x2="500" y2="520" stroke="#ff6b35" stroke-width="1" opacity="0.5"/>
             </svg>
         </div>
     </div>
@@ -127,36 +113,47 @@
     </div>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen">
-            <!-- Left Content -->
-            <div class="space-y-8 lg:pr-12 animate-on-scroll">
-                <div>
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none">
-                        <span class="inline-block" style="animation: text-reveal 0.8s ease-out forwards; animation-delay: 0.2s; opacity: 0;">Software</span><br>
-                        <span class="inline-block" style="animation: text-reveal 0.8s ease-out forwards; animation-delay: 0.4s; opacity: 0;">Delivery</span><br>
-                        <span class="wezom-orange-text inline-block" style="animation: text-reveal 0.8s ease-out forwards; animation-delay: 0.6s; opacity: 0;">Driving</span><br>
-                        <span class="wezom-orange-text inline-block" style="animation: text-reveal 0.8s ease-out forwards; animation-delay: 0.8s; opacity: 0;">Business</span><br>
-                        <span class="wezom-orange-text inline-block" style="animation: text-reveal 0.8s ease-out forwards; animation-delay: 1.0s; opacity: 0;">Growth</span>
-                    </h1>
+    <div class="relative z-10 w-full h-full flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-screen">
+                <!-- Left Content - Text -->
+                <div class="lg:col-span-7 space-y-8 animate-on-scroll">
+                    <div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
+                            <span class="inline-block" style="animation: text-reveal 0.8s ease-out forwards; animation-delay: 0.2s; opacity: 0;">Software Delivery</span><br>
+                            <span class="wezom-orange-text inline-block" style="animation: text-reveal 0.8s ease-out forwards; animation-delay: 0.6s; opacity: 0;">Driving Business</span><br>
+                            <span class="wezom-orange-text inline-block" style="animation: text-reveal 0.8s ease-out forwards; animation-delay: 0.8s; opacity: 0;">Growth</span>
+                        </h1>
+                    </div>
+                    
+                    <p class="text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed uppercase tracking-wide font-medium" style="animation: text-reveal 0.8s ease-out forwards; animation-delay: 1.2s; opacity: 0;">
+                        PARTNER WITH DEDICATED IT EXPERTS WHO 'GET' YOUR BUSINESS
+                    </p>
                 </div>
-                
-                <p class="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed uppercase tracking-wide" style="animation: text-reveal 0.8s ease-out forwards; animation-delay: 1.2s; opacity: 0;">
-                    PARTNER WITH DEDICATED IT EXPERTS WHO 'GET' YOUR BUSINESS
-                </p>
-            </div>
 
-            <!-- Right Content - Get Started Button -->
-            <div class="flex justify-end items-center lg:pr-20">
-                <div class="text-center floating-element" style="animation: scale-in 0.8s ease-out forwards; animation-delay: 1.4s; opacity: 0;">
-                    <a href="{{ route('contact') }}" class="inline-block group">
-                        <div class="w-36 h-36 rounded-full wezom-gradient flex items-center justify-center mb-6 shadow-2xl group-hover:scale-110 transition-all duration-300 glow-effect">
-                            <svg class="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                            </svg>
+                <!-- Right Content - Stats & Get Started Button -->
+                <div class="lg:col-span-5 flex flex-col items-end space-y-8">
+                    <!-- Stats Badge -->
+                    <div class="floating-element" style="animation: scale-in 0.8s ease-out forwards; animation-delay: 1.0s; opacity: 0;">
+                        <div class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full shadow-lg">
+                            <div class="text-center">
+                                <div class="text-2xl md:text-3xl font-bold">250+</div>
+                                <div class="text-xs md:text-sm uppercase tracking-wider">full-time professionals on staff</div>
+                            </div>
                         </div>
-                        <span class="text-white font-bold text-sm tracking-widest uppercase group-hover:text-orange-400 transition-colors duration-300">GET STARTED</span>
-                    </a>
+                    </div>
+
+                    <!-- Get Started Button -->
+                    <div class="text-center floating-element" style="animation: scale-in 0.8s ease-out forwards; animation-delay: 1.4s; opacity: 0;">
+                        <a href="{{ route('contact') }}" class="inline-block group">
+                            <div class="w-32 h-32 md:w-36 md:h-36 rounded-full wezom-gradient flex items-center justify-center mb-4 shadow-2xl group-hover:scale-110 transition-all duration-300 glow-effect">
+                                <svg class="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                            </div>
+                            <span class="text-white font-bold text-sm tracking-widest uppercase group-hover:text-orange-400 transition-colors duration-300">GET STARTED</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

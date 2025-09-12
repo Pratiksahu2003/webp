@@ -1,3 +1,8 @@
+/* WEZOM UI System - Modular CSS Architecture */
+@import './theme.css';
+@import './components.css';
+@import './animations.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
