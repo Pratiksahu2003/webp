@@ -1,6 +1,7 @@
 import './bootstrap';
 import './animations';
 import './interactions';
+import './navbar';
 
 import Alpine from 'alpinejs';
 

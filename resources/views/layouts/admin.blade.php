@@ -161,5 +161,46 @@
             </main>
         </div>
     </div>
+
+    <!-- Admin JavaScript -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('globalSearch', () => ({
+                query: '',
+                results: [],
+                showResults: false,
+                loading: false,
+                
+                async search() {
+                    if (this.query.length < 2) {
+                        this.results = [];
+                        return;
+                    }
+                    
+                    this.loading = true;
+                    
+                    try {
+                        const response = await fetch(`{{ route('admin.api.search') }}?q=${encodeURIComponent(this.query)}`);
+                        const data = await response.json();
+                        this.results = data.results || [];
+                    } catch (error) {
+                        console.error('Search error:', error);
+                        this.results = [];
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+                
+                init() {
+                    // Close search results when clicking outside
+                    document.addEventListener('click', (e) => {
+                        if (!this.$el.contains(e.target)) {
+                            this.showResults = false;
+                        }
+                    });
+                }
+            }));
+        });
+    </script>
 </body>
 </html>

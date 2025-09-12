@@ -1,8 +1,524 @@
-/* WEZOM UI System - Modular CSS Architecture */
-@import './theme.css';
-@import './components.css';
-@import './animations.css';
+/* WEZOM UI System - Complete CSS Architecture */
 
+/* ===========================================
+   Tailwind CSS Base Framework
+   =========================================== */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ===========================================
+   WEZOM Theme System
+   =========================================== */
+
+/* Black Theme Color Scheme */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #000000;
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #000000 75%, #000000 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+}
+
+/* Black Theme Color Palette */
+:root {
+    --wezom-primary: #ff6b35;
+    --wezom-primary-hover: #e55a2b;
+    --wezom-dark: #000000;
+    --wezom-dark-secondary: #0a0a0a;
+    --wezom-dark-tertiary: #1a1a1a;
+    --wezom-gray-light: #cccccc;
+    --wezom-gray-medium: #888888;
+    --wezom-white: #ffffff;
+    --wezom-text-primary: #ffffff;
+    --wezom-text-secondary: #cccccc;
+}
+
+.wezom-gradient {
+    background: linear-gradient(135deg, var(--wezom-primary) 0%, #f7931e 100%);
+}
+
+.wezom-orange {
+    background-color: var(--wezom-primary);
+}
+
+.wezom-orange-text {
+    color: var(--wezom-primary);
+}
+
+.wezom-dark-bg {
+    background: var(--wezom-dark);
+    background: linear-gradient(135deg, var(--wezom-dark) 0%, var(--wezom-dark-secondary) 25%, #0f1419 75%, var(--wezom-dark) 100%);
+}
+
+.wezom-section-bg {
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wezom-card-bg {
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.wezom-text-primary {
+    color: var(--wezom-text-primary);
+}
+
+.wezom-text-secondary {
+    color: var(--wezom-text-secondary);
+}
+
+/* Black Theme Navbar Styling */
+#navbar {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+}
+
+#navbar.navbar-scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(24px);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#navbar-logo {
+    color: var(--wezom-white);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 1.75rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#navbar.navbar-scrolled #navbar-logo {
+    color: var(--wezom-dark);
+    text-shadow: none;
+}
+
+.navbar-link {
+    color: var(--wezom-text-primary);
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+}
+
+.navbar-link::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px;
+    left: 50%;
+    background: var(--wezom-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+
+.navbar-link:hover::before {
+    width: 100%;
+}
+
+.navbar-link:hover {
+    color: var(--wezom-primary);
+    transform: translateY(-1px);
+}
+
+#navbar.navbar-scrolled .navbar-link {
+    color: var(--wezom-gray-medium);
+}
+
+#navbar.navbar-scrolled .navbar-link:hover {
+    color: var(--wezom-primary);
+}
+
+#navbar-phone {
+    color: var(--wezom-text-primary);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+}
+
+#navbar.navbar-scrolled #navbar-phone {
+    color: var(--wezom-gray-medium);
+}
+
+.navbar-contact-btn {
+    border: 2px solid var(--wezom-primary);
+    color: var(--wezom-primary);
+    background: transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    border-radius: 50px;
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.2);
+}
+
+.navbar-contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.navbar-contact-btn:hover::before {
+    left: 100%;
+}
+
+.navbar-contact-btn:hover {
+    background: var(--wezom-primary);
+    color: var(--wezom-white);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
+    border-color: var(--wezom-primary);
+}
+
+#navbar.navbar-scrolled .navbar-contact-btn {
+    border: 2px solid var(--wezom-primary);
+    color: var(--wezom-primary);
+    background: transparent;
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.15);
+}
+
+#navbar.navbar-scrolled .navbar-contact-btn:hover {
+    background: var(--wezom-primary);
+    color: var(--wezom-white);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
+    border-color: var(--wezom-primary);
+}
+
+/* Wezom Official Component Styles */
+.service-card {
+    background: var(--wezom-card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--wezom-primary), #f7931e);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 107, 53, 0.2);
+}
+
+.interactive-card {
+    background: var(--wezom-card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.interactive-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.interactive-card:hover::before {
+    left: 100%;
+}
+
+.interactive-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 107, 53, 0.3);
+}
+
+/* Wezom Stats/Numbers Styling */
+.wezom-stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--wezom-primary);
+    line-height: 1;
+    background: linear-gradient(135deg, var(--wezom-primary), #f7931e);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.wezom-stat-label {
+    color: var(--wezom-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Wezom Buttons */
+.wezom-btn-primary {
+    background: linear-gradient(135deg, var(--wezom-primary), #f7931e);
+    color: var(--wezom-white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+}
+
+.wezom-btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(255, 107, 53, 0.5);
+}
+
+.wezom-btn-secondary {
+    background: transparent;
+    color: var(--wezom-text-primary);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 0.875rem 1.75rem;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.wezom-btn-secondary:hover {
+    border-color: var(--wezom-primary);
+    color: var(--wezom-primary);
+    transform: translateY(-1px);
+}
+
+/* Animation Keyframes */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg); 
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+    }
+    50% { 
+        box-shadow: 0 0 40px rgba(255, 107, 53, 0.6);
+    }
+}
+
+@keyframes mesh-rotate {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.05); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes text-reveal {
+    0% { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes slide-in-left {
+    0% { 
+        opacity: 0; 
+        transform: translateX(-50px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+@keyframes slide-in-right {
+    0% { 
+        opacity: 0; 
+        transform: translateX(50px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+@keyframes scale-in {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.8); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+@keyframes count-up {
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce-slow {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    40% {
+        transform: translateY(-10px) scale(1.02);
+    }
+    60% {
+        transform: translateY(-5px) scale(1.01);
+    }
+}
+
+/* Animation Classes */
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+.pulse-glow-animation {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.mesh-rotate-animation {
+    animation: mesh-rotate 20s linear infinite;
+}
+
+.text-reveal-animation {
+    animation: text-reveal 0.8s ease-out forwards;
+}
+
+.slide-in-left-animation {
+    animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.slide-in-right-animation {
+    animation: slide-in-right 0.8s ease-out forwards;
+}
+
+.scale-in-animation {
+    animation: scale-in 0.6s ease-out forwards;
+}
+
+.count-up-animation {
+    animation: count-up 0.8s ease-out forwards;
+}
+
+.animate-scroll {
+    animation: scroll 30s linear infinite;
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 1s ease-out forwards;
+    opacity: 0;
+}
+
+.animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+}
+
+/* Utility Classes */
+html {
+    scroll-padding-top: 80px;
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #f7931e, #ff6b35);
+}
+
+/* Focus States */
+.navbar-link:focus,
+.navbar-contact-btn:focus {
+    outline: 2px solid #ff6b35;
+    outline-offset: 2px;
+}
