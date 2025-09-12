@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\MediaController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
@@ -31,6 +32,22 @@ Route::get('/blog/category/{category}', [BlogController::class, 'category'])->na
 // Admin Routes
 Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    
+    // Page Builder Routes
+    Route::get('/pages/builder/{page?}', [PageController::class, 'builder'])->name('pages.builder');
+    Route::post('/pages/builder/{page?}', [PageController::class, 'saveBuilder'])->name('pages.save-builder');
+    Route::post('/pages/{page}/duplicate', [PageController::class, 'duplicate'])->name('pages.duplicate');
+    Route::post('/pages/{page}/toggle-status', [PageController::class, 'toggleStatus'])->name('pages.toggle-status');
+    Route::post('/pages/bulk-action', [PageController::class, 'bulkAction'])->name('pages.bulk-action');
+    
+    // Media Library Routes
+    Route::get('/media', [MediaController::class, 'index'])->name('media.index');
+    Route::post('/media', [MediaController::class, 'store'])->name('media.store');
+    Route::get('/media/{media}', [MediaController::class, 'show'])->name('media.show');
+    Route::put('/media/{media}', [MediaController::class, 'update'])->name('media.update');
+    Route::delete('/media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
+    Route::post('/media/bulk-delete', [MediaController::class, 'bulkDelete'])->name('media.bulk-delete');
+    Route::post('/media/create-folder', [MediaController::class, 'createFolder'])->name('media.create-folder');
     
     // Resource Routes
     Route::resource('pages', PageController::class);
