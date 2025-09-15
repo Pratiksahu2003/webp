@@ -13,14 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create admin user
-        User::factory()->create([
-            'name' => 'Admin User',
-            'email' => 'admin@wezom.com',
-        ]);
-
         // Run seeders
         $this->call([
+            AdminUserSeeder::class,
             ServiceSeeder::class,
             TechnologySeeder::class,
             CaseStudySeeder::class,

@@ -53,6 +53,32 @@ class LoginRequest extends FormRequest
     }
 
     /**
+     * Authenticate for admin access only
+     */
+    public function authenticateAdmin(): void
+    {
+        $this->ensureIsNotRateLimited();
+
+        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'email' => trans('auth.failed'),
+            ]);
+        }
+
+        // Check if the authenticated user is admin
+        if (! Auth::user()->isAdmin()) {
+            Auth::logout();
+            throw ValidationException::withMessages([
+                'email' => 'Only admin users can access this area.',
+            ]);
+        }
+
+        RateLimiter::clear($this->throttleKey());
+    }
+
+    /**
      * Ensure the login request is not rate limited.
      *
      * @throws \Illuminate\Validation\ValidationException

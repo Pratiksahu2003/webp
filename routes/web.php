@@ -20,11 +20,6 @@ Route::get('/blog/category/{category}', [BlogController::class, 'category'])->na
 
 // Admin Routes - Registered in bootstrap/app.php
 
-// User Profile Routes
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Admin Profile Routes (moved to admin routes in bootstrap/app.php)
 
 require __DIR__.'/auth.php';
