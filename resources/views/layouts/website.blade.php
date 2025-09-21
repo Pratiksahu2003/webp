@@ -17,7 +17,7 @@
     
     <!-- WEZOM UI System - CSS modules loaded via Vite -->
 </head>
-<body class="font-sans antialiased text-white pt-20 bg-black">
+<body class="font-sans antialiased text-white  bg-black">
     <!-- Navigation -->
     <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 ease-in-out">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">

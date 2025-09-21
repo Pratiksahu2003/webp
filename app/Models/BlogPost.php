@@ -15,6 +15,7 @@ class BlogPost extends Model
         'excerpt',
         'content',
         'featured_image',
+        'banner_image',
         'category',
         'tags',
         'author',
@@ -64,13 +65,17 @@ class BlogPost extends Model
 
     public function getRouteKeyName()
     {
-        return 'slug';
+        // Use slug for public routes, ID for admin routes
+        return request()->is('admin/*') ? 'id' : 'slug';
     }
 
     public function scopePublished($query)
     {
-        return $query->where('is_published', true)
-                    ->where('published_at', '<=', now());
+        return $query->where('status', 'published')
+                    ->where(function($q) {
+                        $q->whereNull('published_at')
+                          ->orWhere('published_at', '<=', now());
+                    });
     }
 
     public function scopeByCategory($query, $category)

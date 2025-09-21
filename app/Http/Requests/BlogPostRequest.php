@@ -29,10 +29,12 @@ class BlogPostRequest extends FormRequest
             'slug' => 'nullable|string|max:255|unique:blog_posts,slug,' . $blogPostId,
             'excerpt' => 'nullable|string|max:500',
             'content' => 'required|string',
-            'featured_image' => 'nullable|string|max:255',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'og_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'twitter_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'category' => 'nullable|string|max:100',
-            'tags' => 'nullable|array',
-            'tags.*' => 'string|max:50',
+            'tags' => 'nullable|string',
             'author' => 'nullable|string|max:100',
             'status' => 'required|in:draft,published,scheduled',
             'published_at' => 'nullable|date',
@@ -45,8 +47,7 @@ class BlogPostRequest extends FormRequest
             // SEO Fields
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:320',
-            'meta_keywords' => 'nullable|array',
-            'meta_keywords.*' => 'string|max:50',
+            'meta_keywords' => 'nullable|string',
             'canonical_url' => 'nullable|url|max:255',
             
             // Open Graph Fields
@@ -62,8 +63,7 @@ class BlogPostRequest extends FormRequest
             'twitter_image' => 'nullable|string|max:255',
             
             // Focus Keywords
-            'focus_keywords' => 'nullable|array',
-            'focus_keywords.*' => 'string|max:50',
+            'focus_keywords' => 'nullable|string',
         ];
     }
 
@@ -79,7 +79,6 @@ class BlogPostRequest extends FormRequest
             'slug.unique' => 'This slug is already taken. Please choose a different one.',
             'meta_title.max' => 'Meta title should not exceed 255 characters for optimal SEO.',
             'meta_description.max' => 'Meta description should not exceed 320 characters for optimal SEO.',
-            'canonical_url.url' => 'The canonical URL must be a valid URL.',
             'scheduled_at.after' => 'Scheduled date must be in the future.',
             'og_title.max' => 'Open Graph title should not exceed 255 characters.',
             'og_description.max' => 'Open Graph description should not exceed 320 characters.',

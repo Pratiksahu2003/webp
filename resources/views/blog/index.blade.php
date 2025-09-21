@@ -24,12 +24,18 @@
                 @foreach($blogPosts as $post)
                 <article class="bg-white rounded-lg shadow-lg overflow-hidden border">
                     @if($post->featured_image)
-                        <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="w-full h-48 object-cover">
+                        <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="w-full h-48 object-cover">
                     @endif
                     <div class="p-6">
                         <div class="flex items-center mb-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">{{ $post->category }}</span>
-                            <span class="text-gray-500 text-xs ml-2">{{ $post->published_at->format('M d, Y') }}</span>
+                            @if($post->category)
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">{{ $post->category }}</span>
+                            @endif
+                            @if($post->published_at)
+                                <span class="text-gray-500 text-xs ml-2">{{ $post->published_at->format('M d, Y') }}</span>
+                            @else
+                                <span class="text-gray-500 text-xs ml-2">{{ $post->created_at->format('M d, Y') }}</span>
+                            @endif
                         </div>
                         <h2 class="text-xl font-semibold mb-3">
                             <a href="{{ route('blog.show', $post) }}" class="hover:text-blue-600">{{ $post->title }}</a>

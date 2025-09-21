@@ -139,83 +139,9 @@ function showChartDetails(value) {
     });
 }
 
-/**
- * Real-time activity feed updates
- */
-function initializeActivityFeed() {
-    const activities = [
-        'New user registered',
-        'Order completed',
-        'Blog post published',
-        'Service updated',
-        'Payment received',
-        'Backup completed',
-        'Security scan finished'
-    ];
-    
-    const users = [
-        'John Smith', 'Sarah Johnson', 'Mike Wilson', 'Lisa Brown', 
-        'David Lee', 'Emma Davis', 'Chris Taylor', 'Amy White'
-    ];
-    
-    // Simulate real-time updates every 30 seconds
-    setInterval(() => {
-        addNewActivity(activities, users);
-    }, 30000);
-}
 
-/**
- * Add new activity to feed
- */
-function addNewActivity(activities, users) {
-    const activityFeed = document.querySelector('.activity-feed, .space-y-6');
-    if (!activityFeed) return;
-    
-    const activity = activities[Math.floor(Math.random() * activities.length)];
-    const user = users[Math.floor(Math.random() * users.length)];
-    const colors = ['blue', 'emerald', 'purple', 'orange', 'pink'];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    
-    const activityElement = document.createElement('div');
-    activityElement.className = 'flex items-start space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-all cursor-pointer group opacity-0 transform translate-y-4';
-    
-    activityElement.innerHTML = `
-        <div class="w-12 h-12 bg-gradient-to-br from-${color}-500 to-${color}-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-            </svg>
-        </div>
-        <div class="flex-1 min-w-0">
-            <p class="text-gray-900 font-medium">
-                <span class="text-gray-700">${user}</span>
-                <span class="text-gray-600 font-normal">${activity}</span>
-            </p>
-            <div class="flex items-center mt-2 space-x-3">
-                <span class="text-sm text-gray-500">Just now</span>
-                <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
-                <span class="text-sm text-${color}-600 font-medium">New</span>
-            </div>
-        </div>
-    `;
-    
-    // Add to top of feed
-    activityFeed.insertBefore(activityElement, activityFeed.firstChild);
-    
-    // Animate in
-    setTimeout(() => {
-        activityElement.style.opacity = '1';
-        activityElement.style.transform = 'translateY(0)';
-    }, 100);
-    
-    // Remove old activities (keep only 5)
-    const activities_elements = activityFeed.children;
-    if (activities_elements.length > 5) {
-        activities_elements[activities_elements.length - 1].remove();
-    }
-    
-    // Show notification
-    showNotification(`${user} ${activity}`, 'info');
-}
+
+
 
 /**
  * Task management functionality

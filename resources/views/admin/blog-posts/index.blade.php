@@ -266,4 +266,132 @@
             </div>
         </div>
 
-@include('admin.blog-posts.index_table')
+        @include('admin.blog-posts.index_table')
+                                    </div>
+                                </div>
+
+<script>
+// Bulk Actions Functionality
+function showBulkActions() {
+    const bulkActions = document.getElementById('bulk-actions');
+    const checkboxes = document.querySelectorAll('.post-checkbox');
+    
+    bulkActions.classList.remove('hidden');
+    bulkActions.classList.add('flex');
+    
+    // Add event listeners to checkboxes
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateBulkActions);
+    });
+}
+
+function updateBulkActions() {
+    const checkboxes = document.querySelectorAll('.post-checkbox:checked');
+    const selectedCount = document.getElementById('selected-count');
+    
+    selectedCount.textContent = `${checkboxes.length} selected`;
+}
+
+function executeBulkAction() {
+    const action = document.getElementById('bulk-action-select').value;
+    const checkboxes = document.querySelectorAll('.post-checkbox:checked');
+    
+    if (!action) {
+        alert('Please select an action');
+        return;
+    }
+    
+    if (checkboxes.length === 0) {
+        alert('Please select at least one post');
+        return;
+    }
+    
+    const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+    
+    if (confirm(`Are you sure you want to ${action} ${selectedIds.length} post(s)?`)) {
+        // Create form and submit
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '{{ route("admin.blog-posts.bulk-action") }}';
+        
+        // Add CSRF token
+        const csrfToken = document.createElement('input');
+        csrfToken.type = 'hidden';
+        csrfToken.name = '_token';
+        csrfToken.value = '{{ csrf_token() }}';
+        form.appendChild(csrfToken);
+        
+        // Add action
+        const actionInput = document.createElement('input');
+        actionInput.type = 'hidden';
+        actionInput.name = 'action';
+        actionInput.value = action;
+        form.appendChild(actionInput);
+        
+        // Add selected IDs
+        selectedIds.forEach(id => {
+            const idInput = document.createElement('input');
+            idInput.type = 'hidden';
+            idInput.name = 'selected_posts[]';
+            idInput.value = id;
+            form.appendChild(idInput);
+        });
+        
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+
+// View Toggle Functionality
+function toggleTableView(view) {
+    const listView = document.getElementById('list-view');
+    const gridView = document.getElementById('grid-view');
+    const tableContainer = document.querySelector('.table-container');
+    
+    if (view === 'list') {
+        listView.classList.add('bg-blue-50', 'text-blue-600');
+        listView.classList.remove('text-gray-400');
+        gridView.classList.remove('bg-blue-50', 'text-blue-600');
+        gridView.classList.add('text-gray-400');
+        
+        if (tableContainer) {
+            tableContainer.classList.remove('grid', 'grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3', 'gap-6');
+            tableContainer.classList.add('overflow-x-auto');
+        }
+    } else {
+        gridView.classList.add('bg-blue-50', 'text-blue-600');
+        gridView.classList.remove('text-gray-400');
+        listView.classList.remove('bg-blue-50', 'text-blue-600');
+        listView.classList.add('text-gray-400');
+        
+        if (tableContainer) {
+            tableContainer.classList.add('grid', 'grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3', 'gap-6');
+            tableContainer.classList.remove('overflow-x-auto');
+        }
+    }
+}
+
+// Initialize view toggle
+document.addEventListener('DOMContentLoaded', function() {
+    // Set default view to list
+    toggleTableView('list');
+    
+    // Add click handlers for checkboxes
+    document.querySelectorAll('.post-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', updateBulkActions);
+    });
+    
+    // Select all checkbox functionality
+    const selectAllCheckbox = document.getElementById('select-all');
+    if (selectAllCheckbox) {
+        selectAllCheckbox.addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('.post-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+            updateBulkActions();
+        });
+    }
+});
+</script>
+@endsection

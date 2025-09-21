@@ -496,14 +496,6 @@
                         </div>
                     </div>
 
-                    <!-- Notifications -->
-                    <button class="p-2 text-gray-500 hover:text-gray-700 relative">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zm-6 0H3l6 5v-5z"></path>
-                        </svg>
-                        <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-                    </button>
-
                     <!-- User Menu -->
                     <div x-data="{ open: false }" class="relative">
                         <button @click="open = !open" 

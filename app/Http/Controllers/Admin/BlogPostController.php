@@ -96,17 +96,70 @@ class BlogPostController extends Controller
             $data['slug'] = Str::slug($data['title']);
         }
 
+        // Handle featured image upload
+        if ($request->hasFile('featured_image')) {
+            $file = $request->file('featured_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('blog-images', $filename, 'public');
+            $data['featured_image'] = $path;
+        }
+
+        // Handle banner image upload
+        if ($request->hasFile('banner_image')) {
+            $file = $request->file('banner_image');
+            $filename = 'banner_' . time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('blog-images', $filename, 'public');
+            $data['banner_image'] = $path;
+        }
+
+        // Handle Open Graph image upload
+        if ($request->hasFile('og_image')) {
+            $file = $request->file('og_image');
+            $filename = 'og_' . time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('blog-images', $filename, 'public');
+            $data['og_image'] = $path;
+        }
+
+        // Handle Twitter image upload
+        if ($request->hasFile('twitter_image')) {
+            $file = $request->file('twitter_image');
+            $filename = 'twitter_' . time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('blog-images', $filename, 'public');
+            $data['twitter_image'] = $path;
+        }
+
+        // Process tags
+        if (isset($data['tags']) && is_string($data['tags'])) {
+            $data['tags'] = array_map('trim', explode(',', $data['tags']));
+        }
+
+        // Process focus keywords
+        if (isset($data['focus_keywords']) && is_string($data['focus_keywords'])) {
+            $data['focus_keywords'] = array_map('trim', explode(',', $data['focus_keywords']));
+        }
+
+        // Process meta keywords
+        if (isset($data['meta_keywords']) && is_string($data['meta_keywords'])) {
+            $data['meta_keywords'] = array_map('trim', explode(',', $data['meta_keywords']));
+        }
+
         // Set published_at based on status
         if ($data['status'] === 'published' && !isset($data['published_at'])) {
             $data['published_at'] = now();
+        } elseif ($data['status'] === 'scheduled' && isset($data['scheduled_at'])) {
+            $data['published_at'] = $data['scheduled_at'];
         }
+
+        // Set boolean fields
+        $data['is_featured'] = $request->has('is_featured');
+        $data['allow_comments'] = $request->has('allow_comments');
 
         // Create the blog post
         $blogPost = BlogPost::create($data);
 
         return redirect()
             ->route('admin.blog-posts.edit', $blogPost)
-            ->with('success', 'Blog post created successfully! You can continue editing or add SEO details.');
+            ->with('success', 'Blog post created successfully!');
     }
 
     /**
@@ -135,17 +188,58 @@ class BlogPostController extends Controller
     {
         $data = $request->validated();
 
+        // Handle featured image upload
+        if ($request->hasFile('featured_image')) {
+            // Delete old image if exists
+            if ($blogPost->featured_image && Storage::disk('public')->exists($blogPost->featured_image)) {
+                Storage::disk('public')->delete($blogPost->featured_image);
+            }
+            
+            $file = $request->file('featured_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('blog-images', $filename, 'public');
+            $data['featured_image'] = $path;
+        }
+
+        // Handle banner image upload
+        if ($request->hasFile('banner_image')) {
+            // Delete old image if exists
+            if ($blogPost->banner_image && Storage::disk('public')->exists($blogPost->banner_image)) {
+                Storage::disk('public')->delete($blogPost->banner_image);
+            }
+            
+            $file = $request->file('banner_image');
+            $filename = 'banner_' . time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('blog-images', $filename, 'public');
+            $data['banner_image'] = $path;
+        }
+
+        // Process tags
+        if (isset($data['tags']) && is_string($data['tags'])) {
+            $data['tags'] = array_map('trim', explode(',', $data['tags']));
+        }
+
+        // Process focus keywords
+        if (isset($data['focus_keywords']) && is_string($data['focus_keywords'])) {
+            $data['focus_keywords'] = array_map('trim', explode(',', $data['focus_keywords']));
+        }
+
         // Set published_at when status changes to published
         if ($data['status'] === 'published' && $blogPost->status !== 'published' && !isset($data['published_at'])) {
             $data['published_at'] = now();
+        } elseif ($data['status'] === 'scheduled' && isset($data['scheduled_at'])) {
+            $data['published_at'] = $data['scheduled_at'];
         }
+
+        // Set boolean fields
+        $data['is_featured'] = $request->has('is_featured');
+        $data['allow_comments'] = $request->has('allow_comments');
 
         // Update the blog post
         $blogPost->update($data);
 
         return redirect()
-            ->route('admin.blog-posts.edit', $blogPost)
-            ->with('success', 'Blog post updated successfully!');
+            ->route('admin.blog-posts.edit', $blogPost);
     }
 
     /**
@@ -156,6 +250,10 @@ class BlogPostController extends Controller
         // Delete associated images if they exist
         if ($blogPost->featured_image && Storage::exists($blogPost->featured_image)) {
             Storage::delete($blogPost->featured_image);
+        }
+
+        if ($blogPost->banner_image && Storage::exists($blogPost->banner_image)) {
+            Storage::delete($blogPost->banner_image);
         }
 
         if ($blogPost->og_image && Storage::exists($blogPost->og_image)) {
@@ -245,7 +343,14 @@ class BlogPostController extends Controller
      */
     public function preview(BlogPost $blogPost)
     {
-        return view('blog.show', compact('blogPost'));
+        // Get related posts (same category, excluding current post)
+        $relatedPosts = BlogPost::where('category', $blogPost->category)
+            ->where('id', '!=', $blogPost->id)
+            ->where('status', 'published')
+            ->limit(3)
+            ->get();
+
+        return view('blog.show', compact('blogPost', 'relatedPosts'));
     }
 
     /**
