@@ -18,7 +18,8 @@ class PageController extends Controller
 
     public function create()
     {
-        return view('admin.pages.create');
+        // Redirect to the modern page builder for creating new pages
+        return redirect()->route('admin.pages.builder');
     }
 
     public function store(Request $request)

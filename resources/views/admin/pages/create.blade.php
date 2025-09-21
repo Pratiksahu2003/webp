@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Create New Page - WEZOM Admin')
+@section('title', 'Create New Page - Modern Page Builder')
 @section('page-title', 'Create New Page')
 
 @section('content')
@@ -9,7 +9,7 @@
     <div class="flex items-center justify-between mb-6">
         <div>
             <h1 class="text-2xl font-bold text-gray-900">Create New Page</h1>
-            <p class="text-gray-600 mt-1">Add a new page to your website</p>
+            <p class="text-gray-600 mt-1">Use our modern page builder to create stunning pages</p>
         </div>
         <a href="{{ route('admin.pages.index') }}" 
            class="inline-flex items-center px-4 py-2 text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
@@ -20,213 +20,93 @@
         </a>
     </div>
 
-    <form action="{{ route('admin.pages.store') }}" method="POST" class="space-y-6">
-        @csrf
+    <!-- Modern Page Builder Redirect -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
+        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+        </div>
         
-        <!-- Basic Information -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Basic Information</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Page Title *</label>
-                    <input type="text" 
-                           id="title" 
-                           name="title" 
-                           value="{{ old('title') }}"
-                           required
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('title') border-red-500 @enderror"
-                           placeholder="Enter page title">
-                    @error('title')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Welcome to the Modern Page Builder</h2>
+        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Create stunning pages with our drag-and-drop page builder. Add components, customize layouts, 
+            and preview your changes in real-time across different devices.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="text-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
                 </div>
-                
-                <div>
-                    <label for="slug" class="block text-sm font-medium text-gray-700 mb-2">URL Slug</label>
-                    <input type="text" 
-                           id="slug" 
-                           name="slug" 
-                           value="{{ old('slug') }}"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('slug') border-red-500 @enderror"
-                           placeholder="auto-generated-from-title">
-                    @error('slug')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <p class="mt-1 text-xs text-gray-500">Leave empty to auto-generate from title</p>
-                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Hero Sections</h3>
+                <p class="text-sm text-gray-600">Create compelling hero sections with videos, images, and animations</p>
             </div>
-
-            <div class="mt-6">
-                <label for="content" class="block text-sm font-medium text-gray-700 mb-2">Page Content</label>
-                <textarea id="content" 
-                          name="content" 
-                          rows="10"
-                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('content') border-red-500 @enderror"
-                          placeholder="Enter page content...">{{ old('content') }}</textarea>
-                @error('content')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
+            
+            <div class="text-center">
+                <div class="w-12 h-12 bg-green-100 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Rich Content</h3>
+                <p class="text-sm text-gray-600">Add text blocks, images, galleries, and more with CKEditor integration</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Drag & Drop</h3>
+                <p class="text-sm text-gray-600">Easily reorder components with intuitive drag-and-drop functionality</p>
             </div>
         </div>
-
-        <!-- SEO Settings -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">SEO Settings</h3>
+        
+        <div class="flex items-center justify-center space-x-4">
+            <a href="{{ route('admin.pages.builder') }}" 
+               class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                Start Building
+            </a>
             
-            <div class="space-y-4">
-                <div>
-                    <label for="meta_title" class="block text-sm font-medium text-gray-700 mb-2">Meta Title</label>
-                    <input type="text" 
-                           id="meta_title" 
-                           name="meta_title" 
-                           value="{{ old('meta_title') }}"
-                           maxlength="60"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('meta_title') border-red-500 @enderror"
-                           placeholder="SEO title for search engines">
-                    @error('meta_title')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <p class="mt-1 text-xs text-gray-500">Recommended: 50-60 characters</p>
-                </div>
-                
-                <div>
-                    <label for="meta_description" class="block text-sm font-medium text-gray-700 mb-2">Meta Description</label>
-                    <textarea id="meta_description" 
-                              name="meta_description" 
-                              rows="3"
-                              maxlength="160"
-                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('meta_description') border-red-500 @enderror"
-                              placeholder="Brief description for search engines">{{ old('meta_description') }}</textarea>
-                    @error('meta_description')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <p class="mt-1 text-xs text-gray-500">Recommended: 150-160 characters</p>
-                </div>
-            </div>
+            <a href="{{ route('admin.pages.index') }}" 
+               class="inline-flex items-center px-6 py-3 text-gray-600 bg-gray-100 hover:bg-gray-200 font-semibold rounded-lg transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to Pages
+            </a>
         </div>
-
-        <!-- Page Settings -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Page Settings</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label for="template" class="block text-sm font-medium text-gray-700 mb-2">Template</label>
-                    <select id="template" 
-                            name="template"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('template') border-red-500 @enderror">
-                        <option value="default" {{ old('template') === 'default' ? 'selected' : '' }}>Default Template</option>
-                        <option value="landing" {{ old('template') === 'landing' ? 'selected' : '' }}>Landing Page</option>
-                        <option value="full-width" {{ old('template') === 'full-width' ? 'selected' : '' }}>Full Width</option>
-                        <option value="blog" {{ old('template') === 'blog' ? 'selected' : '' }}>Blog Layout</option>
-                    </select>
-                    @error('template')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-                
-                <div>
-                    <label for="featured_image" class="block text-sm font-medium text-gray-700 mb-2">Featured Image URL</label>
-                    <input type="url" 
-                           id="featured_image" 
-                           name="featured_image" 
-                           value="{{ old('featured_image') }}"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('featured_image') border-red-500 @enderror"
-                           placeholder="https://example.com/image.jpg">
-                    @error('featured_image')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-
-            <!-- Status Toggles -->
-            <div class="mt-6 space-y-4">
-                <div class="flex items-center">
-                    <input type="hidden" name="is_published" value="0">
-                    <input type="checkbox" 
-                           id="is_published" 
-                           name="is_published" 
-                           value="1"
-                           {{ old('is_published') ? 'checked' : '' }}
-                           class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                    <label for="is_published" class="ml-2 block text-sm text-gray-700">
-                        Publish page immediately
-                    </label>
-                </div>
-                
-                <div class="flex items-center">
-                    <input type="hidden" name="is_active" value="0">
-                    <input type="checkbox" 
-                           id="is_active" 
-                           name="is_active" 
-                           value="1"
-                           {{ old('is_active', true) ? 'checked' : '' }}
-                           class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                    <label for="is_active" class="ml-2 block text-sm text-gray-700">
-                        Enable page (make accessible)
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Form Actions -->
-        <div class="flex items-center justify-between pt-6">
-            <button type="button" 
-                    onclick="history.back()"
-                    class="px-6 py-2 text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                Cancel
-            </button>
-            
-            <div class="flex items-center space-x-3">
-                <button type="submit" 
-                        name="action" 
-                        value="draft"
-                        class="px-6 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors">
-                    Save as Draft
-                </button>
-                <button type="submit" 
-                        name="action" 
-                        value="publish"
-                        class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                    Create & Publish
-                </button>
-            </div>
-        </div>
-    </form>
+    </div>
 </div>
 
 <script>
-// Auto-generate slug from title
-document.getElementById('title').addEventListener('input', function() {
-    const title = this.value;
-    const slug = title
-        .toLowerCase()
-        .replace(/[^a-z0-9 -]/g, '') // Remove special characters
-        .replace(/\s+/g, '-') // Replace spaces with hyphens
-        .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
-        .trim('-'); // Remove leading/trailing hyphens
+// Auto-redirect to page builder after 3 seconds
+setTimeout(() => {
+    window.location.href = '{{ route("admin.pages.builder") }}';
+}, 3000);
+
+// Show countdown
+let countdown = 3;
+const countdownElement = document.createElement('div');
+countdownElement.className = 'mt-4 text-sm text-gray-500';
+countdownElement.innerHTML = `Redirecting to page builder in <span class="font-semibold text-blue-600">${countdown}</span> seconds...`;
+document.querySelector('.bg-white.rounded-xl').appendChild(countdownElement);
+
+const countdownInterval = setInterval(() => {
+    countdown--;
+    countdownElement.innerHTML = `Redirecting to page builder in <span class="font-semibold text-blue-600">${countdown}</span> seconds...`;
     
-    document.getElementById('slug').value = slug;
-});
-
-// Character counters
-document.getElementById('meta_title').addEventListener('input', function() {
-    const length = this.value.length;
-    const next = this.nextElementSibling?.nextElementSibling;
-    if (next) {
-        next.textContent = `${length}/60 characters`;
-        next.className = length > 60 ? 'mt-1 text-xs text-red-500' : 'mt-1 text-xs text-gray-500';
+    if (countdown <= 0) {
+        clearInterval(countdownInterval);
+        countdownElement.innerHTML = 'Redirecting now...';
     }
-});
-
-document.getElementById('meta_description').addEventListener('input', function() {
-    const length = this.value.length;
-    const next = this.nextElementSibling?.nextElementSibling;
-    if (next) {
-        next.textContent = `${length}/160 characters`;
-        next.className = length > 160 ? 'mt-1 text-xs text-red-500' : 'mt-1 text-xs text-gray-500';
-    }
-});
+}, 1000);
 </script>
 @endsection
