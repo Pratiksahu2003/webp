@@ -6,7 +6,9 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/css/dashboard.css',
                 'resources/js/app.js',
+                'resources/js/dashboard.js',
                 'resources/js/animations.js',
                 'resources/js/interactions.js',
                 'resources/js/navbar.js'
@@ -21,6 +23,7 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks: {
+                    'wezom-dashboard': ['resources/js/dashboard.js'],
                     'wezom-animations': ['resources/js/animations.js'],
                     'wezom-interactions': ['resources/js/interactions.js'],
                     'wezom-navbar': ['resources/js/navbar.js'],

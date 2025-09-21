@@ -37,6 +37,7 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
 // Page Builder Routes
 
 
+
 Route::prefix('pages')->name('pages.')->group(function () {
     Route::get('builder/{page?}', [PageController::class, 'builder'])->name('builder');
     Route::post('builder/{page?}', [PageController::class, 'saveBuilder'])->name('save-builder');
@@ -67,6 +68,14 @@ Route::resources([
     'blog-posts' => BlogPostController::class,
     'clients' => ClientController::class,
 ]);
+
+// Blog Posts additional routes
+Route::prefix('blog-posts')->name('blog-posts.')->group(function () {
+    Route::post('bulk-action', [BlogPostController::class, 'bulkAction'])->name('bulk-action');
+    Route::post('{blogPost}/duplicate', [BlogPostController::class, 'duplicate'])->name('duplicate');
+    Route::get('{blogPost}/preview', [BlogPostController::class, 'preview'])->name('preview');
+    Route::get('{blogPost}/seo-analysis', [BlogPostController::class, 'seoAnalysis'])->name('seo-analysis');
+});
 
 // Settings Management
 Route::prefix('settings')->name('settings.')->group(function () {
