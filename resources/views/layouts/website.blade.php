@@ -186,9 +186,10 @@
             </div>
             <div class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
                 <p class="text-lg">&copy; 2000-2025 {{ config('company.name') }} IT-Company</p>
-                <div class="mt-6 space-x-8">
-                    <a href="#" class="text-gray-600 hover:text-orange-500 transition-colors">Sitemap</a>
-                    <a href="#" class="text-gray-600 hover:text-orange-500 transition-colors">Privacy Policy</a>
+                <div class="mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
+                    <a href="{{ route('privacy-policy') }}" class="text-gray-600 hover:text-orange-500 transition-colors">Privacy Policy</a>
+                    <a href="{{ route('terms-conditions') }}" class="text-gray-600 hover:text-orange-500 transition-colors">Terms & Conditions</a>
+                    <a href="{{ route('refund-policy') }}" class="text-gray-600 hover:text-orange-500 transition-colors">Refund Policy</a>
                 </div>
             </div>
         </div>

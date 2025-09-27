@@ -121,4 +121,20 @@ class HomeController extends Controller
     {
         return view('industries.logistics');
     }
+
+    // Legal Pages
+    public function privacyPolicy()
+    {
+        return view('legal.privacy-policy');
+    }
+
+    public function termsConditions()
+    {
+        return view('legal.terms-conditions');
+    }
+
+    public function refundPolicy()
+    {
+        return view('legal.refund-policy');
+    }
 }

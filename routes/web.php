@@ -29,6 +29,11 @@ Route::get('/industries/education', [HomeController::class, 'education'])->name(
 Route::get('/industries/real-estate', [HomeController::class, 'realEstate'])->name('industries.real-estate');
 Route::get('/industries/logistics', [HomeController::class, 'logistics'])->name('industries.logistics');
 
+// Legal Pages
+Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('/terms-conditions', [HomeController::class, 'termsConditions'])->name('terms-conditions');
+Route::get('/refund-policy', [HomeController::class, 'refundPolicy'])->name('refund-policy');
+
 // Blog Routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{blogPost:slug}', [BlogController::class, 'show'])->name('blog.show');
