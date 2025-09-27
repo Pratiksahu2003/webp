@@ -47,10 +47,12 @@
                                 <div class="px-4">
                                     <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Our Services</h3>
                                     <div class="space-y-2">
-                                        <a href="{{ route('services') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Web Development</a>
-                                        <a href="{{ route('services') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Mobile Development</a>
-                                        <a href="{{ route('services') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Custom Software</a>
-                                        <a href="{{ route('services') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">UI/UX Design</a>
+                                        <a href="{{ route('services.web-development') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Web Development</a>
+                                        <a href="{{ route('services.mobile-development') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Mobile Development</a>
+                                        <a href="{{ route('services.custom-software') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Custom Software</a>
+                                        <a href="{{ route('services.ui-ux-design') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">UI/UX Design</a>
+                                        <a href="{{ route('services.data-science') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Data Science & AI</a>
+                                        <a href="{{ route('services.qa-testing') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">QA & Testing</a>
                                     </div>
                                 </div>
                             </div>
@@ -71,10 +73,12 @@
                                 <div class="px-4">
                                     <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Industries</h3>
                                     <div class="space-y-2">
-                                        <a href="#" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Healthcare</a>
-                                        <a href="#" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">FinTech</a>
-                                        <a href="#" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">E-commerce</a>
-                                        <a href="#" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Education</a>
+                                        <a href="{{ route('industries.healthcare') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Healthcare</a>
+                                        <a href="{{ route('industries.fintech') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">FinTech</a>
+                                        <a href="{{ route('industries.ecommerce') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">E-commerce</a>
+                                        <a href="{{ route('industries.education') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Education</a>
+                                        <a href="{{ route('industries.real-estate') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Real Estate</a>
+                                        <a href="{{ route('industries.logistics') }}" class="block text-gray-900 hover:text-orange-500 font-medium transition-colors duration-200 text-sm">Logistics</a>
                                     </div>
                                 </div>
                             </div>
