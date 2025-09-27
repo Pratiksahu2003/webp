@@ -1,16 +1,17 @@
 /* VanTroZ UI System - Complete CSS Architecture */
 
 /* ===========================================
+   Enhanced UI System
+   =========================================== */
+@import './enhanced-ui.css';
+@import './fixes.css';
+
+/* ===========================================
    Tailwind CSS Base Framework
    =========================================== */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ===========================================
-   Enhanced UI System
-   =========================================== */
-@import './enhanced-ui.css';
 
 /* ===========================================
    VanTroZ Theme System

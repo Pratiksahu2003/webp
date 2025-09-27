@@ -5,8 +5,18 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="relative bg-gradient-to-r from-orange-500 to-orange-600 text-white py-20 overflow-hidden">
+    <!-- Background Video -->
+    <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover z-0">
+        <source src="{{ asset('banner/common.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-orange-900 bg-opacity-60 z-10"></div>
+    
+    <!-- Content -->
+    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">Our Services</h1>
             <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">

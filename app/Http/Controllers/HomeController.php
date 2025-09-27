@@ -60,7 +60,22 @@ class HomeController extends Controller
         return view('technologies', compact('technologies', 'sections'));
     }
 
+    public function careers()
+    {
+        return view('careers');
+    }
+
+    public function portfolio()
+    {
+        return view('portfolio');
+    }
+
     // Service Pages
+    public function softwareDevelopment()
+    {
+        return view('services.software-development');
+    }
+
     public function webDevelopment()
     {
         return view('services.web-development');

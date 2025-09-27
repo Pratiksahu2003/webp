@@ -12,8 +12,11 @@ Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/case-studies', [HomeController::class, 'caseStudies'])->name('case-studies');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/technologies', [HomeController::class, 'technologies'])->name('technologies');
+Route::get('/careers', [HomeController::class, 'careers'])->name('careers');
+Route::get('/portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
 
 // Service Routes
+Route::get('/services/software-development', [HomeController::class, 'softwareDevelopment'])->name('services.software-development');
 Route::get('/services/web-development', [HomeController::class, 'webDevelopment'])->name('services.web-development');
 Route::get('/services/mobile-development', [HomeController::class, 'mobileDevelopment'])->name('services.mobile-development');
 Route::get('/services/custom-software', [HomeController::class, 'customSoftware'])->name('services.custom-software');

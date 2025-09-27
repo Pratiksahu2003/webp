@@ -159,17 +159,19 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-6 text-gray-900">Services</h4>
                     <ul class="space-y-3 text-gray-600">
-                        <li><a href="#" class="hover:text-orange-500 transition-colors">Software Development</a></li>
-                        <li><a href="#" class="hover:text-orange-500 transition-colors">Web Development</a></li>
-                        <li><a href="#" class="hover:text-orange-500 transition-colors">Mobile App Development</a></li>
-                        <li><a href="#" class="hover:text-orange-500 transition-colors">Data Science & AI</a></li>
+                        <li><a href="{{ route('services.software-development') }}" class="hover:text-orange-500 transition-colors">Software Development</a></li>
+                        <li><a href="{{ route('services.web-development') }}" class="hover:text-orange-500 transition-colors">Web Development</a></li>
+                        <li><a href="{{ route('services.mobile-development') }}" class="hover:text-orange-500 transition-colors">Mobile App Development</a></li>
+                        <li><a href="{{ route('services.data-science') }}" class="hover:text-orange-500 transition-colors">Data Science & AI</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-6 text-gray-900">Company</h4>
                     <ul class="space-y-3 text-gray-600">
                         <li><a href="{{ route('about') }}" class="hover:text-orange-500 transition-colors">About Us</a></li>
+                        <li><a href="{{ route('portfolio') }}" class="hover:text-orange-500 transition-colors">Portfolio</a></li>
                         <li><a href="{{ route('case-studies') }}" class="hover:text-orange-500 transition-colors">Case Studies</a></li>
+                        <li><a href="{{ route('careers') }}" class="hover:text-orange-500 transition-colors">Careers</a></li>
                         <li><a href="{{ route('blog.index') }}" class="hover:text-orange-500 transition-colors">Blog</a></li>
                         <li><a href="{{ route('contact') }}" class="hover:text-orange-500 transition-colors">Contact</a></li>
                     </ul>

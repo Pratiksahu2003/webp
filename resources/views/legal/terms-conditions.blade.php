@@ -1,12 +1,22 @@
 @extends('layouts.website')
 
-@section('title', 'Terms & Conditions - ' . config('company.name'))
-@section('description', 'Terms and Conditions for ' . config('company.name') . ' - Read our terms of service and usage policies.')
+@section('title', 'Terms & Conditions - Vantroz Technology Private Limited')
+@section('description', 'Terms and Conditions for Vantroz Technology Private Limited - Read our terms of service and usage policies.')
 
 @section('content')
 <!-- Hero Section -->
-<section class="bg-gradient-to-r from-blue-700 to-blue-800 text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="relative bg-gradient-to-r from-blue-700 to-blue-800 text-white py-20 overflow-hidden">
+    <!-- Background Video -->
+    <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover z-0">
+        <source src="{{ asset('banner/common.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-blue-900 bg-opacity-60 z-10"></div>
+
+    <!-- Content -->
+    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-6">Terms & Conditions</h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto">
@@ -20,180 +30,161 @@
 <section class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="prose prose-lg max-w-none">
-            <p class="text-gray-600 mb-8">
-                <strong>Last updated:</strong> {{ date('F d, Y') }}
-            </p>
-
             <div class="space-y-8">
+                <div class="text-gray-600 space-y-4">
+                    <p>These Terms and Conditions ("Terms", "Terms of Service") govern the use of the website and the services provided by Vantroz Technology Private Limited ("we", "our", "us"). By accessing or using our website or services, you agree to be bound by these Terms and Conditions. If you do not agree to these Terms, please refrain from using our website or services.</p>
+                </div>
+
                 <div>
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Acceptance of Terms</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>By accessing and using the services provided by {{ config('company.name') }} ("Company", "we", "us", or "our"), you accept and agree to be bound by the terms and provision of this agreement.</p>
-                        <p>If you do not agree to abide by the above, please do not use this service.</p>
+                        <p>By accessing or using our website and services, you acknowledge that you have read, understood, and agree to comply with these Terms and Conditions. We may update or revise these Terms at any time, and such changes will be reflected on this page with an updated effective date. You are responsible for reviewing these Terms periodically.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Services Description</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Services Provided</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>{{ config('company.name') }} provides software development services including but not limited to:</p>
+                        <p>Vantroz Technology Private Limited provides the following services:</p>
                         <ul class="list-disc pl-6 space-y-2">
-                            <li>Web application development</li>
-                            <li>Mobile application development</li>
-                            <li>Custom software solutions</li>
-                            <li>UI/UX design services</li>
-                            <li>Data science and AI solutions</li>
-                            <li>Quality assurance and testing</li>
-                            <li>Consulting and technical support</li>
+                            <li><strong>IT Services:</strong> Custom IT solutions for businesses, including system design, development, and management.</li>
+                            <li><strong>Website Development:</strong> Full-cycle web development services, including design, coding, and deployment.</li>
+                            <li><strong>SEO Services:</strong> Comprehensive SEO strategies to improve website visibility and search engine rankings.</li>
                         </ul>
+                        <p>By using our services, you agree to cooperate and provide all the necessary information, resources, and access to systems required for the successful completion of the project.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">3. Project Agreements</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">3. Payment Terms</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>All projects are governed by separate project agreements that include:</p>
+                        <p>To initiate and complete any project with Vantroz Technology Private Limited, the following payment structure applies:</p>
                         <ul class="list-disc pl-6 space-y-2">
-                            <li>Detailed project scope and deliverables</li>
-                            <li>Timeline and milestones</li>
-                            <li>Payment terms and schedule</li>
-                            <li>Intellectual property rights</li>
-                            <li>Confidentiality provisions</li>
-                            <li>Change request procedures</li>
+                            <li><strong>1st Term:</strong> 40% on project initiation </li>
+                            <li><strong>2nd Term:</strong> 30% after completion of AI training & initial testing </li>
+                            <li><strong>3rd Term:</strong> 30% on project delivery & deployment </li>
                         </ul>
-                        <p>These terms and conditions supplement but do not replace individual project agreements.</p>
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                            <p class="font-semibold text-yellow-800">Important Notes:</p>
+                            <ul class="list-disc pl-6 space-y-1 text-yellow-700">
+                                <li>The initial 40% payment is non-refundable, except in cases where the project is not commenced by Vantroz Technology Private Limited.</li>
+                                <li>Failure to make timely payments may delay the project delivery or lead to suspension of services.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Payment Terms</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Client Responsibilities</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>Payment terms are specified in individual project agreements. General payment policies include:</p>
+                        <p>You, the client, are responsible for providing accurate and complete information required for the completion of the project. This includes:</p>
                         <ul class="list-disc pl-6 space-y-2">
-                            <li>Invoices are due within 30 days of receipt unless otherwise specified</li>
-                            <li>Late payments may incur interest charges</li>
-                            <li>Work may be suspended for overdue payments</li>
-                            <li>All prices are in the currency specified in the project agreement</li>
-                            <li>Additional work outside the original scope requires separate authorization</li>
+                            <li>Supplying content, materials, and other resources needed for website development and SEO services.</li>
+                            <li>Responding to queries and feedback requests in a timely manner to ensure smooth progress.</li>
                         </ul>
+                        <p>Failure to meet these responsibilities may delay the project's delivery or affect the quality of the services provided.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Intellectual Property Rights</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Ownership and Rights</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>Intellectual property rights are handled as follows:</p>
-                        <ul class="list-disc pl-6 space-y-2">
-                            <li>Client owns rights to custom-developed software upon full payment</li>
-                            <li>We retain rights to our proprietary tools, frameworks, and methodologies</li>
-                            <li>Third-party components remain subject to their respective licenses</li>
-                            <li>We may use project experience for marketing purposes (with client consent)</li>
-                            <li>Source code is provided upon project completion and full payment</li>
-                        </ul>
+                        <p><strong>Intellectual Property:</strong> Upon full payment of the final fee, Vantroz Technology Private Limited will transfer the ownership of the website and its content to you. Until full payment is made, the intellectual property of the project, including the website, design, and code, remains the property of Vantroz Technology Private Limited.</p>
+                        <p><strong>License to Use Content:</strong> You retain ownership of any content you provide (such as logos, text, images, etc.) and grant us a non-exclusive, worldwide, royalty-free license to use this content for the duration of the project.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">6. Confidentiality</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">6. Project Deliverables</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>We maintain strict confidentiality regarding:</p>
-                        <ul class="list-disc pl-6 space-y-2">
-                            <li>Client business information and data</li>
-                            <li>Project specifications and requirements</li>
-                            <li>Proprietary algorithms and processes</li>
-                            <li>User data and personal information</li>
-                            <li>Financial and commercial information</li>
-                        </ul>
-                        <p>Confidentiality obligations survive project completion and termination of agreements.</p>
+                        <p><strong>Scope of Work:</strong> We will provide a detailed description of the scope of work before starting the project. The project will be executed according to the agreed-upon timeline and specifications.</p>
+                        <p><strong>Timelines:</strong> While we strive to deliver projects on time, any delays caused by factors beyond our control (e.g., client delays in providing necessary information or resources) may affect the timeline.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">7. Warranties and Disclaimers</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">7. Client Confidentiality</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p><strong>Limited Warranty:</strong> We warrant that our services will be performed in a professional manner consistent with industry standards.</p>
-                        <p><strong>Disclaimer:</strong> Except as expressly stated, all services are provided "as is" without warranties of any kind, either express or implied, including but not limited to:</p>
-                        <ul class="list-disc pl-6 space-y-2">
-                            <li>Merchantability or fitness for a particular purpose</li>
-                            <li>Non-infringement of third-party rights</li>
-                            <li>Uninterrupted or error-free operation</li>
-                            <li>Compatibility with all systems or platforms</li>
-                        </ul>
+                        <p>Vantroz Technology Private Limited commits to maintaining the confidentiality of any proprietary or confidential information provided by you during the project. This includes sensitive business information, financial data, and any other private details shared in the course of the project. We will not disclose such information to any third parties without your consent unless required by law.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">8. Limitation of Liability</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">8. Privacy</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>Our liability is limited as follows:</p>
-                        <ul class="list-disc pl-6 space-y-2">
-                            <li>Total liability shall not exceed the amount paid for the specific project</li>
-                            <li>We are not liable for indirect, incidental, or consequential damages</li>
-                            <li>We are not responsible for data loss due to client system failures</li>
-                            <li>Liability limitations do not apply to gross negligence or willful misconduct</li>
-                        </ul>
+                        <p>By using our services, you consent to the collection and use of your personal information as described in our Privacy Policy. We take all necessary measures to protect your data and ensure it is used only for the purposes outlined in the Privacy Policy.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">9. Client Responsibilities</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">9. Limitation of Liability</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>Clients are responsible for:</p>
-                        <ul class="list-disc pl-6 space-y-2">
-                            <li>Providing accurate and complete project requirements</li>
-                            <li>Timely review and approval of deliverables</li>
-                            <li>Providing necessary access to systems and data</li>
-                            <li>Maintaining backups of important data</li>
-                            <li>Compliance with applicable laws and regulations</li>
-                            <li>Prompt payment of invoices</li>
-                        </ul>
+                        <p>Vantroz Technology Private Limited will not be liable for any indirect, incidental, special, consequential, or punitive damages arising from the use of our website or services, including but not limited to, loss of data, lost profits, or interruption of services.</p>
+                        <p>Our total liability for any claim related to the project will not exceed the total amount paid by the client for the service in question.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">10. Termination</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">10. Termination of Services</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>Either party may terminate a project agreement:</p>
-                        <ul class="list-disc pl-6 space-y-2">
-                            <li>With written notice as specified in the project agreement</li>
-                            <li>Immediately for material breach of contract</li>
-                            <li>For non-payment of invoices</li>
-                        </ul>
-                        <p>Upon termination, client pays for work completed and expenses incurred up to the termination date.</p>
+                        <p><strong>Client Termination:</strong> If you choose to terminate the project before completion, you will be liable for payment for any work completed up to the point of termination. The upfront 40% payment will not be refunded.</p>
+                        <p><strong>Company Termination:</strong> Vantroz Technology Private Limited may terminate the project if the client fails to meet their obligations, including but not limited to, failure to make timely payments or provide required materials. Termination of the project will not release the client from the obligation to pay for work already completed.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">11. Force Majeure</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">11. Third-Party Services</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>We are not liable for delays or failures due to circumstances beyond our reasonable control, including but not limited to natural disasters, government actions, pandemics, or technical failures of third-party services.</p>
+                        <p>Vantroz Technology Private Limited may use third-party services or platforms to complete projects (e.g., hosting services, payment gateways). We are not responsible for any issues related to third-party services. Any issues with third-party services should be directed to the service provider.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">12. Governing Law</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">12. Force Majeure</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>These terms are governed by the laws of India. Any disputes shall be resolved through arbitration in Gurugram, Haryana, India, or as specified in individual project agreements.</p>
+                        <p>Vantroz Technology Private Limited will not be liable for any delay or failure in performance due to events beyond our control, including but not limited to acts of God, war, natural disasters, labor disputes, and government regulations.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">13. Changes to Terms</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">13. Governing Law</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting on our website. Continued use of our services constitutes acceptance of modified terms.</p>
+                        <p>These Terms and Conditions are governed by the laws of India, without regard to its conflict of law principles. Any disputes related to these Terms shall be subject to the exclusive jurisdiction of the courts in Gurugram, Haryana, India.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">14. Contact Information</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">14. Dispute Resolution</h2>
                     <div class="text-gray-600 space-y-4">
-                        <p>For questions about these terms and conditions, please contact us:</p>
+                        <p>Any disputes arising under these Terms and Conditions will first be attempted to be resolved through informal negotiations. If the dispute cannot be resolved through negotiation, it will be settled by binding arbitration in accordance with the applicable arbitration rules.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">15. Changes to Terms</h2>
+                    <div class="text-gray-600 space-y-4">
+                        <p>We may update or revise these Terms and Conditions from time to time. Any changes will be posted on this page, and the revised Terms will include an updated effective date. You are responsible for reviewing these Terms periodically to stay informed about any updates.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">16. Contact Us</h2>
+                    <div class="text-gray-600 space-y-4">
+                        <p>If you have any questions about these Terms and Conditions or need further clarification, please contact us at:</p>
                         <div class="bg-gray-50 p-6 rounded-lg">
                             <p><strong>{{ config('company.name') }}</strong></p>
                             <p>{{ config('company.address.primary.full') }}</p>
                             <p>Email: <a href="mailto:{{ config('company.contact.email') }}" class="text-blue-500 hover:text-blue-600">{{ config('company.contact.email') }}</a></p>
                             <p>Phone: <a href="tel:{{ config('company.contact.phone') }}" class="text-blue-500 hover:text-blue-600">{{ config('company.contact.phone') }}</a></p>
+                            <p>Website: <a href="https://www.vantroz.com" class="text-blue-500 hover:text-blue-600">www.vantroz.com</a></p>
                         </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Conclusion</h2>
+                    <div class="text-gray-600 space-y-4">
+                        <p>By using our services, you acknowledge and agree to comply with these Terms and Conditions. At Vantroz Technology Private Limited, we strive to offer top-quality IT solutions, website development, and SEO services, while ensuring transparency and professionalism in our client relationships.</p>
                     </div>
                 </div>
             </div>

@@ -226,14 +226,30 @@
     </div>
 </section>
 
-<!-- Compressed Services Section -->
-<section class="py-16 bg-slate-50">
-    <div class="max-w-6xl mx-auto px-4 lg:px-6">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                What We <span class="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">Create</span>
+<!-- What We Create - Perfect Modern Section -->
+<section class="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.3) 1px, transparent 0); background-size: 20px 20px;"></div>
+    </div>
+    
+    <!-- Floating Elements -->
+    <div class="absolute top-20 left-10 w-20 h-20 bg-blue-200/20 rounded-full blur-xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-10 w-32 h-32 bg-purple-200/20 rounded-full blur-xl animate-pulse" style="animation-delay: 1s;"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <!-- Section Header -->
+        <div class="text-center mb-20">
+            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-medium mb-6 text-blue-700">
+                <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+                Our Expertise
+            </div>
+            <h2 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                What We <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">Create</span>
             </h2>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto">Transforming ideas into exceptional digital experiences</p>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                Transforming innovative ideas into exceptional digital experiences that drive business growth and user engagement
+            </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -318,95 +334,95 @@
                 </div>
             </div>
 
-            <!-- Service Card 4: Data Science & AI -->
-            <div class="service-card-enhanced">
-                <div class="flex items-start space-x-4 mb-6">
-                    <div class="flex-shrink-0">
-                        <span class="service-number">04/</span>
-                    </div>
-                    <div>
-                        <h3 class="service-title">Data Science & AI</h3>
-                    </div>
+            <!-- Enhanced Service Card 4: Data Science & AI -->
+            <div class="group relative bg-white rounded-3xl p-8 shadow-sm border border-slate-200 hover:shado
+                <div class=" flex items-start space-x-4 mb-6">
+                <div class="flex-shrink-0">
+                    <span class="service-number">04/</span>
                 </div>
-
-                <div class="space-y-3 mb-6">
-                    <div class="text-gray-700">AWS & Cloud</div>
-                    <div class="text-gray-700">Big Data Solutions</div>
-                    <div class="text-gray-700">IoT Development</div>
-                    <div class="text-gray-700">NFT marketplace</div>
-                    <div class="text-gray-700">Artificial Intelligence</div>
-                    <div class="text-gray-700">DevOps Services</div>
-                    <div class="text-gray-700">AI ChatBot</div>
-                    <div class="text-gray-700">Generative AI</div>
+                <div>
+                    <h3 class="service-title">Data Science & AI</h3>
                 </div>
-
-                <p class="service-description">
-                    Make every business decision a data-driven one with stats, insights and analysis that positions you ahead of the competition
-                </p>
-
-                <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
-                    Learn more →
-                </a>
             </div>
 
-            <!-- Service Card 5: QA & Software Testing -->
-            <div class="service-card-enhanced">
-                <div class="flex items-start space-x-4 mb-6">
-                    <div class="flex-shrink-0">
-                        <span class="service-number">05/</span>
-                    </div>
-                    <div>
-                        <h3 class="service-title">QA & Software Testing</h3>
-                    </div>
-                </div>
-
-                <div class="space-y-3 mb-6">
-                    <div class="text-gray-700">Test Automation</div>
-                    <div class="text-gray-700">Cybersecurity</div>
-                    <div class="text-gray-700">Functional Testing</div>
-                    <div class="text-gray-700">Performance Testing</div>
-                    <div class="text-gray-700">Mobile App Testing</div>
-                    <div class="text-gray-700">QA Consulting</div>
-                    <div class="text-gray-700">Load Testing Services</div>
-                </div>
-
-                <p class="service-description">
-                    Ensure the fault tolerance, stability, and correct operation of your digital solution with software QA testing services by VanTroZ
-                </p>
-
-                <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
-                    Learn more →
-                </a>
+            <div class="space-y-3 mb-6">
+                <div class="text-gray-700">AWS & Cloud</div>
+                <div class="text-gray-700">Big Data Solutions</div>
+                <div class="text-gray-700">IoT Development</div>
+                <div class="text-gray-700">NFT marketplace</div>
+                <div class="text-gray-700">Artificial Intelligence</div>
+                <div class="text-gray-700">DevOps Services</div>
+                <div class="text-gray-700">AI ChatBot</div>
+                <div class="text-gray-700">Generative AI</div>
             </div>
 
-            <!-- Service Card 6: UX/UI Design -->
-            <div class="service-card-enhanced">
-                <div class="flex items-start space-x-4 mb-6">
-                    <div class="flex-shrink-0">
-                        <span class="service-number">06/</span>
-                    </div>
-                    <div>
-                        <h3 class="service-title">UX/UI Design</h3>
-                    </div>
-                </div>
+            <p class="service-description">
+                Make every business decision a data-driven one with stats, insights and analysis that positions you ahead of the competition
+            </p>
 
-                <div class="space-y-3 mb-6">
-                    <div class="text-gray-700">UX Review</div>
-                    <div class="text-gray-700">Product Design</div>
-                    <div class="text-gray-700">Rapid UX Prototyping</div>
-                    <div class="text-gray-700">Mobile App Design</div>
-                    <div class="text-gray-700">Web Design Services</div>
-                </div>
-
-                <p class="service-description">
-                    Get a UI/UX design inspired by the desires and needs of your users by entrusting its implementation to VanTroZ experts.
-                </p>
-
-                <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
-                    Learn more →
-                </a>
-            </div>
+            <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
+                Learn more →
+            </a>
         </div>
+
+        <!-- Service Card 5: QA & Software Testing -->
+        <div class="service-card-enhanced">
+            <div class="flex items-start space-x-4 mb-6">
+                <div class="flex-shrink-0">
+                    <span class="service-number">05/</span>
+                </div>
+                <div>
+                    <h3 class="service-title">QA & Software Testing</h3>
+                </div>
+            </div>
+
+            <div class="space-y-3 mb-6">
+                <div class="text-gray-700">Test Automation</div>
+                <div class="text-gray-700">Cybersecurity</div>
+                <div class="text-gray-700">Functional Testing</div>
+                <div class="text-gray-700">Performance Testing</div>
+                <div class="text-gray-700">Mobile App Testing</div>
+                <div class="text-gray-700">QA Consulting</div>
+                <div class="text-gray-700">Load Testing Services</div>
+            </div>
+
+            <p class="service-description">
+                Ensure the fault tolerance, stability, and correct operation of your digital solution with software QA testing services by VanTroZ
+            </p>
+
+            <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
+                Learn more →
+            </a>
+        </div>
+
+        <!-- Service Card 6: UX/UI Design -->
+        <div class="service-card-enhanced">
+            <div class="flex items-start space-x-4 mb-6">
+                <div class="flex-shrink-0">
+                    <span class="service-number">06/</span>
+                </div>
+                <div>
+                    <h3 class="service-title">UX/UI Design</h3>
+                </div>
+            </div>
+
+            <div class="space-y-3 mb-6">
+                <div class="text-gray-700">UX Review</div>
+                <div class="text-gray-700">Product Design</div>
+                <div class="text-gray-700">Rapid UX Prototyping</div>
+                <div class="text-gray-700">Mobile App Design</div>
+                <div class="text-gray-700">Web Design Services</div>
+            </div>
+
+            <p class="service-description">
+                Get a UI/UX design inspired by the desires and needs of your users by entrusting its implementation to VanTroZ experts.
+            </p>
+
+            <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
+                Learn more →
+            </a>
+        </div>
+    </div>
     </div>
 </section>
 
@@ -540,50 +556,164 @@
     </div>
 </section>
 
-<!-- Digital Transformation Section -->
-<section class="section bg-white">
-    <div class="container mx-auto px-6 lg:px-8">
+<!-- Enhanced Digital Transformation Section -->
+<section class="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-blue-100/30 to-indigo-100/30 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-orange-100/20 to-pink-100/20 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Enhanced Header -->
         <div class="text-center mb-20">
-            <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                Digital transformation for industries
+            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full text-blue-700 text-sm font-semibold mb-6">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                IT designs that protect data and enable secure internal management
+            </div>
+
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight">
+                <span class="block">Digital transformation</span>
+                <span class="block bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    for industries
+                </span>
             </h2>
-            <p class="text-xl text-gray-700 max-w-4xl mx-auto mb-10 leading-relaxed">
+
+            <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed font-light">
                 VanTroZ is your one-stop software development company, offering a full range of services for all industries. We drive your business progress with smart tech decisions tailored to a specific field.
             </p>
-            <a href="#" class="btn-primary">Discover More</a>
+
+            <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-2xl overflow-hidden shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span class="relative">Discover More</span>
+                <svg class="relative w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </button>
         </div>
 
-        <!-- Industries Grid -->
-        <div class="grid-perfect-sm">
-            <!-- Industry items -->
-            <div class="card text-center group">
-                <h3 class="font-bold text-gray-900 mb-4 text-lg">Oil & Gas</h3>
-                <p class="text-sm text-gray-600 mb-6 leading-relaxed">For the oil and gas industry, we create custom asset management systems, drilling optimization tools, remote monitoring platforms...</p>
-                <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
+        <!-- Enhanced Industries Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Oil & Gas -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-red-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Oil & Gas</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">For the oil and gas industry, we create custom asset management systems, drilling optimization tools, remote monitoring platforms...</p>
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
 
-            <div class="card text-center group">
-                <h3 class="font-bold text-gray-900 mb-4 text-lg">Energy and Utilities</h3>
-                <p class="text-sm text-gray-600 mb-6 leading-relaxed">We build smart grid management systems, renewable energy analytics platforms, and energy efficiency optimization tools...</p>
-                <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
+            <!-- Energy and Utilities -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-50/50 to-emerald-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Energy and Utilities</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">We build smart grid management systems, renewable energy analytics platforms, and energy efficiency optimization tools...</p>
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-green-500 font-semibold hover:text-green-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
 
-            <div class="card text-center group">
-                <h3 class="font-bold text-gray-900 mb-4 text-lg">Logistics</h3>
-                <p class="text-sm text-gray-600 mb-6 leading-relaxed">From route optimization algorithms and fleet management systems to supply chain tracking platforms...</p>
-                <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
+            <!-- Logistics -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Logistics</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">From route optimization algorithms and fleet management systems to supply chain tracking platforms...</p>
+                    <a href="{{ route('industries.logistics') }}" class="inline-flex items-center text-blue-500 font-semibold hover:text-blue-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
 
-            <div class="card text-center group">
-                <h3 class="font-bold text-gray-900 mb-4 text-lg">eCommerce</h3>
-                <p class="text-sm text-gray-600 mb-6 leading-relaxed">Get tailored commerce-tuned software solutions, including online storefronts, inventory management systems...</p>
-                <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
+            <!-- eCommerce -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-pink-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">eCommerce</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Get tailored commerce-tuned software solutions, including online storefronts, inventory management systems...</p>
+                    <a href="{{ route('industries.ecommerce') }}" class="inline-flex items-center text-purple-500 font-semibold hover:text-purple-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
 
-            <div class="card text-center group">
-                <h3 class="font-bold text-gray-900 mb-4 text-lg">Healthcare</h3>
-                <p class="text-sm text-gray-600 mb-6 leading-relaxed">Power healthcare service provision with advanced software solutions, like electronic health record (EHR) systems...</p>
-                <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
+            <!-- Healthcare -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-teal-50/50 to-cyan-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Power healthcare service provision with advanced software solutions, like electronic health record (EHR) systems...</p>
+                    <a href="{{ route('industries.healthcare') }}" class="inline-flex items-center text-teal-500 font-semibold hover:text-teal-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- FinTech -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-blue-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">FinTech</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Secure, scalable financial technology solutions that drive innovation in banking and finance sectors...</p>
+                    <a href="{{ route('industries.fintech') }}" class="inline-flex items-center text-indigo-500 font-semibold hover:text-indigo-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
