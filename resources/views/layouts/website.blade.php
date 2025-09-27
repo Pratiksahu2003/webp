@@ -18,22 +18,22 @@
     <!-- VanTroZ UI System - CSS modules loaded via Vite -->
 </head>
 <body class="font-sans antialiased text-gray-900 bg-white">
-    <!-- Modern Navigation -->
-    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-            <div class="flex justify-between items-center h-20">
-                <!-- Modern Logo -->
+    <!-- Compressed Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-slate-200/60 transition-all duration-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Compressed Logo -->
                 <div class="flex items-center flex-shrink-0">
-                    <a href="{{ route('home') }}" class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-gradient-to-br from-indigo-600 to-cyan-500 rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-sm">V</span>
+                    <a href="{{ route('home') }}" class="flex items-center space-x-1.5">
+                        <div class="w-7 h-7 bg-gradient-to-br from-indigo-600 to-cyan-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-xs">V</span>
                         </div>
-                        <span class="text-2xl font-bold text-slate-900">VanTroZ</span>
+                        <span class="text-xl font-bold text-slate-900">VanTroZ</span>
                     </a>
                 </div>
                 
-                <!-- Desktop Navigation - Enhanced -->
-                <div class="hidden xl:flex items-center space-x-8 flex-1 justify-center">
+                <!-- Compressed Desktop Navigation -->
+                <div class="hidden xl:flex items-center space-x-6 flex-1 justify-center">
                     <!-- Services Dropdown -->
                     <div class="relative group">
                         <button class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-300 hover:text-orange-500">
@@ -88,18 +88,18 @@
                     <a href="{{ route('contact') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-300 hover:text-orange-500">Contacts</a>
                 </div>
 
-                <!-- Contact Info & CTA - Enhanced -->
-                <div class="hidden xl:flex items-center space-x-6 flex-shrink-0">
-                    <!-- Country Flag & Phone -->
-                    <div id="navbar-phone" class="flex items-center text-base font-medium transition-colors duration-300">
-                        <span class="mr-2 text-lg">🇺🇸</span>
+                <!-- Compressed Contact Info & CTA -->
+                <div class="hidden xl:flex items-center space-x-4 flex-shrink-0">
+                    <!-- Compressed Phone -->
+                    <div id="navbar-phone" class="flex items-center text-sm font-medium transition-colors duration-200">
+                        <span class="mr-1.5 text-sm">🇺🇸</span>
                         <span class="font-semibold whitespace-nowrap">+1 312 340 0872</span>
                     </div>
                     
-                    <!-- Modern Contact Button -->
-                    <a href="{{ route('contact') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-indigo-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-indigo-500/25 transform hover:-translate-y-0.5">
+                    <!-- Compressed Contact Button -->
+                    <a href="{{ route('contact') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-all duration-200 shadow-md text-sm">
                         Get Started
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                         </svg>
                     </a>
@@ -138,8 +138,8 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="pt-20">
+    <!-- Compressed Main Content -->
+    <main class="pt-16">
         @yield('content')
     </main>
 
@@ -179,13 +179,13 @@
                         <p>1821 Walden Office Square, 406</p>
                         <p>New York, 112 W. 34th Street</p>
                         <p>17th and 18th Floors</p>
-                        <p class="mt-6 text-orange-500 font-semibold">info@wezom.com</p>
+                        <p class="mt-6 text-orange-500 font-semibold">info@vantroz.com</p>
                         <p class="text-orange-500 font-semibold">+1 872 225 3074</p>
                     </div>
                 </div>
             </div>
             <div class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
-                <p class="text-lg">&copy; 2000-2025 Wezom IT-Company</p>
+                <p class="text-lg">&copy; 2000-2025 VanTroZ IT-Company</p>
                 <div class="mt-6 space-x-8">
                     <a href="#" class="text-gray-600 hover:text-orange-500 transition-colors">Sitemap</a>
                     <a href="#" class="text-gray-600 hover:text-orange-500 transition-colors">Privacy Policy</a>

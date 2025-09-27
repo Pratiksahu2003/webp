@@ -4,55 +4,47 @@
 @section('description', 'VanTroZ - IT partner. Driving Business Growth. Partner with dedicated IT experts who get your business.')
 
 @section('content')
-<!-- Modern Hero Section -->
-<section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-indigo-50">
+<!-- Compressed Hero Section -->
+<section class="relative min-h-[80vh] flex items-center overflow-hidden bg-white">
     
-    <!-- Main Content Container -->
-    <div class="container mx-auto px-6 lg:px-8 relative z-20">
-        <div class="grid lg:grid-cols-12 gap-12 items-center min-h-screen py-24">
+    <!-- Compressed Content Container -->
+    <div class="container mx-auto px-4 lg:px-6 relative z-20">
+        <div class="grid lg:grid-cols-12 gap-8 items-center min-h-[80vh] py-12">
             
-            <!-- Left Content Area -->
-            <div class="lg:col-span-7 space-y-16 relative z-30">
+            <!-- Compressed Left Content -->
+            <div class="lg:col-span-7 space-y-8 relative z-30">
                 
-                <!-- Modern Badge -->
-                <div class="flex justify-start animate-fade-in-up" style="animation-delay: 0.1s;">
-                    <div class="inline-flex items-center px-4 py-2 bg-indigo-50 border border-indigo-200 rounded-full text-indigo-700 text-sm font-medium">
-                        <div class="w-2 h-2 bg-indigo-500 rounded-full mr-2 animate-pulse"></div>
-                        Available for new projects
+                <!-- Compressed Badge -->
+                <div class="flex justify-start">
+                    <div class="inline-flex items-center px-3 py-1 bg-indigo-50 border border-indigo-200 rounded-full text-indigo-700 text-xs font-medium">
+                        <div class="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-1.5 animate-pulse"></div>
+                        Available for projects
                     </div>
                 </div>
                 
-                <!-- Main Content: Headlines & Description -->
-                <div class="space-y-10">
-                    <!-- Modern Headlines -->
-                    <div class="space-y-6">
-                        <h1 class="text-5xl md:text-7xl font-bold text-slate-900 leading-tight">
-                            <div class="animate-fade-in-up" style="animation-delay: 0.2s;">
-                                Build the <span class="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">Future</span>
-                            </div>
-                            <div class="animate-fade-in-up" style="animation-delay: 0.4s;">
-                                of Your Business
-                            </div>
-                        </h1>
-                    </div>
+                <!-- Compressed Headlines -->
+                <div class="space-y-4">
+                    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                        Build the <span class="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">Future</span> of Your Business
+                    </h1>
                     
-                    <!-- Modern Subtitle -->
-                    <div class="max-w-2xl">
-                        <p class="text-xl md:text-2xl text-slate-600 leading-relaxed animate-fade-in-up" style="animation-delay: 0.8s;">
+                    <!-- Compressed Subtitle -->
+                    <div class="max-w-xl">
+                        <p class="text-lg text-slate-600 leading-relaxed">
                             We craft exceptional digital experiences that transform ideas into powerful, scalable solutions.
                         </p>
                     </div>
                     
-                    <!-- Modern CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style="animation-delay: 1s;">
-                        <button class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-indigo-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-indigo-500/25 transform hover:-translate-y-1">
-                            Start Your Project
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- Compressed CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-all duration-200 shadow-md">
+                            Start Project
+                            <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                         </button>
-                        <button class="inline-flex items-center px-8 py-4 border-2 border-slate-300 text-slate-700 font-semibold rounded-xl hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 transition-all duration-300">
-                            View Our Work
+                        <button class="inline-flex items-center px-6 py-3 border border-slate-300 text-slate-700 font-semibold rounded-lg hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 transition-all duration-200">
+                            View Work
                         </button>
                     </div>
                 </div>
@@ -174,25 +166,25 @@
     
 </section>
 
-<!-- Modern Stats Section -->
-<section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-indigo-50 to-cyan-50 border border-indigo-100">
-                <div class="text-4xl font-bold text-indigo-600 mb-2">3500+</div>
-                <div class="text-slate-600 font-medium">Projects Delivered</div>
+<!-- Compressed Stats Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-4 lg:px-6">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="text-center p-4 rounded-lg bg-gradient-to-br from-indigo-50 to-cyan-50 border border-indigo-100">
+                <div class="text-3xl font-bold text-indigo-600 mb-1">3500+</div>
+                <div class="text-slate-600 text-sm font-medium">Projects</div>
             </div>
-            <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-cyan-50 to-teal-50 border border-cyan-100">
-                <div class="text-4xl font-bold text-cyan-600 mb-2">24+</div>
-                <div class="text-slate-600 font-medium">Years Experience</div>
+            <div class="text-center p-4 rounded-lg bg-gradient-to-br from-cyan-50 to-teal-50 border border-cyan-100">
+                <div class="text-3xl font-bold text-cyan-600 mb-1">24+</div>
+                <div class="text-slate-600 text-sm font-medium">Years</div>
             </div>
-            <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-teal-50 to-emerald-50 border border-teal-100">
-                <div class="text-4xl font-bold text-teal-600 mb-2">250+</div>
-                <div class="text-slate-600 font-medium">Expert Developers</div>
+            <div class="text-center p-4 rounded-lg bg-gradient-to-br from-teal-50 to-emerald-50 border border-teal-100">
+                <div class="text-3xl font-bold text-teal-600 mb-1">250+</div>
+                <div class="text-slate-600 text-sm font-medium">Developers</div>
             </div>
-            <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-100">
-                <div class="text-4xl font-bold text-emerald-600 mb-2">98%</div>
-                <div class="text-slate-600 font-medium">Client Satisfaction</div>
+            <div class="text-center p-4 rounded-lg bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-100">
+                <div class="text-3xl font-bold text-emerald-600 mb-1">98%</div>
+                <div class="text-slate-600 text-sm font-medium">Satisfaction</div>
             </div>
         </div>
     </div>
@@ -228,38 +220,38 @@
     </div>
 </section>
 
-<!-- Modern Services Section -->
-<section class="py-24 bg-gradient-to-b from-slate-50 to-white">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-20">
-            <h2 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
+<!-- Compressed Services Section -->
+<section class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 lg:px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                 What We <span class="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">Create</span>
             </h2>
-            <p class="text-xl text-slate-600 max-w-3xl mx-auto">Transforming ideas into exceptional digital experiences with cutting-edge technology</p>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">Transforming ideas into exceptional digital experiences</p>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Modern Service Card 1 -->
-            <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-cyan-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Compressed Service Card 1 -->
+            <div class="group relative bg-white rounded-lg p-6 shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-cyan-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div class="relative">
-                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Custom Software</h3>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Custom Software</h3>
+                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">
                         Tailored solutions that perfectly fit your business needs and scale with your growth.
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded-full">SaaS</span>
-                        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded-full">CRM</span>
-                        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded-full">MVP</span>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded">SaaS</span>
+                        <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded">CRM</span>
+                        <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded">MVP</span>
                     </div>
-                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-700 transition-colors">
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-700 transition-colors text-sm">
                         Learn more
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </a>
@@ -373,7 +365,7 @@
                 </div>
                 
                 <p class="service-description">
-                    Ensure the fault tolerance, stability, and correct operation of your digital solution with software QA testing services by WEZOM
+                    Ensure the fault tolerance, stability, and correct operation of your digital solution with software QA testing services by VanTroZ
                 </p>
                 
                 <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
@@ -401,7 +393,7 @@
                 </div>
                 
                 <p class="service-description">
-                    Get a UI/UX design inspired by the desires and needs of your users by entrusting its implementation to WEZOM experts.
+                    Get a UI/UX design inspired by the desires and needs of your users by entrusting its implementation to VanTroZ experts.
                 </p>
                 
                 <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
@@ -498,7 +490,7 @@
             <!-- Left Content -->
             <div>
                 <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
-                    Software Company WEZOM
+                    Software Company VanTroZ
                 </h2>
                 <p class="text-xl text-gray-700 mb-10 leading-relaxed">
                     Our objective is to develop a profitable and effective solution that helps clients to expand their businesses and overcome financial constraints. We are committed to exceptional service and utilizing all resources to bring the finest products & services.
@@ -550,7 +542,7 @@
                 Digital transformation for industries
             </h2>
             <p class="text-xl text-gray-700 max-w-4xl mx-auto mb-10 leading-relaxed">
-                Wezom is your one-stop software development company, offering a full range of services for all industries. We drive your business progress with smart tech decisions tailored to a specific field.
+                VanTroZ is your one-stop software development company, offering a full range of services for all industries. We drive your business progress with smart tech decisions tailored to a specific field.
             </p>
             <a href="#" class="btn-primary">Discover More</a>
         </div>
@@ -653,7 +645,7 @@
                     <h4 class="text-gray-900 font-bold mb-3 text-lg">Peter Sachse</h4>
                     <div class="text-gray-600 text-sm mb-6">Peter Sachse</div>
                     <p class="testimonial-text">
-                        We chose WEZOM amongst other companies because they provided prototypes of future systems and we had a clear understanding of what the finished product would look like. We worked with the team on several projects, including the development of a CRM with adaptation for desktop and mobile versions, as well as the creation of a suite of server applications that are available on iOS, Android, and online. We are very pleased with the results and the flexibility of the WEZOM team.
+                        We chose VanTroZ amongst other companies because they provided prototypes of future systems and we had a clear understanding of what the finished product would look like. We worked with the team on several projects, including the development of a CRM with adaptation for desktop and mobile versions, as well as the creation of a suite of server applications that are available on iOS, Android, and online. We are very pleased with the results and the flexibility of the VanTroZ team.
                     </p>
                 </div>
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Read more →</a>
@@ -677,7 +669,7 @@
                     <h4 class="text-gray-900 font-bold mb-3 text-lg">Daniel Mailovsky</h4>
                     <div class="text-gray-600 text-sm mb-6">Daniel Mailovsky</div>
                     <p class="testimonial-text">
-                        Thanks to WEZOM, our sales increased by 65% and conversions increased by 150%. The team fully developed an online store for us, with 1C and amoCRM integrations. The guys conducted a market analysis, created a mind map with all the functions of the future site, and argued for each element of development. Everything was transparent, and the quality was high.
+                        Thanks to VanTroZ, our sales increased by 65% and conversions increased by 150%. The team fully developed an online store for us, with 1C and amoCRM integrations. The guys conducted a market analysis, created a mind map with all the functions of the future site, and argued for each element of development. Everything was transparent, and the quality was high.
                     </p>
                 </div>
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Read more →</a>
@@ -800,7 +792,7 @@
             <div>
 
                 <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
-                    Software Company WEZOM
+                    Software Company VanTroZ
 
                 </h2>
 
@@ -879,7 +871,7 @@
             </h2>
 
             <p class="text-xl text-gray-700 max-w-4xl mx-auto mb-10 leading-relaxed">
-                Wezom is your one-stop software development company, offering a full range of services for all industries. We drive your business progress with smart tech decisions tailored to a specific field.
+                VanTroZ is your one-stop software development company, offering a full range of services for all industries. We drive your business progress with smart tech decisions tailored to a specific field.
 
             </p>
 
@@ -1030,7 +1022,7 @@
                     <h4 class="text-gray-900 font-bold mb-3 text-lg">Peter Sachse</h4>
                     <div class="text-gray-600 text-sm mb-6">Peter Sachse</div>
                     <p class="testimonial-text">
-                        We chose WEZOM amongst other companies because they provided prototypes of future systems and we had a clear understanding of what the finished product would look like. We worked with the team on several projects, including the development of a CRM with adaptation for desktop and mobile versions, as well as the creation of a suite of server applications that are available on iOS, Android, and online. We are very pleased with the results and the flexibility of the WEZOM team.
+                        We chose VanTroZ amongst other companies because they provided prototypes of future systems and we had a clear understanding of what the finished product would look like. We worked with the team on several projects, including the development of a CRM with adaptation for desktop and mobile versions, as well as the creation of a suite of server applications that are available on iOS, Android, and online. We are very pleased with the results and the flexibility of the VanTroZ team.
 
                     </p>
 
@@ -1066,7 +1058,7 @@
                     <h4 class="text-gray-900 font-bold mb-3 text-lg">Daniel Mailovsky</h4>
                     <div class="text-gray-600 text-sm mb-6">Daniel Mailovsky</div>
                     <p class="testimonial-text">
-                        Thanks to WEZOM, our sales increased by 65% and conversions increased by 150%. The team fully developed an online store for us, with 1C and amoCRM integrations. The guys conducted a market analysis, created a mind map with all the functions of the future site, and argued for each element of development. Everything was transparent, and the quality was high.
+                        Thanks to VanTroZ, our sales increased by 65% and conversions increased by 150%. The team fully developed an online store for us, with 1C and amoCRM integrations. The guys conducted a market analysis, created a mind map with all the functions of the future site, and argued for each element of development. Everything was transparent, and the quality was high.
 
                     </p>
 

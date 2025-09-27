@@ -4,8 +4,8 @@
 @section('description', $blogPost->excerpt)
 
 @section('content')
-<!-- Modern Hero Section -->
-<section class="relative overflow-hidden min-h-[500px] bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900">
+<!-- Compressed Hero Section -->
+<section class="relative overflow-hidden min-h-[400px] bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900">
     @if($blogPost->banner_image)
     <!-- Background Image -->
     <div class="absolute inset-0">
@@ -19,22 +19,22 @@
     <!-- Modern Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-slate-900/60 to-indigo-900/80"></div>
 
-    <!-- Modern Content -->
-    <div class="relative z-10 py-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+    <!-- Compressed Content -->
+    <div class="relative z-10 py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
             <div class="text-center text-white">
-                <div class="flex items-center justify-center mb-6">
+                <div class="flex items-center justify-center mb-4">
                     @if($blogPost->category)
-                    <span class="bg-indigo-500/20 backdrop-blur-sm text-indigo-200 text-sm font-medium px-4 py-2 rounded-full border border-indigo-400/30">{{ $blogPost->category }}</span>
+                    <span class="bg-indigo-500/20 backdrop-blur-sm text-indigo-200 text-xs font-medium px-3 py-1.5 rounded-full border border-indigo-400/30">{{ $blogPost->category }}</span>
                     @endif
                     @if($blogPost->published_at)
-                    <span class="text-slate-300 text-sm ml-4 bg-slate-800/40 backdrop-blur-sm px-4 py-2 rounded-full">{{ $blogPost->published_at->format('M d, Y') }}</span>
+                    <span class="text-slate-300 text-xs ml-3 bg-slate-800/40 backdrop-blur-sm px-3 py-1.5 rounded-full">{{ $blogPost->published_at->format('M d, Y') }}</span>
                     @else
-                    <span class="text-slate-300 text-sm ml-4 bg-slate-800/40 backdrop-blur-sm px-4 py-2 rounded-full">{{ $blogPost->created_at->format('M d, Y') }}</span>
+                    <span class="text-slate-300 text-xs ml-3 bg-slate-800/40 backdrop-blur-sm px-3 py-1.5 rounded-full">{{ $blogPost->created_at->format('M d, Y') }}</span>
                     @endif
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">{{ $blogPost->title }}</h1>
-                <p class="text-xl mb-8 max-w-2xl mx-auto text-slate-200 leading-relaxed">{{ $blogPost->excerpt }}</p>
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white leading-tight">{{ $blogPost->title }}</h1>
+                <p class="text-lg mb-6 max-w-2xl mx-auto text-slate-200 leading-relaxed">{{ $blogPost->excerpt }}</p>
                 <div class="flex items-center justify-center text-white/90 space-x-6">
                     <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
                         <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-3 shadow-md">
@@ -59,10 +59,10 @@
     </div>
 </section>
 
-<!-- Modern Article Content -->
-<section class="py-20 bg-white">
+<!-- Compressed Article Content -->
+<section class="py-12 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <article class="prose prose-lg prose-slate max-w-none prose-headings:text-slate-900 prose-p:text-slate-700 prose-a:text-indigo-600 prose-strong:text-slate-900">
+        <article class="prose prose-slate max-w-none prose-headings:text-slate-900 prose-p:text-slate-700 prose-a:text-indigo-600 prose-strong:text-slate-900">
             @if($blogPost->featured_image)
             <img src="{{ asset('storage/' . $blogPost->featured_image) }}"
                 alt="{{ $blogPost->title }}"
@@ -141,23 +141,23 @@
 </section>
 @endif
 
-<!-- Modern CTA Section -->
-<section class="py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-cyan-600">
+<!-- Compressed CTA Section -->
+<section class="py-12 bg-gradient-to-br from-indigo-600 via-indigo-700 to-cyan-600">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Ideas?</h2>
-        <p class="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Ready to Transform Your Ideas?</h2>
+        <p class="text-lg text-indigo-100 mb-6 max-w-xl mx-auto">
             Let's collaborate to build something extraordinary together
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
             <a href="{{ route('contact') }}"
-                class="inline-flex items-center px-8 py-4 bg-white text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                Start Your Project
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="inline-flex items-center px-6 py-3 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-indigo-50 transition-all duration-200 shadow-md">
+                Start Project
+                <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
             </a>
             <a href="{{ route('services') }}"
-                class="inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300">
+                class="inline-flex items-center px-6 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-200">
                 View Services
             </a>
         </div>

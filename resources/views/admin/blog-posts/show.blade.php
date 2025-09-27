@@ -121,7 +121,7 @@
                 
                 <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
                     <div class="text-blue-600 text-lg font-medium mb-1">Advanced Web Development Techniques</div>
-                    <div class="text-green-600 text-sm mb-2">https://wezom.com/blog/advanced-web-development</div>
+                    <div class="text-green-600 text-sm mb-2">https://vantroz.com/blog/advanced-web-development</div>
                     <div class="text-gray-600 text-sm">Learn about the latest techniques and best practices in modern web development. Topics include React, Vue.js, Node.js...</div>
                 </div>
             </div>

@@ -23,10 +23,10 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks: {
-                    'wezom-dashboard': ['resources/js/dashboard.js'],
-                    'wezom-animations': ['resources/js/animations.js'],
-                    'wezom-interactions': ['resources/js/interactions.js'],
-                    'wezom-navbar': ['resources/js/navbar.js'],
+                    'vantroz-dashboard': ['resources/js/dashboard.js'],
+                    'vantroz-animations': ['resources/js/animations.js'],
+                    'vantroz-interactions': ['resources/js/interactions.js'],
+                    'vantroz-navbar': ['resources/js/navbar.js'],
                 },
             },
         },

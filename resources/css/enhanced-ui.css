@@ -30,14 +30,14 @@
     --error: #ef4444;
     --info: #3b82f6;
     
-    /* Spacing Scale */
-    --space-xs: 0.25rem;
-    --space-sm: 0.5rem;
-    --space-md: 1rem;
-    --space-lg: 1.5rem;
-    --space-xl: 2rem;
-    --space-2xl: 3rem;
-    --space-3xl: 4rem;
+    /* Compressed Spacing Scale */
+    --space-xs: 0.125rem;
+    --space-sm: 0.25rem;
+    --space-md: 0.5rem;
+    --space-lg: 0.75rem;
+    --space-xl: 1rem;
+    --space-2xl: 1.5rem;
+    --space-3xl: 2rem;
     
     /* Typography Scale */
     --text-xs: 0.75rem;
@@ -74,14 +74,14 @@
     --transition-slow: 500ms ease-in-out;
 }
 
-/* Modern Body Styling */
+/* Compressed Body Styling */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    background: #ffffff;
     color: #0f172a;
-    line-height: 1.6;
+    line-height: 1.4;
     font-weight: 400;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -128,15 +128,15 @@ body {
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-indigo) 0%, var(--primary-indigo-light) 100%);
     color: var(--white);
-    padding: 0.875rem 1.75rem;
-    border-radius: 12px;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
     font-weight: 600;
-    font-size: 0.875rem;
-    letter-spacing: 0.025em;
+    font-size: 0.8rem;
+    letter-spacing: 0.01em;
     border: none;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.3);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px 0 rgba(99, 102, 241, 0.25);
     position: relative;
     overflow: hidden;
 }
@@ -164,14 +164,14 @@ body {
 .btn-secondary {
     background: transparent;
     color: var(--gray-700);
-    padding: 0.875rem 1.75rem;
-    border: 2px solid var(--gray-300);
-    border-radius: 12px;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 8px;
     font-weight: 500;
-    font-size: 0.875rem;
-    letter-spacing: 0.025em;
+    font-size: 0.8rem;
+    letter-spacing: 0.01em;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
@@ -184,11 +184,11 @@ body {
 /* Perfect Card System */
 .card {
     background: var(--white);
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(15, 23, 42, 0.06);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
     position: relative;
     overflow: hidden;
 }
@@ -210,8 +210,8 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.1);
     border-color: rgba(99, 102, 241, 0.2);
 }
 
