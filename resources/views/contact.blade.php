@@ -1,7 +1,7 @@
 @extends('layouts.website')
 
-@section('title', 'Contact Us - VanTroZ')
-@section('description', 'Get in touch with VanTroZ for your software development needs. Contact us for a free consultation.')
+@section('title', 'Contact Us - ' . config('company.name'))
+@section('description', 'Get in touch with ' . config('company.name') . ' for your software development needs. Contact us for a free consultation.')
 
 @section('content')
 <!-- Hero Section -->
@@ -95,7 +95,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900">Phone</h3>
-                            <p class="text-gray-600">+1 872 225 3074</p>
+                            <p class="text-gray-600">{{ config('company.contact.phone') }}</p>
                         </div>
                     </div>
                     
@@ -107,7 +107,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900">Email</h3>
-                            <p class="text-gray-600">info@vantroz.com</p>
+                            <p class="text-gray-600">{{ config('company.contact.email') }}</p>
                         </div>
                     </div>
                     
@@ -119,12 +119,10 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Office Locations</h3>
+                            <h3 class="text-lg font-semibold text-gray-900">Office Location</h3>
                             <div class="text-gray-600 space-y-1">
-                                <p>Schaumburg, Illinois</p>
-                                <p>1821 Walden Office Square, 406</p>
-                                <p>New York, 112 W. 34th Street</p>
-                                <p>17th and 18th Floors</p>
+                                <p class="font-semibold">{{ config('company.address.primary.name') }}</p>
+                                <p>{{ config('company.address.primary.full') }}</p>
                             </div>
                         </div>
                     </div>
@@ -163,8 +161,8 @@
         <p class="text-xl mb-8 max-w-3xl mx-auto">
             Contact us today for a free consultation and project estimate
         </p>
-        <a href="tel:+18722253074" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
-            Call Now: +1 872 225 3074
+        <a href="tel:{{ config('company.contact.phone') }}" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
+            Call Now: {{ config('company.contact.phone') }}
         </a>
     </div>
 </section>

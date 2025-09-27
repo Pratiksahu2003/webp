@@ -263,9 +263,12 @@
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                         </svg>
                     </div>
-                    <div>
-                        <h1 class="text-gray-800 font-bold text-xl">VanTroZ</h1>
-                        <p class="text-gray-500 text-xs font-medium">Admin Panel</p>
+                    <div class="flex items-center">
+                        <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ Logo" class="h-8 w-auto mr-2">
+                        <div>
+                            <h1 class="text-gray-800 font-bold text-xl">VanTroZ</h1>
+                            <p class="text-gray-500 text-xs font-medium">Admin Panel</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -442,9 +445,12 @@
                                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                                 </svg>
                             </div>
-                            <div>
-                                <h1 class="text-gray-800 font-bold text-xl">VanTroZ</h1>
-                                <p class="text-gray-500 text-xs font-medium">Admin Panel</p>
+                            <div class="flex items-center">
+                                <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ Logo" class="h-8 w-auto mr-2">
+                                <div>
+                                    <h1 class="text-gray-800 font-bold text-xl">VanTroZ</h1>
+                                    <p class="text-gray-500 text-xs font-medium">Admin Panel</p>
+                                </div>
                             </div>
                         </div>
                         <button @click="sidebarOpen = false" class="text-gray-600 hover:text-gray-800 p-1 rounded-md hover:bg-gray-100">

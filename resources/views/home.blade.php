@@ -4,166 +4,172 @@
 @section('description', 'VanTroZ - IT partner. Driving Business Growth. Partner with dedicated IT experts who get your business.')
 
 @section('content')
-<!-- Compressed Hero Section -->
-<section class="relative min-h-[80vh] flex items-center overflow-hidden bg-white">
-    
-    <!-- Compressed Content Container -->
+<!-- Advanced Hero Section with Video Background -->
+<section class="relative min-h-screen flex items-center overflow-hidden">
+
+    <!-- Video Background -->
+    <div class="absolute inset-0 w-full h-full">
+        <video
+            autoplay
+            muted
+            loop
+            playsinline
+            class="absolute inset-0 w-full h-full object-cover"
+            poster="{{ asset('banner/home-poster.jpg') }}">
+            <source src="{{ asset('banner/home.mp4') }}" type="video/mp4">
+            <!-- Fallback for browsers that don't support video -->
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-indigo-700 to-cyan-600"></div>
+        </video>
+
+        <!-- Advanced Video Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-indigo-900/70"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-slate-900/40"></div>
+    </div>
+
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <!-- Floating Particles -->
+        <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-indigo-400/30 rounded-full animate-pulse"></div>
+        <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-400/40 rounded-full animate-ping"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-indigo-300/20 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 right-1/4 w-1 h-1 bg-cyan-300/30 rounded-full animate-ping" style="animation-delay: 2s;"></div>
+
+        <!-- Geometric Shapes -->
+        <div class="absolute top-20 right-20 w-32 h-32 border border-white/10 rounded-full animate-spin" style="animation-duration: 20s;"></div>
+        <div class="absolute bottom-20 left-20 w-24 h-24 border border-indigo-400/20 rounded-lg rotate-45 animate-pulse"></div>
+    </div>
+
+    <!-- Advanced Content Container -->
     <div class="container mx-auto px-4 lg:px-6 relative z-20">
-        <div class="grid lg:grid-cols-12 gap-8 items-center min-h-[80vh] py-12">
-            
-            <!-- Compressed Left Content -->
-            <div class="lg:col-span-7 space-y-8 relative z-30">
-                
-                <!-- Compressed Badge -->
-                <div class="flex justify-start">
-                    <div class="inline-flex items-center px-3 py-1 bg-indigo-50 border border-indigo-200 rounded-full text-indigo-700 text-xs font-medium">
-                        <div class="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-1.5 animate-pulse"></div>
-                        Available for projects
+        <div class="grid lg:grid-cols-12 gap-12 items-center min-h-screen py-20">
+
+            <!-- Advanced Left Content -->
+            <div class="lg:col-span-7 space-y-10 relative z-30">
+
+                <!-- Advanced Hero Badge -->
+                <div class="flex justify-start animate-fade-in-up">
+                    <div class="group relative inline-flex items-center px-4 py-2 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-cyan-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative flex items-center">
+                            <div class="w-2 h-2 bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-full mr-2 animate-pulse"></div>
+                            <span class="bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent">Available for new projects</span>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Compressed Headlines -->
-                <div class="space-y-4">
-                    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-                        Build the <span class="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">Future</span> of Your Business
+
+                <!-- Advanced Hero Headlines -->
+                <div class="space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight">
+                        <span class="block">Build the</span>
+                        <span class="block bg-gradient-to-r from-indigo-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent animate-gradient-x">Future</span>
+                        <span class="block">of Business</span>
                     </h1>
-                    
-                    <!-- Compressed Subtitle -->
-                    <div class="max-w-xl">
-                        <p class="text-lg text-slate-600 leading-relaxed">
-                            We craft exceptional digital experiences that transform ideas into powerful, scalable solutions.
+
+                    <!-- Advanced Hero Subtitle -->
+                    <div class="max-w-2xl">
+                        <p class="text-xl md:text-2xl text-slate-200 leading-relaxed font-light animate-fade-in-up" style="animation-delay: 0.4s;">
+                            We craft <span class="text-white font-semibold">exceptional digital experiences</span> that transform ideas into powerful, scalable solutions that drive real business growth.
                         </p>
                     </div>
-                    
-                    <!-- Compressed CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <button class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-all duration-200 shadow-md">
-                            Start Project
-                            <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                    <!-- Advanced Feature Pills -->
+                    <div class="flex flex-wrap gap-3 animate-fade-in-up" style="animation-delay: 0.6s;">
+                        <div class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-slate-200 border border-white/20">
+                            ⚡ Lightning Fast
+                        </div>
+                        <div class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-slate-200 border border-white/20">
+                            🚀 Scalable Solutions
+                        </div>
+                        <div class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-slate-200 border border-white/20">
+                            🎯 Results Driven
+                        </div>
+                    </div>
+
+                    <!-- Advanced CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style="animation-delay: 0.8s;">
+                        <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-white to-slate-100 text-slate-900 font-bold rounded-xl overflow-hidden shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                            <span class="relative">Start Your Project</span>
+                            <svg class="relative w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                         </button>
-                        <button class="inline-flex items-center px-6 py-3 border border-slate-300 text-slate-700 font-semibold rounded-lg hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 transition-all duration-200">
-                            View Work
+                        <button class="group relative inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/50 hover:bg-white/10 transform hover:-translate-y-1">
+                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="relative">View Our Work</span>
+                            <svg class="relative w-5 h-5 ml-2 group-hover:rotate-45 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
                         </button>
                     </div>
                 </div>
             </div>
-            
-            <!-- Right Content Area - Stats & CTA -->
-            <div class="lg:col-span-5 relative h-full flex flex-col justify-between">
-                
-                <!-- Top Section: Experience Badge -->
-                <div class="flex justify-end mb-12">
-                    <div class="text-right animate-fade-in-up" style="animation-delay: 1.2s;">
-                        <div class="stat-number">
+
+            <!-- Advanced Right Content - Interactive Stats -->
+            <div class="lg:col-span-5 relative h-full flex flex-col justify-center space-y-8">
+
+                <!-- Main Achievement Card -->
+                <div class="group relative bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl hover:shadow-white/10 transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 1s;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-cyan-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative text-center">
+                        <div class="text-6xl font-black bg-gradient-to-r from-white via-indigo-200 to-cyan-200 bg-clip-text text-transparent mb-3 animate-pulse">
                             24+
                         </div>
-                        <div class="text-gray-900 text-xl font-semibold tracking-wide mt-2">
-                            years of experience
+                        <div class="text-white text-xl font-bold mb-2">Years of Excellence</div>
+                        <div class="text-slate-300 text-sm">Trusted by Fortune 500 companies worldwide</div>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-full animate-ping"></div>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 animate-fade-in-up" style="animation-delay: 1.2s;">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative">
+                            <div class="text-3xl font-bold bg-gradient-to-r from-indigo-300 to-indigo-400 bg-clip-text text-transparent mb-2">3500+</div>
+                            <div class="text-slate-300 text-sm font-medium">Projects Delivered</div>
                         </div>
-                        <div class="text-gray-600 text-sm mt-2">
-                            Trusted by Fortune 500 companies
+                    </div>
+                    <div class="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 animate-fade-in-up" style="animation-delay: 1.4s;">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative">
+                            <div class="text-3xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-400 bg-clip-text text-transparent mb-2">250+</div>
+                            <div class="text-slate-300 text-sm font-medium">Expert Developers</div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Center Section: Additional Stats -->
-                <div class="hidden lg:flex justify-center my-12">
-                    <div class="grid grid-cols-2 gap-12 text-center animate-fade-in-up" style="animation-delay: 1.4s;">
-                        <div>
-                            <div class="text-4xl font-bold text-orange-500">3500+</div>
-                            <div class="text-gray-600 text-sm">Projects Delivered</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-bold text-orange-500">250+</div>
-                            <div class="text-gray-600 text-sm">Expert Developers</div>
-                        </div>
+
+                <!-- Achievement Badges -->
+                <div class="flex justify-center space-x-4 animate-fade-in-up" style="animation-delay: 1.6s;">
+                    <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                        <span class="text-slate-200 text-sm font-medium">99% Success Rate</span>
                     </div>
                 </div>
-                
-                <!-- Bottom Section: CTA Button -->
-                <div class="flex justify-end">
-                    <button class="btn-primary group w-40 h-40 rounded-full flex flex-col items-center justify-center text-white font-bold text-sm uppercase tracking-widest hover:scale-110 transition-all duration-500 shadow-2xl hover:shadow-orange-500/50 animate-scale-in" style="animation-delay: 1.6s;">
-                        <svg class="w-10 h-10 mb-3 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+
+                <!-- Floating Action Button -->
+                <div class="flex justify-center animate-fade-in-up" style="animation-delay: 1.8s;">
+                    <button class="group relative w-16 h-16 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-full shadow-2xl hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-110 hover:rotate-12">
+                        <div class="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <svg class="w-8 h-8 text-white mx-auto group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <span class="text-xs leading-tight">GET<br>STARTED</span>
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- 3D Orange Mesh Background -->
-    <div class="absolute inset-0 z-10">
-        <div class="absolute right-0 top-0 w-2/3 h-full">
-            <svg class="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <!-- Gradients for 3D effect -->
-                    <linearGradient id="meshGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:0.9" />
-                        <stop offset="50%" style="stop-color:#ff8c42;stop-opacity:0.7" />
-                        <stop offset="100%" style="stop-color:#d2691e;stop-opacity:0.5" />
-                    </linearGradient>
-                    <linearGradient id="meshGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#ff8c42;stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:#f7931e;stop-opacity:0.6" />
-                    </linearGradient>
-                </defs>
-                
-                <!-- Complex 3D Mesh Pattern -->
-                <!-- Main triangular structures -->
-                <polygon points="400,50 500,150 350,180" fill="url(#meshGrad1)" opacity="0.8"/>
-                <polygon points="500,150 600,250 450,280" fill="url(#meshGrad2)" opacity="0.7"/>
-                <polygon points="350,180 450,280 300,310" fill="url(#meshGrad1)" opacity="0.6"/>
-                
-                <!-- Central complex -->
-                <polygon points="450,280 550,380 400,410" fill="url(#meshGrad2)" opacity="0.9"/>
-                <polygon points="550,380 650,480 500,510" fill="url(#meshGrad1)" opacity="0.7"/>
-                <polygon points="400,410 500,510 350,540" fill="url(#meshGrad2)" opacity="0.8"/>
-                
-                <!-- Right extensions -->
-                <polygon points="600,250 700,350 550,380" fill="url(#meshGrad1)" opacity="0.6"/>
-                <polygon points="700,350 750,450 650,480" fill="url(#meshGrad2)" opacity="0.5"/>
-                
-                <!-- Additional geometric elements -->
-                <circle cx="680" cy="120" r="25" fill="#ff6b35" opacity="0.4"/>
-                <circle cx="720" cy="280" r="20" fill="#f7931e" opacity="0.3"/>
-                <circle cx="620" cy="450" r="30" fill="#ff8c42" opacity="0.5"/>
-                
-                <!-- Connecting lines -->
-                <line x1="400" y1="50" x2="680" y2="120" stroke="#ff6b35" stroke-width="2" opacity="0.3"/>
-                <line x1="500" y1="150" x2="720" y2="280" stroke="#f7931e" stroke-width="1.5" opacity="0.4"/>
-                <line x1="550" y1="380" x2="620" y2="450" stroke="#ff8c42" stroke-width="2" opacity="0.3"/>
-                
-                <!-- Small accent dots -->
-                <circle cx="480" cy="200" r="8" fill="#ff6b35" opacity="0.6"/>
-                <circle cx="580" cy="320" r="6" fill="#f7931e" opacity="0.7"/>
-                <circle cx="420" cy="360" r="10" fill="#ff8c42" opacity="0.5"/>
-                <circle cx="650" cy="180" r="7" fill="#ff6b35" opacity="0.6"/>
-                <circle cx="520" cy="440" r="9" fill="#f7931e" opacity="0.5"/>
-            </svg>
-        </div>
-    </div>
-    
-    <!-- Cookie Notice (Bottom Left) -->
-    <div class="absolute bottom-8 left-8 z-30 max-w-xs">
-        <div class="bg-white/90 backdrop-blur-md rounded-lg p-4 border border-gray-200">
-            <div class="flex items-start space-x-3">
-                <div class="text-orange-500 text-xl">🍪</div>
-                <div>
-                    <p class="text-gray-900 text-sm mb-3">
-                        We use cookies to improve your experience on our website. You can find out more in our policy.
-                    </p>
-                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300">
-                        OK
-                    </button>
-                </div>
+
+    <!-- Advanced Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 animate-fade-in-up" style="animation-delay: 2s;">
+        <div class="flex flex-col items-center space-y-2">
+            <div class="text-white/70 text-sm font-medium tracking-wider uppercase">Scroll to explore</div>
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
             </div>
         </div>
     </div>
-    
+
 </section>
 
 <!-- Compressed Stats Section -->
@@ -194,7 +200,7 @@
 <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
         <h2 class="text-center text-3xl font-bold text-gray-900 mb-16">Key clients</h2>
-        
+
         <!-- Scrolling clients strip -->
         <div class="relative overflow-hidden">
             <div class="flex animate-scroll space-x-16 items-center">
@@ -229,7 +235,7 @@
             </h2>
             <p class="text-lg text-slate-600 max-w-2xl mx-auto">Transforming ideas into exceptional digital experiences</p>
         </div>
-        
+
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Compressed Service Card 1 -->
             <div class="group relative bg-white rounded-lg p-6 shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -257,7 +263,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <!-- Modern Service Card 2 -->
             <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-500 hover:-translate-y-2">
                 <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 to-teal-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -284,7 +290,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <!-- Modern Service Card 3 -->
             <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-2">
                 <div class="absolute inset-0 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -311,7 +317,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <!-- Service Card 4: Data Science & AI -->
             <div class="service-card-enhanced">
                 <div class="flex items-start space-x-4 mb-6">
@@ -322,7 +328,7 @@
                         <h3 class="service-title">Data Science & AI</h3>
                     </div>
                 </div>
-                
+
                 <div class="space-y-3 mb-6">
                     <div class="text-gray-700">AWS & Cloud</div>
                     <div class="text-gray-700">Big Data Solutions</div>
@@ -333,16 +339,16 @@
                     <div class="text-gray-700">AI ChatBot</div>
                     <div class="text-gray-700">Generative AI</div>
                 </div>
-                
+
                 <p class="service-description">
                     Make every business decision a data-driven one with stats, insights and analysis that positions you ahead of the competition
                 </p>
-                
+
                 <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
                     Learn more →
                 </a>
             </div>
-            
+
             <!-- Service Card 5: QA & Software Testing -->
             <div class="service-card-enhanced">
                 <div class="flex items-start space-x-4 mb-6">
@@ -353,7 +359,7 @@
                         <h3 class="service-title">QA & Software Testing</h3>
                     </div>
                 </div>
-                
+
                 <div class="space-y-3 mb-6">
                     <div class="text-gray-700">Test Automation</div>
                     <div class="text-gray-700">Cybersecurity</div>
@@ -363,16 +369,16 @@
                     <div class="text-gray-700">QA Consulting</div>
                     <div class="text-gray-700">Load Testing Services</div>
                 </div>
-                
+
                 <p class="service-description">
                     Ensure the fault tolerance, stability, and correct operation of your digital solution with software QA testing services by VanTroZ
                 </p>
-                
+
                 <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
                     Learn more →
                 </a>
             </div>
-            
+
             <!-- Service Card 6: UX/UI Design -->
             <div class="service-card-enhanced">
                 <div class="flex items-start space-x-4 mb-6">
@@ -383,7 +389,7 @@
                         <h3 class="service-title">UX/UI Design</h3>
                     </div>
                 </div>
-                
+
                 <div class="space-y-3 mb-6">
                     <div class="text-gray-700">UX Review</div>
                     <div class="text-gray-700">Product Design</div>
@@ -391,11 +397,11 @@
                     <div class="text-gray-700">Mobile App Design</div>
                     <div class="text-gray-700">Web Design Services</div>
                 </div>
-                
+
                 <p class="service-description">
                     Get a UI/UX design inspired by the desires and needs of your users by entrusting its implementation to VanTroZ experts.
                 </p>
-                
+
                 <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
                     Learn more →
                 </a>
@@ -409,7 +415,7 @@
     <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-20">
             <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-8">Case Studies</h2>
-            
+
             <!-- Filter Tags -->
             <div class="flex flex-wrap justify-center gap-4 mb-16">
                 <span class="px-6 py-3 bg-orange-500 text-white rounded-full text-sm font-semibold">All cases</span>
@@ -421,18 +427,18 @@
                 <span class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 cursor-pointer transition-colors">UX/UI Design</span>
             </div>
         </div>
-        
+
         <div class="grid lg:grid-cols-2 gap-12">
             <!-- Case Study 1 -->
             <div class="card group hover:transform hover:scale-105 transition-all duration-300">
                 <div class="flex flex-wrap gap-2 mb-6">
                     <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">eCommerce</span>
                 </div>
-                
+
                 <h3 class="text-2xl font-bold text-gray-900 mb-6">
                     KSD: new eCommerce platform for the largest Ukrainian bookstore
                 </h3>
-                
+
                 <div class="grid grid-cols-2 gap-8 mb-8">
                     <div class="text-center">
                         <div class="text-3xl font-bold text-orange-500 mb-2">50 thousand</div>
@@ -443,23 +449,23 @@
                         <div class="text-sm text-gray-600">physical KSD bookstores full synced with online sales</div>
                     </div>
                 </div>
-                
+
                 <div class="flex flex-wrap gap-2">
                     <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">Custom Software</span>
                     <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">Web & Mobile Development</span>
                 </div>
             </div>
-            
+
             <!-- Case Study 2 -->
             <div class="card group hover:transform hover:scale-105 transition-all duration-300">
                 <div class="flex flex-wrap gap-2 mb-6">
                     <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">Manufacturing</span>
                 </div>
-                
+
                 <h3 class="text-2xl font-bold text-gray-900 mb-6">
                     AeroIntel AI: Analytical software solution for UAV operators
                 </h3>
-                
+
                 <div class="grid grid-cols-3 gap-6 mb-8">
                     <div class="text-center">
                         <div class="text-3xl font-bold text-orange-500 mb-2">0.3 s/image</div>
@@ -474,7 +480,7 @@
                         <div class="text-sm text-gray-600">of the model to new datasets</div>
                     </div>
                 </div>
-                
+
                 <div class="flex flex-wrap gap-2">
                     <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">AI/GenAI</span>
                 </div>
@@ -497,7 +503,7 @@
                 </p>
                 <a href="#" class="btn-primary inline-block">About us</a>
             </div>
-            
+
             <!-- Right Stats -->
             <div class="grid grid-cols-2 gap-12">
                 <div class="text-center">
@@ -522,7 +528,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Certifications -->
         <div class="mt-20 text-center">
             <div class="inline-flex items-center px-8 py-4 bg-gray-200 rounded-xl">
@@ -546,7 +552,7 @@
             </p>
             <a href="#" class="btn-primary">Discover More</a>
         </div>
-        
+
         <!-- Industries Grid -->
         <div class="grid-perfect-sm">
             <!-- Industry items -->
@@ -555,25 +561,25 @@
                 <p class="text-sm text-gray-600 mb-6 leading-relaxed">For the oil and gas industry, we create custom asset management systems, drilling optimization tools, remote monitoring platforms...</p>
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
             </div>
-            
+
             <div class="card text-center group">
                 <h3 class="font-bold text-gray-900 mb-4 text-lg">Energy and Utilities</h3>
                 <p class="text-sm text-gray-600 mb-6 leading-relaxed">We build smart grid management systems, renewable energy analytics platforms, and energy efficiency optimization tools...</p>
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
             </div>
-            
+
             <div class="card text-center group">
                 <h3 class="font-bold text-gray-900 mb-4 text-lg">Logistics</h3>
                 <p class="text-sm text-gray-600 mb-6 leading-relaxed">From route optimization algorithms and fleet management systems to supply chain tracking platforms...</p>
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
             </div>
-            
+
             <div class="card text-center group">
                 <h3 class="font-bold text-gray-900 mb-4 text-lg">eCommerce</h3>
                 <p class="text-sm text-gray-600 mb-6 leading-relaxed">Get tailored commerce-tuned software solutions, including online storefronts, inventory management systems...</p>
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
             </div>
-            
+
             <div class="card text-center group">
                 <h3 class="font-bold text-gray-900 mb-4 text-lg">Healthcare</h3>
                 <p class="text-sm text-gray-600 mb-6 leading-relaxed">Power healthcare service provision with advanced software solutions, like electronic health record (EHR) systems...</p>
@@ -594,7 +600,7 @@
                 We'll turn your custom tech solutions into powerful brands by crafting unique customer experiences at every digital touchpoint with:
             </p>
         </div>
-        
+
         <!-- Process Steps -->
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div class="text-center group">
@@ -637,7 +643,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="grid lg:grid-cols-3 gap-12">
             <!-- Testimonial 1 -->
             <div class="testimonial-card">
@@ -650,7 +656,7 @@
                 </div>
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Read more →</a>
             </div>
-            
+
             <!-- Testimonial 2 -->
             <div class="testimonial-card">
                 <div class="mb-8">
@@ -662,7 +668,7 @@
                 </div>
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Read more →</a>
             </div>
-            
+
             <!-- Testimonial 3 -->
             <div class="testimonial-card">
                 <div class="mb-8">
@@ -684,7 +690,7 @@
         <div class="text-center mb-16">
             <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">We've Been Awarded Plenty for the Milestones We Have Achieved</h2>
         </div>
-        
+
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center">
             <div class="text-center">
                 <div class="text-gray-700 font-semibold text-sm">Top 100 EdTech Software Developers 2025</div>
@@ -715,7 +721,7 @@
             <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-10">Technology stack</h2>
             <a href="#" class="btn-primary">Discover More</a>
         </div>
-        
+
         <div class="grid lg:grid-cols-2 gap-16">
             <!-- Front-End Technologies -->
             <div class="card">
@@ -753,7 +759,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Back-End Technologies -->
             <div class="card">
                 <div class="flex items-center justify-between mb-8">
@@ -804,7 +810,7 @@
                 <a href="#" class="btn-primary inline-block">About us</a>
             </div>
 
-            
+
 
             <!-- Right Stats -->
 
@@ -841,7 +847,7 @@
 
         </div>
 
-        
+
 
         <!-- Certifications -->
 
@@ -878,7 +884,7 @@
             <a href="#" class="btn-primary">Discover More</a>
         </div>
 
-        
+
 
         <!-- Industries Grid -->
 
@@ -891,7 +897,7 @@
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
             </div>
 
-            
+
 
             <div class="card text-center group">
                 <h3 class="font-bold text-gray-900 mb-4 text-lg">Energy and Utilities</h3>
@@ -899,7 +905,7 @@
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
             </div>
 
-            
+
 
             <div class="card text-center group">
                 <h3 class="font-bold text-gray-900 mb-4 text-lg">Logistics</h3>
@@ -907,7 +913,7 @@
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
             </div>
 
-            
+
 
             <div class="card text-center group">
                 <h3 class="font-bold text-gray-900 mb-4 text-lg">eCommerce</h3>
@@ -915,7 +921,7 @@
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Learn more →</a>
             </div>
 
-            
+
 
             <div class="card text-center group">
                 <h3 class="font-bold text-gray-900 mb-4 text-lg">Healthcare</h3>
@@ -948,7 +954,7 @@
 
         </div>
 
-        
+
 
         <!-- Process Steps -->
 
@@ -1012,7 +1018,7 @@
 
         </div>
 
-        
+
 
         <div class="grid lg:grid-cols-3 gap-12">
             <!-- Testimonial 1 -->
@@ -1031,7 +1037,7 @@
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Read more →</a>
             </div>
 
-            
+
 
             <!-- Testimonial 2 -->
 
@@ -1049,7 +1055,7 @@
                 <a href="#" class="text-orange-500 text-sm font-semibold hover:text-orange-600 transition-colors">Read more →</a>
             </div>
 
-            
+
 
             <!-- Testimonial 3 -->
 
@@ -1083,7 +1089,7 @@
             <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">We've Been Awarded Plenty for the Milestones We Have Achieved</h2>
         </div>
 
-        
+
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center">
             <div class="text-center">
@@ -1133,7 +1139,7 @@
             <a href="#" class="btn-primary">Discover More</a>
         </div>
 
-        
+
 
         <div class="grid lg:grid-cols-2 gap-16">
             <!-- Front-End Technologies -->
@@ -1186,7 +1192,7 @@
 
             </div>
 
-            
+
 
             <!-- Back-End Technologies -->
 
