@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Settings - WEZOM Admin')
+@section('title', 'Settings - VanTroZ Admin')
 @section('page-title', 'Settings')
 
 @section('content')
@@ -42,7 +42,7 @@
             <div class="space-y-4">
                     <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Site Name</label>
-                    <input type="text" value="WEZOM" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <input type="text" value="VanTroZ" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
                     <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Site Description</label>

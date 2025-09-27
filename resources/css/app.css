@@ -1,4 +1,4 @@
-/* WEZOM UI System - Complete CSS Architecture */
+/* VanTroZ UI System - Complete CSS Architecture */
 
 /* ===========================================
    Tailwind CSS Base Framework
@@ -8,105 +8,138 @@
 @tailwind utilities;
 
 /* ===========================================
-   WEZOM Theme System
+   Enhanced UI System
+   =========================================== */
+@import './enhanced-ui.css';
+
+/* ===========================================
+   VanTroZ Theme System
    =========================================== */
 
-/* Black Theme Color Scheme */
+/* Modern Body Styling */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: #000000;
-    background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #000000 75%, #000000 100%);
-    color: #ffffff;
-    overflow-x: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+    color: #1f2937;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -0.02em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Black Theme Color Palette */
+/* Modern Color Palette */
 :root {
-    --wezom-primary: #ff6b35;
-    --wezom-primary-hover: #e55a2b;
-    --wezom-dark: #000000;
-    --wezom-dark-secondary: #0a0a0a;
-    --wezom-dark-tertiary: #1a1a1a;
-    --wezom-gray-light: #cccccc;
-    --wezom-gray-medium: #888888;
-    --wezom-white: #ffffff;
-    --wezom-text-primary: #ffffff;
-    --wezom-text-secondary: #cccccc;
+    --vantroz-primary: #6366f1;
+    --vantroz-primary-hover: #4f46e5;
+    --vantroz-primary-light: #818cf8;
+    --vantroz-secondary: #06b6d4;
+    --vantroz-accent: #f59e0b;
+    --vantroz-dark: #ffffff;
+    --vantroz-dark-secondary: #f8fafc;
+    --vantroz-dark-tertiary: #f1f5f9;
+    --vantroz-gray-light: #64748b;
+    --vantroz-gray-medium: #94a3b8;
+    --vantroz-white: #ffffff;
+    --vantroz-text-primary: #0f172a;
+    --vantroz-text-secondary: #475569;
+    --vantroz-text-muted: #94a3b8;
+    
+    /* Enhanced spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Modern shadows */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    
+    /* Enhanced transitions */
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 300ms ease-in-out;
+    --transition-slow: 500ms ease-in-out;
 }
 
-.wezom-gradient {
-    background: linear-gradient(135deg, var(--wezom-primary) 0%, #f7931e 100%);
+.vantroz-gradient {
+    background: linear-gradient(135deg, var(--vantroz-primary) 0%, #f7931e 100%);
 }
 
-.wezom-orange {
-    background-color: var(--wezom-primary);
+.vantroz-orange {
+    background-color: var(--vantroz-primary);
 }
 
-.wezom-orange-text {
-    color: var(--wezom-primary);
+.vantroz-orange-text {
+    color: var(--vantroz-primary);
 }
 
-.wezom-dark-bg {
-    background: var(--wezom-dark);
-    background: linear-gradient(135deg, var(--wezom-dark) 0%, var(--wezom-dark-secondary) 25%, #0f1419 75%, var(--wezom-dark) 100%);
+.vantroz-dark-bg {
+    background: var(--vantroz-dark);
+    background: linear-gradient(135deg, var(--vantroz-dark) 0%, var(--vantroz-dark-secondary) 25%, #f1f3f4 75%, var(--vantroz-dark) 100%);
 }
 
-.wezom-section-bg {
-    background: rgba(10, 10, 10, 0.9);
+.vantroz-section-bg {
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.wezom-card-bg {
-    background: rgba(26, 26, 26, 0.8);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-}
-
-.wezom-text-primary {
-    color: var(--wezom-text-primary);
-}
-
-.wezom-text-secondary {
-    color: var(--wezom-text-secondary);
-}
-
-/* Black Theme Navbar Styling */
-#navbar {
-    background: rgba(0, 0, 0, 0.95);
+.vantroz-card-bg {
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-sm);
+    border-radius: 1rem;
+    transition: all var(--transition-normal);
+}
+
+.vantroz-text-primary {
+    color: var(--vantroz-text-primary);
+}
+
+.vantroz-text-secondary {
+    color: var(--vantroz-text-secondary);
+}
+
+/* Modern Navbar Styling */
+#navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 #navbar.navbar-scrolled {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 1);
     backdrop-filter: blur(24px);
-    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 #navbar-logo {
-    color: var(--wezom-white);
+    color: var(--vantroz-text-primary);
     font-weight: 700;
     letter-spacing: 0.1em;
     font-size: 1.75rem;
     transition: all 0.3s ease;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 #navbar.navbar-scrolled #navbar-logo {
-    color: var(--wezom-dark);
+    color: var(--vantroz-text-primary);
     text-shadow: none;
 }
 
 .navbar-link {
-    color: var(--wezom-text-primary);
+    color: var(--vantroz-text-primary);
     transition: all 0.3s ease;
     position: relative;
     font-weight: 500;
@@ -121,7 +154,7 @@ body {
     height: 2px;
     bottom: -6px;
     left: 50%;
-    background: var(--wezom-primary);
+    background: var(--vantroz-primary);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-50%);
     border-radius: 1px;
@@ -132,20 +165,20 @@ body {
 }
 
 .navbar-link:hover {
-    color: var(--wezom-primary);
+    color: var(--vantroz-primary);
     transform: translateY(-1px);
 }
 
 #navbar.navbar-scrolled .navbar-link {
-    color: var(--wezom-gray-medium);
+    color: var(--vantroz-gray-medium);
 }
 
 #navbar.navbar-scrolled .navbar-link:hover {
-    color: var(--wezom-primary);
+    color: var(--vantroz-primary);
 }
 
 #navbar-phone {
-    color: var(--wezom-text-primary);
+    color: var(--vantroz-text-primary);
     transition: all 0.3s ease;
     font-weight: 500;
     font-size: 0.9rem;
@@ -153,12 +186,12 @@ body {
 }
 
 #navbar.navbar-scrolled #navbar-phone {
-    color: var(--wezom-gray-medium);
+    color: var(--vantroz-gray-medium);
 }
 
 .navbar-contact-btn {
-    border: 2px solid var(--wezom-primary);
-    color: var(--wezom-primary);
+    border: 2px solid var(--vantroz-primary);
+    color: var(--vantroz-primary);
     background: transparent;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -186,37 +219,37 @@ body {
 }
 
 .navbar-contact-btn:hover {
-    background: var(--wezom-primary);
-    color: var(--wezom-white);
+    background: var(--vantroz-primary);
+    color: #ffffff;
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
-    border-color: var(--wezom-primary);
+    border-color: var(--vantroz-primary);
 }
 
 #navbar.navbar-scrolled .navbar-contact-btn {
-    border: 2px solid var(--wezom-primary);
-    color: var(--wezom-primary);
+    border: 2px solid var(--vantroz-primary);
+    color: var(--vantroz-primary);
     background: transparent;
     box-shadow: 0 4px 16px rgba(255, 107, 53, 0.15);
 }
 
 #navbar.navbar-scrolled .navbar-contact-btn:hover {
-    background: var(--wezom-primary);
-    color: var(--wezom-white);
+    background: var(--vantroz-primary);
+    color: #ffffff;
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
-    border-color: var(--wezom-primary);
+    border-color: var(--vantroz-primary);
 }
 
-/* Wezom Official Component Styles */
+/* VanTroZ Official Component Styles */
 .service-card {
-    background: var(--wezom-card-bg);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: var(--vantroz-card-bg);
+    border-radius: 1rem;
+    padding: var(--space-xl);
+    transition: all var(--transition-normal);
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .service-card::before {
@@ -224,32 +257,32 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--wezom-primary), #f7931e);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--vantroz-primary), var(--vantroz-secondary));
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
 }
 
 .service-card:hover::before {
-    opacity: 1;
+    transform: scaleX(1);
 }
 
 .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-xl);
     border-color: rgba(255, 107, 53, 0.2);
 }
 
 .interactive-card {
-    background: var(--wezom-card-bg);
+    background: var(--vantroz-card-bg);
     border-radius: 12px;
     padding: 1.5rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .interactive-card::before {
@@ -269,57 +302,56 @@ body {
 
 .interactive-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
     border-color: rgba(255, 107, 53, 0.3);
 }
 
-/* Wezom Stats/Numbers Styling */
-.wezom-stat-number {
+/* VanTroZ Stats/Numbers Styling */
+.vantroz-stat-number {
     font-size: 3rem;
     font-weight: 700;
-    color: var(--wezom-primary);
+    color: var(--vantroz-primary);
     line-height: 1;
-    background: linear-gradient(135deg, var(--wezom-primary), #f7931e);
+    background: linear-gradient(135deg, var(--vantroz-primary), #f7931e);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.wezom-stat-label {
-    color: var(--wezom-text-secondary);
+.vantroz-stat-label {
+    color: var(--vantroz-text-secondary);
     font-size: 0.9rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
-/* Wezom Buttons */
-.wezom-btn-primary {
-    background: linear-gradient(135deg, var(--wezom-primary), #f7931e);
-    color: var(--wezom-white);
-    padding: 1rem 2rem;
-    border-radius: 50px;
+/* VanTroZ Buttons */
+.vantroz-btn-primary {
+    background: linear-gradient(135deg, var(--vantroz-primary), var(--vantroz-primary-light));
+    color: #ffffff;
+    padding: 0.875rem 2rem;
+    border-radius: 12px;
     font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.875rem;
+    letter-spacing: 0.025em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.3);
 }
 
-.wezom-btn-primary:hover {
+.vantroz-btn-primary:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 12px 32px rgba(255, 107, 53, 0.5);
 }
 
-.wezom-btn-secondary {
+.vantroz-btn-secondary {
     background: transparent;
-    color: var(--wezom-text-primary);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--vantroz-text-primary);
+    border: 2px solid rgba(0, 0, 0, 0.2);
     padding: 0.875rem 1.75rem;
     border-radius: 50px;
     font-weight: 500;
@@ -328,9 +360,9 @@ body {
     transition: all 0.3s ease;
 }
 
-.wezom-btn-secondary:hover {
-    border-color: var(--wezom-primary);
-    color: var(--wezom-primary);
+.vantroz-btn-secondary:hover {
+    border-color: var(--vantroz-primary);
+    color: var(--vantroz-primary);
     transform: translateY(-1px);
 }
 
@@ -504,7 +536,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    background: #f8f9fa;
 }
 
 ::-webkit-scrollbar-thumb {

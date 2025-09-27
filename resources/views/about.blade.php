@@ -1,14 +1,14 @@
 @extends('layouts.website')
 
-@section('title', 'About Us - WEZOM')
-@section('description', 'Learn about WEZOM - Your trusted IT partner with 24+ years of experience in software development.')
+@section('title', 'About Us - VanTroZ')
+@section('description', 'Learn about VanTroZ - Your trusted IT partner with 24+ years of experience in software development.')
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero-gradient text-white py-20">
+<section class="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">About WEZOM</h1>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">About VanTroZ</h1>
             <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
                 Your trusted IT partner for over 24 years
             </p>
@@ -21,7 +21,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="text-3xl font-bold text-gray-900 mb-6">Software Company WEZOM</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Software Company VanTroZ</h2>
                 <p class="text-lg text-gray-600 mb-6">
                     Our objective is to develop a profitable and effective solution that helps clients to expand their businesses and overcome financial constraints. We are committed to exceptional service and utilizing all resources to bring the finest products & services.
                 </p>
@@ -140,7 +140,7 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 hero-gradient text-white">
+<section class="py-20 bg-gradient-to-r from-orange-500 to-orange-600 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Work With Us?</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">

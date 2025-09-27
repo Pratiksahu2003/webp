@@ -1,6 +1,6 @@
 /**
  * ========================================
- * WEZOM - User Interactions Controller
+ * VanTroZ - User Interactions Controller
  * ========================================
  */
 

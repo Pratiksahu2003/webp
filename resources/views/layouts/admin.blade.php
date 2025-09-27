@@ -264,7 +264,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-gray-800 font-bold text-xl">WEZOM</h1>
+                        <h1 class="text-gray-800 font-bold text-xl">VanTroZ</h1>
                         <p class="text-gray-500 text-xs font-medium">Admin Panel</p>
                     </div>
                 </div>
@@ -443,7 +443,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h1 class="text-gray-800 font-bold text-xl">WEZOM</h1>
+                                <h1 class="text-gray-800 font-bold text-xl">VanTroZ</h1>
                                 <p class="text-gray-500 text-xs font-medium">Admin Panel</p>
                             </div>
                         </div>

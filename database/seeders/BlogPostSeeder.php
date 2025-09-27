@@ -22,7 +22,7 @@ class BlogPostSeeder extends Seeder
                 'category' => 'Technology',
                 'published_at' => now(),
                 'is_featured' => true,
-                'meta_title' => 'Welcome to Our Blog - WEZOM',
+                'meta_title' => 'Welcome to Our Blog - VanTroZ',
                 'meta_description' => 'Welcome to our blog! We are excited to share our thoughts and insights with you.',
                 'tags' => ['welcome', 'blog', 'technology'],
                 'focus_keywords' => ['blog', 'welcome', 'technology']
@@ -36,7 +36,7 @@ class BlogPostSeeder extends Seeder
                 'category' => 'Development',
                 'published_at' => now()->subDays(1),
                 'is_featured' => false,
-                'meta_title' => 'The Future of Web Development - WEZOM',
+                'meta_title' => 'The Future of Web Development - VanTroZ',
                 'meta_description' => 'Explore the latest trends in web development and what they mean for developers.',
                 'tags' => ['web development', 'technology', 'trends'],
                 'focus_keywords' => ['web development', 'trends', 'future']
@@ -50,7 +50,7 @@ class BlogPostSeeder extends Seeder
                 'category' => 'Mobile',
                 'published_at' => now()->subDays(2),
                 'is_featured' => true,
-                'meta_title' => 'Mobile App Development Best Practices - WEZOM',
+                'meta_title' => 'Mobile App Development Best Practices - VanTroZ',
                 'meta_description' => 'Learn the best practices for mobile app development and create apps that users love.',
                 'tags' => ['mobile development', 'best practices', 'apps'],
                 'focus_keywords' => ['mobile development', 'best practices', 'apps']
@@ -64,7 +64,7 @@ class BlogPostSeeder extends Seeder
                 'category' => 'AI & IoT',
                 'published_at' => now()->subDays(3),
                 'is_featured' => false,
-                'meta_title' => 'Understanding AI and Machine Learning - WEZOM',
+                'meta_title' => 'Understanding AI and Machine Learning - VanTroZ',
                 'meta_description' => 'Discover how AI and Machine Learning are transforming industries and creating new opportunities.',
                 'tags' => ['AI', 'machine learning', 'technology'],
                 'focus_keywords' => ['AI', 'machine learning', 'technology']
@@ -78,7 +78,7 @@ class BlogPostSeeder extends Seeder
                 'category' => 'E-commerce',
                 'published_at' => now()->subDays(4),
                 'is_featured' => false,
-                'meta_title' => 'E-commerce Trends for 2024 - WEZOM',
+                'meta_title' => 'E-commerce Trends for 2024 - VanTroZ',
                 'meta_description' => 'Stay ahead of the competition with the latest e-commerce trends and technologies for 2024.',
                 'tags' => ['e-commerce', 'trends', '2024'],
                 'focus_keywords' => ['e-commerce', 'trends', '2024']

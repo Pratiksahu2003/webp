@@ -1,11 +1,11 @@
 @extends('layouts.website')
 
-@section('title', 'Technologies - WEZOM')
+@section('title', 'Technologies - VanTroZ')
 @section('description', 'Explore our technology stack and the cutting-edge tools we use to build robust solutions.')
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero-gradient text-white py-20">
+<section class="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">Technology Stack</h1>
@@ -155,7 +155,7 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 hero-gradient text-white">
+<section class="py-20 bg-gradient-to-r from-orange-500 to-orange-600 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Build With Modern Technology?</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">

@@ -1,11 +1,11 @@
 @extends('layouts.website')
 
-@section('title', 'Services - WEZOM')
+@section('title', 'Services - VanTroZ')
 @section('description', 'Comprehensive IT services including software development, web development, mobile app development, and more.')
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero-gradient text-white py-20">
+<section class="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">Our Services</h1>
@@ -104,25 +104,25 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="text-center">
-                <div class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                <div class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
                 <h3 class="text-lg font-semibold mb-3">Discovery</h3>
                 <p class="text-gray-600">Understanding your requirements and creating a detailed project plan</p>
             </div>
             
             <div class="text-center">
-                <div class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                <div class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
                 <h3 class="text-lg font-semibold mb-3">Design</h3>
                 <p class="text-gray-600">Creating intuitive user interfaces and user experiences</p>
             </div>
             
             <div class="text-center">
-                <div class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                <div class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
                 <h3 class="text-lg font-semibold mb-3">Development</h3>
                 <p class="text-gray-600">Building robust solutions using modern technologies</p>
             </div>
             
             <div class="text-center">
-                <div class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                <div class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
                 <h3 class="text-lg font-semibold mb-3">Testing</h3>
                 <p class="text-gray-600">Comprehensive testing to ensure quality and performance</p>
             </div>
@@ -131,7 +131,7 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 hero-gradient text-white">
+<section class="py-20 bg-gradient-to-r from-orange-500 to-orange-600 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">
@@ -141,7 +141,7 @@
             <a href="{{ route('contact') }}" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
                 Get Started
             </a>
-            <a href="{{ route('case-studies') }}" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+            <a href="{{ route('case-studies') }}" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors">
                 View Our Work
             </a>
         </div>

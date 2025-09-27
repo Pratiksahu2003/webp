@@ -1,11 +1,11 @@
 @extends('layouts.website')
 
-@section('title', 'Blog - WEZOM')
+@section('title', 'Blog - VanTroZ')
 @section('description', 'Stay updated with the latest insights, trends, and news in software development and technology.')
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero-gradient text-white py-20">
+<section class="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">INSIGHTS</h1>

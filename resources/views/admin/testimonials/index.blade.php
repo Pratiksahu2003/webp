@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Testimonials Management - WEZOM Admin')
+@section('title', 'Testimonials Management - VanTroZ Admin')
 @section('page-title', 'Testimonials Management')
 
 @section('content')
@@ -37,15 +37,15 @@
             <!-- Testimonial Content -->
             <blockquote class="text-gray-700 mb-4 line-clamp-4">
                 "{{ [
-                    'WEZOM delivered an exceptional website that exceeded our expectations. Their attention to detail and professional approach made the entire process seamless.',
-                    'The team at WEZOM transformed our digital presence completely. Their expertise in modern web development is truly impressive and highly recommended.',
-                    'Working with WEZOM was a fantastic experience. They understood our vision and brought it to life with stunning design and flawless functionality.',
-                    'Professional, reliable, and creative - WEZOM delivered exactly what we needed. The project was completed on time and within budget.',
-                    'Outstanding service and exceptional results. WEZOM helped us create a website that truly represents our brand and engages our customers.',
-                    'The quality of work from WEZOM is unmatched. Their technical skills and creative vision resulted in a website we are proud to showcase.',
-                    'WEZOM provided excellent communication throughout the project. The final result was a beautiful, functional website that drives conversions.',
-                    'Highly professional team with great expertise. WEZOM delivered a solution that improved our online presence significantly.',
-                    'Exceptional attention to detail and customer service. WEZOM created a website that perfectly captures our company culture and values.'
+                    'VanTroZ delivered an exceptional website that exceeded our expectations. Their attention to detail and professional approach made the entire process seamless.',
+                    'The team at VanTroZ transformed our digital presence completely. Their expertise in modern web development is truly impressive and highly recommended.',
+                    'Working with VanTroZ was a fantastic experience. They understood our vision and brought it to life with stunning design and flawless functionality.',
+                    'Professional, reliable, and creative - VanTroZ delivered exactly what we needed. The project was completed on time and within budget.',
+                    'Outstanding service and exceptional results. VanTroZ helped us create a website that truly represents our brand and engages our customers.',
+                    'The quality of work from VanTroZ is unmatched. Their technical skills and creative vision resulted in a website we are proud to showcase.',
+                    'VanTroZ provided excellent communication throughout the project. The final result was a beautiful, functional website that drives conversions.',
+                    'Highly professional team with great expertise. VanTroZ delivered a solution that improved our online presence significantly.',
+                    'Exceptional attention to detail and customer service. VanTroZ created a website that perfectly captures our company culture and values.'
                 ][($i-1) % 9] }}"
             </blockquote>
 

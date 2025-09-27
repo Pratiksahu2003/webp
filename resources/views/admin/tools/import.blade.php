@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Import - WEZOM Admin')
+@section('title', 'Data Import - VanTroZ Admin')
 @section('page-title', 'Import Tools')
 
 @section('content')

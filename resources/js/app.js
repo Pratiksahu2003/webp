@@ -11,7 +11,7 @@ Alpine.start();
 
 // Initialize custom components when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎨 WEZOM UI System Initialized');
+    console.log('🎨 VanTroZ UI System Initialized');
     
     // Add smooth page transitions
     const addPageTransitions = () => {

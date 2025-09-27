@@ -1,6 +1,6 @@
 /**
  * ========================================
- * WEZOM - Animation Controller
+ * VanTroZ - Animation Controller
  * ========================================
  */
 

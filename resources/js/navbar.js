@@ -1,5 +1,5 @@
 /* ========================================
-   WEZOM - Sticky Navbar JavaScript
+   VanTroZ - Sticky Navbar JavaScript
    ======================================== */
 
 /**

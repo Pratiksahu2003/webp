@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Create New Service - WEZOM Admin')
+@section('title', 'Create New Service - VanTroZ Admin')
 @section('page-title', 'Create New Service')
 
 @section('content')

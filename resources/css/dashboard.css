@@ -38,7 +38,7 @@
 
 /* Dashboard Layout Enhancements */
 .dashboard-container {
-    background: linear-gradient(135deg, #f8f9fb 0%, #ffffff 100%);
+    background: #ffffff;
     min-height: 100vh;
 }
 
@@ -439,19 +439,4 @@
     }
 }
 
-/* Dark Mode Support (Future Enhancement) */
-@media (prefers-color-scheme: dark) {
-    .dashboard-container {
-        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-    }
-    
-    .zoho-card-enhanced {
-        background: #374151;
-        border-color: #4b5563;
-        color: #f9fafb;
-    }
-    
-    .metric-card {
-        background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
-    }
-}
+/* Light Theme Only - Dark Mode Disabled */
