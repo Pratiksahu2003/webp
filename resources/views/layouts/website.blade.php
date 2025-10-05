@@ -114,7 +114,7 @@
 
                 <!-- Mobile menu button -->
                 <div class="lg:hidden flex items-center">
-                    <button type="button" class="mobile-menu-button navbar-link focus:outline-none transition-colors duration-300 p-2 rounded-lg hover:bg-gray-100">
+                    <button type="button" class="mobile-menu-button text-gray-700 hover:text-orange-600 focus:outline-none transition-colors duration-200 p-2">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -125,15 +125,29 @@
 
         <!-- Mobile menu -->
         <div class="mobile-menu hidden lg:hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50 border-t border-gray-200">
-                <a href="{{ route('services') }}" class="text-gray-900 hover:text-orange-400 block px-3 py-2 text-base font-medium">Services</a>
-                <a href="#" class="text-gray-900 hover:text-orange-400 block px-3 py-2 text-base font-medium">Industries & Solutions</a>
-                <a href="{{ route('case-studies') }}" class="text-gray-900 hover:text-orange-400 block px-3 py-2 text-base font-medium">Case Studies</a>
-                <a href="{{ route('about') }}" class="text-gray-900 hover:text-orange-400 block px-3 py-2 text-base font-medium">About Us</a>
-                <a href="{{ route('blog.index') }}" class="text-gray-900 hover:text-orange-400 block px-3 py-2 text-base font-medium">Blog</a>
-                <a href="{{ route('contact') }}" class="text-gray-900 hover:text-orange-400 block px-3 py-2 text-base font-medium">Contacts</a>
+            <div class="px-4 pt-4 pb-6 space-y-2 bg-white border-t border-gray-200">
+                <a href="{{ route('services') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Services</a>
+                <a href="#" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Industries & Solutions</a>
+                <a href="{{ route('case-studies') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Case Studies</a>
+                <a href="{{ route('about') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">About Us</a>
+                <a href="{{ route('blog.index') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Blog</a>
+                <a href="{{ route('contact') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Contacts</a>
+                
+                <!-- Mobile Contact Info -->
+                <div class="pt-4 border-t border-gray-200">
+                    <div class="flex items-center px-3 py-2 text-sm font-medium text-gray-700">
+                        <span class="mr-2 text-lg">{{ config('company.contact.country_flag') }}</span>
+                        <span>{{ config('company.contact.phone') }}</span>
+                    </div>
+                    <a href="{{ route('contact') }}" class="block w-full text-center px-4 py-2 border-2 border-orange-600 text-black font-bold rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200 text-sm uppercase tracking-wide mt-2">
+                        Contact Us
+                    </a>
+                </div>
+                
                 @auth
-                <a href="{{ route('admin.dashboard') }}" class="bg-orange-400 text-black block px-3 py-2 text-base font-medium rounded-md">Admin</a>
+                <div class="pt-2">
+                    <a href="{{ route('admin.dashboard') }}" class="bg-orange-500 text-white block px-3 py-2 text-base font-medium rounded-md">Admin</a>
+                </div>
                 @endauth
             </div>
         </div>
@@ -148,6 +162,133 @@
     <x-footer />
 
     <!-- VanTroZ UI System - JavaScript modules loaded via Vite -->
+    
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing mobile menu...');
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            console.log('Mobile menu button:', mobileMenuButton);
+            console.log('Mobile menu:', mobileMenu);
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    console.log('Mobile menu button clicked');
+                    
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    console.log('Menu is hidden:', isHidden);
+                    
+                    if (isHidden) {
+                        mobileMenu.classList.remove('hidden');
+                        console.log('Menu opened');
+                    } else {
+                        mobileMenu.classList.add('hidden');
+                        console.log('Menu closed');
+                    }
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            } else {
+                console.error('Mobile menu elements not found!');
+            }
+
+            // Dropdown menu functionality
+            const dropdownGroups = document.querySelectorAll('.group');
+            console.log('Found dropdown groups:', dropdownGroups.length);
+
+            dropdownGroups.forEach(function(group) {
+                const button = group.querySelector('button');
+                const menu = group.querySelector('.absolute');
+
+                if (button && menu) {
+                    // Mouse events for desktop
+                    group.addEventListener('mouseenter', function() {
+                        console.log('Mouse entered dropdown group');
+                        menu.style.opacity = '1';
+                        menu.style.visibility = 'visible';
+                        menu.style.transform = 'translateY(0)';
+                    });
+
+                    group.addEventListener('mouseleave', function() {
+                        console.log('Mouse left dropdown group');
+                        menu.style.opacity = '0';
+                        menu.style.visibility = 'hidden';
+                        menu.style.transform = 'translateY(8px)';
+                    });
+
+                    // Click events for mobile/touch
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        console.log('Dropdown button clicked');
+                        
+                        const isVisible = menu.style.opacity === '1';
+                        
+                        if (isVisible) {
+                            menu.style.opacity = '0';
+                            menu.style.visibility = 'hidden';
+                            menu.style.transform = 'translateY(8px)';
+                        } else {
+                            // Close other dropdowns first
+                            dropdownGroups.forEach(function(otherGroup) {
+                                if (otherGroup !== group) {
+                                    const otherMenu = otherGroup.querySelector('.absolute');
+                                    if (otherMenu) {
+                                        otherMenu.style.opacity = '0';
+                                        otherMenu.style.visibility = 'hidden';
+                                        otherMenu.style.transform = 'translateY(8px)';
+                                    }
+                                }
+                            });
+                            
+                            menu.style.opacity = '1';
+                            menu.style.visibility = 'visible';
+                            menu.style.transform = 'translateY(0)';
+                        }
+                    });
+                }
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.group')) {
+                    dropdownGroups.forEach(function(group) {
+                        const menu = group.querySelector('.absolute');
+                        if (menu) {
+                            menu.style.opacity = '0';
+                            menu.style.visibility = 'hidden';
+                            menu.style.transform = 'translateY(8px)';
+                        }
+                    });
+                }
+            });
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('navbar-scrolled');
+                    } else {
+                        navbar.classList.remove('navbar-scrolled');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

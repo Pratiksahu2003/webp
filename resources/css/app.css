@@ -305,8 +305,68 @@ body {
     color: #000000;
 }
 
-#navbar.navbar-scrolled .navbar-link:hover {
-    color: #ff6b35;
+/* Mobile Menu Styling */
+.mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.hidden {
+    display: none !important;
+}
+
+.mobile-menu-button {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Dropdown Menu Styling */
+.group:hover .group-hover\:opacity-100 {
+    opacity: 1 !important;
+}
+
+.group:hover .group-hover\:visible {
+    visibility: visible !important;
+}
+
+.group:hover .group-hover\:translate-y-0 {
+    transform: translateY(0) !important;
+}
+
+.group:hover .group-hover\:rotate-180 {
+    transform: rotate(180deg) !important;
+}
+
+/* Ensure dropdown menus are properly positioned */
+.group .absolute {
+    position: absolute !important;
+}
+
+.group .z-50 {
+    z-index: 50 !important;
+}
+
+/* Dropdown menu visibility */
+.group .opacity-0 {
+    opacity: 0;
+}
+
+.group .invisible {
+    visibility: hidden;
+}
+
+.group:hover .opacity-0 {
+    opacity: 1;
+}
+
+.group:hover .invisible {
+    visibility: visible;
 }
 
 #navbar-phone {

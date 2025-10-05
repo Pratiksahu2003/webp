@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Advanced Hero Section with Video Background -->
-<section class="relative min-h-screen flex items-center overflow-hidden">
+<section class="relative h-[80vh] flex items-center overflow-hidden">
 
     <!-- Video Background -->
     <div class="absolute inset-0 w-full h-full">
@@ -16,14 +16,10 @@
             playsinline
             class="absolute inset-0 w-full h-full object-cover"
             poster="{{ asset('banner/home-poster.jpg') }}">
-            <source src="{{ asset('banner/home.mp4') }}" type="video/mp4">
+            <source src="{{ asset('banner/home.webm') }}" type="video/mp4">
             <!-- Fallback for browsers that don't support video -->
             <div class="absolute inset-0 bg-gradient-to-br from-orange-600 via-orange-700 to-orange-800"></div>
         </video>
-
-        <!-- Advanced Video Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-orange-900/70"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-slate-900/40"></div>
     </div>
 
     <!-- Animated Background Elements -->
@@ -41,7 +37,7 @@
 
     <!-- Advanced Content Container -->
     <div class="container mx-auto px-4 lg:px-6 relative z-20">
-        <div class="grid lg:grid-cols-12 gap-12 items-center min-h-screen py-20">
+        <div class="grid lg:grid-cols-12 gap-12 items-center py-16">
 
             <!-- Advanced Left Content -->
             <div class="lg:col-span-7 space-y-10 relative z-30">
@@ -49,9 +45,9 @@
                 <!-- Advanced Hero Badge -->
                 <div class="flex justify-start animate-fade-in-up">
                     <div class="group relative inline-flex items-center px-4 py-2 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-cyan-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative flex items-center">
-                            <div class="w-2 h-2 bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-full mr-2 animate-pulse"></div>
+                            <div class="w-2 h-2 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full mr-2 animate-pulse"></div>
                             <span class="bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent">Available for new projects</span>
                         </div>
                     </div>
@@ -59,9 +55,9 @@
 
                 <!-- Advanced Hero Headlines -->
                 <div class="space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
-                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-none tracking-tight">
+                    <h1 class="text-3xl md:text-2xl lg:text-3xl font-black text-white leading-none tracking-tight">
                         <span class="block">Build the</span>
-                        <span class="block bg-gradient-to-r from-indigo-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent animate-gradient-x">Future</span>
+                        <span class="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent animate-gradient-x">Future</span>
                         <span class="block">of Business</span>
                     </h1>
 
@@ -87,15 +83,15 @@
 
                     <!-- Advanced CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style="animation-delay: 0.8s;">
-                        <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-white to-slate-100 text-slate-900 font-bold rounded-xl overflow-hidden shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                        <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-white to-slate-100 text-slate-900 font-bold rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                             <span class="relative">Start Your Project</span>
                             <svg class="relative w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                         </button>
                         <button class="group relative inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/50 hover:bg-white/10 transform hover:-translate-y-1">
-                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <span class="relative">View Our Work</span>
                             <svg class="relative w-5 h-5 ml-2 group-hover:rotate-45 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
@@ -109,31 +105,31 @@
             <div class="lg:col-span-5 relative h-full flex flex-col justify-center space-y-8">
 
                 <!-- Main Achievement Card -->
-                <div class="group relative bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl hover:shadow-white/10 transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 1s;">
-                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-cyan-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="group relative bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 1s;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="relative text-center">
-                        <div class="text-6xl font-black bg-gradient-to-r from-white via-indigo-200 to-cyan-200 bg-clip-text text-transparent mb-3 animate-pulse">
+                        <div class="text-6xl font-black bg-gradient-to-r from-white via-orange-200 to-orange-300 bg-clip-text text-transparent mb-3 animate-pulse">
                             24+
                         </div>
                         <div class="text-white text-xl font-bold mb-2">Years of Excellence</div>
                         <div class="text-slate-300 text-sm">Trusted by Fortune 500 companies worldwide</div>
-                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-full animate-ping"></div>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full animate-ping"></div>
                     </div>
                 </div>
 
                 <!-- Stats Grid -->
                 <div class="grid grid-cols-2 gap-4">
                     <div class="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 animate-fade-in-up" style="animation-delay: 1.2s;">
-                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative">
-                            <div class="text-3xl font-bold bg-gradient-to-r from-indigo-300 to-indigo-400 bg-clip-text text-transparent mb-2">3500+</div>
+                            <div class="text-3xl font-bold bg-gradient-to-r from-orange-300 to-orange-400 bg-clip-text text-transparent mb-2">3500+</div>
                             <div class="text-slate-300 text-sm font-medium">Projects Delivered</div>
                         </div>
                     </div>
                     <div class="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 animate-fade-in-up" style="animation-delay: 1.4s;">
-                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative">
-                            <div class="text-3xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-400 bg-clip-text text-transparent mb-2">250+</div>
+                            <div class="text-3xl font-bold bg-gradient-to-r from-orange-300 to-orange-400 bg-clip-text text-transparent mb-2">250+</div>
                             <div class="text-slate-300 text-sm font-medium">Expert Developers</div>
                         </div>
                     </div>
@@ -145,16 +141,6 @@
                         <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                         <span class="text-slate-200 text-sm font-medium">99% Success Rate</span>
                     </div>
-                </div>
-
-                <!-- Floating Action Button -->
-                <div class="flex justify-center animate-fade-in-up" style="animation-delay: 1.8s;">
-                    <button class="group relative w-16 h-16 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-full shadow-2xl hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-110 hover:rotate-12">
-                        <div class="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <svg class="w-8 h-8 text-white mx-auto group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </button>
                 </div>
             </div>
         </div>
@@ -232,18 +218,18 @@
     <div class="absolute inset-0 opacity-5">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255, 107, 53, 0.3) 1px, transparent 0); background-size: 20px 20px;"></div>
     </div>
-    
+
     <!-- Floating Elements -->
     <div class="absolute top-20 left-10 w-20 h-20 bg-orange-200/20 rounded-full blur-xl animate-pulse"></div>
     <div class="absolute bottom-20 right-10 w-32 h-32 bg-orange-200/20 rounded-full blur-xl animate-pulse" style="animation-delay: 1s;"></div>
-    
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <!-- Section Header -->
         <div class="text-center mb-20">
             <div class="inline-flex items-center px-4 py-2 bg-orange-100 border border-orange-200 rounded-full text-sm font-medium mb-6 text-orange-700">
                 Our Expertise
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
                 What We <span class="text-orange-600">Create</span>
             </h2>
             <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
@@ -433,7 +419,7 @@
 <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-20">
-            <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-8">Case Studies</h2>
+            <h2 class="text-3xl lg:text-3xl font-bold text-gray-900 mb-8">Case Studies</h2>
 
             <!-- Filter Tags -->
             <div class="flex flex-wrap justify-center gap-4 mb-16">
@@ -638,7 +624,7 @@
         <div class="grid lg:grid-cols-2 gap-20 items-center">
             <!-- Left Content -->
             <div>
-                <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
+                <h2 class="text-3xl lg:text-3xl font-bold text-gray-900 mb-8">
                     Software Company VanTroZ
                 </h2>
                 <p class="text-xl text-gray-700 mb-10 leading-relaxed">
@@ -681,15 +667,15 @@
             <p class="text-gray-600 mt-6 text-lg">IT designs that protect data and enable secure internal management</p>
         </div>
     </div>
-</section> 
+</section>
 
- <!-- Enhanced Digital Transformation Section -->
- <section class="py-24 bg-gradient-to-br from-slate-50 via-white to-orange-50 relative overflow-hidden">
-     <!-- Background Elements -->
-     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-         <div class="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-orange-100/30 to-orange-100/30 rounded-full blur-3xl"></div>
-         <div class="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-orange-100/20 to-orange-100/20 rounded-full blur-3xl"></div>
-     </div>
+<!-- Enhanced Digital Transformation Section -->
+<section class="py-24 bg-gradient-to-br from-slate-50 via-white to-orange-50 relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-orange-100/30 to-orange-100/30 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-orange-100/20 to-orange-100/20 rounded-full blur-3xl"></div>
+    </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Enhanced Header -->
@@ -701,24 +687,24 @@
                 IT designs that protect data and enable secure internal management
             </div>
 
-             <h2 class="text-4xl md:text-4xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight">
-                 <span class="block">Digital transformation</span>
-                 <span class="block bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent">
-                     for industries
-                 </span>
-             </h2>
+            <h2 class="text-2xl md:text-2xl text-3xl font-black text-gray-900 mb-8 leading-tight">
+                <span class="block">Digital transformation</span>
+                <span class="block bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent">
+                    for industries
+                </span>
+            </h2>
 
             <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed font-light">
                 VanTroZ is your one-stop software development company, offering a full range of services for all industries. We drive your business progress with smart tech decisions tailored to a specific field.
             </p>
 
-             <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-bold rounded-2xl overflow-hidden shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
-                 <div class="absolute inset-0 bg-gradient-to-r from-orange-700 to-orange-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                 <span class="relative">Discover More</span>
-                 <svg class="relative w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                 </svg>
-             </button>
+            <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-bold rounded-2xl overflow-hidden shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-orange-700 to-orange-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span class="relative">Discover More</span>
+                <svg class="relative w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </button>
         </div>
 
         <!-- Enhanced Industries Grid -->
@@ -743,105 +729,105 @@
                 </div>
             </div>
 
-             <!-- Energy and Utilities -->
-             <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
-                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 <div class="relative">
-                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                         </svg>
-                     </div>
-                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Energy and Utilities</h3>
-                     <p class="text-gray-600 mb-6 leading-relaxed">We build smart grid management systems, renewable energy analytics platforms, and energy efficiency optimization tools...</p>
-                     <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
-                         Learn more
-                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                         </svg>
-                     </a>
-                 </div>
-             </div>
+            <!-- Energy and Utilities -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Energy and Utilities</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">We build smart grid management systems, renewable energy analytics platforms, and energy efficiency optimization tools...</p>
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
 
-             <!-- Logistics -->
-             <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
-                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 <div class="relative">
-                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                         </svg>
-                     </div>
-                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Logistics</h3>
-                     <p class="text-gray-600 mb-6 leading-relaxed">From route optimization algorithms and fleet management systems to supply chain tracking platforms...</p>
-                     <a href="{{ route('industries.logistics') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
-                         Learn more
-                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                         </svg>
-                     </a>
-                 </div>
-             </div>
+            <!-- Logistics -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Logistics</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">From route optimization algorithms and fleet management systems to supply chain tracking platforms...</p>
+                    <a href="{{ route('industries.logistics') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
 
-             <!-- eCommerce -->
-             <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
-                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 <div class="relative">
-                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                         </svg>
-                     </div>
-                     <h3 class="text-2xl font-bold text-gray-900 mb-4">eCommerce</h3>
-                     <p class="text-gray-600 mb-6 leading-relaxed">Get tailored commerce-tuned software solutions, including online storefronts, inventory management systems...</p>
-                     <a href="{{ route('industries.ecommerce') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
-                         Learn more
-                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                         </svg>
-                     </a>
-                 </div>
-             </div>
+            <!-- eCommerce -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">eCommerce</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Get tailored commerce-tuned software solutions, including online storefronts, inventory management systems...</p>
+                    <a href="{{ route('industries.ecommerce') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
 
-             <!-- Healthcare -->
-             <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
-                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 <div class="relative">
-                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                         </svg>
-                     </div>
-                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
-                     <p class="text-gray-600 mb-6 leading-relaxed">Power healthcare service provision with advanced software solutions, like electronic health record (EHR) systems...</p>
-                     <a href="{{ route('industries.healthcare') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
-                         Learn more
-                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                         </svg>
-                     </a>
-                 </div>
-             </div>
+            <!-- Healthcare -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Power healthcare service provision with advanced software solutions, like electronic health record (EHR) systems...</p>
+                    <a href="{{ route('industries.healthcare') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
 
-             <!-- FinTech -->
-             <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
-                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 <div class="relative">
-                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                         </svg>
-                     </div>
-                     <h3 class="text-2xl font-bold text-gray-900 mb-4">FinTech</h3>
-                     <p class="text-gray-600 mb-6 leading-relaxed">Secure, scalable financial technology solutions that drive innovation in banking and finance sectors...</p>
-                     <a href="{{ route('industries.fintech') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
-                         Learn more
-                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                         </svg>
-                     </a>
-                 </div>
-             </div>
+            <!-- FinTech -->
+            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">FinTech</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Secure, scalable financial technology solutions that drive innovation in banking and finance sectors...</p>
+                    <a href="{{ route('industries.fintech') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -850,7 +836,7 @@
 <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-20">
-            <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            <h2 class="text-3xl lg:text-3xl font-bold text-gray-900 mb-6">
                 How we build the software development process
             </h2>
             <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
@@ -888,7 +874,7 @@
 <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-20">
-            <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">What clients say</h2>
+            <h2 class="text-3xl lg:text-3xl font-bold text-gray-900 mb-6">What clients say</h2>
             <div class="flex justify-center space-x-12 mb-12">
                 <div class="text-center">
                     <div class="text-orange-500 font-bold mb-2 text-lg">Top Rated</div>
@@ -945,7 +931,7 @@
 <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">We've Been Awarded Plenty for the Milestones We Have Achieved</h2>
+            <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-6">We've Been Awarded Plenty for the Milestones We Have Achieved</h2>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center">
@@ -971,79 +957,7 @@
     </div>
 </section>
 
-<!-- Technology Stack Section -->
-<section class="section bg-white">
-    <div class="container mx-auto px-6 lg:px-8">
-        <div class="text-center mb-20">
-            <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-10">Technology stack</h2>
-            <a href="#" class="btn-primary">Discover More</a>
-        </div>
 
-        <div class="grid lg:grid-cols-2 gap-16">
-            <!-- Front-End Technologies -->
-            <div class="card">
-                <div class="flex items-center justify-between mb-8">
-                    <h3 class="text-3xl font-bold text-gray-900">Front-End</h3>
-                    <span class="text-orange-500 font-bold text-lg">44 Developers</span>
-                </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">Turborepo</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">GraphQL</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">React hook form</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">Ant Design</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">Material UI</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">Apollo Client</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">React.js</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">REST API</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">TypeScript</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Back-End Technologies -->
-            <div class="card">
-                <div class="flex items-center justify-between mb-8">
-                    <h3 class="text-3xl font-bold text-gray-900">Back-End</h3>
-                    <span class="text-orange-500 font-bold text-lg">55 Developers</span>
-                </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">Python</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">Scala</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">Java</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">Node.js</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                        <div class="text-gray-900 font-semibold text-sm">PHP</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Why Choose Us Section -->
 
@@ -1054,7 +968,7 @@
 
             <div>
 
-                <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
+                <h2 class="text-3xl lg:text-3xl font-bold text-gray-900 mb-8">
                     Software Company VanTroZ
 
                 </h2>
@@ -1128,7 +1042,7 @@
 <section class="section">
     <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-20">
-            <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            <h2 class="text-3xl lg:text-3xl font-bold text-gray-900 mb-6">
                 Digital transformation for industries
 
             </h2>
@@ -1199,7 +1113,7 @@
 <section class="section section-alt">
     <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-20">
-            <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            <h2 class="text-3xl lg:text-3xl font-bold text-gray-900 mb-6">
                 How we build the software development process
 
             </h2>
@@ -1257,7 +1171,7 @@
 <section class="section">
     <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-20">
-            <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">What clients say</h2>
+            <h2 class="text-3xl lg:text-3xl font-bold text-gray-900 mb-6">What clients say</h2>
             <div class="flex justify-center space-x-12 mb-12">
                 <div class="text-center">
 
@@ -1343,7 +1257,7 @@
 <section class="section section-alt">
     <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">We've Been Awarded Plenty for the Milestones We Have Achieved</h2>
+            <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-6">We've Been Awarded Plenty for the Milestones We Have Achieved</h2>
         </div>
 
 
@@ -1392,7 +1306,7 @@
 <section class="section">
     <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-20">
-            <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-10">Technology stack</h2>
+            <h2 class="text-3xl lg:text-3xl font-bold text-gray-900 mb-10">Technology stack</h2>
             <a href="#" class="btn-primary">Discover More</a>
         </div>
 
@@ -1492,63 +1406,63 @@
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const homeFilterButtons = document.querySelectorAll('.home-filter-btn');
-    const homeCaseStudyItems = document.querySelectorAll('.home-case-study-item');
-    
-    console.log('Home filter buttons found:', homeFilterButtons.length);
-    console.log('Home case study items found:', homeCaseStudyItems.length);
-    
-    homeFilterButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const filter = this.getAttribute('data-filter');
-            console.log('Home filter clicked:', filter);
-            
-            // Update active button
-            homeFilterButtons.forEach(btn => {
-                btn.classList.remove('active', 'bg-orange-500', 'text-white');
-                btn.classList.add('bg-gray-200', 'text-gray-700');
+    document.addEventListener('DOMContentLoaded', function() {
+        const homeFilterButtons = document.querySelectorAll('.home-filter-btn');
+        const homeCaseStudyItems = document.querySelectorAll('.home-case-study-item');
+
+        console.log('Home filter buttons found:', homeFilterButtons.length);
+        console.log('Home case study items found:', homeCaseStudyItems.length);
+
+        homeFilterButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const filter = this.getAttribute('data-filter');
+                console.log('Home filter clicked:', filter);
+
+                // Update active button
+                homeFilterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-orange-500', 'text-white');
+                    btn.classList.add('bg-gray-200', 'text-gray-700');
+                });
+
+                this.classList.remove('bg-gray-200', 'text-gray-700');
+                this.classList.add('active', 'bg-orange-500', 'text-white');
+
+                // Filter case studies
+                homeCaseStudyItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    console.log('Home item category:', category, 'Filter:', filter);
+
+                    if (filter === 'all' || category === filter) {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                        console.log('Showing home item:', item);
+                    } else {
+                        item.style.display = 'none';
+                        item.style.opacity = '0';
+                        console.log('Hiding home item:', item);
+                    }
+                });
             });
-            
-            this.classList.remove('bg-gray-200', 'text-gray-700');
-            this.classList.add('active', 'bg-orange-500', 'text-white');
-            
-            // Filter case studies
-            homeCaseStudyItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-                console.log('Home item category:', category, 'Filter:', filter);
-                
-                if (filter === 'all' || category === filter) {
-                    item.style.display = 'block';
-                    item.style.opacity = '1';
-                    console.log('Showing home item:', item);
-                } else {
-                    item.style.display = 'none';
-                    item.style.opacity = '0';
-                    console.log('Hiding home item:', item);
+        });
+
+        // Add hover effects for filter buttons
+        homeFilterButtons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.transition = 'all 0.2s ease';
+                }
+            });
+
+            button.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = 'scale(1)';
                 }
             });
         });
     });
-    
-    // Add hover effects for filter buttons
-    homeFilterButtons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
-            if (!this.classList.contains('active')) {
-                this.style.transform = 'scale(1.05)';
-                this.style.transition = 'all 0.2s ease';
-            }
-        });
-        
-        button.addEventListener('mouseleave', function() {
-            if (!this.classList.contains('active')) {
-                this.style.transform = 'scale(1)';
-            }
-        });
-    });
-});
 </script>
 
 @endsection
