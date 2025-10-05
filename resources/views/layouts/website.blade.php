@@ -20,22 +20,22 @@
 </head>
 
 <body class="font-sans antialiased text-gray-900 bg-white">
-    <!-- Compressed Navigation -->
-    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-slate-200/60 transition-all duration-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Clean Professional Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white border-b border-gray-200 transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo with Image -->
-                <div class="flex items-center flex-shrink-0">
-                    <a href="{{ route('home') }}" class="flex items-center space-x-2">
-                        <img src="{{ asset('logo/logo.png') }}" alt="{{ config('company.name') }} Logo" class="h-8 w-auto vantroz-logo">
+                <!-- Clean Logo Section -->
+                <div class="flex items-center flex-shrink-0 justify-start">
+                    <a href="{{ route('home') }}" class="flex items-center">
+                        <img src="{{ asset('logo/logo.png') }}" alt="{{ config('company.name') }} Logo" class="h-8 w-auto mr-3">
                     </a>
                 </div>
 
-                <!-- Compressed Desktop Navigation -->
-                <div class="hidden xl:flex items-center space-x-6 flex-1 justify-center">
+                <!-- Clean Desktop Navigation -->
+                <div class="hidden xl:flex items-center space-x-8 flex-1 justify-center">
                     <!-- Services Dropdown -->
                     <div class="relative group">
-                        <button class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-300 hover:text-orange-500">
+                        <button class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-200 hover:text-orange-600">
                             Services
                             <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -59,9 +59,9 @@
                         </div>
                     </div>
 
-                    <!-- Industries & Solutions Dropdown -->
+                    <!-- Industries Dropdown -->
                     <div class="relative group">
-                        <button class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-300 hover:text-orange-500 whitespace-nowrap">
+                        <button class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">
                             Industries & Solutions
                             <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -85,30 +85,28 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('case-studies') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-300 hover:text-orange-500 whitespace-nowrap">Case Studies</a>
-                    <a href="{{ route('about') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-300 hover:text-orange-500 whitespace-nowrap">About Us</a>
-                    <a href="{{ route('blog.index') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-300 hover:text-orange-500">Blog</a>
-                    <a href="{{ route('contact') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-300 hover:text-orange-500">Contacts</a>
+                    <!-- Clean Navigation Links -->
+                    <a href="{{ route('case-studies') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">Case Studies</a>
+                    <a href="{{ route('about') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">About Us</a>
+                    <a href="{{ route('blog.index') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-orange-600">Blog</a>
+                    <a href="{{ route('contact') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-orange-600">Contacts</a>
                 </div>
 
-                <!-- Compressed Contact Info & CTA -->
-                <div class="hidden xl:flex items-center space-x-4 flex-shrink-0">
-                    <!-- Compressed Phone -->
-                    <div id="navbar-phone" class="flex items-center text-sm font-medium transition-colors duration-200">
-                        <span class="mr-1.5 text-sm">{{ config('company.contact.country_flag') }}</span>
-                        <span class="font-semibold whitespace-nowrap">{{ config('company.contact.phone') }}</span>
+                <!-- Clean Contact Info & CTA -->
+                <div class="hidden xl:flex items-center space-x-6 flex-shrink-0">
+                    <!-- Contact Info with Flag -->
+                    <div class="flex items-center text-sm font-medium text-gray-700">
+                        <span class="mr-2 text-lg">{{ config('company.contact.country_flag') }}</span>
+                        <span class="font-semibold">{{ config('company.contact.phone') }}</span>
                     </div>
 
-                    <!-- Compressed Contact Button -->
-                    <a href="{{ route('contact') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-semibold rounded-lg hover:from-orange-700 hover:to-orange-800 transition-all duration-200 shadow-md text-sm">
-                        Get Started
-                        <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
+                    <!-- Clean CTA Button -->
+                    <a href="{{ route('contact') }}" class="inline-flex items-center px-6 py-2 border-2 border-orange-600 text-black font-bold rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200 text-sm uppercase tracking-wide">
+                        Contact Us
                     </a>
 
                     @auth
-                    <a href="{{ route('admin.dashboard') }}" class="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-3 py-2 rounded-lg text-xs font-medium hover:from-orange-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <a href="{{ route('admin.dashboard') }}" class="bg-orange-500 text-white px-3 py-2 rounded-lg text-xs font-medium hover:bg-orange-600 transition-colors duration-200">
                         Admin
                     </a>
                     @endauth

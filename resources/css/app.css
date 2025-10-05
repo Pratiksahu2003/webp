@@ -248,41 +248,36 @@ body {
     color: var(--vantroz-text-secondary);
 }
 
-/* Compressed Navbar Styling */
+/* Clean Professional Navbar Styling */
 #navbar {
     background: #ffffff;
-    border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+    border-bottom: 1px solid #e5e7eb;
     transition: all 0.2s ease;
-    box-shadow: 0 1px 2px 0 rgba(255, 107, 53, 0.1);
+    box-shadow: none;
+    height: 64px;
 }
 
 #navbar.navbar-scrolled {
     background: #ffffff;
-    box-shadow: 0 4px 32px rgba(255, 107, 53, 0.15), 0 2px 8px rgba(255, 107, 53, 0.1);
-    border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #e5e7eb;
 }
 
 #navbar-logo {
-    color: var(--vantroz-text-primary);
+    color: #000000;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    font-size: 1.75rem;
-    transition: all 0.3s ease;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-#navbar.navbar-scrolled #navbar-logo {
-    color: var(--vantroz-text-primary);
-    text-shadow: none;
+    letter-spacing: 0.02em;
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
 }
 
 .navbar-link {
-    color: var(--vantroz-text-primary);
-    transition: all 0.3s ease;
+    color: #000000;
+    transition: all 0.2s ease;
     position: relative;
     font-weight: 500;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
 }
 
 .navbar-link::before {
@@ -292,8 +287,8 @@ body {
     height: 2px;
     bottom: -6px;
     left: 50%;
-    background: var(--vantroz-primary);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #ff6b35;
+    transition: all 0.2s ease;
     transform: translateX(-50%);
     border-radius: 1px;
 }
@@ -303,16 +298,15 @@ body {
 }
 
 .navbar-link:hover {
-    color: var(--vantroz-primary);
-    transform: translateY(-1px);
+    color: #ff6b35;
 }
 
 #navbar.navbar-scrolled .navbar-link {
-    color: var(--vantroz-gray-medium);
+    color: #000000;
 }
 
 #navbar.navbar-scrolled .navbar-link:hover {
-    color: var(--vantroz-primary);
+    color: #ff6b35;
 }
 
 #navbar-phone {
