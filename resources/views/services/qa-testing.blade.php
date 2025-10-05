@@ -52,7 +52,7 @@
 
             <div class="bg-gray-50 p-8 rounded-lg">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
                 </div>
@@ -62,7 +62,7 @@
 
             <div class="bg-gray-50 p-8 rounded-lg">
                 <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                     </svg>
                 </div>
@@ -124,7 +124,7 @@
 
             <div class="text-center">
                 <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span class="text-2xl font-bold text-blue-600">2</span>
+                    <span class="text-2xl font-bold text-orange-600">2</span>
                 </div>
                 <h3 class="text-xl font-semibold text-gray-900 mb-4">Test Design</h3>
                 <p class="text-gray-600">Design test cases and scenarios covering all functional and non-functional requirements.</p>
@@ -132,7 +132,7 @@
 
             <div class="text-center">
                 <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span class="text-2xl font-bold text-purple-600">3</span>
+                    <span class="text-2xl font-bold text-orange-600">3</span>
                 </div>
                 <h3 class="text-xl font-semibold text-gray-900 mb-4">Test Execution</h3>
                 <p class="text-gray-600">Execute test cases systematically and document all findings and defects.</p>
@@ -171,7 +171,7 @@
             <div class="text-center">
                 <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
                     <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto">
-                        <span class="text-blue-600 font-bold text-sm">Jest</span>
+                        <span class="text-orange-600 font-bold text-sm">Jest</span>
                     </div>
                 </div>
                 <p class="font-medium text-gray-900">Jest</p>
@@ -179,7 +179,7 @@
             <div class="text-center">
                 <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
                     <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto">
-                        <span class="text-purple-600 font-bold text-sm">Cypress</span>
+                        <span class="text-orange-600 font-bold text-sm">Cypress</span>
                     </div>
                 </div>
                 <p class="font-medium text-gray-900">Cypress</p>

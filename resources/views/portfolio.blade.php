@@ -34,7 +34,7 @@
             <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-100 to-pink-100 bg-clip-text text-transparent">
                 Our Portfolio
             </h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-purple-100 leading-relaxed">
+            <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-orange-100 leading-relaxed">
                 Showcasing our successful projects and innovative solutions that have transformed businesses worldwide
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -115,7 +115,7 @@
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="text-center mb-16">
-            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full text-sm font-medium mb-6 text-indigo-700">
+            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-100 to-orange-100 rounded-full text-sm font-medium mb-6 text-orange-700">
                 <span class="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
                 Our Success Stories
             </div>
@@ -156,7 +156,7 @@
                 
                 <div class="p-8">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Multi-Vendor E-commerce Platform</h3>
+                        <h3 class="text-xl font-bold text-gray-900 group-hover:text-orange-600 transition-colors">Multi-Vendor E-commerce Platform</h3>
                         <div class="flex items-center text-yellow-500">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
                                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
@@ -168,16 +168,16 @@
                     <p class="text-gray-600 mb-6 leading-relaxed">A comprehensive e-commerce solution with vendor management, payment integration, advanced analytics, and real-time inventory tracking.</p>
                     
                     <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm font-medium">Laravel</span>
+                        <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">Laravel</span>
                         <span class="px-3 py-1 bg-gradient-to-r from-green-100 to-green-200 text-green-800 rounded-full text-sm font-medium">Vue.js</span>
-                        <span class="px-3 py-1 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 rounded-full text-sm font-medium">MySQL</span>
+                        <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">MySQL</span>
                     </div>
                     
                     <div class="flex items-center justify-between">
                         <div class="text-sm text-gray-500">
                             <span class="font-medium">Duration:</span> 6 months
                         </div>
-                        <a href="{{ route('contact') }}" class="group inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        <a href="{{ route('contact') }}" class="group inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                             View Details
                             <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -223,11 +223,11 @@
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Mobile Banking Application</h3>
                     <p class="text-gray-600 mb-4">Secure mobile banking app with biometric authentication and real-time transactions.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-sm">React Native</span>
-                        <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-sm">Firebase</span>
-                        <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-sm">Blockchain</span>
+                        <span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">React Native</span>
+                        <span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">Firebase</span>
+                        <span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">Blockchain</span>
                     </div>
-                    <a href="{{ route('contact') }}" class="text-purple-600 font-semibold hover:text-purple-700">View Details →</a>
+                    <a href="{{ route('contact') }}" class="text-orange-600 font-semibold hover:text-orange-700">View Details →</a>
                 </div>
             </div>
 
@@ -289,11 +289,11 @@
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Real Estate Management Platform</h3>
                     <p class="text-gray-600 mb-4">Comprehensive property management system with virtual tours and CRM integration.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded text-sm">Angular</span>
-                        <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded text-sm">ASP.NET</span>
-                        <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded text-sm">SQL Server</span>
+                        <span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">Angular</span>
+                        <span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">ASP.NET</span>
+                        <span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">SQL Server</span>
                     </div>
-                    <a href="{{ route('contact') }}" class="text-indigo-600 font-semibold hover:text-indigo-700">View Details →</a>
+                    <a href="{{ route('contact') }}" class="text-orange-600 font-semibold hover:text-orange-700">View Details →</a>
                 </div>
             </div>
 
@@ -313,7 +313,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">150+</div>
+                <div class="text-4xl md:text-5xl font-bold text-orange-600 mb-2">150+</div>
                 <p class="text-gray-600 text-lg">Projects Completed</p>
             </div>
 
@@ -323,7 +323,7 @@
             </div>
 
             <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-purple-600 mb-2">25+</div>
+                <div class="text-4xl md:text-5xl font-bold text-orange-600 mb-2">25+</div>
                 <p class="text-gray-600 text-lg">Years Experience</p>
             </div>
 
@@ -339,7 +339,7 @@
 <section class="py-20 bg-blue-600">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
-        <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+        <p class="text-xl text-orange-100 mb-8 max-w-3xl mx-auto">
             Let's discuss your ideas and create something amazing together.
         </p>
         <a href="{{ route('contact') }}" class="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">

@@ -100,7 +100,7 @@
                     </div>
 
                     <!-- Compressed Contact Button -->
-                    <a href="{{ route('contact') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-all duration-200 shadow-md text-sm">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-semibold rounded-lg hover:from-orange-700 hover:to-orange-800 transition-all duration-200 shadow-md text-sm">
                         Get Started
                         <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
@@ -147,55 +147,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200">
-        <div class="max-w-7xl mx-auto py-16 px-6 sm:px-8 lg:px-10">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div>
-                    <div class="flex items-center mb-6">
-                        <img src="{{ asset('logo/logo.png') }}" alt="{{ config('company.name') }} Logo" class="h-10 w-auto mr-3 vantroz-logo">
-                    </div>
-                    <p class="text-gray-600 leading-relaxed">{{ config('company.tagline') }} - Your trusted IT partner for software development, web development, mobile app development, and more.</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-6 text-gray-900">Services</h4>
-                    <ul class="space-y-3 text-gray-600">
-                        <li><a href="{{ route('services.software-development') }}" class="hover:text-orange-500 transition-colors">Software Development</a></li>
-                        <li><a href="{{ route('services.web-development') }}" class="hover:text-orange-500 transition-colors">Web Development</a></li>
-                        <li><a href="{{ route('services.mobile-development') }}" class="hover:text-orange-500 transition-colors">Mobile App Development</a></li>
-                        <li><a href="{{ route('services.data-science') }}" class="hover:text-orange-500 transition-colors">Data Science & AI</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-6 text-gray-900">Company</h4>
-                    <ul class="space-y-3 text-gray-600">
-                        <li><a href="{{ route('about') }}" class="hover:text-orange-500 transition-colors">About Us</a></li>
-                        <li><a href="{{ route('portfolio') }}" class="hover:text-orange-500 transition-colors">Portfolio</a></li>
-                        <li><a href="{{ route('case-studies') }}" class="hover:text-orange-500 transition-colors">Case Studies</a></li>
-                        <li><a href="{{ route('careers') }}" class="hover:text-orange-500 transition-colors">Careers</a></li>
-                        <li><a href="{{ route('blog.index') }}" class="hover:text-orange-500 transition-colors">Blog</a></li>
-                        <li><a href="{{ route('contact') }}" class="hover:text-orange-500 transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-6 text-gray-900">Contact Information</h4>
-                    <div class="text-gray-600 space-y-3">
-                        <p class="font-semibold text-gray-900">{{ config('company.address.primary.name') }}</p>
-                        <p>{{ config('company.address.primary.full') }}</p>
-                        <p class="mt-6 text-orange-500 font-semibold">{{ config('company.contact.email') }}</p>
-                        <p class="text-orange-500 font-semibold">{{ config('company.contact.phone') }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
-                <p class="text-lg">&copy; 2000-2025 {{ config('company.name') }} IT-Company</p>
-                <div class="mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
-                    <a href="{{ route('privacy-policy') }}" class="text-gray-600 hover:text-orange-500 transition-colors">Privacy Policy</a>
-                    <a href="{{ route('terms-conditions') }}" class="text-gray-600 hover:text-orange-500 transition-colors">Terms & Conditions</a>
-                    <a href="{{ route('refund-policy') }}" class="text-gray-600 hover:text-orange-500 transition-colors">Refund Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <x-footer />
 
     <!-- VanTroZ UI System - JavaScript modules loaded via Vite -->
 </body>

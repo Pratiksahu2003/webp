@@ -33,7 +33,7 @@
             <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-100 to-blue-100 bg-clip-text text-transparent">
                 Join Our Team
             </h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-purple-100 leading-relaxed">
+            <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-orange-100 leading-relaxed">
                 Build your career with us and work on exciting projects that make a difference in the world of technology
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -62,7 +62,7 @@
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="text-center mb-20">
-            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full text-sm font-medium mb-6 text-purple-700">
+            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-100 to-orange-100 rounded-full text-sm font-medium mb-6 text-orange-700">
                 <span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
                 Our Culture
             </div>
@@ -196,7 +196,7 @@
                                     <div class="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
                                     <span class="text-sm font-medium text-green-600">Actively Hiring</span>
                                 </div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Senior Software Developer</h3>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">Senior Software Developer</h3>
                             </div>
                             <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,9 +227,9 @@
                         </div>
                         <p class="text-gray-700 mb-6 leading-relaxed">We're looking for an experienced software developer to join our team and work on cutting-edge projects using modern technologies and frameworks.</p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm font-medium">JavaScript</span>
+                            <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">JavaScript</span>
                             <span class="px-3 py-1 bg-gradient-to-r from-green-100 to-green-200 text-green-800 rounded-full text-sm font-medium">Python</span>
-                            <span class="px-3 py-1 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 rounded-full text-sm font-medium">React</span>
+                            <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">React</span>
                             <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">Node.js</span>
                         </div>
                         <div class="text-sm text-gray-600">
@@ -290,8 +290,8 @@
                         <p class="text-gray-700 mb-6 leading-relaxed">Join our frontend team to create beautiful and responsive user interfaces for web and mobile applications using modern frameworks.</p>
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="px-3 py-1 bg-gradient-to-r from-green-100 to-green-200 text-green-800 rounded-full text-sm font-medium">React</span>
-                            <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm font-medium">Vue.js</span>
-                            <span class="px-3 py-1 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 rounded-full text-sm font-medium">TypeScript</span>
+                            <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">Vue.js</span>
+                            <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">TypeScript</span>
                             <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">CSS</span>
                         </div>
                         <div class="text-sm text-gray-600">
@@ -318,9 +318,9 @@
                             <div>
                                 <div class="flex items-center mb-2">
                                     <div class="w-3 h-3 bg-purple-500 rounded-full mr-2 animate-pulse"></div>
-                                    <span class="text-sm font-medium text-purple-600">Hot Position</span>
+                                    <span class="text-sm font-medium text-orange-600">Hot Position</span>
                                 </div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">UI/UX Designer</h3>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">UI/UX Designer</h3>
                             </div>
                             <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -351,10 +351,10 @@
                         </div>
                         <p class="text-gray-700 mb-6 leading-relaxed">Create exceptional user experiences and beautiful interfaces for our clients' digital products using industry-leading design tools.</p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 rounded-full text-sm font-medium">Figma</span>
+                            <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">Figma</span>
                             <span class="px-3 py-1 bg-gradient-to-r from-pink-100 to-pink-200 text-pink-800 rounded-full text-sm font-medium">Adobe XD</span>
-                            <span class="px-3 py-1 bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 rounded-full text-sm font-medium">Sketch</span>
-                            <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm font-medium">Prototyping</span>
+                            <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">Sketch</span>
+                            <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">Prototyping</span>
                         </div>
                         <div class="text-sm text-gray-600">
                             <span class="font-medium">Salary:</span> ₹5-10 LPA • <span class="font-medium">Experience:</span> 2-5 years
@@ -414,9 +414,9 @@
                         <p class="text-gray-700 mb-6 leading-relaxed">Help our clients unlock insights from their data using machine learning, advanced analytics, and AI-powered solutions.</p>
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="px-3 py-1 bg-gradient-to-r from-teal-100 to-teal-200 text-teal-800 rounded-full text-sm font-medium">Python</span>
-                            <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm font-medium">Machine Learning</span>
+                            <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">Machine Learning</span>
                             <span class="px-3 py-1 bg-gradient-to-r from-green-100 to-green-200 text-green-800 rounded-full text-sm font-medium">TensorFlow</span>
-                            <span class="px-3 py-1 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 rounded-full text-sm font-medium">SQL</span>
+                            <span class="px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 rounded-full text-sm font-medium">SQL</span>
                         </div>
                         <div class="text-sm text-gray-600">
                             <span class="font-medium">Salary:</span> ₹10-18 LPA • <span class="font-medium">Experience:</span> 3-6 years
@@ -436,7 +436,7 @@
 
         <div class="text-center mt-12">
             <p class="text-gray-600 mb-4">Don't see a position that fits? We're always looking for talented individuals.</p>
-            <a href="{{ route('contact') }}" class="text-blue-600 font-semibold hover:text-blue-700">
+            <a href="{{ route('contact') }}" class="text-orange-600 font-semibold hover:text-orange-700">
                 Send us your resume →
             </a>
         </div>
@@ -493,7 +493,7 @@
 <section class="py-20 bg-blue-600">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Join Our Team?</h2>
-        <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+        <p class="text-xl text-orange-100 mb-8 max-w-3xl mx-auto">
             Take the next step in your career and help us build amazing software solutions.
         </p>
         <a href="{{ route('contact') }}" class="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">

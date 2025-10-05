@@ -43,13 +43,13 @@
             <!-- Custom Software Development -->
             <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
                 <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                     </svg>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Custom Software Development</h3>
                 <p class="text-gray-600 mb-6">Tailored software solutions designed specifically for your unique business requirements and workflows.</p>
-                <a href="{{ route('services.custom-software') }}" class="text-blue-600 font-semibold hover:text-blue-700">Learn More →</a>
+                <a href="{{ route('services.custom-software') }}" class="text-orange-600 font-semibold hover:text-orange-700">Learn More →</a>
             </div>
 
             <!-- Web Development -->
@@ -67,13 +67,13 @@
             <!-- Mobile Development -->
             <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
                 <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z"></path>
                     </svg>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile App Development</h3>
                 <p class="text-gray-600 mb-6">Native and cross-platform mobile applications for iOS and Android devices.</p>
-                <a href="{{ route('services.mobile-development') }}" class="text-purple-600 font-semibold hover:text-purple-700">Learn More →</a>
+                <a href="{{ route('services.mobile-development') }}" class="text-orange-600 font-semibold hover:text-orange-700">Learn More →</a>
             </div>
 
             <!-- Data Science & AI -->
@@ -221,7 +221,7 @@
 <section class="py-20 bg-blue-600">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Start Your Software Project?</h2>
-        <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+        <p class="text-xl text-orange-100 mb-8 max-w-3xl mx-auto">
             Let's discuss your requirements and create a custom software solution that drives your business forward.
         </p>
         <a href="{{ route('contact') }}" class="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">

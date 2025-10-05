@@ -18,25 +18,25 @@
             poster="{{ asset('banner/home-poster.jpg') }}">
             <source src="{{ asset('banner/home.mp4') }}" type="video/mp4">
             <!-- Fallback for browsers that don't support video -->
-            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-indigo-700 to-cyan-600"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-orange-600 via-orange-700 to-orange-800"></div>
         </video>
 
         <!-- Advanced Video Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-indigo-900/70"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-orange-900/70"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-slate-900/40"></div>
     </div>
 
     <!-- Animated Background Elements -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <!-- Floating Particles -->
-        <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-indigo-400/30 rounded-full animate-pulse"></div>
-        <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-400/40 rounded-full animate-ping"></div>
-        <div class="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-indigo-300/20 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
-        <div class="absolute top-1/2 right-1/4 w-1 h-1 bg-cyan-300/30 rounded-full animate-ping" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-orange-400/30 rounded-full animate-pulse"></div>
+        <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-orange-400/40 rounded-full animate-ping"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-orange-300/20 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 right-1/4 w-1 h-1 bg-orange-300/30 rounded-full animate-ping" style="animation-delay: 2s;"></div>
 
         <!-- Geometric Shapes -->
         <div class="absolute top-20 right-20 w-32 h-32 border border-white/10 rounded-full animate-spin" style="animation-duration: 20s;"></div>
-        <div class="absolute bottom-20 left-20 w-24 h-24 border border-indigo-400/20 rounded-lg rotate-45 animate-pulse"></div>
+        <div class="absolute bottom-20 left-20 w-24 h-24 border border-orange-400/20 rounded-lg rotate-45 animate-pulse"></div>
     </div>
 
     <!-- Advanced Content Container -->
@@ -59,7 +59,7 @@
 
                 <!-- Advanced Hero Headlines -->
                 <div class="space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
-                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-none tracking-tight">
                         <span class="block">Build the</span>
                         <span class="block bg-gradient-to-r from-indigo-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent animate-gradient-x">Future</span>
                         <span class="block">of Business</span>
@@ -177,11 +177,11 @@
     <div class="max-w-6xl mx-auto px-4 lg:px-6">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="text-center p-4 rounded-lg bg-gradient-to-br from-indigo-50 to-cyan-50 border border-indigo-100">
-                <div class="text-3xl font-bold text-indigo-600 mb-1">3500+</div>
+                <div class="text-3xl font-bold text-orange-600 mb-1">3500+</div>
                 <div class="text-slate-600 text-sm font-medium">Projects</div>
             </div>
             <div class="text-center p-4 rounded-lg bg-gradient-to-br from-cyan-50 to-teal-50 border border-cyan-100">
-                <div class="text-3xl font-bold text-cyan-600 mb-1">24+</div>
+                <div class="text-3xl font-bold text-orange-600 mb-1">24+</div>
                 <div class="text-slate-600 text-sm font-medium">Years</div>
             </div>
             <div class="text-center p-4 rounded-lg bg-gradient-to-br from-teal-50 to-emerald-50 border border-teal-100">
@@ -227,78 +227,78 @@
 </section>
 
 <!-- What We Create - Perfect Modern Section -->
-<section class="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+<section class="py-24 bg-white relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.3) 1px, transparent 0); background-size: 20px 20px;"></div>
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255, 107, 53, 0.3) 1px, transparent 0); background-size: 20px 20px;"></div>
     </div>
     
     <!-- Floating Elements -->
-    <div class="absolute top-20 left-10 w-20 h-20 bg-blue-200/20 rounded-full blur-xl animate-pulse"></div>
-    <div class="absolute bottom-20 right-10 w-32 h-32 bg-purple-200/20 rounded-full blur-xl animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute top-20 left-10 w-20 h-20 bg-orange-200/20 rounded-full blur-xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-10 w-32 h-32 bg-orange-200/20 rounded-full blur-xl animate-pulse" style="animation-delay: 1s;"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <!-- Section Header -->
         <div class="text-center mb-20">
-            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-medium mb-6 text-blue-700">
-                <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+            <div class="inline-flex items-center px-4 py-2 bg-orange-100 border border-orange-200 rounded-full text-sm font-medium mb-6 text-orange-700">
                 Our Expertise
             </div>
-            <h2 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                What We <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">Create</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                What We <span class="text-orange-600">Create</span>
             </h2>
             <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                 Transforming innovative ideas into exceptional digital experiences that drive business growth and user engagement
             </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Compressed Service Card 1 -->
-            <div class="group relative bg-white rounded-lg p-6 shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-cyan-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <!-- Service Cards Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <!-- Custom Software Card -->
+            <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div class="relative">
-                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">Custom Software</h3>
-                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">
-                        Tailored solutions that perfectly fit your business needs and scale with your growth.
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Custom Software</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Tailored solutions that perfectly fit your business needs, and scale with your growth.
                     </p>
-                    <div class="flex flex-wrap gap-1.5 mb-4">
-                        <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded">SaaS</span>
-                        <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded">CRM</span>
-                        <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded">MVP</span>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">SaaS</span>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">CRM</span>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">ERP</span>
                     </div>
-                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-700 transition-colors text-sm">
+                    <a href="{{ route('services.custom-software') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                         Learn more
-                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </a>
                 </div>
             </div>
 
-            <!-- Modern Service Card 2 -->
-            <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 to-teal-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <!-- Web Development Card -->
+            <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div class="relative">
-                    <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Web Development</h3>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Web Development</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
                         Modern, responsive web applications built with cutting-edge technologies and best practices.
                     </p>
                     <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-cyan-100 text-cyan-700 text-xs font-medium rounded-full">React</span>
-                        <span class="px-3 py-1 bg-cyan-100 text-cyan-700 text-xs font-medium rounded-full">PWA</span>
-                        <span class="px-3 py-1 bg-cyan-100 text-cyan-700 text-xs font-medium rounded-full">SPA</span>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">React</span>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">PHP</span>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">JS</span>
                     </div>
-                    <a href="#" class="inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700 transition-colors">
+                    <a href="{{ route('services.web-development') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -307,25 +307,25 @@
                 </div>
             </div>
 
-            <!-- Modern Service Card 3 -->
-            <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <!-- Mobile Apps Card -->
+            <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div class="relative">
-                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Mobile Apps</h3>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile Apps</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
                         Native and cross-platform mobile applications that deliver exceptional user experiences.
                     </p>
                     <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">iOS</span>
-                        <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">Android</span>
-                        <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">Flutter</span>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">iOS</span>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">Android</span>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">Flutter</span>
                     </div>
-                    <a href="#" class="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors">
+                    <a href="{{ route('services.mobile-development') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -333,96 +333,99 @@
                     </a>
                 </div>
             </div>
-
-            <!-- Enhanced Service Card 4: Data Science & AI -->
-            <div class="group relative bg-white rounded-3xl p-8 shadow-sm border border-slate-200 hover:shado
-                <div class=" flex items-start space-x-4 mb-6">
-                <div class="flex-shrink-0">
-                    <span class="service-number">04/</span>
-                </div>
-                <div>
-                    <h3 class="service-title">Data Science & AI</h3>
-                </div>
-            </div>
-
-            <div class="space-y-3 mb-6">
-                <div class="text-gray-700">AWS & Cloud</div>
-                <div class="text-gray-700">Big Data Solutions</div>
-                <div class="text-gray-700">IoT Development</div>
-                <div class="text-gray-700">NFT marketplace</div>
-                <div class="text-gray-700">Artificial Intelligence</div>
-                <div class="text-gray-700">DevOps Services</div>
-                <div class="text-gray-700">AI ChatBot</div>
-                <div class="text-gray-700">Generative AI</div>
-            </div>
-
-            <p class="service-description">
-                Make every business decision a data-driven one with stats, insights and analysis that positions you ahead of the competition
-            </p>
-
-            <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
-                Learn more →
-            </a>
         </div>
 
-        <!-- Service Card 5: QA & Software Testing -->
-        <div class="service-card-enhanced">
-            <div class="flex items-start space-x-4 mb-6">
-                <div class="flex-shrink-0">
-                    <span class="service-number">05/</span>
+        <!-- Additional Services Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Data Science & AI -->
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div class="flex items-start space-x-4 mb-6">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-bold text-orange-600">04/</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">Data Science & AI</h3>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="service-title">QA & Software Testing</h3>
+
+                <div class="space-y-3 mb-6">
+                    <div class="text-gray-700">AWS & Cloud</div>
+                    <div class="text-gray-700">Big Data Solutions</div>
+                    <div class="text-gray-700">IoT Development</div>
+                    <div class="text-gray-700">NFT marketplace</div>
+                    <div class="text-gray-700">Artificial Intelligence</div>
+                    <div class="text-gray-700">DevOps Services</div>
+                    <div class="text-gray-700">AI ChatBot</div>
+                    <div class="text-gray-700">Generative AI</div>
                 </div>
+
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Make every business decision a data-driven one with stats, insights and analysis that positions you ahead of the competition
+                </p>
+
+                <a href="{{ route('services.data-science') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                    Learn more →
+                </a>
             </div>
 
-            <div class="space-y-3 mb-6">
-                <div class="text-gray-700">Test Automation</div>
-                <div class="text-gray-700">Cybersecurity</div>
-                <div class="text-gray-700">Functional Testing</div>
-                <div class="text-gray-700">Performance Testing</div>
-                <div class="text-gray-700">Mobile App Testing</div>
-                <div class="text-gray-700">QA Consulting</div>
-                <div class="text-gray-700">Load Testing Services</div>
+            <!-- QA & Software Testing -->
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div class="flex items-start space-x-4 mb-6">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-bold text-orange-600">05/</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">QA & Software Testing</h3>
+                    </div>
+                </div>
+
+                <div class="space-y-3 mb-6">
+                    <div class="text-gray-700">Test Automation</div>
+                    <div class="text-gray-700">Cybersecurity</div>
+                    <div class="text-gray-700">Functional Testing</div>
+                    <div class="text-gray-700">Performance Testing</div>
+                    <div class="text-gray-700">Mobile App Testing</div>
+                    <div class="text-gray-700">QA Consulting</div>
+                    <div class="text-gray-700">Load Testing Services</div>
+                </div>
+
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Ensure the fault tolerance, stability, and correct operation of your digital solution with software QA testing services by VanTroZ
+                </p>
+
+                <a href="{{ route('services.qa-testing') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                    Learn more →
+                </a>
             </div>
 
-            <p class="service-description">
-                Ensure the fault tolerance, stability, and correct operation of your digital solution with software QA testing services by VanTroZ
-            </p>
+            <!-- UX/UI Design -->
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div class="flex items-start space-x-4 mb-6">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-bold text-orange-600">06/</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">UX/UI Design</h3>
+                    </div>
+                </div>
 
-            <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
-                Learn more →
-            </a>
+                <div class="space-y-3 mb-6">
+                    <div class="text-gray-700">UX Review</div>
+                    <div class="text-gray-700">Product Design</div>
+                    <div class="text-gray-700">Rapid UX Prototyping</div>
+                    <div class="text-gray-700">Mobile App Design</div>
+                    <div class="text-gray-700">Web Design Services</div>
+                </div>
+
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Get a UX/UI design inspired by the desires and needs of your users by entrusting its implementation to VanTroZ experts.
+                </p>
+
+                <a href="{{ route('services.ui-ux-design') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                    Learn more →
+                </a>
+            </div>
         </div>
-
-        <!-- Service Card 6: UX/UI Design -->
-        <div class="service-card-enhanced">
-            <div class="flex items-start space-x-4 mb-6">
-                <div class="flex-shrink-0">
-                    <span class="service-number">06/</span>
-                </div>
-                <div>
-                    <h3 class="service-title">UX/UI Design</h3>
-                </div>
-            </div>
-
-            <div class="space-y-3 mb-6">
-                <div class="text-gray-700">UX Review</div>
-                <div class="text-gray-700">Product Design</div>
-                <div class="text-gray-700">Rapid UX Prototyping</div>
-                <div class="text-gray-700">Mobile App Design</div>
-                <div class="text-gray-700">Web Design Services</div>
-            </div>
-
-            <p class="service-description">
-                Get a UI/UX design inspired by the desires and needs of your users by entrusting its implementation to VanTroZ experts.
-            </p>
-
-            <a href="#" class="text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors">
-                Learn more →
-            </a>
-        </div>
-    </div>
     </div>
 </section>
 
@@ -434,21 +437,21 @@
 
             <!-- Filter Tags -->
             <div class="flex flex-wrap justify-center gap-4 mb-16">
-                <span class="px-6 py-3 bg-orange-500 text-white rounded-full text-sm font-semibold">All cases</span>
-                <span class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 cursor-pointer transition-colors">QA & Software Testing</span>
-                <span class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 cursor-pointer transition-colors">Web & Mobile Development</span>
-                <span class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 cursor-pointer transition-colors">Custom Software</span>
-                <span class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 cursor-pointer transition-colors">AI/GenAI</span>
-                <span class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 cursor-pointer transition-colors">Product design</span>
-                <span class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 cursor-pointer transition-colors">UX/UI Design</span>
+                <button class="home-filter-btn active bg-orange-500 text-white px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 hover:bg-orange-600" data-filter="all">All cases</button>
+                <button class="home-filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-300 transition-all duration-300" data-filter="qa-testing">QA & Software Testing</button>
+                <button class="home-filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-300 transition-all duration-300" data-filter="web-mobile">Web & Mobile Development</button>
+                <button class="home-filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-300 transition-all duration-300" data-filter="custom-software">Custom Software</button>
+                <button class="home-filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-300 transition-all duration-300" data-filter="ai-genai">AI/GenAI</button>
+                <button class="home-filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-300 transition-all duration-300" data-filter="product-design">Product design</button>
+                <button class="home-filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-300 transition-all duration-300" data-filter="ui-ux-design">UX/UI Design</button>
             </div>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-12">
-            <!-- Case Study 1 -->
-            <div class="card group hover:transform hover:scale-105 transition-all duration-300">
+            <!-- Case Study 1: eCommerce -->
+            <div class="home-case-study-item card group hover:transform hover:scale-105 transition-all duration-300" data-category="web-mobile">
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">eCommerce</span>
+                    <span class="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">eCommerce</span>
                 </div>
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-6">
@@ -472,10 +475,10 @@
                 </div>
             </div>
 
-            <!-- Case Study 2 -->
-            <div class="card group hover:transform hover:scale-105 transition-all duration-300">
+            <!-- Case Study 2: Manufacturing AI -->
+            <div class="home-case-study-item card group hover:transform hover:scale-105 transition-all duration-300" data-category="ai-genai">
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">Manufacturing</span>
+                    <span class="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">Manufacturing</span>
                 </div>
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-6">
@@ -499,6 +502,130 @@
 
                 <div class="flex flex-wrap gap-2">
                     <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">AI/GenAI</span>
+                </div>
+            </div>
+
+            <!-- Case Study 3: FinTech -->
+            <div class="home-case-study-item card group hover:transform hover:scale-105 transition-all duration-300" data-category="custom-software">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">FinTech</span>
+                </div>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                    SecurePay: Next-generation payment processing platform
+                </h3>
+
+                <div class="grid grid-cols-3 gap-6 mb-8">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">99.9%</div>
+                        <div class="text-sm text-gray-600">uptime achieved</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">2M+</div>
+                        <div class="text-sm text-gray-600">transactions processed daily</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">50ms</div>
+                        <div class="text-sm text-gray-600">average processing time</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">Custom Software</span>
+                    <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">QA & Software Testing</span>
+                </div>
+            </div>
+
+            <!-- Case Study 4: Healthcare -->
+            <div class="home-case-study-item card group hover:transform hover:scale-105 transition-all duration-300" data-category="web-mobile">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">Healthcare</span>
+                </div>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                    MedConnect: Telemedicine platform for remote patient care
+                </h3>
+
+                <div class="grid grid-cols-3 gap-6 mb-8">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">15K+</div>
+                        <div class="text-sm text-gray-600">patients served monthly</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">95%</div>
+                        <div class="text-sm text-gray-600">patient satisfaction rate</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">24/7</div>
+                        <div class="text-sm text-gray-600">availability</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">Web & Mobile Development</span>
+                    <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">UX/UI Design</span>
+                </div>
+            </div>
+
+            <!-- Case Study 5: QA Testing -->
+            <div class="home-case-study-item card group hover:transform hover:scale-105 transition-all duration-300" data-category="qa-testing">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">QA Testing</span>
+                </div>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                    TestMaster: Automated testing platform for enterprise applications
+                </h3>
+
+                <div class="grid grid-cols-3 gap-6 mb-8">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">95%</div>
+                        <div class="text-sm text-gray-600">test coverage achieved</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">70%</div>
+                        <div class="text-sm text-gray-600">reduction in testing time</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">99.5%</div>
+                        <div class="text-sm text-gray-600">bug detection accuracy</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">QA & Software Testing</span>
+                    <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">Custom Software</span>
+                </div>
+            </div>
+
+            <!-- Case Study 6: UX/UI Design -->
+            <div class="home-case-study-item card group hover:transform hover:scale-105 transition-all duration-300" data-category="ui-ux-design">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">UX/UI Design</span>
+                </div>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                    DesignFlow: User experience optimization for mobile banking app
+                </h3>
+
+                <div class="grid grid-cols-3 gap-6 mb-8">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">45%</div>
+                        <div class="text-sm text-gray-600">increase in user engagement</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">60%</div>
+                        <div class="text-sm text-gray-600">faster task completion</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">4.8/5</div>
+                        <div class="text-sm text-gray-600">user satisfaction rating</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">UX/UI Design</span>
+                    <span class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-xs">Product design</span>
                 </div>
             </div>
         </div>
@@ -554,44 +681,44 @@
             <p class="text-gray-600 mt-6 text-lg">IT designs that protect data and enable secure internal management</p>
         </div>
     </div>
-</section>
+</section> 
 
-<!-- Enhanced Digital Transformation Section -->
-<section class="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-blue-100/30 to-indigo-100/30 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-orange-100/20 to-pink-100/20 rounded-full blur-3xl"></div>
-    </div>
+ <!-- Enhanced Digital Transformation Section -->
+ <section class="py-24 bg-gradient-to-br from-slate-50 via-white to-orange-50 relative overflow-hidden">
+     <!-- Background Elements -->
+     <div class="absolute inset-0 overflow-hidden pointer-events-none">
+         <div class="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-orange-100/30 to-orange-100/30 rounded-full blur-3xl"></div>
+         <div class="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-orange-100/20 to-orange-100/20 rounded-full blur-3xl"></div>
+     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Enhanced Header -->
         <div class="text-center mb-20">
-            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full text-blue-700 text-sm font-semibold mb-6">
+            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-100 to-orange-100 rounded-full text-orange-700 text-sm font-semibold mb-6">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
                 IT designs that protect data and enable secure internal management
             </div>
 
-            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight">
-                <span class="block">Digital transformation</span>
-                <span class="block bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                    for industries
-                </span>
-            </h2>
+             <h2 class="text-4xl md:text-4xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight">
+                 <span class="block">Digital transformation</span>
+                 <span class="block bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent">
+                     for industries
+                 </span>
+             </h2>
 
             <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed font-light">
                 VanTroZ is your one-stop software development company, offering a full range of services for all industries. We drive your business progress with smart tech decisions tailored to a specific field.
             </p>
 
-            <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-2xl overflow-hidden shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span class="relative">Discover More</span>
-                <svg class="relative w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                </svg>
-            </button>
+             <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-bold rounded-2xl overflow-hidden shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                 <div class="absolute inset-0 bg-gradient-to-r from-orange-700 to-orange-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                 <span class="relative">Discover More</span>
+                 <svg class="relative w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                 </svg>
+             </button>
         </div>
 
         <!-- Enhanced Industries Grid -->
@@ -616,105 +743,105 @@
                 </div>
             </div>
 
-            <!-- Energy and Utilities -->
-            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-green-50/50 to-emerald-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Energy and Utilities</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">We build smart grid management systems, renewable energy analytics platforms, and energy efficiency optimization tools...</p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center text-green-500 font-semibold hover:text-green-600 transition-colors group-hover:translate-x-1">
-                        Learn more
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+             <!-- Energy and Utilities -->
+             <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                 <div class="relative">
+                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                         </svg>
+                     </div>
+                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Energy and Utilities</h3>
+                     <p class="text-gray-600 mb-6 leading-relaxed">We build smart grid management systems, renewable energy analytics platforms, and energy efficiency optimization tools...</p>
+                     <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                         Learn more
+                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                         </svg>
+                     </a>
+                 </div>
+             </div>
 
-            <!-- Logistics -->
-            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Logistics</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">From route optimization algorithms and fleet management systems to supply chain tracking platforms...</p>
-                    <a href="{{ route('industries.logistics') }}" class="inline-flex items-center text-blue-500 font-semibold hover:text-blue-600 transition-colors group-hover:translate-x-1">
-                        Learn more
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+             <!-- Logistics -->
+             <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                 <div class="relative">
+                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                         </svg>
+                     </div>
+                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Logistics</h3>
+                     <p class="text-gray-600 mb-6 leading-relaxed">From route optimization algorithms and fleet management systems to supply chain tracking platforms...</p>
+                     <a href="{{ route('industries.logistics') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                         Learn more
+                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                         </svg>
+                     </a>
+                 </div>
+             </div>
 
-            <!-- eCommerce -->
-            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-pink-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">eCommerce</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Get tailored commerce-tuned software solutions, including online storefronts, inventory management systems...</p>
-                    <a href="{{ route('industries.ecommerce') }}" class="inline-flex items-center text-purple-500 font-semibold hover:text-purple-600 transition-colors group-hover:translate-x-1">
-                        Learn more
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+             <!-- eCommerce -->
+             <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                 <div class="relative">
+                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                         </svg>
+                     </div>
+                     <h3 class="text-2xl font-bold text-gray-900 mb-4">eCommerce</h3>
+                     <p class="text-gray-600 mb-6 leading-relaxed">Get tailored commerce-tuned software solutions, including online storefronts, inventory management systems...</p>
+                     <a href="{{ route('industries.ecommerce') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                         Learn more
+                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                         </svg>
+                     </a>
+                 </div>
+             </div>
 
-            <!-- Healthcare -->
-            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-teal-50/50 to-cyan-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Power healthcare service provision with advanced software solutions, like electronic health record (EHR) systems...</p>
-                    <a href="{{ route('industries.healthcare') }}" class="inline-flex items-center text-teal-500 font-semibold hover:text-teal-600 transition-colors group-hover:translate-x-1">
-                        Learn more
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+             <!-- Healthcare -->
+             <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                 <div class="relative">
+                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                         </svg>
+                     </div>
+                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
+                     <p class="text-gray-600 mb-6 leading-relaxed">Power healthcare service provision with advanced software solutions, like electronic health record (EHR) systems...</p>
+                     <a href="{{ route('industries.healthcare') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                         Learn more
+                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                         </svg>
+                     </a>
+                 </div>
+             </div>
 
-            <!-- FinTech -->
-            <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-blue-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative">
-                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">FinTech</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Secure, scalable financial technology solutions that drive innovation in banking and finance sectors...</p>
-                    <a href="{{ route('industries.fintech') }}" class="inline-flex items-center text-indigo-500 font-semibold hover:text-indigo-600 transition-colors group-hover:translate-x-1">
-                        Learn more
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+             <!-- FinTech -->
+             <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
+                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-50/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                 <div class="relative">
+                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                         </svg>
+                     </div>
+                     <h3 class="text-2xl font-bold text-gray-900 mb-4">FinTech</h3>
+                     <p class="text-gray-600 mb-6 leading-relaxed">Secure, scalable financial technology solutions that drive innovation in banking and finance sectors...</p>
+                     <a href="{{ route('industries.fintech') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                         Learn more
+                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                         </svg>
+                     </a>
+                 </div>
+             </div>
         </div>
     </div>
 </section>
@@ -1363,5 +1490,65 @@
     </div>
 
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const homeFilterButtons = document.querySelectorAll('.home-filter-btn');
+    const homeCaseStudyItems = document.querySelectorAll('.home-case-study-item');
+    
+    console.log('Home filter buttons found:', homeFilterButtons.length);
+    console.log('Home case study items found:', homeCaseStudyItems.length);
+    
+    homeFilterButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const filter = this.getAttribute('data-filter');
+            console.log('Home filter clicked:', filter);
+            
+            // Update active button
+            homeFilterButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-orange-500', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            
+            this.classList.remove('bg-gray-200', 'text-gray-700');
+            this.classList.add('active', 'bg-orange-500', 'text-white');
+            
+            // Filter case studies
+            homeCaseStudyItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                console.log('Home item category:', category, 'Filter:', filter);
+                
+                if (filter === 'all' || category === filter) {
+                    item.style.display = 'block';
+                    item.style.opacity = '1';
+                    console.log('Showing home item:', item);
+                } else {
+                    item.style.display = 'none';
+                    item.style.opacity = '0';
+                    console.log('Hiding home item:', item);
+                }
+            });
+        });
+    });
+    
+    // Add hover effects for filter buttons
+    homeFilterButtons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('active')) {
+                this.style.transform = 'scale(1.05)';
+                this.style.transition = 'all 0.2s ease';
+            }
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('active')) {
+                this.style.transform = 'scale(1)';
+            }
+        });
+    });
+});
+</script>
 
 @endsection

@@ -85,10 +85,10 @@ body {
 
 @keyframes glow {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
     }
     50% {
-        box-shadow: 0 0 40px rgba(99, 102, 241, 0.6), 0 0 60px rgba(6, 182, 212, 0.3);
+        box-shadow: 0 0 40px rgba(255, 107, 53, 0.6), 0 0 60px rgba(247, 147, 30, 0.3);
     }
 }
 
@@ -169,22 +169,22 @@ body {
     }
 }
 
-/* Modern Color Palette */
+/* Modern Color Palette - VANTROZ Logo Colors */
 :root {
-    --vantroz-primary: #6366f1;
-    --vantroz-primary-hover: #4f46e5;
-    --vantroz-primary-light: #818cf8;
-    --vantroz-secondary: #06b6d4;
-    --vantroz-accent: #f59e0b;
-    --vantroz-dark: #ffffff;
-    --vantroz-dark-secondary: #f8fafc;
-    --vantroz-dark-tertiary: #f1f5f9;
-    --vantroz-gray-light: #64748b;
-    --vantroz-gray-medium: #94a3b8;
+    --vantroz-primary: #ff6b35;
+    --vantroz-primary-hover: #f7931e;
+    --vantroz-primary-light: #ff8c42;
+    --vantroz-secondary: #f7931e;
+    --vantroz-accent: #ff8c42;
+    --vantroz-dark: #000000;
+    --vantroz-dark-secondary: #1a1a1a;
+    --vantroz-dark-tertiary: #2a2a2a;
+    --vantroz-gray-light: #4a4a4a;
+    --vantroz-gray-medium: #6a6a6a;
     --vantroz-white: #ffffff;
-    --vantroz-text-primary: #0f172a;
-    --vantroz-text-secondary: #475569;
-    --vantroz-text-muted: #94a3b8;
+    --vantroz-text-primary: #000000;
+    --vantroz-text-secondary: #4a4a4a;
+    --vantroz-text-muted: #6a6a6a;
     
     /* Compressed spacing */
     --space-xs: 0.125rem;
@@ -209,7 +209,7 @@ body {
 }
 
 .vantroz-gradient {
-    background: linear-gradient(135deg, var(--vantroz-primary) 0%, #f7931e 100%);
+    background: linear-gradient(135deg, var(--vantroz-primary) 0%, var(--vantroz-secondary) 100%);
 }
 
 .vantroz-orange {
@@ -222,19 +222,19 @@ body {
 
 .vantroz-dark-bg {
     background: var(--vantroz-dark);
-    background: linear-gradient(135deg, var(--vantroz-dark) 0%, var(--vantroz-dark-secondary) 25%, #f1f3f4 75%, var(--vantroz-dark) 100%);
+    background: linear-gradient(135deg, var(--vantroz-dark) 0%, var(--vantroz-dark-secondary) 25%, var(--vantroz-dark-tertiary) 75%, var(--vantroz-dark) 100%);
 }
 
 .vantroz-section-bg {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 107, 53, 0.1);
 }
 
 .vantroz-card-bg {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 107, 53, 0.1);
     box-shadow: var(--shadow-sm);
     border-radius: 1rem;
     transition: all var(--transition-normal);
@@ -250,18 +250,16 @@ body {
 
 /* Compressed Navbar Styling */
 #navbar {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    background: #ffffff;
+    border-bottom: 1px solid rgba(255, 107, 53, 0.1);
     transition: all 0.2s ease;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px 0 rgba(255, 107, 53, 0.1);
 }
 
 #navbar.navbar-scrolled {
-    background: rgba(255, 255, 255, 1);
-    backdrop-filter: blur(24px);
-    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    box-shadow: 0 4px 32px rgba(255, 107, 53, 0.15), 0 2px 8px rgba(255, 107, 53, 0.1);
+    border-bottom: 1px solid rgba(255, 107, 53, 0.2);
 }
 
 #navbar-logo {
@@ -452,7 +450,7 @@ body {
     font-weight: 700;
     color: var(--vantroz-primary);
     line-height: 1;
-    background: linear-gradient(135deg, var(--vantroz-primary), #f7931e);
+    background: linear-gradient(135deg, var(--vantroz-primary), var(--vantroz-secondary));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -480,7 +478,7 @@ body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 8px 0 rgba(99, 102, 241, 0.25);
+    box-shadow: 0 2px 8px 0 rgba(255, 107, 53, 0.25);
 }
 
 .vantroz-btn-primary:hover {
@@ -491,7 +489,7 @@ body {
 .vantroz-btn-secondary {
     background: transparent;
     color: var(--vantroz-text-primary);
-    border: 2px solid rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 107, 53, 0.3);
     padding: 0.875rem 1.75rem;
     border-radius: 50px;
     font-weight: 500;
@@ -680,17 +678,17 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    background: linear-gradient(135deg, var(--vantroz-primary), var(--vantroz-secondary));
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #f7931e, #ff6b35);
+    background: linear-gradient(135deg, var(--vantroz-secondary), var(--vantroz-primary));
 }
 
 /* Focus States */
 .navbar-link:focus,
 .navbar-contact-btn:focus {
-    outline: 2px solid #ff6b35;
+    outline: 2px solid var(--vantroz-primary);
     outline-offset: 2px;
 }

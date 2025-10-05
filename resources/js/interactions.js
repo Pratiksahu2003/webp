@@ -348,10 +348,10 @@ class InteractionController {
             // Add/remove backdrop blur based on scroll
             if (currentScrollY > 50) {
                 nav.classList.add('backdrop-blur-md');
-                nav.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                nav.style.backgroundColor = '#ffffff';
             } else {
                 nav.classList.remove('backdrop-blur-md');
-                nav.style.backgroundColor = '';
+                nav.style.backgroundColor = '#ffffff';
             }
 
             lastScrollY = currentScrollY;

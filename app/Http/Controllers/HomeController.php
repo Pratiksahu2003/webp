@@ -152,4 +152,14 @@ class HomeController extends Controller
     {
         return view('legal.refund-policy');
     }
+
+    public function cookiePolicy()
+    {
+        return view('legal.cookie-policy');
+    }
+
+    public function sitemap()
+    {
+        return view('sitemap');
+    }
 }

@@ -36,6 +36,8 @@ Route::get('/industries/logistics', [HomeController::class, 'logistics'])->name(
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/terms-conditions', [HomeController::class, 'termsConditions'])->name('terms-conditions');
 Route::get('/refund-policy', [HomeController::class, 'refundPolicy'])->name('refund-policy');
+Route::get('/cookie-policy', [HomeController::class, 'cookiePolicy'])->name('legal.cookie-policy');
+Route::get('/sitemap', [HomeController::class, 'sitemap'])->name('sitemap');
 
 // Blog Routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
