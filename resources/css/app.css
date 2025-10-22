@@ -1,6 +1,11 @@
 /* VanTroZ UI System - Complete CSS Architecture */
 
 /* ===========================================
+   iOS Safari Specific Fixes
+   =========================================== */
+@import './ios-fixes.css';
+
+/* ===========================================
    Enhanced UI System
    =========================================== */
 @import './enhanced-ui.css';

@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Advanced Hero Section with Video Background -->
-<section class="relative h-[80vh] flex items-center overflow-hidden">
+<section class="relative ios-viewport-height flex items-center overflow-hidden ios-hardware-acceleration">
 
     <!-- Video Background -->
     <div class="absolute inset-0 w-full h-full">
@@ -14,7 +14,8 @@
             muted
             loop
             playsinline
-            class="absolute inset-0 w-full h-full object-cover"
+            webkit-playsinline
+            class="absolute inset-0 w-full h-full object-cover ios-hardware-acceleration"
             poster="{{ asset('banner/home-poster.jpg') }}">
             <source src="{{ asset('banner/home.webm') }}" type="video/mp4">
             <!-- Fallback for browsers that don't support video -->
@@ -83,14 +84,14 @@
 
                     <!-- Advanced CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style="animation-delay: 0.8s;">
-                        <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-white to-slate-100 text-slate-900 font-bold rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                        <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-white to-slate-100 text-slate-900 font-bold rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 ios-touch-target ios-hardware-acceleration">
                             <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                             <span class="relative">Start Your Project</span>
                             <svg class="relative w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                         </button>
-                        <button class="group relative inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/50 hover:bg-white/10 transform hover:-translate-y-1">
+                        <button class="group relative inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/50 hover:bg-white/10 transform hover:-translate-y-1 ios-touch-target ios-hardware-acceleration">
                             <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <span class="relative">View Our Work</span>
                             <svg class="relative w-5 h-5 ml-2 group-hover:rotate-45 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

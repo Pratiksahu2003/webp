@@ -2,6 +2,7 @@ import './bootstrap';
 import './animations';
 import './interactions';
 import './navbar';
+import './ios-fixes';
 
 import Alpine from 'alpinejs';
 

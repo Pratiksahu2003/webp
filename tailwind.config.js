@@ -46,6 +46,27 @@ export default {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                 'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
             },
+            screens: {
+                'ios': '375px',
+                'ios-plus': '414px',
+                'ios-max': '428px',
+                'ios-pro': '390px',
+                'ios-pro-max': '428px',
+            },
+            height: {
+                'ios-screen': '100vh',
+                'ios-screen-safe': '-webkit-fill-available',
+            },
+            minHeight: {
+                'ios-screen': '100vh',
+                'ios-screen-safe': '-webkit-fill-available',
+            },
+            spacing: {
+                'ios-safe-top': 'env(safe-area-inset-top)',
+                'ios-safe-bottom': 'env(safe-area-inset-bottom)',
+                'ios-safe-left': 'env(safe-area-inset-left)',
+                'ios-safe-right': 'env(safe-area-inset-right)',
+            },
         },
     },
 
