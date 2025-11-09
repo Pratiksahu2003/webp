@@ -6,6 +6,11 @@
 @import './ios-fixes.css';
 
 /* ===========================================
+   Hero Section Responsive Fixes
+   =========================================== */
+@import './hero-responsive.css';
+
+/* ===========================================
    Enhanced UI System
    =========================================== */
 @import './enhanced-ui.css';

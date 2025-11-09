@@ -425,23 +425,46 @@
         width: 100% !important;
     }
     
-    /* Mobile specific hero fixes */
-    @media (max-width: 768px) {
+    /* Mobile specific hero fixes - Ensure content is not hidden behind navbar */
+    @media (max-width: 1023px) {
         #home-hero-section,
         .hero-section,
         section[class*="hero"] {
-            min-height: 100vh !important;
-            min-height: -webkit-fill-available !important;
-            min-height: calc(var(--ios-vh, 1vh) * 100) !important;
-            padding-top: env(safe-area-inset-top, 0) !important;
+            padding-top: calc(64px + env(safe-area-inset-top) + 1rem) !important;
+            min-height: calc(100vh - 64px - env(safe-area-inset-top)) !important;
+            min-height: calc((var(--ios-vh, 1vh) * 100) - 64px - env(safe-area-inset-top)) !important;
+        }
+        
+        /* Ensure content container has proper spacing */
+        #home-hero-section .hero-content-wrapper,
+        .hero-section .hero-content-wrapper {
+            padding-top: 1rem !important;
+        }
+        
+        /* Video container should not overlap content */
+        #hero-video-container {
+            height: 100% !important;
+            top: 0 !important;
         }
         
         #home-hero-section video,
         .hero-section video,
         section[class*="hero"] video {
-            min-height: 100vh !important;
-            min-height: -webkit-fill-available !important;
-            min-height: calc(var(--ios-vh, 1vh) * 100) !important;
+            height: 100% !important;
+            min-height: 100% !important;
+        }
+    }
+    
+    /* Extra small mobile devices */
+    @media (max-width: 375px) {
+        #home-hero-section,
+        .hero-section {
+            padding-top: calc(56px + env(safe-area-inset-top) + 1.5rem) !important;
+        }
+        
+        #home-hero-section .hero-content-wrapper,
+        .hero-section .hero-content-wrapper {
+            padding-top: 1.5rem !important;
         }
     }
     
@@ -839,10 +862,34 @@
     .hero-section,
     #home-hero-section {
         margin-top: 0 !important;
-        padding-top: calc(64px + env(safe-area-inset-top));
+        padding-top: calc(64px + env(safe-area-inset-top) + 0.5rem);
         min-height: calc(100vh - 64px - env(safe-area-inset-top));
         min-height: calc((var(--ios-vh, 1vh) * 100) - 64px - env(safe-area-inset-top));
         position: relative;
+    }
+    
+    /* Mobile devices: Extra padding to ensure content visibility */
+    @media (max-width: 1023px) {
+        .hero-section,
+        #home-hero-section {
+            padding-top: calc(64px + env(safe-area-inset-top) + 1.5rem) !important;
+        }
+    }
+    
+    /* Small mobile devices */
+    @media (max-width: 640px) {
+        .hero-section,
+        #home-hero-section {
+            padding-top: calc(64px + env(safe-area-inset-top) + 2rem) !important;
+        }
+    }
+    
+    /* Extra small devices */
+    @media (max-width: 375px) {
+        .hero-section,
+        #home-hero-section {
+            padding-top: calc(56px + env(safe-area-inset-top) + 2rem) !important;
+        }
     }
     
     /* Fix hero video container */
@@ -868,9 +915,35 @@
     
     /* Ensure hero section content is visible */
     .hero-section .container,
-    #home-hero-section .container {
-        padding-top: 2rem;
+    #home-hero-section .container,
+    .hero-section .hero-content-wrapper,
+    #home-hero-section .hero-content-wrapper {
+        padding-top: 1rem;
         padding-bottom: 2rem;
+        position: relative;
+        z-index: 30;
+    }
+    
+    /* Mobile: Extra padding to prevent content from being hidden */
+    @media (max-width: 1023px) {
+        .hero-section .hero-content-wrapper,
+        #home-hero-section .hero-content-wrapper {
+            padding-top: 1.5rem !important;
+            margin-top: 0 !important;
+        }
+        
+        .hero-section .hero-left-content,
+        #home-hero-section .hero-left-content {
+            padding-top: 0.5rem;
+        }
+    }
+    
+    /* Very small screens */
+    @media (max-width: 375px) {
+        .hero-section .hero-content-wrapper,
+        #home-hero-section .hero-content-wrapper {
+            padding-top: 2rem !important;
+        }
     }
 }
 
