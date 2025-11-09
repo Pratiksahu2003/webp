@@ -186,47 +186,170 @@ if (isIOSSafari()) {
             navbar.style.paddingTop = safeAreaTop;
         }
     }
-    
-    // Enhanced hero section height fix
-    const heroSections = document.querySelectorAll('.hero-section, section[class*="hero"]');
-    heroSections.forEach(section => {
-        section.classList.add('ios-viewport-height', 'ios-hardware-acceleration');
+}
+
+// Hero section fix - Run for ALL devices (especially mobile/iOS)
+// This needs to run outside the iOS-only block to work on all mobile devices
+const fixHeroSection = () => {
+        // Target multiple possible selectors
+        const heroSections = document.querySelectorAll('#home-hero-section, .hero-section, section[class*="hero"], section:first-of-type');
         
-        // Set height using JavaScript with proper calculation
-        const setHeroHeight = () => {
-            const windowHeight = window.innerHeight;
-            const safeAreaTop = parseInt(getComputedStyle(document.documentElement)
-                .getPropertyValue('--ios-safe-top') || '0', 10);
-            const safeAreaBottom = parseInt(getComputedStyle(document.documentElement)
-                .getPropertyValue('--ios-safe-bottom') || '0', 10);
-            
-            // Calculate actual available height
-            const availableHeight = windowHeight - safeAreaTop - safeAreaBottom;
-            section.style.height = `${windowHeight}px`;
-            section.style.minHeight = `${availableHeight}px`;
-        };
-        
-        setHeroHeight();
-        
-        // Enhanced resize handler
-        let heroResizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(heroResizeTimeout);
-            heroResizeTimeout = setTimeout(setHeroHeight, 100);
-        });
-        
-        // Enhanced orientation change handler
-        window.addEventListener('orientationchange', () => {
-            setTimeout(setHeroHeight, 200);
-        });
-        
-        // Visual viewport handler for iOS
-        if (window.visualViewport) {
-            window.visualViewport.addEventListener('resize', setHeroHeight);
+        if (heroSections.length === 0) {
+            // Try to find the first section on home page
+            const firstSection = document.querySelector('section:first-of-type');
+            if (firstSection && firstSection.querySelector('video')) {
+                heroSections.push(firstSection);
+            }
         }
-    });
-    
-    // Fix animation performance
+        
+        heroSections.forEach(section => {
+            if (!section) return;
+            
+            section.classList.add('ios-viewport-height', 'ios-hardware-acceleration');
+            
+            // Set height using JavaScript with proper calculation
+            const setHeroHeight = () => {
+                // Get actual viewport height (accounts for iOS Safari address bar)
+                const windowHeight = window.innerHeight;
+                const visualHeight = window.visualViewport ? window.visualViewport.height : windowHeight;
+                const actualHeight = Math.max(windowHeight, visualHeight);
+                
+                // Calculate vh unit
+                const vh = actualHeight * 0.01;
+                document.documentElement.style.setProperty('--ios-vh', `${vh}px`);
+                
+                // Use the calculated vh for hero section
+                const calculatedHeight = vh * 100;
+                
+                // Set section height
+                section.style.height = `${actualHeight}px`;
+                section.style.minHeight = `${calculatedHeight}px`;
+                section.style.maxHeight = `${actualHeight}px`;
+                
+                // Fix video container (first absolute div)
+                const videoContainers = section.querySelectorAll('div.absolute');
+                videoContainers.forEach(container => {
+                    if (container.querySelector('video')) {
+                        container.style.height = `${actualHeight}px`;
+                        container.style.minHeight = `${calculatedHeight}px`;
+                        container.style.maxHeight = `${actualHeight}px`;
+                        container.style.top = '0';
+                        container.style.left = '0';
+                        container.style.right = '0';
+                        container.style.bottom = '0';
+                    }
+                });
+                
+                // Fix video element directly
+                const video = section.querySelector('video');
+                if (video) {
+                    video.style.height = `${actualHeight}px`;
+                    video.style.minHeight = `${calculatedHeight}px`;
+                    video.style.maxHeight = `${actualHeight}px`;
+                    video.style.width = '100%';
+                    video.style.objectFit = 'cover';
+                    video.style.position = 'absolute';
+                    video.style.top = '0';
+                    video.style.left = '0';
+                }
+                
+                // Fix content container
+                const contentContainer = section.querySelector('.container, [class*="container"]');
+                if (contentContainer) {
+                    contentContainer.style.position = 'relative';
+                    contentContainer.style.zIndex = '20';
+                }
+            };
+            
+            // Set initial height immediately
+            setHeroHeight();
+            
+            // Also set after a short delay to ensure DOM is ready
+            setTimeout(setHeroHeight, 100);
+            setTimeout(setHeroHeight, 500);
+            
+            // Enhanced resize handler with debounce
+            let heroResizeTimeout;
+            const handleResize = () => {
+                clearTimeout(heroResizeTimeout);
+                heroResizeTimeout = setTimeout(() => {
+                    setHeroHeight();
+                }, 50);
+            };
+            
+            window.addEventListener('resize', handleResize, { passive: true });
+            
+            // Enhanced orientation change handler
+            let orientationTimeout;
+            window.addEventListener('orientationchange', () => {
+                clearTimeout(orientationTimeout);
+                orientationTimeout = setTimeout(() => {
+                    setHeroHeight();
+                    // Force reflow multiple times for iOS
+                    section.offsetHeight;
+                    setTimeout(() => {
+                        section.offsetHeight;
+                        setHeroHeight();
+                    }, 100);
+                }, 200);
+            });
+            
+            // Visual viewport handler for iOS (critical for mobile Safari)
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', handleResize, { passive: true });
+                window.visualViewport.addEventListener('scroll', () => {
+                    clearTimeout(heroResizeTimeout);
+                    heroResizeTimeout = setTimeout(() => {
+                        if (window.scrollY === 0) {
+                            setHeroHeight();
+                        }
+                    }, 50);
+                }, { passive: true });
+            }
+            
+            // Also listen for scroll events to handle address bar on mobile
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (window.scrollY === 0 || window.scrollY < 50) {
+                        setHeroHeight();
+                    }
+                }, 100);
+            }, { passive: true });
+            
+            // Fix on page visibility change (when user switches tabs)
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) {
+                    setTimeout(setHeroHeight, 100);
+                }
+            });
+        });
+    }
+};
+
+// Run hero section fix immediately for all devices
+fixHeroSection();
+
+// Also run when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fixHeroSection);
+} else {
+    fixHeroSection();
+}
+
+// Run after page load
+window.addEventListener('load', () => {
+    setTimeout(fixHeroSection, 100);
+});
+
+// Also run on focus (when user returns to tab)
+window.addEventListener('focus', () => {
+    setTimeout(fixHeroSection, 100);
+});
+
+// Fix animation performance (iOS specific)
+if (isIOSSafari()) {
     const animatedElements = document.querySelectorAll('.animate-pulse, .animate-ping, .animate-spin, .animate-bounce');
     animatedElements.forEach(element => {
         element.style.webkitTransform = 'translateZ(0)';

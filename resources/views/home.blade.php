@@ -4,20 +4,23 @@
 @section('description', 'VanTroZ - IT partner. Driving Business Growth. Partner with dedicated IT experts who get your business.')
 
 @section('content')
-<!-- Advanced Hero Section with Video Background -->
-<section class="relative ios-viewport-height flex items-center overflow-hidden ios-hardware-acceleration">
+<!-- Advanced Hero Section with Video Background - Fixed for iOS/Mobile -->
+<section id="home-hero-section" class="hero-section relative flex items-center overflow-hidden ios-hardware-acceleration ios-viewport-height" style="min-height: 100vh; min-height: -webkit-fill-available; min-height: calc(var(--ios-vh, 1vh) * 100);">
 
-    <!-- Video Background -->
-    <div class="absolute inset-0 w-full h-full">
+    <!-- Video Background - Fixed for iOS/Mobile -->
+    <div class="absolute inset-0 w-full h-full" id="hero-video-container" style="height: 100vh; height: -webkit-fill-available; height: calc(var(--ios-vh, 1vh) * 100); position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
         <video
+            id="hero-video"
             autoplay
             muted
             loop
             playsinline
-            webkit-playsinline
+            webkit-playsinline="true"
             class="absolute inset-0 w-full h-full object-cover ios-hardware-acceleration"
+            style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;"
             poster="{{ asset('banner/home-poster.jpg') }}">
-            <source src="{{ asset('banner/home.webm') }}" type="video/mp4">
+            <source src="{{ asset('banner/home.webm') }}" type="video/webm">
+            <source src="{{ asset('banner/common.mp4') }}" type="video/mp4">
             <!-- Fallback for browsers that don't support video -->
             <div class="absolute inset-0 bg-gradient-to-br from-orange-600 via-orange-700 to-orange-800"></div>
         </video>
@@ -36,12 +39,12 @@
         <div class="absolute bottom-20 left-20 w-24 h-24 border border-orange-400/20 rounded-lg rotate-45 animate-pulse"></div>
     </div>
 
-    <!-- Advanced Content Container -->
-    <div class="container mx-auto px-4 lg:px-6 relative z-20">
-        <div class="grid lg:grid-cols-12 gap-12 items-center py-16">
+    <!-- Advanced Content Container - Fixed for Mobile -->
+    <div class="container mx-auto px-4 lg:px-6 relative z-20 w-full">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center py-8 lg:py-16">
 
-            <!-- Advanced Left Content -->
-            <div class="lg:col-span-7 space-y-10 relative z-30">
+            <!-- Advanced Left Content - Mobile Optimized -->
+            <div class="lg:col-span-7 space-y-6 lg:space-y-10 relative z-30">
 
                 <!-- Advanced Hero Badge -->
                 <div class="flex justify-start animate-fade-in-up">
@@ -54,17 +57,17 @@
                     </div>
                 </div>
 
-                <!-- Advanced Hero Headlines -->
-                <div class="space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
-                    <h1 class="text-3xl md:text-2xl lg:text-3xl font-black text-white leading-none tracking-tight">
+                <!-- Advanced Hero Headlines - Mobile Optimized -->
+                <div class="space-y-4 lg:space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
                         <span class="block">Build the</span>
                         <span class="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent animate-gradient-x">Future</span>
                         <span class="block">of Business</span>
                     </h1>
 
-                    <!-- Advanced Hero Subtitle -->
+                    <!-- Advanced Hero Subtitle - Mobile Optimized -->
                     <div class="max-w-2xl">
-                        <p class="text-xl md:text-2xl text-slate-200 leading-relaxed font-light animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-200 leading-relaxed font-light animate-fade-in-up" style="animation-delay: 0.4s;">
                             We craft <span class="text-white font-semibold">exceptional digital experiences</span> that transform ideas into powerful, scalable solutions that drive real business growth.
                         </p>
                     </div>
@@ -82,16 +85,16 @@
                         </div>
                     </div>
 
-                    <!-- Advanced CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style="animation-delay: 0.8s;">
-                        <button class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-white to-slate-100 text-slate-900 font-bold rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 ios-touch-target ios-hardware-acceleration">
+                    <!-- Advanced CTA Buttons - Mobile Optimized -->
+                    <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 pt-2 lg:pt-4 animate-fade-in-up" style="animation-delay: 0.8s;">
+                        <button class="group relative inline-flex items-center justify-center px-6 py-3 lg:px-8 lg:py-4 bg-gradient-to-r from-white to-slate-100 text-slate-900 font-bold rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 ios-touch-target ios-hardware-acceleration w-full sm:w-auto">
                             <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                             <span class="relative">Start Your Project</span>
                             <svg class="relative w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                         </button>
-                        <button class="group relative inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/50 hover:bg-white/10 transform hover:-translate-y-1 ios-touch-target ios-hardware-acceleration">
+                        <button class="group relative inline-flex items-center justify-center px-6 py-3 lg:px-8 lg:py-4 border-2 border-white/30 text-white font-semibold rounded-xl backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/50 hover:bg-white/10 transform hover:-translate-y-1 ios-touch-target ios-hardware-acceleration w-full sm:w-auto">
                             <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <span class="relative">View Our Work</span>
                             <svg class="relative w-5 h-5 ml-2 group-hover:rotate-45 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1464,6 +1467,70 @@
             });
         });
     });
+</script>
+
+<!-- Immediate Hero Section Fix for iOS/Mobile -->
+<script>
+    (function() {
+        'use strict';
+        
+        const fixHeroImmediate = () => {
+            const heroSection = document.getElementById('home-hero-section');
+            const videoContainer = document.getElementById('hero-video-container');
+            const video = document.getElementById('hero-video');
+            
+            if (!heroSection) return;
+            
+            // Get actual viewport height
+            const windowHeight = window.innerHeight;
+            const visualHeight = window.visualViewport ? window.visualViewport.height : windowHeight;
+            const actualHeight = Math.max(windowHeight, visualHeight);
+            const vh = actualHeight * 0.01;
+            
+            // Set CSS variable
+            document.documentElement.style.setProperty('--ios-vh', `${vh}px`);
+            
+            // Fix hero section
+            heroSection.style.height = `${actualHeight}px`;
+            heroSection.style.minHeight = `${actualHeight}px`;
+            
+            // Fix video container
+            if (videoContainer) {
+                videoContainer.style.height = `${actualHeight}px`;
+                videoContainer.style.minHeight = `${actualHeight}px`;
+            }
+            
+            // Fix video
+            if (video) {
+                video.style.height = `${actualHeight}px`;
+                video.style.minHeight = `${actualHeight}px`;
+            }
+        };
+        
+        // Run immediately
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', fixHeroImmediate);
+        } else {
+            fixHeroImmediate();
+        }
+        
+        // Run on resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(fixHeroImmediate, 50);
+        }, { passive: true });
+        
+        // Run on orientation change
+        window.addEventListener('orientationchange', () => {
+            setTimeout(fixHeroImmediate, 200);
+        });
+        
+        // Run on visual viewport changes (iOS Safari)
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', fixHeroImmediate, { passive: true });
+        }
+    })();
 </script>
 
 @endsection

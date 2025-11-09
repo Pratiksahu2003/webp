@@ -186,45 +186,98 @@
 
     <!-- VanTroZ UI System - JavaScript modules loaded via Vite -->
     
-    <!-- Mobile Menu JavaScript -->
+    <!-- Mobile Menu JavaScript - Enhanced for iOS -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, initializing mobile menu...');
-            
-            // Mobile menu toggle
+            // Mobile menu toggle - Enhanced for iOS
             const mobileMenuButton = document.querySelector('.mobile-menu-button');
             const mobileMenu = document.querySelector('.mobile-menu');
-            
-            console.log('Mobile menu button:', mobileMenuButton);
-            console.log('Mobile menu:', mobileMenu);
+            const navbar = document.getElementById('navbar');
 
             if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    console.log('Mobile menu button clicked');
-                    
-                    const isHidden = mobileMenu.classList.contains('hidden');
-                    console.log('Menu is hidden:', isHidden);
-                    
-                    if (isHidden) {
-                        mobileMenu.classList.remove('hidden');
-                        console.log('Menu opened');
-                    } else {
-                        mobileMenu.classList.add('hidden');
-                        console.log('Menu closed');
+                let isMenuOpen = false;
+                
+                const toggleMenu = function(e) {
+                    if (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
                     }
-                });
-
+                    
+                    isMenuOpen = !isMenuOpen;
+                    
+                    if (isMenuOpen) {
+                        // Show menu
+                        mobileMenu.classList.remove('hidden');
+                        mobileMenu.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                        
+                        // Animate menu
+                        requestAnimationFrame(() => {
+                            mobileMenu.style.transition = 'all 0.3s ease';
+                            mobileMenu.style.opacity = '1';
+                            mobileMenu.style.transform = 'translateY(0)';
+                        });
+                        
+                        // Change button icon to X
+                        mobileMenuButton.innerHTML = `
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        `;
+                    } else {
+                        // Hide menu
+                        mobileMenu.style.transition = 'all 0.3s ease';
+                        mobileMenu.style.opacity = '0';
+                        mobileMenu.style.transform = 'translateY(-10px)';
+                        
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenu.style.display = '';
+                            document.body.style.overflow = '';
+                        }, 300);
+                        
+                        // Change button icon back to hamburger
+                        mobileMenuButton.innerHTML = `
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        `;
+                    }
+                };
+                
+                // Click event - works on all devices including iOS
+                mobileMenuButton.addEventListener('click', toggleMenu);
+                
+                // Touch event for better iOS support
+                mobileMenuButton.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    toggleMenu(e);
+                }, { passive: false });
+                
                 // Close mobile menu when clicking outside
                 document.addEventListener('click', function(e) {
-                    if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
-                        mobileMenu.classList.add('hidden');
+                    if (isMenuOpen && 
+                        !mobileMenuButton.contains(e.target) && 
+                        !mobileMenu.contains(e.target) && 
+                        navbar && 
+                        !navbar.contains(e.target)) {
+                        toggleMenu();
                     }
                 });
-            } else {
-                console.error('Mobile menu elements not found!');
+                
+                // Close on escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && isMenuOpen) {
+                        toggleMenu();
+                    }
+                });
+                
+                // Close menu on window resize to desktop
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth >= 1024 && isMenuOpen) {
+                        toggleMenu();
+                    }
+                });
             }
 
             // Dropdown menu functionality
