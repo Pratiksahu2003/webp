@@ -202,26 +202,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Search Functionality -->
-        <div class="bg-gray-50 rounded-lg p-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Can't Find What You're Looking For?</h2>
-            <div class="max-w-md mx-auto">
-                <form class="flex">
-                    <input type="search" placeholder="Search our website..." 
-                           class="flex-1 px-4 py-3 border border-gray-300 rounded-l-lg focus:border-orange-500 focus:ring-1 focus:ring-orange-500">
-                    <button type="submit" 
-                            class="bg-orange-500 text-white px-6 py-3 rounded-r-lg hover:bg-orange-600 transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </button>
-                </form>
-            </div>
-            <p class="text-center text-gray-600 text-sm mt-4">
-                Or <a href="{{ route('contact') }}" class="text-orange-600 hover:text-orange-700 font-medium">contact us directly</a> for assistance.
-            </p>
-        </div>
     </div>
 </section>
 @endsection
