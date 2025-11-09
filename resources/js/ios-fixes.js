@@ -2,13 +2,51 @@
    iOS Safari Specific JavaScript Fixes
    ======================================== */
 
-// Detect iOS Safari
+// Enhanced iOS Detection
 const isIOSSafari = () => {
     const ua = navigator.userAgent;
     const iOS = /iPad|iPhone|iPod/.test(ua);
     const webkit = /WebKit/.test(ua);
     const standalone = window.navigator.standalone;
-    return iOS && webkit && !standalone;
+    const isIOS = iOS && webkit;
+    
+    // Check if running in iOS Safari (not standalone PWA)
+    if (isIOS && !standalone) {
+        return true;
+    }
+    
+    // Also detect iOS Chrome (uses WKWebView)
+    if (iOS && /CriOS/.test(ua)) {
+        return true;
+    }
+    
+    return false;
+};
+
+// Detect if device is iPad
+const isIPad = () => {
+    const ua = navigator.userAgent;
+    return /iPad/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+};
+
+// Detect device type
+const getIOSDeviceType = () => {
+    const ua = navigator.userAgent;
+    const width = window.screen.width;
+    const height = window.screen.height;
+    
+    if (isIPad()) {
+        if (width >= 1024) return 'ipad-pro';
+        return 'ipad';
+    }
+    
+    // iPhone detection based on screen dimensions
+    if (width === 375 && height === 667) return 'iphone-se';
+    if (width === 390 && height === 844) return 'iphone-12-13-14';
+    if (width === 414 && height === 896) return 'iphone-plus';
+    if (width === 428 && height === 926) return 'iphone-pro-max';
+    
+    return 'iphone-unknown';
 };
 
 // Detect iOS version
@@ -25,26 +63,64 @@ const getIOSVersion = () => {
     return null;
 };
 
-// iOS Safari specific fixes
+// Enhanced iOS Safari specific fixes
 if (isIOSSafari()) {
-    console.log('iOS Safari detected, applying fixes...');
+    const deviceType = getIOSDeviceType();
+    console.log('iOS Safari detected:', deviceType, 'applying enhanced fixes...');
     
-    // Fix viewport height issues
+    // Enhanced viewport height fix
     const setViewportHeight = () => {
         const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        document.documentElement.style.setProperty('--ios-vh', `${vh}px`);
+        
+        // Also set CSS custom property for safe areas
+        const safeAreaTop = getComputedStyle(document.documentElement)
+            .getPropertyValue('--ios-safe-top') || '0px';
+        const safeAreaBottom = getComputedStyle(document.documentElement)
+            .getPropertyValue('--ios-safe-bottom') || '0px';
+        
+        document.documentElement.style.setProperty('--ios-safe-top', safeAreaTop);
+        document.documentElement.style.setProperty('--ios-safe-bottom', safeAreaBottom);
     };
     
     // Set initial viewport height
     setViewportHeight();
     
+    // Enhanced orientation change handler
+    let orientationTimeout;
+    const handleOrientationChange = () => {
+        clearTimeout(orientationTimeout);
+        orientationTimeout = setTimeout(() => {
+            setViewportHeight();
+            
+            // Force reflow to ensure proper rendering
+            document.body.style.display = 'none';
+            document.body.offsetHeight; // Trigger reflow
+            document.body.style.display = '';
+            
+            // Update hero sections
+            const heroSections = document.querySelectorAll('.hero-section, section[class*="hero"]');
+            heroSections.forEach(section => {
+                section.style.height = `${window.innerHeight}px`;
+            });
+        }, 150);
+    };
+    
     // Update on orientation change
-    window.addEventListener('orientationchange', () => {
-        setTimeout(setViewportHeight, 100);
+    window.addEventListener('orientationchange', handleOrientationChange);
+    
+    // Update on resize with debounce
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(setViewportHeight, 100);
     });
     
-    // Update on resize
-    window.addEventListener('resize', setViewportHeight);
+    // Also listen for visual viewport changes (iOS Safari specific)
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', setViewportHeight);
+        window.visualViewport.addEventListener('scroll', setViewportHeight);
+    }
     
     // Fix video autoplay issues
     const videos = document.querySelectorAll('video');
@@ -111,22 +187,43 @@ if (isIOSSafari()) {
         }
     }
     
-    // Fix hero section height
+    // Enhanced hero section height fix
     const heroSections = document.querySelectorAll('.hero-section, section[class*="hero"]');
     heroSections.forEach(section => {
         section.classList.add('ios-viewport-height', 'ios-hardware-acceleration');
         
-        // Set height using JavaScript
+        // Set height using JavaScript with proper calculation
         const setHeroHeight = () => {
-            const vh = window.innerHeight * 0.01;
-            section.style.height = `${window.innerHeight}px`;
+            const windowHeight = window.innerHeight;
+            const safeAreaTop = parseInt(getComputedStyle(document.documentElement)
+                .getPropertyValue('--ios-safe-top') || '0', 10);
+            const safeAreaBottom = parseInt(getComputedStyle(document.documentElement)
+                .getPropertyValue('--ios-safe-bottom') || '0', 10);
+            
+            // Calculate actual available height
+            const availableHeight = windowHeight - safeAreaTop - safeAreaBottom;
+            section.style.height = `${windowHeight}px`;
+            section.style.minHeight = `${availableHeight}px`;
         };
         
         setHeroHeight();
-        window.addEventListener('resize', setHeroHeight);
-        window.addEventListener('orientationchange', () => {
-            setTimeout(setHeroHeight, 100);
+        
+        // Enhanced resize handler
+        let heroResizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(heroResizeTimeout);
+            heroResizeTimeout = setTimeout(setHeroHeight, 100);
         });
+        
+        // Enhanced orientation change handler
+        window.addEventListener('orientationchange', () => {
+            setTimeout(setHeroHeight, 200);
+        });
+        
+        // Visual viewport handler for iOS
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', setHeroHeight);
+        }
     });
     
     // Fix animation performance
@@ -268,15 +365,26 @@ if (isIOSSafari()) {
     console.log('iOS Safari fixes applied successfully');
 }
 
-// iOS specific utility functions
+// Enhanced iOS specific utility functions
 window.iOSUtils = {
     isIOSSafari,
     getIOSVersion,
+    isIPad,
+    getIOSDeviceType,
     
-    // Fix viewport height
+    // Enhanced viewport height fix
     fixViewportHeight: () => {
         const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        document.documentElement.style.setProperty('--ios-vh', `${vh}px`);
+        
+        // Update safe area insets
+        const safeAreaTop = getComputedStyle(document.documentElement)
+            .getPropertyValue('--ios-safe-top') || '0px';
+        const safeAreaBottom = getComputedStyle(document.documentElement)
+            .getPropertyValue('--ios-safe-bottom') || '0px';
+        
+        document.documentElement.style.setProperty('--ios-safe-top', safeAreaTop);
+        document.documentElement.style.setProperty('--ios-safe-bottom', safeAreaBottom);
     },
     
     // Fix video autoplay
@@ -310,9 +418,13 @@ window.iOSUtils = {
     }
 };
 
-// Apply fixes on DOM ready
+// Enhanced application of fixes on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
     if (isIOSSafari()) {
+        const deviceType = getIOSDeviceType();
+        console.log('Applying iOS fixes for:', deviceType);
+        
+        // Apply all fixes
         window.iOSUtils.fixViewportHeight();
         window.iOSUtils.fixTouchTargets();
         window.iOSUtils.fixFormInputs();
@@ -322,8 +434,50 @@ document.addEventListener('DOMContentLoaded', () => {
         videos.forEach(video => {
             window.iOSUtils.fixVideoAutoplay(video);
         });
+        
+        // Add device-specific class to body
+        document.body.classList.add(`ios-device-${deviceType}`);
+        
+        // Enhanced mobile menu fixes
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        
+        if (mobileMenu && mobileMenuButton) {
+            // Ensure proper touch handling
+            mobileMenuButton.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                mobileMenuButton.click();
+            }, { passive: false });
+            
+            // Close menu when clicking outside
+            document.addEventListener('touchstart', (e) => {
+                if (!mobileMenu.contains(e.target) && 
+                    !mobileMenuButton.contains(e.target) && 
+                    !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
+        
+        // Prevent pull-to-refresh on iOS
+        let touchStartY = 0;
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        
+        document.addEventListener('touchmove', (e) => {
+            const touchY = e.touches[0].clientY;
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            
+            // Prevent pull-to-refresh when at top of page
+            if (scrollTop === 0 && touchY > touchStartY) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        console.log('iOS fixes applied successfully');
     }
 });
 
 // Export for use in other modules
-export { isIOSSafari, getIOSVersion };
+export { isIOSSafari, getIOSVersion, isIPad, getIOSDeviceType };

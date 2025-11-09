@@ -3,21 +3,31 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <!-- Enhanced iOS Viewport Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <!-- iOS Safari Specific Meta Tags -->
+    <!-- Enhanced iOS Safari Specific Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="{{ config('company.name') }}">
     <meta name="format-detection" content="telephone=no">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-touch-fullscreen" content="yes">
     
-    <!-- iOS Safari Touch Icons -->
+    <!-- iOS Safari Touch Icons - Enhanced -->
     <link rel="apple-touch-icon" href="{{ asset('logo/logo.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('logo/logo.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('logo/logo.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('logo/logo.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('logo/logo.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('logo/logo.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('logo/logo.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('logo/logo.png') }}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('logo/logo.png') }}">
     <link rel="apple-touch-icon" sizes="167x167" href="{{ asset('logo/logo.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('logo/logo.png') }}">
 
     <title>@yield('title', config('company.name') . ' - IT Partner')</title>
     <meta name="description" content="@yield('description', config('company.name') . ' - ' . config('company.tagline') . ' for software development, web development, mobile app development, and more.')">
@@ -32,7 +42,7 @@
     <!-- VanTroZ UI System - CSS modules loaded via Vite -->
 </head>
 
-<body class="font-sans antialiased text-gray-900 bg-white">
+<body class="font-sans antialiased text-gray-900 bg-white ios-smooth-scroll">
     <!-- Clean Professional Navigation -->
     <nav id="navbar" class="fixed w-full top-0 z-50 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed ios-hardware-acceleration ios-safe-area-padding">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -136,9 +146,9 @@
             </div>
         </div>
 
-        <!-- Mobile menu -->
-        <div class="mobile-menu hidden lg:hidden">
-            <div class="px-4 pt-4 pb-6 space-y-2 bg-white border-t border-gray-200">
+        <!-- Mobile menu - Enhanced for iOS -->
+        <div class="mobile-menu hidden lg:hidden ios-smooth-scroll ios-safe-area-padding">
+            <div class="px-4 pt-4 pb-6 space-y-2 bg-white border-t border-gray-200 ios-safe-area-padding">
                 <a href="{{ route('services') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Services</a>
                 <a href="#" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Industries & Solutions</a>
                 <a href="{{ route('case-studies') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Case Studies</a>
