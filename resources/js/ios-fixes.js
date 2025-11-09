@@ -29,22 +29,49 @@ const isIPad = () => {
     return /iPad/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 };
 
-// Detect device type
+// Enhanced device type detection for all iOS devices
 const getIOSDeviceType = () => {
     const ua = navigator.userAgent;
     const width = window.screen.width;
     const height = window.screen.height;
+    const pixelRatio = window.devicePixelRatio || 1;
     
     if (isIPad()) {
-        if (width >= 1024) return 'ipad-pro';
+        // iPad detection
+        if (width >= 1024 || (width === 834 && height === 1194)) return 'ipad-pro-12.9';
+        if (width === 834 && height === 1112) return 'ipad-pro-11';
+        if (width === 810 && height === 1080) return 'ipad-10.2';
+        if (width === 768 && height === 1024) return 'ipad-mini';
         return 'ipad';
     }
     
-    // iPhone detection based on screen dimensions
+    // iPhone detection based on screen dimensions (portrait)
+    // iPhone SE (1st gen) - 320x568 @2x = 640x1136
+    if ((width === 320 && height === 568) || (width === 375 && height === 667)) return 'iphone-se-1';
+    
+    // iPhone SE (2nd/3rd gen) - 375x667 @2x = 750x1334
     if (width === 375 && height === 667) return 'iphone-se';
-    if (width === 390 && height === 844) return 'iphone-12-13-14';
+    
+    // iPhone 12/13/14/15 - 390x844
+    if (width === 390 && height === 844) return 'iphone-12-13-14-15';
+    
+    // iPhone 12/13/14/15 Plus - 414x896
     if (width === 414 && height === 896) return 'iphone-plus';
+    
+    // iPhone 12/13/14/15 Pro Max - 428x926
     if (width === 428 && height === 926) return 'iphone-pro-max';
+    
+    // iPhone 15 Pro Max - 430x932
+    if (width === 430 && height === 932) return 'iphone-15-pro-max';
+    
+    // iPhone X/XS/11 Pro - 375x812
+    if (width === 375 && height === 812) return 'iphone-x';
+    
+    // iPhone XR/11 - 414x896
+    if (width === 414 && height === 896) return 'iphone-xr';
+    
+    // iPhone XS Max/11 Pro Max - 414x896
+    if (width === 414 && height === 896) return 'iphone-xs-max';
     
     return 'iphone-unknown';
 };

@@ -260,6 +260,12 @@ body {
     transition: all 0.2s ease;
     box-shadow: none;
     height: 64px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
 }
 
 #navbar.navbar-scrolled {

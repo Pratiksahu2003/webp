@@ -44,9 +44,9 @@
 
 <body class="font-sans antialiased text-gray-900 bg-white ios-smooth-scroll">
     <!-- Clean Professional Navigation -->
-    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed ios-hardware-acceleration ios-safe-area-padding">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
+    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed ios-hardware-acceleration">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center ios-safe-area-padding" style="padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));">
+            <div class="flex justify-between items-center h-16 w-full">
                 <!-- Clean Logo Section -->
                 <div class="flex items-center flex-shrink-0 justify-start">
                     <a href="{{ route('home') }}" class="flex items-center">
@@ -177,7 +177,7 @@
     </nav>
 
     <!-- Compressed Main Content -->
-    <main class="pt-16">
+    <main class="pt-16 ios-main-content" style="padding-top: calc(4rem + env(safe-area-inset-top));">
         @yield('content')
     </main>
 

@@ -5,10 +5,10 @@
 
 @section('content')
 <!-- Advanced Hero Section with Video Background - Fixed for iOS/Mobile -->
-<section id="home-hero-section" class="hero-section relative flex items-center overflow-hidden ios-hardware-acceleration ios-viewport-height" style="min-height: 100vh; min-height: -webkit-fill-available; min-height: calc(var(--ios-vh, 1vh) * 100);">
+<section id="home-hero-section" class="hero-section relative flex items-center overflow-hidden ios-hardware-acceleration ios-viewport-height ios-hero-fixed" style="padding-top: calc(64px + env(safe-area-inset-top)); min-height: calc(100vh - 64px - env(safe-area-inset-top)); min-height: calc((var(--ios-vh, 1vh) * 100) - 64px - env(safe-area-inset-top));">
 
     <!-- Video Background - Fixed for iOS/Mobile -->
-    <div class="absolute inset-0 w-full h-full" id="hero-video-container" style="height: 100vh; height: -webkit-fill-available; height: calc(var(--ios-vh, 1vh) * 100); position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+    <div class="absolute inset-0 w-full h-full" id="hero-video-container" style="height: calc(100vh - 64px - env(safe-area-inset-top)); height: calc((var(--ios-vh, 1vh) * 100) - 64px - env(safe-area-inset-top)); position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
         <video
             id="hero-video"
             autoplay
@@ -136,14 +136,6 @@
                             <div class="text-3xl font-bold bg-gradient-to-r from-orange-300 to-orange-400 bg-clip-text text-transparent mb-2">250+</div>
                             <div class="text-slate-300 text-sm font-medium">Expert Developers</div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Achievement Badges -->
-                <div class="flex justify-center space-x-4 animate-fade-in-up" style="animation-delay: 1.6s;">
-                    <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
-                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                        <span class="text-slate-200 text-sm font-medium">99% Success Rate</span>
                     </div>
                 </div>
             </div>
