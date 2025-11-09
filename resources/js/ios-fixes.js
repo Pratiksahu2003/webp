@@ -325,7 +325,6 @@ const fixHeroSection = () => {
                 }
             });
         });
-    }
 };
 
 // Run hero section fix immediately for all devices
