@@ -149,17 +149,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Advanced Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 animate-fade-in-up" style="animation-delay: 2s;">
-        <div class="flex flex-col items-center space-y-2">
-            <div class="text-white/70 text-sm font-medium tracking-wider uppercase">Scroll to explore</div>
-            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-                <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
-            </div>
-        </div>
-    </div>
-
 </section>
 
 <!-- Compressed Stats Section -->

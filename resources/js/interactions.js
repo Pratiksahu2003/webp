@@ -10,7 +10,8 @@ class InteractionController {
     }
 
     init() {
-        this.setupMobileMenu();
+        // Mobile menu is handled by navbar.js to avoid conflicts
+        // this.setupMobileMenu();
         this.setupButtonInteractions();
         this.setupCardHovers();
         this.setupSmoothScrolling();
@@ -21,53 +22,12 @@ class InteractionController {
 
     /**
      * Mobile Menu Functionality
+     * NOTE: Disabled - Mobile menu is handled by navbar.js to avoid conflicts
      */
     setupMobileMenu() {
-        const mobileMenuButton = document.querySelector('.mobile-menu-button');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const overlay = document.createElement('div');
-        
-        if (!mobileMenuButton || !mobileMenu) return;
-
-        overlay.className = 'mobile-menu-overlay fixed inset-0 bg-black bg-opacity-50 z-40 hidden';
-        document.body.appendChild(overlay);
-
-        const toggleMenu = () => {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-                overlay.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                
-                // Animate menu items
-                const menuItems = mobileMenu.querySelectorAll('a');
-                menuItems.forEach((item, index) => {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateX(-20px)';
-                    
-                    setTimeout(() => {
-                        item.style.transition = 'all 0.3s ease';
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateX(0)';
-                    }, index * 100);
-                });
-            } else {
-                mobileMenu.classList.add('hidden');
-                overlay.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        };
-
-        mobileMenuButton.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-                toggleMenu();
-            }
-        });
+        // This function is disabled to prevent conflicts with navbar.js
+        // Mobile menu toggle is handled in resources/js/navbar.js
+        return;
     }
 
     /**

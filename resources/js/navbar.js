@@ -49,19 +49,39 @@ function initMobileMenu() {
     const mobileMenu = document.querySelector('.mobile-menu');
     const navbar = document.getElementById('navbar');
     
-    if (!mobileMenuButton || !mobileMenu) return;
+    if (!mobileMenuButton || !mobileMenu) {
+        console.warn('Mobile menu button or menu not found', {
+            button: !!mobileMenuButton,
+            menu: !!mobileMenu
+        });
+        return;
+    }
+    
+    console.log('Mobile menu initialized', {
+        button: mobileMenuButton,
+        menu: mobileMenu
+    });
     
     let isMenuOpen = false;
     
-    const toggleMenu = () => {
+    const toggleMenu = (e) => {
+        // Prevent event bubbling if event is provided
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        console.log('Toggle menu called, current state:', isMenuOpen);
         isMenuOpen = !isMenuOpen;
         
         if (isMenuOpen) {
             // Show menu with smooth animation
             mobileMenu.classList.remove('hidden');
+            mobileMenu.style.display = 'block';
             mobileMenu.style.maxHeight = '0px';
             mobileMenu.style.opacity = '0';
             mobileMenu.style.transform = 'translateY(-10px)';
+            document.body.style.overflow = 'hidden';
             
             requestAnimationFrame(() => {
                 mobileMenu.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -71,6 +91,7 @@ function initMobileMenu() {
             });
             
             // Animate button to X with rotation
+            mobileMenuButton.setAttribute('aria-expanded', 'true');
             mobileMenuButton.innerHTML = `
                 <svg class="h-6 w-6 transform transition-transform duration-300 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -82,13 +103,17 @@ function initMobileMenu() {
             mobileMenu.style.maxHeight = '0px';
             mobileMenu.style.opacity = '0';
             mobileMenu.style.transform = 'translateY(-10px)';
+            document.body.style.overflow = '';
             
             setTimeout(() => {
                 mobileMenu.classList.add('hidden');
+                mobileMenu.style.display = '';
+                mobileMenu.style.maxHeight = '';
                 mobileMenu.style.transform = '';
             }, 300);
             
             // Animate button back to hamburger
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
             mobileMenuButton.innerHTML = `
                 <svg class="h-6 w-6 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -97,23 +122,58 @@ function initMobileMenu() {
         }
     };
     
-    mobileMenuButton.addEventListener('click', toggleMenu);
+    // Ensure button is clickable
+    mobileMenuButton.setAttribute('aria-label', 'Toggle mobile menu');
+    mobileMenuButton.setAttribute('aria-expanded', 'false');
     
-    // Close mobile menu when clicking outside
+    // Click event - primary handler
+    mobileMenuButton.addEventListener('click', function(e) {
+        console.log('Button clicked');
+        toggleMenu(e);
+    }, false);
+    
+    // Touch event for better mobile/iOS support
+    let touchStartTime = 0;
+    mobileMenuButton.addEventListener('touchstart', function(e) {
+        touchStartTime = Date.now();
+    }, { passive: true });
+    
+    mobileMenuButton.addEventListener('touchend', function(e) {
+        const touchDuration = Date.now() - touchStartTime;
+        // Only trigger if it was a quick tap (not a swipe)
+        if (touchDuration < 300) {
+            e.preventDefault();
+            console.log('Button touched');
+            toggleMenu(e);
+        }
+    }, { passive: false });
+    
+    // Close mobile menu when clicking outside (but not on the button)
     document.addEventListener('click', (e) => {
-        if (!navbar.contains(e.target) && isMenuOpen) {
+        if (isMenuOpen && 
+            !mobileMenuButton.contains(e.target) && 
+            !mobileMenu.contains(e.target)) {
             toggleMenu();
         }
     });
     
-    // Close mobile menu on window resize
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isMenuOpen) {
+            toggleMenu();
+        }
+    });
+    
+    // Close mobile menu on window resize to desktop
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 1024 && isMenuOpen) {
             isMenuOpen = false;
             mobileMenu.classList.add('hidden');
+            mobileMenu.style.display = '';
             mobileMenu.style.maxHeight = '';
             mobileMenu.style.opacity = '';
             mobileMenu.style.transform = '';
+            document.body.style.overflow = '';
             
             mobileMenuButton.innerHTML = `
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

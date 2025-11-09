@@ -45,9 +45,9 @@ return [
     ],
 
     'social' => [
-        'facebook' => '#',
-        'twitter' => '#',
-        'linkedin' => '#',
-        'instagram' => '#',
+        'facebook' => 'https://www.facebook.com/profile.php?id=61581048286092',
+        'twitter' => 'https://x.com/Vantroz_IT',
+        'linkedin' => 'https://www.linkedin.com/in/vantroz-technology-133474398/',
+        'instagram' => 'https://www.instagram.com/vantroz.technology/',
     ],
 ];
