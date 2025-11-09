@@ -152,7 +152,7 @@
                 <div class="text-slate-600 text-sm font-medium">Projects</div>
             </div>
             <div class="text-center p-4 rounded-lg bg-gradient-to-br from-cyan-50 to-teal-50 border border-cyan-100">
-                <div class="text-3xl font-bold text-orange-600 mb-1">24+</div>
+                <div class="text-3xl font-bold text-orange-600 mb-1">5+</div>
                 <div class="text-slate-600 text-sm font-medium">Years</div>
             </div>
             <div class="text-center p-4 rounded-lg bg-gradient-to-br from-teal-50 to-emerald-50 border border-teal-100">
