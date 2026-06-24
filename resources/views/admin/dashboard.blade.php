@@ -30,7 +30,7 @@
     </div>
 
     <!-- Enhanced Statistics Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <!-- Total Pages -->
         <div class="zoho-stat-card animate-fade-in">
             <div class="flex items-center justify-between mb-4">
@@ -52,30 +52,6 @@
                 <h3 class="zoho-metric">{{ $stats['pages'] ?? 24 }}</h3>
                 <p class="text-gray-600 font-medium mt-1">Total Pages</p>
                 <p class="text-sm text-gray-500 mt-1">↗ 3 new this week</p>
-            </div>
-        </div>
-
-        <!-- Active Services -->
-        <div class="zoho-stat-card animate-fade-in" style="animation-delay: 0.1s">
-            <div class="flex items-center justify-between mb-4">
-                <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
-                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
-                    </svg>
-                </div>
-                <div class="text-right">
-                    <div class="flex items-center text-green-600 text-sm font-medium">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                        </svg>
-                        8%
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h3 class="zoho-metric">{{ $stats['services'] ?? 18 }}</h3>
-                <p class="text-gray-600 font-medium mt-1">Active Services</p>
-                <p class="text-sm text-gray-500 mt-1">↗ 2 new this month</p>
             </div>
         </div>
 
@@ -103,27 +79,18 @@
             </div>
         </div>
 
-        <!-- Total Clients -->
+        <!-- Published Posts -->
         <div class="zoho-stat-card animate-fade-in" style="animation-delay: 0.3s">
             <div class="flex items-center justify-between mb-4">
                 <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
                     <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M17 20v-2c0-.653-.146-1.28-.423-1.857M7 20v-2c0-.653.146-1.28.423-1.857M11 16a3 3 0 10-6 0 3 3 0 006 0zm3.5-7.5a3 3 0 10-6 0 3 3 0 006 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                </div>
-                <div class="text-right">
-                    <div class="flex items-center text-green-600 text-sm font-medium">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                        </svg>
-                        18%
-                    </div>
                 </div>
             </div>
             <div>
-                <h3 class="zoho-metric">{{ $stats['clients'] ?? 156 }}</h3>
-                <p class="text-gray-600 font-medium mt-1">Total Clients</p>
-                <p class="text-sm text-gray-500 mt-1">↗ 12 new this month</p>
+                <h3 class="zoho-metric">{{ $stats['publishedPosts'] ?? 0 }}</h3>
+                <p class="text-gray-600 font-medium mt-1">Published Posts</p>
             </div>
         </div>
     </div>
@@ -302,31 +269,6 @@
                             </div>
                         </a>
 
-                        <a href="{{ route('admin.services.create') }}" 
-                           class="flex items-center p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl hover:from-purple-100 hover:to-purple-200 transition-all group">
-                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-110 transition-transform">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-gray-900">Add Service</p>
-                                <p class="text-sm text-gray-600">Create new offering</p>
-                            </div>
-                        </a>
-
-                        <a href="{{ route('admin.media.index') }}" 
-                           class="flex items-center p-4 bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl hover:from-orange-100 hover:to-orange-200 transition-all group">
-                            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-110 transition-transform">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-gray-900">Upload Media</p>
-                                <p class="text-sm text-gray-600">Manage your files</p>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>
