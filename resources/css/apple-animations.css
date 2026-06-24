@@ -1,0 +1,355 @@
+/* ═══════════════════════════════════════════════════════════
+   Apple-grade homepage animations — scroll-scrub + entrance
+   ═══════════════════════════════════════════════════════════ */
+
+.home-apple {
+    --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --apple-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --apple-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Hero load sequence ── */
+.apple-hero-in {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.apple-hero-in.is-revealed {
+    visibility: visible;
+}
+
+.apple-hero-in.is-revealed:not(.home-hero-float-target):not(.hero-title-line) {
+    animation: apple-hero-enter 1.2s var(--apple-ease-out) forwards;
+    animation-delay: var(--hero-delay, 0ms);
+}
+
+.hero-title-line.apple-hero-in.is-revealed {
+    visibility: visible;
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+}
+
+.hero-title-line.apple-hero-in.is-revealed .hero-char {
+    animation: hero-char-rise 0.75s var(--apple-ease-out) forwards;
+    animation-delay: calc(var(--hero-delay, 0ms) + var(--char-i, 0) * 40ms);
+}
+
+.hero-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(110%) rotateX(-70deg);
+    transform-origin: 50% 100%;
+    filter: blur(8px);
+}
+
+@keyframes hero-char-rise {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes apple-hero-enter {
+    from {
+        opacity: 0;
+        transform: translateY(3rem) scale(0.94);
+        filter: blur(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Float starts AFTER entrance completes */
+.home-hero-float-target.is-revealed {
+    animation: apple-hero-enter 1.2s var(--apple-ease-out) forwards;
+    animation-delay: var(--hero-delay, 0ms);
+}
+
+.home-hero-float-target.is-revealed.is-float-ready {
+    animation: home-hero-float 4.5s ease-in-out infinite;
+}
+
+.home-hero-pulse {
+    animation: home-hero-pulse 2s ease-in-out infinite;
+}
+
+@keyframes home-hero-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.55); }
+    50% { opacity: 0.9; transform: scale(1.2); box-shadow: 0 0 0 8px rgba(251, 146, 60, 0); }
+}
+
+@keyframes home-hero-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Hero scroll parallax */
+.hero-scroll-content {
+    --hero-scroll-progress: 0;
+    opacity: calc(1 - var(--hero-scroll-progress) * 0.55);
+    transform: translate3d(0, calc(var(--hero-scroll-progress) * 64px), 0)
+        scale(calc(1 - var(--hero-scroll-progress) * 0.06));
+    transform-origin: center top;
+}
+
+.hero-scroll-video {
+    --hero-video-scale: 1;
+    transform: scale(var(--hero-video-scale));
+    transform-origin: center center;
+}
+
+.hero-video-overlay {
+    transition: opacity 0.3s ease;
+}
+
+#home-hero-section.is-scrolling .hero-video-overlay {
+    opacity: calc(1 + var(--hero-scroll-progress, 0) * 0.25);
+}
+
+/* ── Scroll-scrubbed section reveals ── */
+.home-fx {
+    --reveal-opacity: 0;
+    --reveal-blur: calc((1 - var(--reveal-opacity)) * 14px);
+    --reveal-y: calc((1 - var(--reveal-opacity)) * 5rem);
+    --reveal-x: calc((1 - var(--reveal-opacity)) * 4rem);
+    --reveal-scale: calc(0.88 + var(--reveal-opacity) * 0.12);
+    opacity: var(--reveal-opacity);
+    filter: blur(var(--reveal-blur));
+    will-change: opacity, transform, filter;
+    transition: box-shadow 0.4s var(--apple-ease-out);
+}
+
+.home-fx--up {
+    transform: translateY(var(--reveal-y)) scale(var(--reveal-scale));
+}
+
+.home-fx--left {
+    transform: translateX(calc(var(--reveal-x) * -1)) scale(var(--reveal-scale));
+}
+
+.home-fx--right {
+    transform: translateX(var(--reveal-x)) scale(var(--reveal-scale));
+}
+
+.home-fx--fade {
+    transform: translateY(calc(var(--reveal-y) * 0.4)) scale(calc(0.96 + var(--reveal-opacity) * 0.04));
+    --reveal-blur: calc((1 - var(--reveal-opacity)) * 6px);
+}
+
+.home-fx--blur {
+    transform: translateY(var(--reveal-y)) scale(var(--reveal-scale));
+    --reveal-blur: calc((1 - var(--reveal-opacity)) * 20px);
+}
+
+.home-fx--scale {
+    transform: scale(calc(0.72 + var(--reveal-opacity) * 0.28));
+    --reveal-blur: calc((1 - var(--reveal-opacity)) * 10px);
+}
+
+.home-fx--pop {
+    transform: scale(calc(0.6 + var(--reveal-opacity) * 0.4));
+    --reveal-blur: calc((1 - var(--reveal-opacity)) * 12px);
+}
+
+.home-fx--rotate {
+    transform: rotate(calc((1 - var(--reveal-opacity)) * -12deg))
+        scale(calc(0.82 + var(--reveal-opacity) * 0.18))
+        translateY(var(--reveal-y));
+}
+
+.home-fx--flip {
+    transform: perspective(900px)
+        rotateX(calc((1 - var(--reveal-opacity)) * 45deg))
+        translateY(calc(var(--reveal-y) * 0.5));
+    transform-origin: center bottom;
+}
+
+.home-fx--clip {
+    clip-path: inset(calc((1 - var(--reveal-opacity)) * 100%) 0 0 0);
+    transform: translateY(calc(var(--reveal-y) * 0.3));
+}
+
+.home-fx--rise {
+    transform: translateY(calc(var(--reveal-y) * 1.4)) scale(calc(0.9 + var(--reveal-opacity) * 0.1));
+}
+
+.home-fx--slide-up {
+    transform: translateY(var(--reveal-y)) scale(calc(0.94 + var(--reveal-opacity) * 0.06));
+}
+
+.home-fx--fade-scale {
+    transform: scale(calc(0.85 + var(--reveal-opacity) * 0.15)) translateY(calc(var(--reveal-y) * 0.5));
+}
+
+/* Keyframe variants fire once fully revealed */
+.home-fx--bounce {
+    opacity: 0;
+    transform: translateY(3rem) scale(0.88);
+    filter: blur(8px);
+    transition: none;
+}
+
+.home-fx--bounce.is-revealed {
+    animation: home-fx-bounce 1s var(--apple-spring) forwards;
+    animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes home-fx-bounce {
+    0% { opacity: 0; transform: translateY(3rem) scale(0.88); filter: blur(8px); }
+    50% { opacity: 1; transform: translateY(-0.6rem) scale(1.03); filter: blur(0); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.home-fx.is-revealed {
+    --reveal-opacity: 1;
+    --reveal-blur: 0px;
+}
+
+/* Section depth — subtle scale as section enters */
+.home-section[data-section-animate] {
+    --section-progress: 0;
+}
+
+.home-section[data-section-animate].is-in-view {
+    animation: section-breathe 0.01s linear forwards;
+}
+
+/* Apple reveal (testimonials headers) */
+.apple-reveal,
+.testimonials-reveal {
+    --reveal-opacity: 0;
+    opacity: var(--reveal-opacity);
+    transform: translateY(calc((1 - var(--reveal-opacity)) * 3.5rem))
+        scale(calc(0.94 + var(--reveal-opacity) * 0.06));
+    filter: blur(calc((1 - var(--reveal-opacity)) * 10px));
+    will-change: opacity, transform, filter;
+}
+
+.apple-reveal.is-revealed,
+.testimonials-reveal.is-revealed {
+    --reveal-opacity: 1;
+}
+
+.testimonials-card.home-fx--slide-up {
+    --reveal-opacity: 0;
+    opacity: var(--reveal-opacity);
+    transform: translateY(calc((1 - var(--reveal-opacity)) * 3rem));
+}
+
+.testimonials-card.home-fx--slide-up.is-revealed {
+    --reveal-opacity: 1;
+}
+
+/* Blog image Ken Burns */
+.home-fx-img {
+    transform: scale(calc(1.18 - var(--reveal-opacity, 0) * 0.18));
+    transition: transform 1.4s var(--apple-ease-out);
+}
+
+/* Process timeline */
+.home-process-line {
+    transform: scaleX(var(--reveal-opacity, 0));
+    transform-origin: left center;
+    transition: transform 1s var(--apple-ease-out);
+    transition-delay: calc(var(--reveal-delay, 0ms) + 150ms);
+}
+
+.home-process-step.is-active .home-process-line {
+    transform: scaleX(1);
+}
+
+.home-process-step.is-revealed .w-16 {
+    animation: home-step-pulse 0.7s var(--apple-spring) forwards;
+    animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes home-step-pulse {
+    0% { transform: scale(0.5); opacity: 0.4; }
+    60% { transform: scale(1.12); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Stat cards */
+.home-stat-card {
+    transition: transform 0.4s var(--apple-ease-out), box-shadow 0.4s ease, border-color 0.35s ease;
+}
+
+.home-stat-card.is-revealed {
+    --reveal-opacity: 1;
+}
+
+.home-stat-card.is-revealed:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 16px 40px rgba(249, 115, 22, 0.15);
+    transition: transform 0.4s var(--apple-ease-out), box-shadow 0.4s ease;
+}
+
+/* 3D tilt */
+[data-tilt].is-revealed {
+    transition: transform 0.2s ease-out, box-shadow 0.35s ease;
+}
+
+[data-tilt].is-revealed:hover {
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1);
+}
+
+/* Magnetic CTA */
+.home-magnetic {
+    transition: transform 0.25s var(--apple-ease-out);
+}
+
+/* Clients marquee glow on reveal */
+.home-clients-track.is-revealed {
+    filter: saturate(calc(0.85 + var(--reveal-opacity, 1) * 0.15));
+}
+
+/* Scroll progress indicator */
+.home-scroll-progress {
+    position: fixed;
+    top: calc(4rem + env(safe-area-inset-top, 0px));
+    left: 0;
+    height: 2px;
+    width: calc(var(--page-scroll, 0) * 100%);
+    background: linear-gradient(90deg, #f97316, #fb923c);
+    z-index: 60;
+    pointer-events: none;
+    transform-origin: left;
+    opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-fx,
+    .apple-hero-in,
+    .apple-reveal,
+    .testimonials-reveal,
+    .testimonials-card,
+    .home-hero-float-target,
+    .hero-scroll-content,
+    .hero-scroll-video {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        filter: none !important;
+        clip-path: none !important;
+        animation: none !important;
+        --reveal-opacity: 1 !important;
+    }
+
+    .home-scroll-progress {
+        display: none;
+    }
+
+    .home-process-line {
+        transform: scaleX(1);
+    }
+
+    .home-fx-img {
+        transform: none;
+    }
+}

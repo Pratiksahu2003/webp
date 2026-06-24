@@ -15,6 +15,7 @@
    =========================================== */
 @import './enhanced-ui.css';
 @import './fixes.css';
+@import './apple-animations.css';
 
 /* ===========================================
    Tailwind CSS Base Framework
@@ -1108,11 +1109,10 @@ html {
 }
 
 .testimonials-reveal {
-    opacity: 0;
-    transform: translateY(2.5rem);
-    transition:
-        opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1),
-        transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+    --reveal-opacity: 0;
+    opacity: var(--reveal-opacity);
+    transform: translateY(calc((1 - var(--reveal-opacity)) * 2.5rem));
+    transition: none;
 }
 
 .testimonials-reveal--delay {
@@ -1123,7 +1123,9 @@ html {
     transition-delay: 0.24s;
 }
 
-.testimonials-reveal.is-visible {
+.testimonials-reveal.is-visible,
+.testimonials-reveal.is-revealed {
+    --reveal-opacity: 1;
     opacity: 1;
     transform: translateY(0);
 }
@@ -1154,11 +1156,10 @@ html {
     box-shadow:
         0 1px 2px rgba(0, 0, 0, 0.04),
         0 8px 28px rgba(0, 0, 0, 0.06);
-    opacity: 0;
-    transform: translateY(1.5rem);
+    --reveal-opacity: 0;
+    opacity: var(--reveal-opacity);
+    transform: translateY(calc((1 - var(--reveal-opacity)) * 1.5rem));
     transition:
-        opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
-        transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
         box-shadow 0.4s ease;
     transition-delay: var(--card-delay, 0ms);
 }
@@ -1177,6 +1178,7 @@ html {
 
 .testimonials-card.is-visible,
 .testimonials-card.is-revealed {
+    --reveal-opacity: 1;
     opacity: 1;
     transform: translateY(0);
 }
@@ -1276,281 +1278,5 @@ html {
 @media (prefers-reduced-motion: reduce) {
     .home-clients-track {
         animation: none;
-    }
-}
-
-/* Apple-style home scroll animations */
-.home-apple {
-    --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-    --apple-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Hero entrance — plays on load */
-.apple-hero-in {
-    opacity: 0;
-    transform: translateY(2.5rem) scale(0.97);
-    filter: blur(10px);
-}
-
-.apple-hero-in.is-revealed {
-    animation: apple-hero-enter 1.1s var(--apple-ease-out) forwards;
-    animation-delay: var(--hero-delay, 0ms);
-}
-
-.hero-title-line.apple-hero-in.is-revealed {
-    animation: hero-title-enter 0.95s var(--apple-ease-out) forwards;
-    animation-delay: var(--hero-delay, 0ms);
-}
-
-@keyframes hero-title-enter {
-    0% {
-        opacity: 0;
-        transform: translateY(2rem) translateX(-0.5rem);
-        filter: blur(8px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) translateX(0);
-        filter: blur(0);
-    }
-}
-
-@keyframes apple-hero-enter {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-    }
-}
-
-/* Scroll reveal — all sections */
-.apple-reveal,
-.testimonials-reveal {
-    opacity: 0;
-    transform: translateY(3rem) scale(0.98);
-    filter: blur(6px);
-    transition:
-        opacity 1s var(--apple-ease),
-        transform 1s var(--apple-ease),
-        filter 1s var(--apple-ease);
-    transition-delay: var(--reveal-delay, 0ms);
-    will-change: opacity, transform, filter;
-}
-
-.apple-reveal.is-revealed,
-.testimonials-reveal.is-revealed {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-}
-
-.apple-reveal-section.is-revealed {
-    /* section container marker */
-}
-
-/* Testimonial cards use apple reveal when tagged */
-.testimonials-card.home-fx--slide-up {
-    opacity: 0;
-    transform: translateY(2.5rem) scale(0.97);
-}
-
-.testimonials-card.home-fx--slide-up.is-revealed {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-}
-
-/* ── Multi-effect home animations ── */
-.home-fx {
-    opacity: 0;
-    transition:
-        opacity 0.9s var(--apple-ease-out),
-        transform 0.9s var(--apple-ease-out),
-        filter 0.9s var(--apple-ease-out),
-        clip-path 1s var(--apple-ease-out);
-    transition-delay: var(--reveal-delay, 0ms);
-    will-change: opacity, transform, filter, clip-path;
-}
-
-.home-fx.is-revealed:not(.home-fx--bounce) {
-    opacity: 1;
-    transform: none;
-    filter: none;
-    clip-path: inset(0 0 0 0);
-}
-
-.home-fx--bounce.is-revealed {
-    transition: none;
-    animation: home-fx-bounce 0.85s var(--apple-ease-out) forwards;
-    animation-delay: var(--reveal-delay, 0ms);
-}
-
-.home-fx--up { transform: translateY(3rem); }
-.home-fx--left { transform: translateX(-3.5rem); }
-.home-fx--right { transform: translateX(3.5rem); }
-.home-fx--fade { transform: translateY(1rem); filter: blur(2px); }
-.home-fx--blur { transform: translateY(2rem); filter: blur(12px); }
-
-.home-fx--scale {
-    transform: scale(0.82);
-    filter: blur(4px);
-}
-
-.home-fx--pop {
-    transform: scale(0.75);
-    filter: blur(6px);
-}
-
-.home-fx--rotate {
-    transform: rotate(-6deg) scale(0.88) translateY(2rem);
-}
-
-.home-fx--flip {
-    transform: perspective(900px) rotateX(35deg) translateY(1.5rem);
-    transform-origin: center bottom;
-}
-
-.home-fx--clip {
-    clip-path: inset(100% 0 0 0);
-    transform: translateY(1rem);
-    opacity: 0;
-}
-
-.home-fx--bounce {
-    opacity: 0;
-    transform: translateY(2.5rem) scale(0.9);
-}
-
-.home-fx--clip.is-revealed {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
-    transform: none;
-}
-
-.home-fx--rise {
-    transform: translateY(4rem) scale(0.94);
-    filter: blur(5px);
-}
-
-.home-fx--slide-up {
-    transform: translateY(2.5rem) scale(0.97);
-    filter: blur(4px);
-}
-
-.home-fx--fade-scale {
-    transform: scale(0.9) translateY(1.5rem);
-    filter: blur(3px);
-}
-
-@keyframes home-fx-bounce {
-    0% { opacity: 0; transform: translateY(2.5rem) scale(0.9); }
-    55% { opacity: 1; transform: translateY(-0.4rem) scale(1.02); }
-    100% { opacity: 1; transform: translateY(0) scale(1); filter: none; }
-}
-
-/* Hero floating stat cards */
-.home-hero-float.is-revealed {
-    animation: home-hero-float 5s ease-in-out infinite;
-}
-
-.home-hero-float.is-revealed:hover {
-    animation-play-state: paused;
-}
-
-@keyframes home-hero-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-}
-
-/* Blog image zoom on card reveal */
-.home-fx-img {
-    transition: transform 1.2s var(--apple-ease-out);
-    transform: scale(1.12);
-}
-
-.home-fx.is-revealed .home-fx-img {
-    transform: scale(1);
-}
-
-/* Process timeline connector draw */
-.home-process-line {
-    transform: scaleX(0);
-    transition: transform 0.9s var(--apple-ease-out);
-    transition-delay: calc(var(--reveal-delay, 0ms) + 200ms);
-}
-
-.home-process-step.is-active .home-process-line {
-    transform: scaleX(1);
-}
-
-.home-process-step.is-revealed .w-16 {
-    animation: home-step-pulse 0.6s var(--apple-ease-out) forwards;
-    animation-delay: var(--reveal-delay, 0ms);
-}
-
-@keyframes home-step-pulse {
-    0% { transform: scale(0.6); opacity: 0.5; }
-    60% { transform: scale(1.08); }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* Stat cards shimmer on hover */
-.home-stat-card {
-    transition: transform 0.35s var(--apple-ease-out), box-shadow 0.35s ease, border-color 0.35s ease;
-}
-
-.home-stat-card.is-revealed:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 12px 32px rgba(249, 115, 22, 0.12);
-}
-
-/* 3D tilt cards */
-[data-tilt] {
-    transition: transform 0.15s ease-out, box-shadow 0.3s ease;
-    transform-style: preserve-3d;
-}
-
-[data-tilt].is-revealed:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .home-fx,
-    .home-hero-float.is-revealed {
-        opacity: 1;
-        transform: none;
-        filter: none;
-        clip-path: none;
-        transition: none;
-        animation: none;
-    }
-
-    .home-process-line {
-        transform: scaleX(1);
-    }
-
-    .home-fx-img {
-        transform: none;
-    }
-
-    [data-tilt]:hover {
-        transform: none;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .apple-reveal,
-    .apple-hero-in,
-    .testimonials-reveal {
-        opacity: 1;
-        transform: none;
-        filter: none;
-        transition: none;
-        animation: none;
-    }
-
-    .testimonials-card.apple-reveal {
-        opacity: 1;
-        transform: none;
     }
 }
