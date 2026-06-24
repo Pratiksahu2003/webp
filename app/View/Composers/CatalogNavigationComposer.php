@@ -17,7 +17,14 @@ class CatalogNavigationComposer
         $view->with([
             'catalogServices' => $catalogServices,
             'webDevelopmentService' => $this->webDevelopmentService($catalogServices),
+            'softwareDevelopmentService' => $this->softwareDevelopmentService($catalogServices),
         ]);
+    }
+
+    protected function softwareDevelopmentService(Collection $catalogServices): ?Service
+    {
+        return $catalogServices->first(fn (Service $service) => $service->slug === 'software-development')
+            ?? $catalogServices->first(fn (Service $service) => strcasecmp($service->title, 'Software Development') === 0);
     }
 
     protected function webDevelopmentService(Collection $catalogServices): ?Service
