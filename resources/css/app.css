@@ -41,14 +41,15 @@ body {
 }
 
 /* Advanced Video Background Styling */
-.hero-video {
+.hero-video,
+#hero-video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
+    z-index: 0;
 }
 
 .hero-video-overlay {
@@ -1430,7 +1431,10 @@ html {
 /* Hero floating stat cards */
 .home-hero-float.is-revealed {
     animation: home-hero-float 5s ease-in-out infinite;
-    animation-delay: var(--hero-delay, 0ms);
+}
+
+.home-hero-float.is-revealed:hover {
+    animation-play-state: paused;
 }
 
 @keyframes home-hero-float {

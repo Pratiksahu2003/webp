@@ -20,17 +20,29 @@ class PaymentController extends Controller
         $payload = $request->all();
 
         if ($request->filled('response')) {
-            $payload = array_merge($payload, $this->nimbbl->decodeCallbackResponse($request->input('response')));
+            $parsed = $this->nimbbl->parseCallbackRequest($request->input('response'));
+            if ($parsed !== []) {
+                $payload = array_merge($payload, $parsed);
+            }
         }
 
-        $orderNumber = $payload['order'] ?? $payload['invoice_id'] ?? $payload['order_id'] ?? null;
-        $order = Order::where('order_number', $orderNumber)->first();
+        $orderNumber = $payload['invoice_id']
+            ?? $payload['order']
+            ?? $payload['order_id']
+            ?? null;
+
+        $order = $orderNumber
+            ? Order::where('order_number', $orderNumber)->first()
+            : null;
 
         if (! $order) {
             return redirect()->route('checkout.failure')->with('error', 'Order not found.');
         }
 
-        $transactionId = $payload['transaction_id'] ?? $payload['nimbbl_transaction_id'] ?? 'TXN-'.strtoupper(uniqid());
+        $transactionId = $payload['transaction_id']
+            ?? $payload['nimbbl_transaction_id']
+            ?? ($payload['transaction']['transaction_id'] ?? null)
+            ?? 'TXN-'.strtoupper(uniqid());
 
         if ($this->nimbbl->verifyCallbackPayload($payload) || $request->input('status') === 'success') {
             $this->completePayment($order, $transactionId, $payload);
@@ -56,13 +68,15 @@ class PaymentController extends Controller
 
         $payload = $request->json()->all();
         $orderNumber = $payload['invoice_id'] ?? $payload['order_id'] ?? null;
-        $order = Order::where('order_number', $orderNumber)->first();
+        $order = $orderNumber ? Order::where('order_number', $orderNumber)->first() : null;
 
         if (! $order) {
             return response()->json(['error' => 'Order not found'], 404);
         }
 
-        $transactionId = $payload['transaction_id'] ?? $payload['nimbbl_transaction_id'] ?? null;
+        $transactionId = $payload['transaction_id']
+            ?? $payload['nimbbl_transaction_id']
+            ?? ($payload['transaction']['transaction_id'] ?? null);
 
         if ($this->nimbbl->verifyCallbackPayload($payload)) {
             $this->completePayment($order, $transactionId ?? 'WH-'.uniqid(), $payload);

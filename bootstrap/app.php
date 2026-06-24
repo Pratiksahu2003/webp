@@ -24,6 +24,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
         ]);
+
+        $middleware->validateCsrfTokens(except: [
+            'payment/webhook',
+            'nimbbl/webhook',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

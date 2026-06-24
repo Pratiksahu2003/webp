@@ -7,6 +7,12 @@
 @php
     $service = $order->service;
     $subService = $order->subService;
+    $paymentToken = $checkout['token'] ?? null;
+    $mockCallbackUrl = route('payment.callback', [
+        'order' => $order->order_number,
+        'status' => 'success',
+        'transaction_id' => 'MOCK-' . strtoupper(uniqid()),
+    ]);
 @endphp
 <section class="py-16 bg-gray-50 min-h-screen">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,11 +43,18 @@
                 </div>
             </div>
 
-            @if($paymentToken)
+            @if($isMock)
+                <div class="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+                    Test mode — Nimbbl credentials are not configured. Use the button below to simulate a successful payment.
+                </div>
+                <button id="pay-btn" type="button" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+                    Complete Test Payment
+                </button>
+            @elseif($paymentToken)
                 <button id="pay-btn" type="button" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
                     Pay Securely with Nimbbl
                 </button>
-                <p class="text-xs text-gray-400 mt-4">You will be redirected to our secure payment gateway.</p>
+                <p class="text-xs text-gray-400 mt-4">Secured by Nimbbl. UPI, cards, net banking &amp; more.</p>
             @else
                 <p class="text-red-600 mb-4">Payment could not be initialized. Please contact support or try again.</p>
                 @if($order->package)
@@ -54,19 +67,37 @@
 @endsection
 
 @push('scripts')
-@if($paymentToken)
-<script src="{{ $nimbblScript }}"></script>
+@if($isMock)
 <script>
 document.getElementById('pay-btn')?.addEventListener('click', function () {
-    if (typeof NimbblCheckout !== 'undefined') {
-        new NimbblCheckout({
-            token: @json($paymentToken),
-            callback_url: @json(route('payment.callback'))
-        }).open();
-    } else {
-        window.location.href = @json(route('payment.callback', ['order' => $order->order_number, 'status' => 'success']));
-    }
+    this.disabled = true;
+    this.textContent = 'Processing...';
+    window.location.href = @json($mockCallbackUrl);
 });
+</script>
+@elseif($paymentToken)
+<script type="module">
+const payBtn = document.getElementById('pay-btn');
+const token = @json($paymentToken);
+const callbackUrl = @json(route('payment.callback'));
+
+async function openCheckout() {
+    payBtn.disabled = true;
+    payBtn.textContent = 'Opening secure checkout...';
+
+    try {
+        const { default: Checkout } = await import('https://cdn.jsdelivr.net/npm/nimbbl_sonic@latest');
+        const checkout = new Checkout({ token });
+        checkout.open({ callback_url: callbackUrl });
+    } catch (error) {
+        console.error('Nimbbl checkout failed:', error);
+        payBtn.disabled = false;
+        payBtn.textContent = 'Pay Securely with Nimbbl';
+        alert('Unable to open payment gateway. Please try again.');
+    }
+}
+
+payBtn?.addEventListener('click', openCheckout);
 </script>
 @endif
 @endpush

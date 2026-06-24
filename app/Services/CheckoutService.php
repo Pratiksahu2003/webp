@@ -47,6 +47,11 @@ class CheckoutService
         ]);
     }
 
+    public function checkoutCredentials(array $paymentResponse): array
+    {
+        return $this->nimbbl->checkoutCredentials($paymentResponse);
+    }
+
     protected function resolveUser(array $data): User
     {
         $user = User::where('email', $data['email'])->first();

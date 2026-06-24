@@ -86,14 +86,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Perfect Hero Section - Pure White */
-.hero-section {
+/* Perfect Hero Section - generic page heroes only (not home video hero) */
+.hero-section:not(.home-hero):not(#home-hero-section) {
     background: #ffffff;
     position: relative;
     overflow: hidden;
 }
 
-.hero-section::before {
+.hero-section:not(.home-hero):not(#home-hero-section)::before {
     content: '';
     position: absolute;
     top: 0;

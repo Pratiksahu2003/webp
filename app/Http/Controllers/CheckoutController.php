@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CheckoutRequest;
 use App\Models\ServicePackage;
 use App\Services\CheckoutService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CheckoutController extends Controller
 {
@@ -27,18 +27,27 @@ class CheckoutController extends Controller
     {
         abort_unless($package->status, 404);
 
-        $order = $this->checkoutService->createOrder($package, $request->validated());
-        Auth::login($order->user);
-        $payment = $this->checkoutService->initiatePayment($order);
+        try {
+            $order = $this->checkoutService->createOrder($package, $request->validated());
+            Auth::login($order->user);
 
-        if (! empty($payment['mock'])) {
-            return redirect($payment['callback_url']);
+            $payment = $this->checkoutService->initiatePayment($order);
+            $checkout = $this->checkoutService->checkoutCredentials($payment);
+
+            return view('checkout.payment', [
+                'order' => $order->load(['package', 'subService', 'service']),
+                'checkout' => $checkout,
+                'isMock' => ! empty($checkout['mock']),
+            ]);
+        } catch (\Throwable $e) {
+            Log::error('Checkout payment initiation failed', [
+                'package_id' => $package->id,
+                'error' => $e->getMessage(),
+            ]);
+
+            return back()
+                ->withInput()
+                ->withErrors(['payment' => $e->getMessage() ?: 'Unable to start payment. Please try again.']);
         }
-
-        return view('checkout.payment', [
-            'order' => $order->load(['package', 'subService', 'service']),
-            'paymentToken' => $payment['token'] ?? null,
-            'nimbblScript' => config('nimbbl.checkout_script'),
-        ]);
     }
 }

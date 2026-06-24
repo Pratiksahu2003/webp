@@ -78,6 +78,12 @@
                         </div>
                     @endif
 
+                    @error('payment')
+                        <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
                     <button type="submit" class="mt-6 w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition-colors">
                         Proceed to Payment
                     </button>

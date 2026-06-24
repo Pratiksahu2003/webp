@@ -3,29 +3,23 @@
 namespace App\Services;
 
 use App\Models\Order;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Nimbbl\Laravel\Facades\Nimbbl;
 
 class NimbblPaymentService
 {
-    protected string $baseUrl;
-
-    protected ?string $accessKey;
-
-    protected ?string $accessSecret;
-
-    public function __construct()
+    public function isConfigured(): bool
     {
-        $this->baseUrl = rtrim(config('nimbbl.base_url'), '/');
-        $this->accessKey = config('nimbbl.access_key');
-        $this->accessSecret = config('nimbbl.access_secret');
+        return filled(config('nimbbl.access_key')) && filled(config('nimbbl.access_secret'));
     }
 
     public function createOrder(Order $order, array $customer): array
     {
-        if (! $this->accessKey || ! $this->accessSecret) {
-            return $this->mockCreateOrder($order, $customer);
+        if (! $this->isConfigured()) {
+            return $this->mockCreateOrder($order);
         }
+
+        $order->loadMissing(['package', 'subService']);
 
         $payload = [
             'invoice_id' => $order->order_number,
@@ -36,6 +30,7 @@ class NimbblPaymentService
                 'first_name' => $this->firstName($customer['name']),
                 'last_name' => $this->lastName($customer['name']),
                 'mobile_number' => $customer['phone'] ?? '',
+                'country_code' => '+91',
             ],
             'order_line_items' => [[
                 'title' => $order->package->package_name ?? 'Service Package',
@@ -47,90 +42,109 @@ class NimbblPaymentService
             'redirect_url' => route('payment.callback'),
         ];
 
-        $response = Http::withHeaders($this->authHeaders())
-            ->post("{$this->baseUrl}/api/v3/create-order", $payload);
+        $response = Nimbbl::createOrder($payload, $order->user_id, $order);
 
-        if ($response->failed()) {
+        if (! empty($response['error'])) {
             Log::error('Nimbbl create order failed', [
                 'order' => $order->order_number,
-                'response' => $response->json(),
+                'response' => $response,
             ]);
 
-            throw new \RuntimeException('Unable to initiate payment. Please try again.');
+            throw new \RuntimeException(
+                $response['nimbbl_consumer_message']
+                    ?? $response['message']
+                    ?? 'Unable to initiate payment. Please try again.'
+            );
         }
 
-        return $response->json();
+        if (empty($response['token'])) {
+            throw new \RuntimeException('Payment gateway did not return a checkout token.');
+        }
+
+        return $response;
+    }
+
+    public function checkoutCredentials(array $orderResponse): array
+    {
+        if (! empty($orderResponse['mock'])) {
+            return [
+                'token' => $orderResponse['token'],
+                'order_id' => $orderResponse['order_id'] ?? null,
+                'mock' => true,
+            ];
+        }
+
+        return Nimbbl::checkoutCredentials($orderResponse);
     }
 
     public function verifyCallbackPayload(array $payload): bool
     {
-        $status = strtolower($payload['status'] ?? $payload['payment_status'] ?? '');
+        $status = strtolower((string) ($payload['status'] ?? $payload['payment_status'] ?? ''));
 
-        return in_array($status, ['success', 'paid', 'completed', 'succeeded'], true);
+        if (in_array($status, ['success', 'paid', 'completed', 'succeeded'], true)) {
+            return true;
+        }
+
+        $transactionStatus = strtolower((string) ($payload['transaction']['status'] ?? ''));
+
+        return in_array($transactionStatus, ['success', 'paid', 'completed', 'succeeded'], true);
+    }
+
+    public function parseCallbackRequest(?string $encodedResponse): array
+    {
+        if (! $encodedResponse || ! $this->isConfigured()) {
+            return [];
+        }
+
+        try {
+            $payload = Nimbbl::parseCallbackPayload($encodedResponse);
+            $verification = Nimbbl::verifyCallbackSignature($payload);
+
+            if ($verification['success'] ?? false) {
+                return $payload;
+            }
+        } catch (\Throwable $e) {
+            Log::warning('Nimbbl callback verification failed', ['error' => $e->getMessage()]);
+        }
+
+        return [];
     }
 
     public function verifyWebhookSignature(string $rawBody, ?string $signature): bool
     {
-        $secret = config('nimbbl.webhook_secret');
-
-        if (! $secret || ! $signature) {
+        if (! $this->isConfigured()) {
             return app()->environment('local', 'testing');
         }
 
+        if (! $signature) {
+            return false;
+        }
+
+        $secret = config('nimbbl.webhook_secret') ?: config('nimbbl.access_secret');
         $expected = hash_hmac('sha256', $rawBody, $secret);
 
         return hash_equals($expected, $signature);
     }
 
-    public function decodeCallbackResponse(?string $encoded): array
-    {
-        if (! $encoded) {
-            return [];
-        }
-
-        $decoded = base64_decode($encoded, true);
-
-        if ($decoded === false) {
-            return [];
-        }
-
-        return json_decode($decoded, true) ?? [];
-    }
-
-    protected function authHeaders(): array
-    {
-        return [
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json',
-            'access_key' => $this->accessKey,
-            'access_secret' => $this->accessSecret,
-        ];
-    }
-
-    protected function mockCreateOrder(Order $order, array $customer): array
+    protected function mockCreateOrder(Order $order): array
     {
         return [
             'token' => 'mock_token_'.$order->order_number,
             'order_id' => $order->order_number,
             'status' => 'created',
             'mock' => true,
-            'callback_url' => route('payment.callback', [
-                'order' => $order->order_number,
-                'status' => 'success',
-                'transaction_id' => 'MOCK-'.strtoupper(uniqid()),
-            ]),
         ];
     }
 
     protected function firstName(string $name): string
     {
-        return explode(' ', trim($name))[0] ?? $name;
+        return explode(' ', trim($name))[0] ?: $name;
     }
 
     protected function lastName(string $name): string
     {
         $parts = explode(' ', trim($name));
 
-        return count($parts) > 1 ? end($parts) : '';
+        return count($parts) > 1 ? (string) end($parts) : '';
     }
 }
