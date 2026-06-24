@@ -425,46 +425,48 @@
         width: 100% !important;
     }
     
-    /* Mobile specific hero fixes - Ensure content is not hidden behind navbar */
+    /* Mobile specific hero fixes — main content already clears the fixed navbar */
     @media (max-width: 1023px) {
         #home-hero-section,
+        #home-hero-section.home-hero,
         .hero-section,
         section[class*="hero"] {
-            padding-top: calc(64px + env(safe-area-inset-top) + 1rem) !important;
+            margin-top: 0 !important;
+            padding-top: 0 !important;
             min-height: calc(100vh - 64px - env(safe-area-inset-top)) !important;
             min-height: calc((var(--ios-vh, 1vh) * 100) - 64px - env(safe-area-inset-top)) !important;
         }
-        
-        /* Ensure content container has proper spacing */
+
         #home-hero-section .hero-content-wrapper,
         .hero-section .hero-content-wrapper {
-            padding-top: 1rem !important;
+            padding-top: 0 !important;
         }
-        
-        /* Video container should not overlap content */
+
         #hero-video-container {
             height: 100% !important;
             top: 0 !important;
         }
-        
+
         #home-hero-section video,
         .hero-section video,
         section[class*="hero"] video {
             height: 100% !important;
             min-height: 100% !important;
+            -webkit-transform: none !important;
+            transform: none !important;
         }
     }
-    
-    /* Extra small mobile devices */
+
     @media (max-width: 375px) {
         #home-hero-section,
+        #home-hero-section.home-hero,
         .hero-section {
-            padding-top: calc(56px + env(safe-area-inset-top) + 1.5rem) !important;
+            padding-top: 0 !important;
         }
-        
+
         #home-hero-section .hero-content-wrapper,
         .hero-section .hero-content-wrapper {
-            padding-top: 1.5rem !important;
+            padding-top: 0 !important;
         }
     }
     
@@ -744,37 +746,18 @@
     perspective: 1000;
 }
 
-/* iOS Mobile Menu Enhancements - Fixed */
+/* iOS Mobile Menu Enhancements */
 @supports (-webkit-touch-callout: none) {
     .mobile-menu {
+        position: fixed;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
-        max-height: calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-        padding-bottom: env(safe-area-inset-bottom);
-        position: absolute;
-        top: calc(64px + env(safe-area-inset-top));
-        left: 0;
-        right: 0;
-        z-index: 9998;
-        background: white;
-        border-top: 1px solid #e5e7eb;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
-        width: 100%;
     }
-    
-    .mobile-menu:not(.hidden) {
-        opacity: 1;
-        transform: translateY(0);
+
+    .mobile-menu-scroll {
+        padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
     }
-    
-    .mobile-menu.hidden {
-        display: none !important;
-        opacity: 0;
-    }
-    
+
     .mobile-menu a {
         min-height: 48px;
         display: flex;
@@ -783,8 +766,9 @@
         touch-action: manipulation;
         cursor: pointer;
     }
-    
-    .mobile-menu-button {
+
+    .mobile-menu-button,
+    .mobile-nav-icon-btn {
         min-width: 44px;
         min-height: 44px;
         display: flex;
@@ -794,11 +778,10 @@
         touch-action: manipulation;
         cursor: pointer;
         position: relative;
-        z-index: 10;
+        z-index: 3;
     }
-    
-    /* Prevent body scroll when menu is open */
-    body.menu-open {
+
+    body.mobile-menu-open {
         overflow: hidden !important;
         position: fixed;
         width: 100%;
@@ -818,7 +801,8 @@
         padding-right: max(0px, env(safe-area-inset-right));
         height: calc(64px + env(safe-area-inset-top));
         min-height: calc(64px + env(safe-area-inset-top));
-        z-index: 9999;
+        z-index: 10050;
+        isolation: isolate;
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
         -webkit-backface-visibility: hidden;
@@ -858,45 +842,68 @@
         align-items: center;
     }
     
-    /* Fix hero section to account for navbar */
-    .hero-section,
-    #home-hero-section {
+    /* Fix hero section to account for navbar — main already offsets content */
+    .hero-section:not(#home-hero-section),
+    section[class*="hero"]:not(#home-hero-section) {
         margin-top: 0 !important;
-        padding-top: calc(64px + env(safe-area-inset-top) + 0.5rem);
+        padding-top: 0;
         min-height: calc(100vh - 64px - env(safe-area-inset-top));
         min-height: calc((var(--ios-vh, 1vh) * 100) - 64px - env(safe-area-inset-top));
         position: relative;
     }
+
+    #home-hero-section,
+    #home-hero-section.home-hero {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        min-height: calc(100dvh - 64px - env(safe-area-inset-top));
+        min-height: calc((var(--ios-vh, 1vh) * 100) - 64px - env(safe-area-inset-top));
+        position: relative;
+    }
     
-    /* Mobile devices: Extra padding to ensure content visibility */
+    /* Mobile devices: content stays below fixed navbar */
     @media (max-width: 1023px) {
-        .hero-section,
-        #home-hero-section {
-            padding-top: calc(64px + env(safe-area-inset-top) + 1.5rem) !important;
+        .hero-section:not(#home-hero-section),
+        section[class*="hero"]:not(#home-hero-section) {
+            padding-top: 0 !important;
+        }
+
+        #home-hero-section,
+        #home-hero-section.home-hero {
+            padding-top: 0 !important;
         }
     }
     
     /* Small mobile devices */
     @media (max-width: 640px) {
-        .hero-section,
-        #home-hero-section {
-            padding-top: calc(64px + env(safe-area-inset-top) + 2rem) !important;
+        .hero-section:not(#home-hero-section),
+        section[class*="hero"]:not(#home-hero-section) {
+            padding-top: 0 !important;
+        }
+
+        #home-hero-section,
+        #home-hero-section.home-hero {
+            padding-top: 0 !important;
         }
     }
     
     /* Extra small devices */
     @media (max-width: 375px) {
-        .hero-section,
-        #home-hero-section {
-            padding-top: calc(56px + env(safe-area-inset-top) + 2rem) !important;
+        .hero-section:not(#home-hero-section),
+        section[class*="hero"]:not(#home-hero-section) {
+            padding-top: 0 !important;
+        }
+
+        #home-hero-section,
+        #home-hero-section.home-hero {
+            padding-top: 0 !important;
         }
     }
     
-    /* Fix hero video container */
+    /* Fix hero video container — fill hero section only */
     #hero-video-container {
-        height: calc(100vh - 64px - env(safe-area-inset-top)) !important;
-        min-height: calc(100vh - 64px - env(safe-area-inset-top)) !important;
-        min-height: calc((var(--ios-vh, 1vh) * 100) - 64px - env(safe-area-inset-top)) !important;
+        height: 100% !important;
+        min-height: 100% !important;
         top: 0 !important;
         position: absolute !important;
     }
@@ -915,13 +922,21 @@
     
     /* Ensure hero section content is visible */
     .hero-section .container,
-    #home-hero-section .container,
     .hero-section .hero-content-wrapper,
-    #home-hero-section .hero-content-wrapper {
+    section[class*="hero"] .container,
+    section[class*="hero"] .hero-content-wrapper {
         padding-top: 1rem;
         padding-bottom: 2rem;
         position: relative;
-        z-index: 30;
+        z-index: 2;
+    }
+
+    #home-hero-section .container,
+    #home-hero-section .hero-content-wrapper {
+        padding-top: 0;
+        padding-bottom: 2rem;
+        position: relative;
+        z-index: 2;
     }
     
     /* Mobile: Extra padding to prevent content from being hidden */
@@ -1354,11 +1369,8 @@
         -webkit-tap-highlight-color: transparent;
     }
     
-    /* Optimize repaints */
-    .hero-section,
-    #home-hero-section,
-    #navbar,
-    .mobile-menu {
+    /* Keep header above page content on composited layers (video/hero) */
+    #navbar {
         will-change: transform;
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
@@ -1401,10 +1413,15 @@
             #navbar {
                 padding-top: max(env(safe-area-inset-top), 44px);
             }
-            
-            .hero-section,
-            #home-hero-section {
-                padding-top: calc(64px + max(env(safe-area-inset-top), 44px));
+
+            .hero-section:not(#home-hero-section),
+            section[class*="hero"]:not(#home-hero-section) {
+                padding-top: 0 !important;
+            }
+
+            #home-hero-section,
+            #home-hero-section.home-hero {
+                padding-top: 0 !important;
             }
         }
     }

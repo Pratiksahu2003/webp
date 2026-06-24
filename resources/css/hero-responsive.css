@@ -159,3 +159,27 @@
     padding-top: 0 !important;
     margin-top: 0 !important;
 }
+
+/* Mobile/tablet: keep hero below fixed navbar (no overlap under header) */
+@media (max-width: 1279px) {
+    #home-hero-section,
+    #home-hero-section.home-hero,
+    .home-hero {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        min-height: calc(100dvh - var(--home-nav-height) - env(safe-area-inset-top, 0px));
+        min-height: calc(100svh - var(--home-nav-height) - env(safe-area-inset-top, 0px));
+    }
+
+    #home-hero-section #hero-video,
+    #home-hero-section .hero-video-responsive {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@media (max-width: 639px) {
+    :root {
+        --home-nav-height: 3.5rem;
+    }
+}

@@ -46,7 +46,8 @@ nav[id="navbar"] {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 10050;
+    isolation: isolate;
 }
 
 /* Fix main content spacing */

@@ -272,7 +272,19 @@ body {
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 9999;
+    z-index: 10050;
+    isolation: isolate;
+}
+
+#navbar > .max-w-7xl {
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
+}
+
+main.ios-main-content {
+    position: relative;
+    z-index: 1;
 }
 
 #navbar.navbar-scrolled {
@@ -331,7 +343,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 9998;
+    z-index: 1;
     pointer-events: none;
     visibility: hidden;
 }
@@ -572,6 +584,8 @@ body {
     transition: color 0.2s ease, background-color 0.2s ease;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    position: relative;
+    z-index: 3;
 }
 
 .mobile-nav-icon-btn:hover,
@@ -595,6 +609,8 @@ body {
     background: transparent;
     border-radius: 0.5rem;
     transition: color 0.2s ease, background-color 0.2s ease;
+    position: relative;
+    z-index: 3;
 }
 
 .mobile-menu-button:hover,

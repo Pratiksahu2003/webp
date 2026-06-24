@@ -33,7 +33,7 @@
 
 <body class="font-sans antialiased text-gray-900 bg-white ios-smooth-scroll">
     <!-- Clean Professional Navigation -->
-    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed ios-hardware-acceleration">
+    <nav id="navbar" class="fixed w-full top-0 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed ios-hardware-acceleration">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center ios-safe-area-padding" style="padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));">
             <div class="flex justify-between items-center h-16 w-full">
                 <!-- Clean Logo Section -->
