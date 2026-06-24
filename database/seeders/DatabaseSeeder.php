@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             AdminUserSeeder::class,
             ServiceSeeder::class,
             TechnologySeeder::class,
+            CommerceSeeder::class,
             CaseStudySeeder::class,
             TestimonialSeeder::class,
             ClientSeeder::class,

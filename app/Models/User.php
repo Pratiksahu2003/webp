@@ -22,6 +22,14 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'phone',
+        'company_name',
+        'address_line_1',
+        'address_line_2',
+        'city',
+        'state',
+        'country',
+        'postal_code',
     ];
 
     /**
@@ -61,5 +69,22 @@ class User extends Authenticatable
     public function hasRole(string $role): bool
     {
         return $this->role === $role;
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function fullAddress(): string
+    {
+        return collect([
+            $this->address_line_1,
+            $this->address_line_2,
+            $this->city,
+            $this->state,
+            $this->country,
+            $this->postal_code,
+        ])->filter()->implode(', ');
     }
 }

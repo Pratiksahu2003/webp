@@ -258,6 +258,7 @@
             }
         }
     </style>
+    @stack('styles')
 </head>
 
 <body class="h-full overflow-hidden" x-data="{ sidebarOpen: false }">
@@ -313,6 +314,48 @@
                                 </path>
                             </svg>
                             Blog Posts
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Commerce -->
+                <div class="pt-4">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Commerce</p>
+                    <div class="mt-2 space-y-1">
+                        <a href="{{ route('admin.services.index') }}"
+                            class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6"></path>
+                            </svg>
+                            Services
+                        </a>
+                        <a href="{{ route('admin.sub-services.index') }}"
+                            class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.sub-services.*') ? 'active' : '' }}">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                            </svg>
+                            Sub Services
+                        </a>
+                        <a href="{{ route('admin.packages.index') }}"
+                            class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.packages.*') ? 'active' : '' }}">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                            </svg>
+                            Packages
+                        </a>
+                        <a href="{{ route('admin.technologies.index') }}"
+                            class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.technologies.*') ? 'active' : '' }}">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Technologies
+                        </a>
+                        <a href="{{ route('admin.orders.index') }}"
+                            class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                            </svg>
+                            Orders
                         </a>
                     </div>
                 </div>
@@ -393,6 +436,32 @@
                                     </path>
                                 </svg>
                                 Blog Posts
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Commerce</p>
+                        <div class="mt-2 space-y-1">
+                            <a href="{{ route('admin.services.index') }}"
+                                class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
+                                Services
+                            </a>
+                            <a href="{{ route('admin.sub-services.index') }}"
+                                class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.sub-services.*') ? 'active' : '' }}">
+                                Sub Services
+                            </a>
+                            <a href="{{ route('admin.packages.index') }}"
+                                class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.packages.*') ? 'active' : '' }}">
+                                Packages
+                            </a>
+                            <a href="{{ route('admin.technologies.index') }}"
+                                class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.technologies.*') ? 'active' : '' }}">
+                                Technologies
+                            </a>
+                            <a href="{{ route('admin.orders.index') }}"
+                                class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}">
+                                Orders
                             </a>
                         </div>
                     </div>
@@ -500,6 +569,7 @@
             </main>
         </div>
     </div>
+    @stack('scripts')
 </body>
 
 </html>

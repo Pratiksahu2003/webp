@@ -49,6 +49,20 @@ Route::prefix('blog-posts')->name('blog-posts.')->group(function () {
     Route::get('{blogPost}/seo-analysis', [BlogPostController::class, 'seoAnalysis'])->name('seo-analysis');
 });
 
+// Commerce Module Routes
+Route::resource('service-categories', \App\Http\Controllers\Admin\Commerce\ServiceCategoryController::class)->except(['create', 'edit', 'show']);
+Route::post('services/{service}/toggle-status', [\App\Http\Controllers\Admin\Commerce\ServiceController::class, 'toggleStatus'])->name('services.toggle-status');
+Route::resource('services', \App\Http\Controllers\Admin\Commerce\ServiceController::class)->except(['show']);
+Route::post('sub-services/{sub_service}/toggle-status', [\App\Http\Controllers\Admin\Commerce\SubServiceController::class, 'toggleStatus'])->name('sub-services.toggle-status');
+Route::resource('sub-services', \App\Http\Controllers\Admin\Commerce\SubServiceController::class)->except(['show']);
+Route::post('packages/{package}/toggle-status', [\App\Http\Controllers\Admin\Commerce\PackageController::class, 'toggleStatus'])->name('packages.toggle-status');
+Route::resource('packages', \App\Http\Controllers\Admin\Commerce\PackageController::class)->except(['show']);
+Route::post('technologies/{technology}/toggle-status', [\App\Http\Controllers\Admin\Commerce\TechnologyController::class, 'toggleStatus'])->name('technologies.toggle-status');
+Route::resource('technologies', \App\Http\Controllers\Admin\Commerce\TechnologyController::class)->except(['show']);
+Route::get('orders/export', [\App\Http\Controllers\Admin\Commerce\OrderController::class, 'export'])->name('orders.export');
+Route::patch('orders/{order}/status', [\App\Http\Controllers\Admin\Commerce\OrderController::class, 'updateStatus'])->name('orders.update-status');
+Route::resource('orders', \App\Http\Controllers\Admin\Commerce\OrderController::class)->only(['index', 'show']);
+
 // API Routes for AJAX requests
 Route::prefix('api')->name('api.')->group(function () {
     // Quick actions
