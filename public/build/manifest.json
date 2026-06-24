@@ -1,0 +1,55 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-C4SYq7cd.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/css/dashboard.css": {
+    "file": "assets/dashboard-B7XxtlQz.css",
+    "src": "resources/css/dashboard.css",
+    "isEntry": true,
+    "name": "dashboard",
+    "names": [
+      "dashboard.css"
+    ]
+  },
+  "resources/js/animations.js": {
+    "file": "assets/animations-h4QYLx3b.js",
+    "name": "animations",
+    "src": "resources/js/animations.js",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CLbKsplK.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/animations.js",
+      "resources/js/interactions.js",
+      "resources/js/navbar.js"
+    ]
+  },
+  "resources/js/dashboard.js": {
+    "file": "assets/dashboard-BZn7AHw3.js",
+    "name": "dashboard",
+    "src": "resources/js/dashboard.js",
+    "isEntry": true
+  },
+  "resources/js/interactions.js": {
+    "file": "assets/interactions-BLU31mNs.js",
+    "name": "interactions",
+    "src": "resources/js/interactions.js",
+    "isEntry": true
+  },
+  "resources/js/navbar.js": {
+    "file": "assets/navbar-BX0nxkn0.js",
+    "name": "navbar",
+    "src": "resources/js/navbar.js",
+    "isEntry": true
+  }
+}
