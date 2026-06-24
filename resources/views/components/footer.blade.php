@@ -83,75 +83,7 @@
         </div>
         
         <!-- Main Links Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-10">
-            <!-- Services -->
-            <div class="space-y-3">
-                <h3 class="text-gray-900 font-bold text-base mb-3 relative">
-                    <span class="relative z-10">Services</span>
-                    <span class="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-orange-500 to-transparent"></span>
-                </h3>
-                <ul class="space-y-2">
-                    <li><a href="{{ route('services.custom-software') }}" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        Custom Software
-                    </a></li>
-                    <li><a href="{{ route('services.web-development') }}" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        Web Development
-                    </a></li>
-                    <li><a href="{{ route('services.mobile-development') }}" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        Mobile Apps
-                    </a></li>
-                    <li><a href="{{ route('services.data-science') }}" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        Data Science & AI
-                    </a></li>
-                    <li><a href="{{ route('services.qa-testing') }}" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        QA & Testing
-                    </a></li>
-                    <li><a href="{{ route('services.ui-ux-design') }}" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        UX/UI Design
-                    </a></li>
-                </ul>
-            </div>
-            
-            <!-- Solutions -->
-            <div class="space-y-3">
-                <h3 class="text-gray-900 font-bold text-base mb-3 relative">
-                    <span class="relative z-10">Solutions</span>
-                    <span class="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-orange-500 to-transparent"></span>
-                </h3>
-                <ul class="space-y-2">
-                    <li><a href="{{ route('industries.healthcare') }}" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        Healthcare
-                    </a></li>
-                    <li><a href="{{ route('industries.fintech') }}" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        FinTech
-                    </a></li>
-                    <li><a href="{{ route('industries.ecommerce') }}" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        eCommerce
-                    </a></li>
-                    <li><a href="{{ route('industries.logistics') }}" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        Logistics
-                    </a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        Enterprise
-                    </a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center group">
-                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full mr-2 group-hover:bg-orange-500 transition-colors"></span>
-                        Cloud Solutions
-                    </a></li>
-                </ul>
-            </div>
-            
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             <!-- Company -->
             <div class="space-y-3">
                 <h3 class="text-gray-900 font-bold text-base mb-3 relative">

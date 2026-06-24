@@ -156,9 +156,9 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
             </a>
-            <a href="{{ route('services') }}"
+            <a href="{{ route('contact') }}"
                 class="inline-flex items-center px-6 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-200">
-                View Services
+                Contact Us
             </a>
         </div>
     </div>

@@ -30,7 +30,7 @@
         <!-- Main Pages -->
         <div class="mb-12">
             <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Main Pages</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
                         <svg class="w-6 h-6 text-orange-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,41 +43,6 @@
                         <li><a href="{{ route('about') }}" class="text-gray-600 hover:text-orange-600 transition-colors">About Us</a></li>
                         <li><a href="{{ route('contact') }}" class="text-gray-600 hover:text-orange-600 transition-colors">Contact Us</a></li>
                         <li><a href="{{ route('careers') }}" class="text-gray-600 hover:text-orange-600 transition-colors">Careers</a></li>
-                    </ul>
-                </div>
-                
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                        <svg class="w-6 h-6 text-orange-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                        </svg>
-                        Services
-                    </h3>
-                    <ul class="space-y-2">
-                        <li><a href="{{ route('services') }}" class="text-gray-600 hover:text-orange-600 transition-colors">All Services</a></li>
-                        <li><a href="{{ route('services.custom-software') }}" class="text-gray-600 hover:text-orange-600 transition-colors">Custom Software</a></li>
-                        <li><a href="{{ route('services.web-development') }}" class="text-gray-600 hover:text-orange-600 transition-colors">Web Development</a></li>
-                        <li><a href="{{ route('services.mobile-development') }}" class="text-gray-600 hover:text-orange-600 transition-colors">Mobile Development</a></li>
-                        <li><a href="{{ route('services.data-science') }}" class="text-gray-600 hover:text-orange-600 transition-colors">Data Science & AI</a></li>
-                        <li><a href="{{ route('services.qa-testing') }}" class="text-gray-600 hover:text-orange-600 transition-colors">QA & Testing</a></li>
-                        <li><a href="{{ route('services.ui-ux-design') }}" class="text-gray-600 hover:text-orange-600 transition-colors">UX/UI Design</a></li>
-                    </ul>
-                </div>
-                
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                        <svg class="w-6 h-6 text-orange-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                        </svg>
-                        Industries
-                    </h3>
-                    <ul class="space-y-2">
-                        <li><a href="{{ route('industries.healthcare') }}" class="text-gray-600 hover:text-orange-600 transition-colors">Healthcare</a></li>
-                        <li><a href="{{ route('industries.fintech') }}" class="text-gray-600 hover:text-orange-600 transition-colors">FinTech</a></li>
-                        <li><a href="{{ route('industries.ecommerce') }}" class="text-gray-600 hover:text-orange-600 transition-colors">eCommerce</a></li>
-                        <li><a href="{{ route('industries.logistics') }}" class="text-gray-600 hover:text-orange-600 transition-colors">Logistics</a></li>
-                        <li><a href="{{ route('industries.education') }}" class="text-gray-600 hover:text-orange-600 transition-colors">Education</a></li>
-                        <li><a href="{{ route('industries.real-estate') }}" class="text-gray-600 hover:text-orange-600 transition-colors">Real Estate</a></li>
                     </ul>
                 </div>
             </div>

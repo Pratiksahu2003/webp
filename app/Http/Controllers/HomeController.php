@@ -33,13 +33,6 @@ class HomeController extends Controller
         return view('about', compact('sections'));
     }
 
-    public function services()
-    {
-        $services = Service::active()->ordered()->get();
-        $sections = Section::active()->ordered()->get();
-        return view('services', compact('services', 'sections'));
-    }
-
     public function caseStudies()
     {
         $caseStudies = CaseStudy::active()->ordered()->get();
@@ -68,73 +61,6 @@ class HomeController extends Controller
     public function portfolio()
     {
         return view('portfolio');
-    }
-
-    // Service Pages
-    public function softwareDevelopment()
-    {
-        return view('services.software-development');
-    }
-
-    public function webDevelopment()
-    {
-        return view('services.web-development');
-    }
-
-    public function mobileDevelopment()
-    {
-        return view('services.mobile-development');
-    }
-
-    public function customSoftware()
-    {
-        return view('services.custom-software');
-    }
-
-    public function uiUxDesign()
-    {
-        return view('services.ui-ux-design');
-    }
-
-    public function dataScience()
-    {
-        return view('services.data-science');
-    }
-
-    public function qaTesting()
-    {
-        return view('services.qa-testing');
-    }
-
-    // Industry Pages
-    public function healthcare()
-    {
-        return view('industries.healthcare');
-    }
-
-    public function fintech()
-    {
-        return view('industries.fintech');
-    }
-
-    public function ecommerce()
-    {
-        return view('industries.ecommerce');
-    }
-
-    public function education()
-    {
-        return view('industries.education');
-    }
-
-    public function realEstate()
-    {
-        return view('industries.real-estate');
-    }
-
-    public function logistics()
-    {
-        return view('industries.logistics');
     }
 
     // Legal Pages

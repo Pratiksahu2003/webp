@@ -242,7 +242,7 @@
                         <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">CRM</span>
                         <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">ERP</span>
                     </div>
-                    <a href="{{ route('services.custom-software') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -269,7 +269,7 @@
                         <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">PHP</span>
                         <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">JS</span>
                     </div>
-                    <a href="{{ route('services.web-development') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -296,7 +296,7 @@
                         <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">Android</span>
                         <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">Flutter</span>
                     </div>
-                    <a href="{{ route('services.mobile-development') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -334,7 +334,7 @@
                     Make every business decision a data-driven one with stats, insights and analysis that positions you ahead of the competition
                 </p>
 
-                <a href="{{ route('services.data-science') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                <a href="{{ route('contact') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                     Learn more →
                 </a>
             </div>
@@ -364,7 +364,7 @@
                     Ensure the fault tolerance, stability, and correct operation of your digital solution with software QA testing services by VanTroZ
                 </p>
 
-                <a href="{{ route('services.qa-testing') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                <a href="{{ route('contact') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                     Learn more →
                 </a>
             </div>
@@ -392,7 +392,7 @@
                     Get a UX/UI design inspired by the desires and needs of your users by entrusting its implementation to VanTroZ experts.
                 </p>
 
-                <a href="{{ route('services.ui-ux-design') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                <a href="{{ route('contact') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                     Learn more →
                 </a>
             </div>
@@ -745,7 +745,7 @@
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Logistics</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">From route optimization algorithms and fleet management systems to supply chain tracking platforms...</p>
-                    <a href="{{ route('industries.logistics') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -765,7 +765,7 @@
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">eCommerce</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">Get tailored commerce-tuned software solutions, including online storefronts, inventory management systems...</p>
-                    <a href="{{ route('industries.ecommerce') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -785,7 +785,7 @@
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">Power healthcare service provision with advanced software solutions, like electronic health record (EHR) systems...</p>
-                    <a href="{{ route('industries.healthcare') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -805,7 +805,7 @@
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">FinTech</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">Secure, scalable financial technology solutions that drive innovation in banking and finance sectors...</p>
-                    <a href="{{ route('industries.fintech') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors group-hover:translate-x-1">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
