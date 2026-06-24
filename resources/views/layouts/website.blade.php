@@ -76,66 +76,15 @@
                     </div>
                     @endif
 
-                    @if(isset($webDevelopmentService) && $webDevelopmentService->activeSubServices->isNotEmpty())
-                    <!-- Web Development Menu -->
-                    <div class="relative group">
-                        <button type="button" class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">
-                            Web Development
-                            <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div class="absolute top-full left-0 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
-                            <div class="bg-white rounded-xl shadow-xl border border-gray-200 py-4 mt-2">
-                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                    <a href="{{ route('catalog.services.show', $webDevelopmentService) }}" class="text-xs font-semibold text-orange-600 hover:text-orange-700 uppercase tracking-wide">
-                                        All Web Development →
-                                    </a>
-                                </div>
-                                <div class="px-2 space-y-0.5">
-                                    @foreach($webDevelopmentService->activeSubServices as $subService)
-                                    <a href="{{ route('services.sub-service', [$webDevelopmentService, $subService]) }}" class="block px-3 py-2.5 text-sm text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">
-                                        {{ $subService->title }}
-                                    </a>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endif
+                    <x-nav-service-menu :service="$webDevelopmentService" label="Web Development" />
 
-                    @if(isset($softwareDevelopmentService) && $softwareDevelopmentService->activeSubServices->isNotEmpty())
-                    <!-- Software Development Menu -->
-                    <div class="relative group">
-                        <button type="button" class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">
-                            Software Development
-                            <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div class="absolute top-full left-0 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
-                            <div class="bg-white rounded-xl shadow-xl border border-gray-200 py-4 mt-2">
-                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                    <a href="{{ route('catalog.services.show', $softwareDevelopmentService) }}" class="text-xs font-semibold text-orange-600 hover:text-orange-700 uppercase tracking-wide">
-                                        All Software Development →
-                                    </a>
-                                </div>
-                                <div class="px-2 space-y-0.5">
-                                    @foreach($softwareDevelopmentService->activeSubServices as $subService)
-                                    <a href="{{ route('services.sub-service', [$softwareDevelopmentService, $subService]) }}" class="block px-3 py-2.5 text-sm text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">
-                                        {{ $subService->title }}
-                                    </a>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endif
+                    <x-nav-service-menu :service="$softwareDevelopmentService" label="Software Development" />
 
-                    <!-- Clean Navigation Links -->
+                    <x-nav-service-menu :service="$designService" label="Design" all-label="All Design" />
+
+                    <x-nav-service-menu :service="$digitalMarketingService" label="Digital Marketing" />
+
                     <a href="{{ route('about') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">About Us</a>
-                    <a href="{{ route('blog.index') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-orange-600">Blog</a>
-                    <a href="{{ route('contact') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-orange-600">Contacts</a>
                 </div>
 
                 <!-- Clean Contact Info & CTA -->
@@ -206,44 +155,16 @@
             </div>
             @endif
 
-            @if(isset($webDevelopmentService) && $webDevelopmentService->activeSubServices->isNotEmpty())
-            <div class="mobile-menu-section">
-                <details class="mobile-menu-accordion">
-                    <summary class="mobile-nav-link mobile-nav-link--summary">
-                        <span>Web Development</span>
-                        <svg class="mobile-menu-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </summary>
-                    <div class="mobile-menu-sub">
-                        @foreach($webDevelopmentService->activeSubServices as $subService)
-                        <a href="{{ route('services.sub-service', [$webDevelopmentService, $subService]) }}" class="mobile-nav-sublink">{{ $subService->title }}</a>
-                        @endforeach
-                        <a href="{{ route('catalog.services.show', $webDevelopmentService) }}" class="mobile-nav-sublink mobile-nav-sublink--accent">View All Web Development →</a>
-                    </div>
-                </details>
-            </div>
-            @endif
+            <x-nav-service-menu-mobile :service="$webDevelopmentService" label="Web Development" />
 
-            @if(isset($softwareDevelopmentService) && $softwareDevelopmentService->activeSubServices->isNotEmpty())
-            <div class="mobile-menu-section">
-                <details class="mobile-menu-accordion">
-                    <summary class="mobile-nav-link mobile-nav-link--summary">
-                        <span>Software Development</span>
-                        <svg class="mobile-menu-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </summary>
-                    <div class="mobile-menu-sub">
-                        @foreach($softwareDevelopmentService->activeSubServices as $subService)
-                        <a href="{{ route('services.sub-service', [$softwareDevelopmentService, $subService]) }}" class="mobile-nav-sublink">{{ $subService->title }}</a>
-                        @endforeach
-                        <a href="{{ route('catalog.services.show', $softwareDevelopmentService) }}" class="mobile-nav-sublink mobile-nav-sublink--accent">View All Software Development →</a>
-                    </div>
-                </details>
-            </div>
-            @endif
+            <x-nav-service-menu-mobile :service="$softwareDevelopmentService" label="Software Development" />
+
+            <x-nav-service-menu-mobile :service="$designService" label="Design" all-label="View All Design" />
+
+            <x-nav-service-menu-mobile :service="$digitalMarketingService" label="Digital Marketing" />
 
             <div class="mobile-menu-section">
                 <a href="{{ route('about') }}" class="mobile-nav-link">About Us</a>
-                <a href="{{ route('blog.index') }}" class="mobile-nav-link">Blog</a>
-                <a href="{{ route('contact') }}" class="mobile-nav-link">Contacts</a>
             </div>
 
             <div class="mobile-menu-section mobile-menu-footer">
