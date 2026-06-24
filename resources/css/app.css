@@ -1297,6 +1297,24 @@ html {
     animation-delay: var(--hero-delay, 0ms);
 }
 
+.hero-title-line.apple-hero-in.is-revealed {
+    animation: hero-title-enter 0.95s var(--apple-ease-out) forwards;
+    animation-delay: var(--hero-delay, 0ms);
+}
+
+@keyframes hero-title-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(2rem) translateX(-0.5rem);
+        filter: blur(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+        filter: blur(0);
+    }
+}
+
 @keyframes apple-hero-enter {
     to {
         opacity: 1;

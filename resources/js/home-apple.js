@@ -14,14 +14,47 @@ class HomeAppleAnimations {
     init() {
         if (this.reducedMotion) {
             this.revealAll();
+            this.initHeroVideo();
             return;
         }
 
-        this.initHeroSequence();
+        this.initHeroVideo();
         this.registerSectionEffects();
         this.setupRevealObserver();
         this.setupSectionParallax();
         this.setupCardTilt();
+    }
+
+    initHeroVideo() {
+        const video = document.getElementById('hero-video');
+        const container = document.getElementById('hero-video-container');
+        if (!video || !container) return;
+
+        video.muted = true;
+        video.defaultMuted = true;
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', 'true');
+        container.classList.add('is-ready');
+
+        const play = () => {
+            const attempt = video.play();
+            if (attempt && typeof attempt.catch === 'function') {
+                attempt.catch(() => {});
+            }
+        };
+
+        if (video.readyState >= 2) {
+            play();
+        } else {
+            video.addEventListener('canplay', play, { once: true });
+            video.addEventListener('loadeddata', play, { once: true });
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && video.paused) {
+                play();
+            }
+        });
     }
 
     revealAll() {
@@ -162,22 +195,7 @@ class HomeAppleAnimations {
     }
 
     initHeroSequence() {
-        const hero = document.getElementById('home-hero-section');
-        if (!hero) return;
-
-        const items = hero.querySelectorAll('[data-apple-hero]');
-        items.forEach((el, i) => {
-            el.classList.add('apple-hero-in');
-            el.style.setProperty('--hero-delay', `${i * 120}ms`);
-        });
-
-        hero.querySelectorAll('.hero-main-card').forEach(el => {
-            el.classList.add('home-hero-float');
-        });
-
-        requestAnimationFrame(() => {
-            items.forEach(el => el.classList.add('is-revealed'));
-        });
+        /* Hero animations disabled — static hero content */
     }
 
     setupRevealObserver() {

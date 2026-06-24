@@ -44,21 +44,31 @@
     object-position: center;
     display: block;
     z-index: 0;
+    opacity: 1;
+    transform: none;
 }
 
 #home-hero-section .hero-video-overlay {
     z-index: 1;
-    /* Light tint so the video stays clearly visible */
+    opacity: 1;
     background: linear-gradient(
         135deg,
-        rgba(15, 23, 42, 0.45) 0%,
-        rgba(30, 41, 59, 0.3) 50%,
-        rgba(15, 23, 42, 0.5) 100%
+        rgba(15, 23, 42, 0.38) 0%,
+        rgba(30, 41, 59, 0.22) 45%,
+        rgba(15, 23, 42, 0.42) 100%
     );
 }
 
-.hero-particles {
-    z-index: 2;
+/* No animations in hero section */
+#home-hero-section,
+#home-hero-section * {
+    animation: none !important;
+}
+
+#home-hero-section .apple-hero-in {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
 }
 
 .hero-content-wrapper {
@@ -112,10 +122,6 @@
 }
 
 @media (max-width: 375px) {
-    .hero-particles {
-        opacity: 0.45;
-    }
-
     .hero-main-card {
         padding: 1.25rem;
     }
@@ -151,10 +157,15 @@
 #home-hero-section .hero-video-wrapper {
     display: block !important;
     visibility: visible !important;
-    opacity: 1 !important;
     height: 100% !important;
     min-height: 100% !important;
     max-height: none !important;
+}
+
+#home-hero-section #hero-video.is-playing,
+#home-hero-section #hero-video-container.is-ready #hero-video {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 #home-hero-section .hero-content-wrapper {
