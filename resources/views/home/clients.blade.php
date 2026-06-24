@@ -6,7 +6,7 @@
     />
 
     @if(isset($clients) && $clients->isNotEmpty())
-    <div class="relative overflow-hidden">
+    <div class="relative overflow-hidden" data-apple-parallax="0.04">
         <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#fbfbfd] to-transparent z-10 pointer-events-none"></div>
         <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#fbfbfd] to-transparent z-10 pointer-events-none"></div>
         <div class="home-clients-track flex items-center gap-12 sm:gap-16 w-max animate-scroll">

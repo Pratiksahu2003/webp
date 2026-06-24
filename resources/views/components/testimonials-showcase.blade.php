@@ -7,7 +7,7 @@
     </div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="testimonials-reveal text-center max-w-3xl mx-auto mb-12 lg:mb-14">
+        <div class="testimonials-reveal apple-reveal text-center max-w-3xl mx-auto mb-12 lg:mb-14">
             <p class="text-orange-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Client Stories</p>
             <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05]">
                 What clients say.
@@ -119,26 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const carousel = section.querySelector('[data-testimonials-carousel]');
     const track = carousel?.querySelector('[data-testimonials-track]');
     const cardEls = carousel ? Array.from(carousel.querySelectorAll('[data-testimonial-card]')) : [];
-    const revealEls = section.querySelectorAll('.testimonials-reveal');
-
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('is-visible');
-                if (entry.target.matches('[data-testimonials-carousel]')) {
-                    cardEls.forEach(el => el.classList.add('is-visible'));
-                }
-                observer.unobserve(entry.target);
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-        revealEls.forEach(el => observer.observe(el));
-        if (carousel) observer.observe(carousel);
-    } else {
-        revealEls.forEach(el => el.classList.add('is-visible'));
-        cardEls.forEach(el => el.classList.add('is-visible'));
-    }
 
     if (!carousel || !track || !cardEls.length) return;
 
@@ -257,8 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             clearInterval(autoplayTimer);
         }
-    } else {
-        cardEls.forEach(el => el.classList.add('is-visible'));
     }
 
     applyTransform();

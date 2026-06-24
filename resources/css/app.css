@@ -884,13 +884,16 @@ html {
     }
 }
 
-.testimonials-card.is-visible {
+.testimonials-card.is-visible,
+.testimonials-card.is-revealed {
     opacity: 1;
     transform: translateY(0);
 }
 
 .testimonials-carousel:not(.testimonials-carousel--static) .testimonials-card.is-visible:hover,
-.testimonials-carousel--static .testimonials-card.is-visible:hover {
+.testimonials-carousel:not(.testimonials-carousel--static) .testimonials-card.is-revealed:hover,
+.testimonials-carousel--static .testimonials-card.is-visible:hover,
+.testimonials-carousel--static .testimonials-card.is-revealed:hover {
     box-shadow:
         0 4px 8px rgba(0, 0, 0, 0.04),
         0 16px 40px rgba(0, 0, 0, 0.09);
@@ -982,5 +985,151 @@ html {
 @media (prefers-reduced-motion: reduce) {
     .home-clients-track {
         animation: none;
+    }
+}
+
+/* Apple-style home scroll animations */
+.home-apple {
+    --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --apple-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hero entrance — plays on load */
+.apple-hero-in {
+    opacity: 0;
+    transform: translateY(2.5rem) scale(0.97);
+    filter: blur(10px);
+}
+
+.apple-hero-in.is-revealed {
+    animation: apple-hero-enter 1.1s var(--apple-ease-out) forwards;
+    animation-delay: var(--hero-delay, 0ms);
+}
+
+@keyframes apple-hero-enter {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Scroll reveal — all sections */
+.apple-reveal,
+.testimonials-reveal {
+    opacity: 0;
+    transform: translateY(3rem) scale(0.98);
+    filter: blur(6px);
+    transition:
+        opacity 1s var(--apple-ease),
+        transform 1s var(--apple-ease),
+        filter 1s var(--apple-ease);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform, filter;
+}
+
+.apple-reveal.is-revealed,
+.testimonials-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+.apple-reveal-section.is-revealed {
+    /* section container marker */
+}
+
+/* Testimonial cards use apple reveal when tagged */
+.testimonials-card.apple-reveal {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.98);
+}
+
+.testimonials-card.apple-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+.apple-reveal--finale {
+    transform: translateY(4rem) scale(0.96);
+    filter: blur(8px);
+}
+
+.apple-reveal--finale.is-revealed {
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+.apple-finale__line.is-revealed {
+    animation: apple-line-glow 1.2s var(--apple-ease) forwards;
+}
+
+@keyframes apple-line-glow {
+    0% { text-shadow: 0 0 0 transparent; }
+    100% { text-shadow: 0 0 40px rgba(249, 115, 22, 0.15); }
+}
+
+.apple-finale__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    will-change: transform;
+}
+
+.apple-finale__orb--1 {
+    width: 32rem;
+    height: 32rem;
+    top: 10%;
+    left: -10%;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.35) 0%, transparent 70%);
+}
+
+.apple-finale__orb--2 {
+    width: 28rem;
+    height: 28rem;
+    bottom: 5%;
+    right: -8%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+}
+
+.apple-finale__orb--3 {
+    width: 20rem;
+    height: 20rem;
+    top: 40%;
+    right: 30%;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+}
+
+.apple-finale__scroll-hint {
+    animation: apple-hint-fade 3s ease-in-out infinite;
+}
+
+@keyframes apple-hint-fade {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .apple-reveal,
+    .apple-reveal--finale,
+    .apple-hero-in,
+    .testimonials-reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+        animation: none;
+    }
+
+    .apple-finale__scroll-hint {
+        animation: none;
+        opacity: 0.3;
+    }
+
+    .testimonials-card.apple-reveal {
+        opacity: 1;
+        transform: none;
     }
 }

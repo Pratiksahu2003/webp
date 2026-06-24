@@ -8,9 +8,9 @@
     $firstStackSlug = array_key_first($stacks);
 @endphp
 
-<section id="technology-stack" class="section bg-gray-50">
-    <div class="container mx-auto px-6 lg:px-8">
-        <div class="text-center mb-12 lg:mb-16">
+<section id="technology-stack" class="home-section bg-[#fbfbfd] py-16 sm:py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 lg:mb-16 apple-reveal">
             <p class="text-orange-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Our Stack</p>
             <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 tracking-tight mb-6">Technology stack</h2>
             <p class="text-gray-600 max-w-2xl mx-auto mb-8">Six core stacks powering the products we design, build, and scale.</p>
@@ -18,7 +18,7 @@
         </div>
 
         @if($technologies->isNotEmpty())
-        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" data-apple-stagger>
             @foreach($stacks as $slug => $stack)
             <button
                 type="button"
@@ -53,7 +53,7 @@
             </div>
 
             @if($stackTechs->isNotEmpty())
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4" data-apple-stagger>
                 @foreach($stackTechs as $tech)
                 <a
                     href="{{ route('technologies.show', $tech) }}"

@@ -4,7 +4,9 @@
 @section('description', 'VanTroZ - IT partner. Driving Business Growth. Partner with dedicated IT experts who get your business.')
 
 @section('content')
-<!-- Advanced Hero Section with Video Background - 100% Responsive for All Devices & iOS -->
+<div id="home-page" class="home-apple">
+
+<!-- Hero -->
 <section id="home-hero-section" class="hero-section relative flex items-center overflow-hidden ios-hardware-acceleration ios-viewport-height ios-hero-fixed hero-responsive">
 
     <!-- Video Background - Fully Responsive -->
@@ -47,7 +49,7 @@
             <div class="lg:col-span-7 space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-6 xl:space-y-10 relative z-30 hero-left-content">
 
                 <!-- Advanced Hero Badge - Responsive -->
-                <div class="flex justify-start animate-fade-in-up">
+                <div class="flex justify-start" data-apple-hero>
                     <div class="group relative inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-full text-white text-xs sm:text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hero-badge">
                         <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative flex items-center">
@@ -58,35 +60,32 @@
                 </div>
 
                 <!-- Advanced Hero Headlines - Fully Responsive -->
-                <div class="space-y-2 sm:space-y-3 md:space-y-4 lg:space-y-5 xl:space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="space-y-2 sm:space-y-3 md:space-y-4 lg:space-y-5 xl:space-y-6" data-apple-hero>
                     <h1 class="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight tracking-tight hero-title-responsive">
-                        <span class="block">Build the</span>
-                        <span class="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent animate-gradient-x">Future</span>
-                        <span class="block">of Business</span>
+                        <span class="block" data-apple-hero>Build the</span>
+                        <span class="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent" data-apple-hero>Future</span>
+                        <span class="block" data-apple-hero>of Business</span>
                     </h1>
 
-                    <!-- Advanced Hero Subtitle - Fully Responsive -->
-                    <div class="max-w-2xl">
-                        <p class="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-slate-200 leading-relaxed font-light animate-fade-in-up hero-subtitle-responsive" style="animation-delay: 0.4s;">
+                    <div class="max-w-2xl" data-apple-hero>
+                        <p class="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-slate-200 leading-relaxed font-light hero-subtitle-responsive">
                             We craft <span class="text-white font-semibold">exceptional digital experiences</span> that transform ideas into powerful, scalable solutions that drive real business growth.
                         </p>
                     </div>
 
-                    <!-- Advanced Feature Pills - Responsive -->
-                    <div class="flex flex-wrap gap-2 sm:gap-3 animate-fade-in-up hero-pills" style="animation-delay: 0.6s;">
+                    <div class="flex flex-wrap gap-2 sm:gap-3" data-apple-hero>
                         <div class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white/10 backdrop-blur-sm rounded-full text-xs sm:text-sm text-slate-200 border border-white/20 whitespace-nowrap">
-                            âš¡ Lightning Fast
+                            Lightning Fast
                         </div>
                         <div class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white/10 backdrop-blur-sm rounded-full text-xs sm:text-sm text-slate-200 border border-white/20 whitespace-nowrap">
-                            ðŸš€ Scalable Solutions
+                            Scalable Solutions
                         </div>
                         <div class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white/10 backdrop-blur-sm rounded-full text-xs sm:text-sm text-slate-200 border border-white/20 whitespace-nowrap">
-                            ðŸŽ¯ Results Driven
+                            Results Driven
                         </div>
                     </div>
 
-                    <!-- Advanced CTA Buttons - Fully Responsive -->
-                    <div class="flex flex-col xs:flex-row gap-2 sm:gap-3 md:gap-4 pt-2 sm:pt-3 md:pt-4 animate-fade-in-up hero-buttons" style="animation-delay: 0.8s;">
+                    <div class="flex flex-col xs:flex-row gap-2 sm:gap-3 md:gap-4 pt-2 sm:pt-3 md:pt-4" data-apple-hero>
                         <a href="{{ route('contact') }}" class="group relative inline-flex items-center justify-center px-4 py-2.5 sm:px-5 sm:py-3 md:px-6 md:py-3 lg:px-8 lg:py-4 bg-gradient-to-r from-white to-slate-100 text-slate-900 font-bold rounded-lg sm:rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 ios-touch-target ios-hardware-acceleration w-full xs:w-auto text-sm sm:text-base hero-btn-primary">
                             <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                             <span class="relative">Start Your Project</span>
@@ -105,11 +104,8 @@
                 </div>
             </div>
 
-            <!-- Advanced Right Content - Interactive Stats - Fully Responsive -->
-            <div class="lg:col-span-5 relative h-full flex flex-col justify-center space-y-4 sm:space-y-6 md:space-y-8 hero-stats-wrapper">
-
-                <!-- Main Achievement Card - Responsive -->
-                <div class="group relative bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in-up hero-main-card" style="animation-delay: 1s;">
+            <div class="lg:col-span-5 relative h-full flex flex-col justify-center space-y-4 sm:space-y-6 md:space-y-8 hero-stats-wrapper" data-apple-hero>
+                <div class="group relative bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 hero-main-card" data-apple-hero>
                     <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="relative text-center">
                         <div class="text-4xl sm:text-5xl md:text-6xl font-black bg-gradient-to-r from-white via-orange-200 to-orange-300 bg-clip-text text-transparent mb-2 sm:mb-3 animate-pulse hero-main-number">
@@ -121,16 +117,15 @@
                     </div>
                 </div>
 
-                <!-- Stats Grid - Fully Responsive -->
                 <div class="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 hero-stats-grid">
-                    <div class="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 animate-fade-in-up hero-stat-card" style="animation-delay: 1.2s;">
+                    <div class="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 hero-stat-card" data-apple-hero>
                         <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative">
                             <div class="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-300 to-orange-400 bg-clip-text text-transparent mb-1 sm:mb-2 hero-stat-number">3500+</div>
                             <div class="text-slate-300 text-xs sm:text-sm font-medium">Projects Delivered</div>
                         </div>
                     </div>
-                    <div class="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 animate-fade-in-up hero-stat-card" style="animation-delay: 1.4s;">
+                    <div class="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 hero-stat-card" data-apple-hero>
                         <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative">
                             <div class="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-300 to-orange-400 bg-clip-text text-transparent mb-1 sm:mb-2 hero-stat-number">250+</div>
@@ -157,10 +152,10 @@
 
 @include('home.awards')
 @include('home.blog')
-@include('home.cta')
+@include('home.apple-finale')
 @include('home.scripts')
 
-<!-- Immediate Hero Section Fix for iOS/Mobile -->
+</div>
 <script>
     (function() {
         'use strict';
