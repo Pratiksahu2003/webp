@@ -43,6 +43,7 @@ function initMobileMenu() {
         mobileMenuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
         mobileMenuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
         document.body.classList.toggle('mobile-menu-open', open);
+        document.getElementById('navbar')?.classList.toggle('mobile-menu-active', open);
 
         openIcon?.classList.toggle('hidden', open);
         closeIcon?.classList.toggle('hidden', !open);

@@ -33,7 +33,7 @@
 
 <body class="font-sans antialiased text-gray-900 bg-white ios-smooth-scroll">
     <!-- Clean Professional Navigation -->
-    <nav id="navbar" class="fixed w-full top-0 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed ios-hardware-acceleration">
+    <nav id="navbar" class="fixed w-full top-0 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center ios-safe-area-padding" style="padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));">
             <div class="flex justify-between items-center h-16 w-full">
                 <!-- Clean Logo Section -->
@@ -151,74 +151,74 @@
                 </div>
             </div>
         </div>
+    </nav>
 
-        <!-- Mobile menu — full-height scrollable panel (below xl breakpoint) -->
-        <div id="mobile-menu" class="mobile-menu xl:hidden" aria-hidden="true">
-            <button type="button" class="mobile-menu-backdrop" aria-label="Close menu" tabindex="-1"></button>
-            <div class="mobile-menu-panel ios-safe-area-padding">
-                <div class="mobile-menu-scroll">
-                @if(isset($catalogServices) && $catalogServices->isNotEmpty())
-                <div class="mobile-menu-section">
-                    <p class="mobile-menu-label">Services</p>
-                    @foreach($catalogServices as $service)
-                    <details class="mobile-menu-accordion">
-                        <summary class="mobile-nav-link mobile-nav-link--summary">
-                            <span>{{ $service->title }}</span>
-                            <svg class="mobile-menu-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mobile-menu-sub">
-                            @foreach($service->activeSubServices as $subService)
-                            <a href="{{ route('services.sub-service', [$service, $subService]) }}" class="mobile-nav-sublink">{{ $subService->title }}</a>
-                            @endforeach
-                            <a href="{{ route('catalog.services.show', $service) }}" class="mobile-nav-sublink mobile-nav-sublink--accent">View {{ $service->title }} →</a>
-                        </div>
-                    </details>
-                    @endforeach
-                    <a href="{{ route('catalog.services') }}" class="mobile-nav-link mobile-nav-link--accent">Browse All Services</a>
-                </div>
+    <!-- Mobile menu — portal at body level so it stacks above page content -->
+    <div id="mobile-menu" class="mobile-menu xl:hidden" aria-hidden="true">
+        <button type="button" class="mobile-menu-backdrop" aria-label="Close menu" tabindex="-1"></button>
+        <div class="mobile-menu-panel ios-safe-area-padding">
+            <div class="mobile-menu-scroll">
+            @if(isset($catalogServices) && $catalogServices->isNotEmpty())
+            <div class="mobile-menu-section">
+                <p class="mobile-menu-label">Services</p>
+                @foreach($catalogServices as $service)
+                <details class="mobile-menu-accordion">
+                    <summary class="mobile-nav-link mobile-nav-link--summary">
+                        <span>{{ $service->title }}</span>
+                        <svg class="mobile-menu-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="mobile-menu-sub">
+                        @foreach($service->activeSubServices as $subService)
+                        <a href="{{ route('services.sub-service', [$service, $subService]) }}" class="mobile-nav-sublink">{{ $subService->title }}</a>
+                        @endforeach
+                        <a href="{{ route('catalog.services.show', $service) }}" class="mobile-nav-sublink mobile-nav-sublink--accent">View {{ $service->title }} →</a>
+                    </div>
+                </details>
+                @endforeach
+                <a href="{{ route('catalog.services') }}" class="mobile-nav-link mobile-nav-link--accent">Browse All Services</a>
+            </div>
+            @endif
+
+            @if(isset($webDevelopmentService) && $webDevelopmentService->activeSubServices->isNotEmpty())
+            <div class="mobile-menu-section">
+                <details class="mobile-menu-accordion">
+                    <summary class="mobile-nav-link mobile-nav-link--summary">
+                        <span>Web Development</span>
+                        <svg class="mobile-menu-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="mobile-menu-sub">
+                        @foreach($webDevelopmentService->activeSubServices as $subService)
+                        <a href="{{ route('services.sub-service', [$webDevelopmentService, $subService]) }}" class="mobile-nav-sublink">{{ $subService->title }}</a>
+                        @endforeach
+                        <a href="{{ route('catalog.services.show', $webDevelopmentService) }}" class="mobile-nav-sublink mobile-nav-sublink--accent">View All Web Development →</a>
+                    </div>
+                </details>
+            </div>
+            @endif
+
+            <div class="mobile-menu-section">
+                <a href="{{ route('case-studies') }}" class="mobile-nav-link">Case Studies</a>
+                <a href="{{ route('about') }}" class="mobile-nav-link">About Us</a>
+                <a href="{{ route('blog.index') }}" class="mobile-nav-link">Blog</a>
+                <a href="{{ route('contact') }}" class="mobile-nav-link">Contacts</a>
+            </div>
+
+            <div class="mobile-menu-section mobile-menu-footer">
+                <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="mobile-nav-phone">
+                    <span class="text-lg" aria-hidden="true">{{ config('company.contact.country_flag') }}</span>
+                    <span>{{ config('company.contact.phone') }}</span>
+                </a>
+                <a href="{{ route('contact') }}" class="mobile-nav-cta">Contact Us</a>
+
+                @auth
+                @if(auth()->user()->isAdmin())
+                <a href="{{ route('admin.dashboard') }}" class="mobile-nav-auth">Admin Dashboard</a>
                 @endif
-
-                @if(isset($webDevelopmentService) && $webDevelopmentService->activeSubServices->isNotEmpty())
-                <div class="mobile-menu-section">
-                    <details class="mobile-menu-accordion">
-                        <summary class="mobile-nav-link mobile-nav-link--summary">
-                            <span>Web Development</span>
-                            <svg class="mobile-menu-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mobile-menu-sub">
-                            @foreach($webDevelopmentService->activeSubServices as $subService)
-                            <a href="{{ route('services.sub-service', [$webDevelopmentService, $subService]) }}" class="mobile-nav-sublink">{{ $subService->title }}</a>
-                            @endforeach
-                            <a href="{{ route('catalog.services.show', $webDevelopmentService) }}" class="mobile-nav-sublink mobile-nav-sublink--accent">View All Web Development →</a>
-                        </div>
-                    </details>
-                </div>
-                @endif
-
-                <div class="mobile-menu-section">
-                    <a href="{{ route('case-studies') }}" class="mobile-nav-link">Case Studies</a>
-                    <a href="{{ route('about') }}" class="mobile-nav-link">About Us</a>
-                    <a href="{{ route('blog.index') }}" class="mobile-nav-link">Blog</a>
-                    <a href="{{ route('contact') }}" class="mobile-nav-link">Contacts</a>
-                </div>
-
-                <div class="mobile-menu-section mobile-menu-footer">
-                    <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="mobile-nav-phone">
-                        <span class="text-lg" aria-hidden="true">{{ config('company.contact.country_flag') }}</span>
-                        <span>{{ config('company.contact.phone') }}</span>
-                    </a>
-                    <a href="{{ route('contact') }}" class="mobile-nav-cta">Contact Us</a>
-
-                    @auth
-                    @if(auth()->user()->isAdmin())
-                    <a href="{{ route('admin.dashboard') }}" class="mobile-nav-auth">Admin Dashboard</a>
-                    @endif
-                    @endauth
-                </div>
-                </div>
+                @endauth
+            </div>
             </div>
         </div>
-    </nav>
+    </div>
 
     <!-- Compressed Main Content -->
     <main class="pt-16 ios-main-content" style="padding-top: calc(4rem + env(safe-area-inset-top));">

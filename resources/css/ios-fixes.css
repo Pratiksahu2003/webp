@@ -788,7 +788,7 @@
     }
 }
 
-/* iOS Navbar Enhancements - Fixed */
+/* iOS Navbar Enhancements */
 @supports (-webkit-touch-callout: none) {
     #navbar {
         position: fixed;
@@ -799,47 +799,39 @@
         padding-top: env(safe-area-inset-top);
         padding-left: max(0px, env(safe-area-inset-left));
         padding-right: max(0px, env(safe-area-inset-right));
-        height: calc(64px + env(safe-area-inset-top));
-        min-height: calc(64px + env(safe-area-inset-top));
+        min-height: calc(4rem + env(safe-area-inset-top));
+        height: auto;
         z-index: 10050;
-        isolation: isolate;
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        will-change: transform;
         background: #ffffff;
     }
-    
-    #navbar > div {
-        height: 64px;
+
+    #navbar > .max-w-7xl {
+        height: 4rem;
+        min-height: 4rem;
         display: flex;
         align-items: center;
     }
-    
+
     #navbar.navbar-scrolled {
         padding-top: env(safe-area-inset-top);
         padding-left: max(0px, env(safe-area-inset-left));
         padding-right: max(0px, env(safe-area-inset-right));
-        height: calc(64px + env(safe-area-inset-top));
-        min-height: calc(64px + env(safe-area-inset-top));
     }
-    
-    /* Fix navbar content alignment */
-    #navbar .max-w-7xl {
-        height: 100%;
-    }
-    
+
     #navbar .flex.justify-between {
-        height: 64px;
-        min-height: 64px;
+        height: 4rem;
+        min-height: 4rem;
     }
-    
-    /* Ensure mobile menu button is properly positioned */
-    #navbar .lg\:hidden {
-        height: 64px;
+
+    #navbar .xl\:hidden {
+        height: 4rem;
         display: flex;
         align-items: center;
+    }
+
+    .mobile-menu {
+        position: fixed;
+        z-index: 10049;
     }
     
     /* Fix hero section to account for navbar — main already offsets content */
@@ -1369,9 +1361,8 @@
         -webkit-tap-highlight-color: transparent;
     }
     
-    /* Keep header above page content on composited layers (video/hero) */
+    /* Keep header above composited page layers without trapping fixed overlays */
     #navbar {
-        will-change: transform;
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
     }

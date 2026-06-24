@@ -261,30 +261,47 @@ body {
 }
 
 /* Clean Professional Navbar Styling */
+:root {
+    --site-nav-height: 4rem;
+    --site-nav-z: 10050;
+    --site-mobile-menu-z: 10049;
+}
+
 #navbar {
     background: #ffffff;
     border-bottom: 1px solid #e5e7eb;
     transition: all 0.2s ease;
     box-shadow: none;
-    height: 64px;
+    min-height: var(--site-nav-height);
+    height: auto;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 10050;
-    isolation: isolate;
+    z-index: var(--site-nav-z);
+    padding-top: env(safe-area-inset-top, 0px);
 }
 
 #navbar > .max-w-7xl {
     position: relative;
-    z-index: 2;
+    height: var(--site-nav-height);
+    min-height: var(--site-nav-height);
     background: #ffffff;
 }
 
 main.ios-main-content {
     position: relative;
     z-index: 1;
+}
+
+body.mobile-menu-open main.ios-main-content,
+body.mobile-menu-open footer {
+    z-index: 0;
+}
+
+#navbar.mobile-menu-active {
+    z-index: var(--site-nav-z);
 }
 
 #navbar.navbar-scrolled {
@@ -335,15 +352,14 @@ main.ios-main-content {
     color: #000000;
 }
 
-/* Mobile Menu — full viewport panel below xl (1280px) */
+/* Mobile Menu — full viewport overlay below xl (1280px) */
 .mobile-menu {
     position: fixed;
-    top: 64px;
-    top: calc(64px + env(safe-area-inset-top, 0px));
+    top: calc(var(--site-nav-height) + env(safe-area-inset-top, 0px));
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: var(--site-mobile-menu-z);
     pointer-events: none;
     visibility: hidden;
 }
@@ -354,9 +370,13 @@ main.ios-main-content {
 }
 
 .mobile-menu-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.45);
+    position: fixed;
+    top: calc(var(--site-nav-height) + env(safe-area-inset-top, 0px));
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(15, 23, 42, 0.55);
     border: none;
     cursor: pointer;
     opacity: 0;
@@ -369,19 +389,19 @@ main.ios-main-content {
 }
 
 .mobile-menu-panel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    max-height: 100%;
+    position: relative;
+    z-index: 2;
+    max-height: calc(100dvh - var(--site-nav-height) - env(safe-area-inset-top, 0px));
+    max-height: calc(100vh - var(--site-nav-height) - env(safe-area-inset-top, 0px));
     background: #ffffff;
     border-top: 1px solid #e5e7eb;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
     transform: translateY(-8px);
     opacity: 0;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .mobile-menu.is-open .mobile-menu-panel {
@@ -393,8 +413,8 @@ main.ios-main-content {
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
-    max-height: calc(100dvh - 64px - env(safe-area-inset-top, 0px));
-    max-height: calc(100vh - 64px - env(safe-area-inset-top, 0px));
+    max-height: calc(100dvh - var(--site-nav-height) - env(safe-area-inset-top, 0px));
+    max-height: calc(100vh - var(--site-nav-height) - env(safe-area-inset-top, 0px));
     padding: 0.5rem 0 calc(1.5rem + env(safe-area-inset-bottom, 0px));
 }
 
@@ -625,8 +645,12 @@ body.mobile-menu-open {
 }
 
 @media (max-width: 639px) {
+    :root {
+        --site-nav-height: 3.5rem;
+    }
+
     #navbar {
-        height: 3.5rem;
+        min-height: var(--site-nav-height);
     }
 
     #navbar .flex-shrink-0 img {
@@ -636,21 +660,17 @@ body.mobile-menu-open {
 
     #navbar .flex.justify-between,
     #navbar .h-16 {
-        height: 3.5rem;
-        min-height: 3.5rem;
+        height: var(--site-nav-height);
+        min-height: var(--site-nav-height);
     }
 
-    .mobile-menu {
-        top: calc(3.5rem + env(safe-area-inset-top, 0px));
-    }
-
-    .mobile-menu-scroll {
-        max-height: calc(100dvh - 3.5rem - env(safe-area-inset-top, 0px));
-        max-height: calc(100vh - 3.5rem - env(safe-area-inset-top, 0px));
+    #navbar > .max-w-7xl {
+        height: var(--site-nav-height);
+        min-height: var(--site-nav-height);
     }
 
     .ios-main-content {
-        padding-top: calc(3.5rem + env(safe-area-inset-top, 0px)) !important;
+        padding-top: calc(var(--site-nav-height) + env(safe-area-inset-top, 0px)) !important;
     }
 }
 

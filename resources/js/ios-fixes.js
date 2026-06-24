@@ -273,7 +273,7 @@ if (isIOSSafari()) {
     const navbar = document.getElementById('navbar');
     if (navbar) {
         // Add iOS specific classes
-        navbar.classList.add('ios-fixed', 'ios-hardware-acceleration');
+        navbar.classList.add('ios-fixed');
         
         // Handle safe area insets
         const safeAreaTop = getComputedStyle(document.documentElement).getPropertyValue('--ios-safe-top');
