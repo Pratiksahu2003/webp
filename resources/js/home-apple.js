@@ -118,7 +118,7 @@ class HomeAppleAnimations {
                 case 'cases':
                     this.fxHeader(section, 'up');
                     this.fxChildren(section, '.home-filter-btn', 'pop', 60, 300);
-                    this.fxChildren(section, '.home-case-study-item', 'clip', 140);
+                    this.fxChildren(section, '.home-case-study-item', 'up', 140);
                     this.fx(section.querySelector('.mt-10'), 'fade', 500);
                     break;
 
@@ -225,8 +225,24 @@ class HomeAppleAnimations {
 
         this.root.querySelectorAll('.home-fx, .apple-reveal').forEach(el => observer.observe(el));
 
-        this.root.querySelectorAll('.home-section, #testimonials-showcase, #technology-stack').forEach(section => {
-            section.classList.add('home-section--in-view');
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+
+                entry.target.querySelectorAll('.home-fx:not(.is-revealed), .apple-reveal:not(.is-revealed)').forEach(el => {
+                    el.classList.add('is-revealed');
+                    observer.unobserve(el);
+                });
+
+                sectionObserver.unobserve(entry.target);
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -5% 0px',
+        });
+
+        this.root.querySelectorAll('.home-section[data-section-animate], #testimonials-showcase, #technology-stack').forEach(section => {
+            sectionObserver.observe(section);
         });
     }
 

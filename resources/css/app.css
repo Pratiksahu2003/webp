@@ -1423,6 +1423,8 @@ html {
 
 .home-fx--clip.is-revealed {
     clip-path: inset(0 0 0 0);
+    opacity: 1;
+    transform: none;
 }
 
 .home-fx--rise {
