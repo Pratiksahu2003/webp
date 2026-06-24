@@ -1,4 +1,4 @@
-<x-home.section id="case-studies" tone="soft">
+<x-home.section id="case-studies" tone="soft" animate="cases">
     <x-home.section-header
         badge="Success Stories"
         title="Case Studies"

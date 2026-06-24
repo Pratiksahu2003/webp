@@ -9,7 +9,7 @@
     ];
 @endphp
 
-<x-home.section id="industries" tone="accent">
+<x-home.section id="industries" tone="accent" animate="industries">
     <x-home.section-header
         badge="Industries"
         title="Digital transformation for industries"

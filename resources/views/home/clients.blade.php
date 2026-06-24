@@ -1,4 +1,4 @@
-<x-home.section id="clients" tone="muted">
+<x-home.section id="clients" tone="muted" animate="clients">
     <x-home.section-header
         badge="Trusted By"
         title="Key clients"

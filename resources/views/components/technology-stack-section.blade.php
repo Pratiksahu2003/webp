@@ -10,7 +10,7 @@
 
 <section id="technology-stack" class="home-section bg-[#fbfbfd] py-16 sm:py-20 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12 lg:mb-16 apple-reveal">
+        <div class="text-center mb-12 lg:mb-16">
             <p class="text-orange-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Our Stack</p>
             <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 tracking-tight mb-6">Technology stack</h2>
             <p class="text-gray-600 max-w-2xl mx-auto mb-8">Six core stacks powering the products we design, build, and scale.</p>

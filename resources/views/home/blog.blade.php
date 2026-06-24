@@ -1,5 +1,5 @@
 @if(isset($blogPosts) && $blogPosts->isNotEmpty())
-<x-home.section id="blog" tone="muted">
+<x-home.section id="blog" tone="muted" animate="blog">
     <x-home.section-header
         badge="Insights"
         title="Latest from our blog"

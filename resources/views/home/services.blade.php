@@ -1,4 +1,4 @@
-<x-home.section id="services" tone="white">
+<x-home.section id="services" tone="white" animate="services">
     <x-home.section-header
         badge="Our Expertise"
         title="What We Create"

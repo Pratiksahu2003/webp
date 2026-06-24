@@ -149,80 +149,90 @@
                 </div>
 
                 <!-- Mobile menu button -->
-                <div class="lg:hidden flex items-center">
-                    <button type="button" class="mobile-menu-button text-gray-700 hover:text-orange-600 focus:outline-none transition-colors duration-200 p-2">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="xl:hidden flex items-center gap-1">
+                    <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="mobile-nav-icon-btn xl:hidden" aria-label="Call {{ config('company.contact.phone') }}">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                    </a>
+                    <button type="button" class="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+                        <svg class="mobile-menu-icon mobile-menu-icon--open h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="mobile-menu-icon mobile-menu-icon--close h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile menu - Enhanced for iOS -->
-        <div class="mobile-menu hidden lg:hidden ios-smooth-scroll ios-safe-area-padding">
-            <div class="px-4 pt-4 pb-6 space-y-2 bg-white border-t border-gray-200 ios-safe-area-padding">
+        <!-- Mobile menu — full-height scrollable panel (below xl breakpoint) -->
+        <div id="mobile-menu" class="mobile-menu xl:hidden" aria-hidden="true">
+            <button type="button" class="mobile-menu-backdrop" aria-label="Close menu" tabindex="-1"></button>
+            <div class="mobile-menu-panel ios-safe-area-padding">
+                <div class="mobile-menu-scroll">
                 @if(isset($catalogServices) && $catalogServices->isNotEmpty())
-                <div class="pb-3 mb-3 border-b border-gray-100">
-                    <p class="px-3 py-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">Services</p>
+                <div class="mobile-menu-section">
+                    <p class="mobile-menu-label">Services</p>
                     @foreach($catalogServices as $service)
-                    <details class="px-3 group">
-                        <summary class="py-2 text-base font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between">
-                            {{ $service->title }}
-                            <svg class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    <details class="mobile-menu-accordion">
+                        <summary class="mobile-nav-link mobile-nav-link--summary">
+                            <span>{{ $service->title }}</span>
+                            <svg class="mobile-menu-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </summary>
-                        <div class="pl-3 pb-2 space-y-1">
+                        <div class="mobile-menu-sub">
                             @foreach($service->activeSubServices as $subService)
-                            <a href="{{ route('services.sub-service', [$service, $subService]) }}" class="block py-1.5 text-sm text-gray-600 hover:text-orange-600">{{ $subService->title }}</a>
+                            <a href="{{ route('services.sub-service', [$service, $subService]) }}" class="mobile-nav-sublink">{{ $subService->title }}</a>
                             @endforeach
-                            <a href="{{ route('catalog.services.show', $service) }}" class="block py-1.5 text-sm text-orange-600 font-medium">View {{ $service->title }} →</a>
+                            <a href="{{ route('catalog.services.show', $service) }}" class="mobile-nav-sublink mobile-nav-sublink--accent">View {{ $service->title }} →</a>
                         </div>
                     </details>
                     @endforeach
-                    <a href="{{ route('catalog.services') }}" class="block px-3 py-2 text-orange-600 font-semibold">Browse All Services</a>
+                    <a href="{{ route('catalog.services') }}" class="mobile-nav-link mobile-nav-link--accent">Browse All Services</a>
                 </div>
                 @endif
 
                 @if(isset($webDevelopmentService) && $webDevelopmentService->activeSubServices->isNotEmpty())
-                <details class="px-3 group border-b border-gray-100 pb-3 mb-3">
-                    <summary class="py-2 text-base font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between">
-                        Web Development
-                        <svg class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </summary>
-                    <div class="pl-3 pb-2 space-y-1">
-                        @foreach($webDevelopmentService->activeSubServices as $subService)
-                        <a href="{{ route('services.sub-service', [$webDevelopmentService, $subService]) }}" class="block py-1.5 text-sm text-gray-600 hover:text-orange-600">{{ $subService->title }}</a>
-                        @endforeach
-                        <a href="{{ route('catalog.services.show', $webDevelopmentService) }}" class="block py-1.5 text-sm text-orange-600 font-medium">View All Web Development →</a>
-                    </div>
-                </details>
+                <div class="mobile-menu-section">
+                    <details class="mobile-menu-accordion">
+                        <summary class="mobile-nav-link mobile-nav-link--summary">
+                            <span>Web Development</span>
+                            <svg class="mobile-menu-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </summary>
+                        <div class="mobile-menu-sub">
+                            @foreach($webDevelopmentService->activeSubServices as $subService)
+                            <a href="{{ route('services.sub-service', [$webDevelopmentService, $subService]) }}" class="mobile-nav-sublink">{{ $subService->title }}</a>
+                            @endforeach
+                            <a href="{{ route('catalog.services.show', $webDevelopmentService) }}" class="mobile-nav-sublink mobile-nav-sublink--accent">View All Web Development →</a>
+                        </div>
+                    </details>
+                </div>
                 @endif
 
-                <a href="{{ route('case-studies') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Case Studies</a>
-                <a href="{{ route('about') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">About Us</a>
-                <a href="{{ route('blog.index') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Blog</a>
-                <a href="{{ route('contact') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Contacts</a>
-                
-                <!-- Mobile Contact Info -->
-                <div class="pt-4 border-t border-gray-200">
-                    <div class="flex items-center px-3 py-2 text-sm font-medium text-gray-700">
-                        <span class="mr-2 text-lg">{{ config('company.contact.country_flag') }}</span>
+                <div class="mobile-menu-section">
+                    <a href="{{ route('case-studies') }}" class="mobile-nav-link">Case Studies</a>
+                    <a href="{{ route('about') }}" class="mobile-nav-link">About Us</a>
+                    <a href="{{ route('blog.index') }}" class="mobile-nav-link">Blog</a>
+                    <a href="{{ route('contact') }}" class="mobile-nav-link">Contacts</a>
+                </div>
+
+                <div class="mobile-menu-section mobile-menu-footer">
+                    <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="mobile-nav-phone">
+                        <span class="text-lg" aria-hidden="true">{{ config('company.contact.country_flag') }}</span>
                         <span>{{ config('company.contact.phone') }}</span>
-                    </div>
-                    <a href="{{ route('contact') }}" class="block w-full text-center px-4 py-2 border-2 border-orange-600 text-black font-bold rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200 text-sm uppercase tracking-wide mt-2">
-                        Contact Us
                     </a>
-                </div>
-                
-                @auth
-                <div class="pt-2">
+                    <a href="{{ route('contact') }}" class="mobile-nav-cta">Contact Us</a>
+
+                    @auth
                     @if(auth()->user()->isAdmin())
-                    <a href="{{ route('admin.dashboard') }}" class="bg-orange-500 text-white block px-3 py-2 text-base font-medium rounded-md">Admin</a>
+                    <a href="{{ route('admin.dashboard') }}" class="mobile-nav-auth">Admin Dashboard</a>
                     @else
-                    <a href="{{ route('customer.dashboard') }}" class="bg-orange-500 text-white block px-3 py-2 text-base font-medium rounded-md">My Orders</a>
+                    <a href="{{ route('customer.dashboard') }}" class="mobile-nav-auth">My Orders</a>
                     @endif
+                    @endauth
                 </div>
-                @endauth
+                </div>
             </div>
         </div>
     </nav>

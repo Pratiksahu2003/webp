@@ -1,4 +1,4 @@
-<x-home.section id="process" tone="muted">
+<x-home.section id="process" tone="muted" animate="process">
     <x-home.section-header
         badge="How We Work"
         title="Our development process"
@@ -14,7 +14,7 @@
         ] as $index => $step)
         <div class="relative text-center group">
             @if($index < 3)
-            <div class="hidden lg:block absolute top-10 left-[60%] w-[80%] h-px bg-gradient-to-r from-orange-200 to-transparent"></div>
+            <div class="home-process-line hidden lg:block absolute top-10 left-[60%] w-[80%] h-px bg-gradient-to-r from-orange-200 to-transparent origin-left"></div>
             @endif
             <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-orange-500 text-white font-bold text-lg flex items-center justify-center shadow-lg shadow-orange-500/20 group-hover:scale-105 transition-transform">
                 {{ $step['step'] }}

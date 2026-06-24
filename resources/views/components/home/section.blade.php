@@ -3,6 +3,7 @@
     'tone' => 'white',
     'class' => '',
     'containerClass' => '',
+    'animate' => null,
 ])
 
 @php
@@ -16,6 +17,7 @@
 
 <section
     @if($id) id="{{ $id }}" @endif
+    @if($animate) data-section-animate="{{ $animate }}" @endif
     class="home-section {{ $tones[$tone] ?? $tones['white'] }} py-16 sm:py-20 lg:py-24 {{ $class }}"
 >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 {{ $containerClass }}">

@@ -152,7 +152,6 @@
 
 @include('home.awards')
 @include('home.blog')
-@include('home.apple-finale')
 @include('home.scripts')
 
 </div>

@@ -1,4 +1,4 @@
-<x-home.section id="awards" tone="white" class="border-t border-gray-100">
+<x-home.section id="awards" tone="white" class="border-t border-gray-100" animate="awards">
     <x-home.section-header
         badge="Recognition"
         title="Awards & milestones"
