@@ -42,12 +42,6 @@ Route::get('/invoice/{order}/download', [\App\Http\Controllers\PaymentController
 Route::get('/checkout/success/{order}', [\App\Http\Controllers\PaymentController::class, 'success'])->name('checkout.success');
 Route::get('/checkout/failure/{order?}', [\App\Http\Controllers\PaymentController::class, 'failure'])->name('checkout.failure');
 
-Route::middleware('auth')->prefix('my-account')->name('customer.')->group(function () {
-    Route::get('/orders', [\App\Http\Controllers\CustomerDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/orders/{order}', [\App\Http\Controllers\CustomerDashboardController::class, 'show'])->name('orders.show');
-    Route::get('/orders/{order}/invoice', [\App\Http\Controllers\CustomerDashboardController::class, 'invoice'])->name('orders.invoice');
-});
-
 // Admin Routes - Registered in bootstrap/app.php
 
 // Admin Profile Routes (moved to admin routes in bootstrap/app.php)

@@ -30,9 +30,6 @@
                     Download Invoice
                 </a>
                 @endif
-                <a href="{{ route('customer.dashboard') }}" class="border border-orange-500 text-orange-600 hover:bg-orange-50 px-6 py-3 rounded-lg font-semibold transition-colors">
-                    View My Orders
-                </a>
                 @if($service && $subService)
                 <a href="{{ route('services.sub-service', [$service, $subService]) }}" class="border border-orange-500 text-orange-600 hover:bg-orange-50 px-6 py-3 rounded-lg font-semibold transition-colors">
                     Back to Service

@@ -105,7 +105,7 @@ class PaymentController extends Controller
 
         $order->load(['user', 'service', 'subService', 'package', 'transactions']);
 
-        return view('customer.orders.invoice', compact('order'));
+        return view('invoices.order', compact('order'));
     }
 
     protected function completePayment(Order $order, string $transactionId, array $payload): void

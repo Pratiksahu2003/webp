@@ -140,10 +140,6 @@
                     <a href="{{ route('admin.dashboard') }}" class="bg-orange-500 text-white px-3 py-2 rounded-lg text-xs font-medium hover:bg-orange-600 transition-colors duration-200">
                         Admin
                     </a>
-                    @else
-                    <a href="{{ route('customer.dashboard') }}" class="bg-orange-500 text-white px-3 py-2 rounded-lg text-xs font-medium hover:bg-orange-600 transition-colors duration-200">
-                        My Orders
-                    </a>
                     @endif
                     @endauth
                 </div>
@@ -227,8 +223,6 @@
                     @auth
                     @if(auth()->user()->isAdmin())
                     <a href="{{ route('admin.dashboard') }}" class="mobile-nav-auth">Admin Dashboard</a>
-                    @else
-                    <a href="{{ route('customer.dashboard') }}" class="mobile-nav-auth">My Orders</a>
                     @endif
                     @endauth
                 </div>

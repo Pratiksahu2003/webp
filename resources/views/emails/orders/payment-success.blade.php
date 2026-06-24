@@ -17,12 +17,6 @@ Thank you for your payment. Your order **{{ $order->order_number }}** has been c
 Download Invoice
 </x-mail::button>
 
-You can also view your orders anytime from your account dashboard.
-
-<x-mail::button :url="route('customer.dashboard')" color="secondary">
-View My Orders
-</x-mail::button>
-
 If you have any questions, reply to this email or contact us at {{ config('company.contact.email') }}.
 
 Thanks,<br>
