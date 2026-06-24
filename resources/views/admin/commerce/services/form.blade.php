@@ -22,15 +22,6 @@
                     <h2 class="text-lg font-semibold mb-4">Basic Information</h2>
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                            <select name="service_category_id" class="select2 w-full border border-gray-300 rounded-lg">
-                                <option value="">Select Category</option>
-                                @foreach($categories as $cat)
-                                    <option value="{{ $cat->id }}" @selected(old('service_category_id', $service->service_category_id ?? '') == $cat->id)>{{ $cat->title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Title *</label>
                             <input type="text" name="title" value="{{ old('title', $service->title ?? '') }}" required class="w-full border border-gray-300 rounded-lg px-3 py-2">
                         </div>

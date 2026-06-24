@@ -17,7 +17,6 @@ class ServiceRequest extends FormRequest
         $serviceId = $this->route('service')?->id;
 
         return [
-            'service_category_id' => ['nullable', 'exists:service_categories,id'],
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('services', 'slug')->ignore($serviceId)],
             'icon' => ['nullable', 'image', 'max:2048'],

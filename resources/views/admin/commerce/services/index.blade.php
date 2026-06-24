@@ -34,7 +34,6 @@
                 <thead class="bg-gray-50">
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Service</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Sort</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
@@ -52,7 +51,6 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-600">{{ $service->category->title ?? '—' }}</td>
                         <td class="px-6 py-4 text-sm text-gray-600">{{ $service->sort_order }}</td>
                         <td class="px-6 py-4">
                             <label class="inline-flex items-center cursor-pointer">

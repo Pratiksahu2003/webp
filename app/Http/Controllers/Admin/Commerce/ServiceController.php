@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Commerce;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ServiceRequest;
 use App\Models\Service;
-use App\Models\ServiceCategory;
 use App\Traits\HandlesUploads;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -16,7 +15,7 @@ class ServiceController extends Controller
 
     public function index(Request $request)
     {
-        $services = Service::with('category')
+        $services = Service::query()
             ->when($request->search, fn ($q, $s) => $q->where('title', 'like', "%{$s}%"))
             ->when($request->status !== null && $request->status !== '', fn ($q) => $q->where('status', (bool) $request->status))
             ->orderBy('sort_order')
@@ -28,9 +27,7 @@ class ServiceController extends Controller
 
     public function create()
     {
-        $categories = ServiceCategory::ordered()->get();
-
-        return view('admin.commerce.services.create', compact('categories'));
+        return view('admin.commerce.services.create');
     }
 
     public function store(ServiceRequest $request)
@@ -46,9 +43,7 @@ class ServiceController extends Controller
 
     public function edit(Service $service)
     {
-        $categories = ServiceCategory::ordered()->get();
-
-        return view('admin.commerce.services.edit', compact('service', 'categories'));
+        return view('admin.commerce.services.edit', compact('service'));
     }
 
     public function update(ServiceRequest $request, Service $service)
