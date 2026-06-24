@@ -241,21 +241,6 @@
 
     <!-- VanTroZ UI System - JavaScript modules loaded via Vite -->
     
-    <!-- Navbar scroll effect -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.getElementById('navbar');
-            if (navbar) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        navbar.classList.add('navbar-scrolled');
-                    } else {
-                        navbar.classList.remove('navbar-scrolled');
-                    }
-                });
-            }
-        });
-    </script>
     @stack('scripts')
 </body>
 

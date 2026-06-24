@@ -8,6 +8,8 @@ function initStickyNavbar() {
     const navbar = document.getElementById('navbar');
     if (!navbar) return;
 
+    navbar.style.transform = '';
+
     let scrollTimeout;
 
     const handleScroll = () => {

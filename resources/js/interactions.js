@@ -289,33 +289,13 @@ class InteractionController {
     }
 
     /**
-     * Navigation Effects
+     * Navigation Effects — sticky navbar (scroll styling handled by navbar.js)
      */
     setupNavigationEffects() {
-        const nav = document.querySelector('nav');
-        let lastScrollY = window.scrollY;
+        const nav = document.getElementById('navbar');
+        if (!nav) return;
 
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            
-            // Hide/show navbar on scroll
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                nav.style.transform = 'translateY(-100%)';
-            } else {
-                nav.style.transform = 'translateY(0)';
-            }
-
-            // Add/remove backdrop blur based on scroll
-            if (currentScrollY > 50) {
-                nav.classList.add('backdrop-blur-md');
-                nav.style.backgroundColor = '#ffffff';
-            } else {
-                nav.classList.remove('backdrop-blur-md');
-                nav.style.backgroundColor = '#ffffff';
-            }
-
-            lastScrollY = currentScrollY;
-        }, { passive: true });
+        nav.style.transform = '';
     }
 
     /**
