@@ -82,12 +82,11 @@ function initializeCharts() {
     const chartBars = document.querySelectorAll('.chart-bar, [style*="height:"]');
     
     chartBars.forEach(bar => {
-        // Add data attributes for tooltips
-        const height = bar.style.height;
-        const value = Math.floor(Math.random() * 50000) + 10000;
-        bar.setAttribute('data-value', `$${formatNumber(value)}`);
-        
-        // Add hover effects
+        const value = bar.getAttribute('data-value') || bar.getAttribute('title') || '';
+        if (value) {
+            bar.setAttribute('data-value', value);
+        }
+
         bar.addEventListener('mouseenter', function() {
             this.style.filter = 'brightness(1.1) saturate(1.2)';
             this.style.transform = 'scaleY(1.05) translateY(-2px)';
@@ -100,7 +99,7 @@ function initializeCharts() {
         
         // Add click effects
         bar.addEventListener('click', function() {
-            showChartDetails(value);
+            showChartDetails(this.getAttribute('data-value') || this.getAttribute('title') || 'No data');
         });
     });
 }
@@ -109,13 +108,12 @@ function initializeCharts() {
  * Show detailed chart information
  */
 function showChartDetails(value) {
-    // Create modal or detailed view
     const modal = document.createElement('div');
     modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
     modal.innerHTML = `
         <div class="bg-white rounded-xl p-6 max-w-md mx-4 transform scale-95 opacity-0 transition-all duration-300">
-            <h3 class="text-lg font-bold text-gray-900 mb-4">Revenue Details</h3>
-            <p class="text-gray-600 mb-4">Revenue for this period: <span class="font-bold text-blue-600">$${formatNumber(value)}</span></p>
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Period Details</h3>
+            <p class="text-gray-600 mb-4">${value}</p>
             <div class="flex justify-end">
                 <button class="zoho-btn zoho-btn-primary" onclick="this.closest('.fixed').remove()">Close</button>
             </div>
