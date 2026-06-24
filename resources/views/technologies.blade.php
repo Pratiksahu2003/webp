@@ -45,7 +45,13 @@
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 @foreach($techs as $tech)
                 <div class="tech-item bg-white rounded-lg p-6 text-center shadow-md border hover:shadow-lg transition-shadow">
-                    <div class="text-4xl mb-3">{{ $tech->icon }}</div>
+                    <div class="mb-3 flex items-center justify-center h-12">
+                        @if($tech->displayIconUrl())
+                            <img src="{{ $tech->displayIconUrl() }}" alt="{{ $tech->name }}" class="max-h-12 max-w-full object-contain">
+                        @elseif($tech->icon)
+                            <span class="text-4xl">{{ $tech->icon }}</span>
+                        @endif
+                    </div>
                     <h3 class="font-semibold text-gray-700 mb-2">{{ $tech->name }}</h3>
                     @if($tech->description)
                         <p class="text-sm text-gray-500">{{ $tech->description }}</p>

@@ -34,6 +34,8 @@ class TechnologyController extends Controller
     {
         $data = $this->prepareData($request);
         $data['logo'] = $this->uploadFile($request->file('logo'), 'technologies/logos');
+        $data['icon'] = $this->resolveIcon($request);
+        $data['image'] = $this->uploadFile($request->file('image'), 'technologies/images');
 
         Technology::create($data);
 
@@ -49,6 +51,8 @@ class TechnologyController extends Controller
     {
         $data = $this->prepareData($request);
         $data['logo'] = $this->uploadFile($request->file('logo'), 'technologies/logos', $technology->logo);
+        $data['icon'] = $this->resolveIcon($request, $technology);
+        $data['image'] = $this->uploadFile($request->file('image'), 'technologies/images', $technology->image);
 
         $technology->update($data);
 
@@ -58,6 +62,10 @@ class TechnologyController extends Controller
     public function destroy(Technology $technology)
     {
         $this->deleteFile($technology->logo);
+        if ($technology->iconIsImage()) {
+            $this->deleteFile($technology->icon);
+        }
+        $this->deleteFile($technology->image);
         $technology->delete();
 
         return redirect()->route('admin.technologies.index')->with('success', 'Technology deleted successfully.');
@@ -73,9 +81,29 @@ class TechnologyController extends Controller
     protected function prepareData(TechnologyRequest $request): array
     {
         $data = $request->validated();
+        unset($data['icon_text'], $data['icon'], $data['logo'], $data['image']);
         $data['slug'] = $data['slug'] ?? Str::slug($data['name']);
         $data['status'] = $request->boolean('status');
 
         return $data;
+    }
+
+    protected function resolveIcon(TechnologyRequest $request, ?Technology $technology = null): ?string
+    {
+        $existingPath = $technology && $technology->iconIsImage() ? $technology->icon : null;
+
+        if ($request->hasFile('icon')) {
+            return $this->uploadFile($request->file('icon'), 'technologies/icons', $existingPath);
+        }
+
+        if ($request->filled('icon_text')) {
+            if ($existingPath) {
+                $this->deleteFile($existingPath);
+            }
+
+            return $request->input('icon_text');
+        }
+
+        return $technology?->icon;
     }
 }

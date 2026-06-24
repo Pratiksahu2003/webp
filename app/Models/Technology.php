@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Technology extends Model
@@ -13,7 +14,7 @@ class Technology extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name', 'slug', 'category', 'technology_type', 'icon', 'logo',
+        'name', 'slug', 'category', 'technology_type', 'icon', 'logo', 'image',
         'color', 'description', 'website_url', 'is_active', 'status', 'sort_order',
     ];
 
@@ -58,5 +59,33 @@ class Technology extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order');
+    }
+
+    public function iconIsImage(): bool
+    {
+        return filled($this->icon) && (
+            str_contains($this->icon, 'technologies/') ||
+            str_contains($this->icon, '/')
+        );
+    }
+
+    public function displayIconUrl(): ?string
+    {
+        if ($this->logo) {
+            return Storage::disk('public')->url($this->logo);
+        }
+
+        if ($this->iconIsImage()) {
+            return Storage::disk('public')->url($this->icon);
+        }
+
+        return null;
+    }
+
+    public function imageUrl(): ?string
+    {
+        return $this->image
+            ? Storage::disk('public')->url($this->image)
+            : null;
     }
 }

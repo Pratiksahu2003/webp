@@ -42,7 +42,14 @@
 <section class="py-16 bg-white"><div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-10">Technologies We Use</h2>
     <div class="flex flex-wrap justify-center gap-4">@foreach($subService->technologies as $tech)
-        <div class="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2">@if($tech->logo)<img src="{{ Storage::url($tech->logo) }}" class="w-6 h-6">@endif<span>{{ $tech->name }}</span></div>
+        <div class="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2">
+            @if($tech->displayIconUrl())
+                <img src="{{ $tech->displayIconUrl() }}" alt="{{ $tech->name }}" class="w-6 h-6 object-contain">
+            @elseif($tech->icon)
+                <span>{{ $tech->icon }}</span>
+            @endif
+            <span>{{ $tech->name }}</span>
+        </div>
     @endforeach</div>
 </div></section>
 @endif
