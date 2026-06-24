@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\URL;
 
 class Order extends Model
 {
@@ -76,8 +77,12 @@ class Order extends Model
         return $query;
     }
 
-    public function markAsPaid(string $transactionId, array $gatewayResponse = []): void
+    public function markAsPaid(string $transactionId, array $gatewayResponse = []): bool
     {
+        if ($this->payment_status === 'paid') {
+            return false;
+        }
+
         $this->update([
             'payment_status' => 'paid',
             'transaction_id' => $transactionId,
@@ -91,6 +96,17 @@ class Order extends Model
             'gateway_response' => $gatewayResponse,
             'payment_status' => 'paid',
         ]);
+
+        return true;
+    }
+
+    public function signedInvoiceUrl(?\DateTimeInterface $expiresAt = null): string
+    {
+        return URL::temporarySignedRoute(
+            'invoice.download',
+            $expiresAt ?? now()->addDays(90),
+            ['order' => $this->id],
+        );
     }
 
     public function markAsFailed(array $gatewayResponse = []): void

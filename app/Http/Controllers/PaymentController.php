@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderPaymentSuccessMail;
 use App\Models\Order;
 use App\Services\NimbblPaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -31,7 +33,7 @@ class PaymentController extends Controller
         $transactionId = $payload['transaction_id'] ?? $payload['nimbbl_transaction_id'] ?? 'TXN-'.strtoupper(uniqid());
 
         if ($this->nimbbl->verifyCallbackPayload($payload) || $request->input('status') === 'success') {
-            $order->markAsPaid($transactionId, $payload);
+            $this->completePayment($order, $transactionId, $payload);
 
             return redirect()->route('checkout.success', $order)->with('success', 'Payment completed successfully.');
         }
@@ -63,7 +65,7 @@ class PaymentController extends Controller
         $transactionId = $payload['transaction_id'] ?? $payload['nimbbl_transaction_id'] ?? null;
 
         if ($this->nimbbl->verifyCallbackPayload($payload)) {
-            $order->markAsPaid($transactionId ?? 'WH-'.uniqid(), $payload);
+            $this->completePayment($order, $transactionId ?? 'WH-'.uniqid(), $payload);
         } else {
             $order->markAsFailed($payload);
         }
@@ -81,5 +83,35 @@ class PaymentController extends Controller
     public function failure(?Order $order = null)
     {
         return view('checkout.failure', compact('order'));
+    }
+
+    public function downloadInvoice(Request $request, Order $order)
+    {
+        abort_unless($order->payment_status === 'paid', 404);
+
+        $order->load(['user', 'service', 'subService', 'package', 'transactions']);
+
+        return view('customer.orders.invoice', compact('order'));
+    }
+
+    protected function completePayment(Order $order, string $transactionId, array $payload): void
+    {
+        if (! $order->markAsPaid($transactionId, $payload)) {
+            return;
+        }
+
+        try {
+            $order->load(['user', 'service', 'subService', 'package']);
+
+            Mail::to($order->user->email)->send(
+                new OrderPaymentSuccessMail($order, $order->signedInvoiceUrl())
+            );
+        } catch (\Throwable $e) {
+            Log::error('Failed to send payment confirmation email', [
+                'order' => $order->order_number,
+                'email' => $order->user->email ?? null,
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 }

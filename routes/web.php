@@ -38,6 +38,7 @@ Route::get('/checkout/{package}', [\App\Http\Controllers\CheckoutController::cla
 Route::post('/checkout/{package}', [\App\Http\Controllers\CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('/payment/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])->name('payment.callback');
 Route::post('/payment/webhook', [\App\Http\Controllers\PaymentController::class, 'webhook'])->name('payment.webhook');
+Route::get('/invoice/{order}/download', [\App\Http\Controllers\PaymentController::class, 'downloadInvoice'])->name('invoice.download')->middleware('signed');
 Route::get('/checkout/success/{order}', [\App\Http\Controllers\PaymentController::class, 'success'])->name('checkout.success');
 Route::get('/checkout/failure/{order?}', [\App\Http\Controllers\PaymentController::class, 'failure'])->name('checkout.failure');
 

@@ -16,11 +16,21 @@
             <p class="text-gray-600 mb-2">Order Number: <strong>{{ $order->order_number }}</strong></p>
             <p class="text-gray-600 mb-2">Amount Paid: <strong>₹{{ number_format($order->amount, 2) }}</strong></p>
             @if($subService)
-                <p class="text-gray-600 mb-8">{{ $subService->title }} — {{ $order->package->package_name ?? 'Package' }}</p>
+                <p class="text-gray-600 mb-4">{{ $subService->title }} — {{ $order->package->package_name ?? 'Package' }}</p>
+            @endif
+            @if($order->user?->email)
+                <p class="text-sm text-gray-500 mb-8">A confirmation email with your invoice download link has been sent to <strong>{{ $order->user->email }}</strong>.</p>
+            @else
+                <div class="mb-8"></div>
             @endif
 
             <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                <a href="{{ route('customer.dashboard') }}" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                @if($order->payment_status === 'paid')
+                <a href="{{ $order->signedInvoiceUrl() }}" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                    Download Invoice
+                </a>
+                @endif
+                <a href="{{ route('customer.dashboard') }}" class="border border-orange-500 text-orange-600 hover:bg-orange-50 px-6 py-3 rounded-lg font-semibold transition-colors">
                     View My Orders
                 </a>
                 @if($service && $subService)
