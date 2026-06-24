@@ -45,7 +45,7 @@
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-gray-600">Projects Delivered</span>
-                        <span class="text-2xl font-bold text-orange-600">100+</span>
+                        <span class="text-2xl font-bold text-orange-600">500+</span>
                     </div>
                 </div>
             </div>

@@ -311,7 +311,7 @@
         
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div class="bg-white rounded-lg p-8 shadow-md">
-                <div class="text-4xl font-bold text-orange-500 mb-2">100+</div>
+                <div class="text-4xl font-bold text-orange-500 mb-2">500+</div>
                 <div class="text-gray-600">Projects Delivered</div>
             </div>
             <div class="bg-white rounded-lg p-8 shadow-md">

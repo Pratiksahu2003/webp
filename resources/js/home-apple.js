@@ -284,6 +284,8 @@ class HomeAppleAnimations {
 
         hero.querySelectorAll('.hero-title-line').forEach(line => {
             if (line.querySelector('.hero-char')) return;
+            if (line.classList.contains('bg-clip-text')) return;
+
             const text = line.textContent.trim();
             line.textContent = '';
             text.split('').forEach((char, i) => {

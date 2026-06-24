@@ -7,7 +7,7 @@
 
 <x-page-hero
     variant="creative"
-    badge="100+ Projects Delivered"
+    badge="500+ Projects Delivered"
     title="Our Portfolio"
     subtitle="Showcasing our successful projects and innovative solutions that have transformed businesses worldwide."
 >
@@ -279,7 +279,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-orange-600 mb-2">100+</div>
+                <div class="text-4xl md:text-5xl font-bold text-orange-600 mb-2">500+</div>
                 <p class="text-gray-600 text-lg">Projects Delivered</p>
             </div>
 

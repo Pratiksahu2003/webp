@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-5 relative flex flex-col justify-center space-y-4 sm:space-y-6 hero-stats-wrapper">
+            <div class="hidden lg:flex lg:col-span-5 relative flex-col justify-center space-y-4 sm:space-y-6 hero-stats-wrapper">
                 <div class="apple-hero-in home-hero-float-target relative bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-white/20 shadow-lg hero-main-card" style="--hero-delay: 900ms">
                     <div class="text-center">
                         <div
@@ -96,7 +96,7 @@
                     <div class="apple-hero-in home-hero-float-target relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20 text-center" style="--hero-delay: 1020ms">
                         <div
                             class="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-300 to-orange-400 bg-clip-text text-transparent mb-1 sm:mb-2"
-                            data-count="100"
+                            data-count="500"
                             data-count-suffix="+"
                         >0</div>
                         <div class="text-slate-300 text-xs sm:text-sm font-medium">Projects Delivered</div>

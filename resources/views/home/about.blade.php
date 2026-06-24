@@ -18,7 +18,7 @@
                 ['count' => 5, 'suffix' => '+', 'label' => 'Years Experience', 'desc' => 'Active, market-driven delivery experience.'],
                 ['count' => 250, 'suffix' => '+', 'label' => 'Clients', 'desc' => 'Long-term partnerships with satisfied teams.'],
                 ['count' => 275, 'suffix' => '+', 'label' => 'Team Members', 'desc' => 'Certified full-time professionals.'],
-                ['count' => 100, 'suffix' => '+', 'label' => 'Projects Delivered', 'desc' => 'Delivered with measurable business impact.'],
+                ['count' => 500, 'suffix' => '+', 'label' => 'Projects Delivered', 'desc' => 'Delivered with measurable business impact.'],
             ] as $stat)
             <div class="p-5 lg:p-6 rounded-2xl bg-gray-50 border border-gray-100 text-center hover:border-orange-100 transition-colors">
                 <div

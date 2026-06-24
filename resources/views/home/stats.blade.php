@@ -1,7 +1,7 @@
 <x-home.section tone="white" class="!py-10 lg:!py-12 border-b border-gray-100" animate="stats">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         @foreach([
-            ['count' => 100, 'suffix' => '+', 'comma' => false, 'label' => 'Projects Delivered'],
+            ['count' => 500, 'suffix' => '+', 'comma' => false, 'label' => 'Projects Delivered'],
             ['count' => 250, 'suffix' => '+', 'comma' => false, 'label' => 'Expert Developers'],
             ['count' => 98, 'suffix' => '%', 'comma' => false, 'label' => 'Client Satisfaction'],
             ['count' => 5, 'suffix' => '+', 'comma' => false, 'label' => 'Years Experience'],
