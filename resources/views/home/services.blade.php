@@ -16,7 +16,7 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-10 lg:mb-12">
         @foreach($featuredServices as $service)
         <article class="group relative bg-white rounded-2xl p-7 lg:p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-orange-500/5 hover:-translate-y-1 transition-all duration-300">
-            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-5 overflow-hidden">
+            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-5 overflow-hidden home-service-icon">
                 @if($service->icon)
                     <img src="{{ Storage::url($service->icon) }}" alt="" class="w-7 h-7 object-contain">
                 @else

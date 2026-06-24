@@ -33,8 +33,8 @@
             <div class="lg:col-span-7">
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     @foreach([
-                        ['value' => '24+', 'label' => 'Years Experience'],
-                        ['value' => '3500+', 'label' => 'Projects'],
+                        ['value' => '5+', 'label' => 'Years Experience'],
+                        ['value' => '100+', 'label' => 'Projects Delivered'],
                         ['value' => '250+', 'label' => 'Developers'],
                         ['value' => '98%', 'label' => 'Satisfaction'],
                     ] as $stat)

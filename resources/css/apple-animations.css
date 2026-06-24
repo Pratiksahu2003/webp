@@ -284,18 +284,21 @@
     --reveal-opacity: 1;
 }
 
-.home-stat-card.is-revealed:hover {
+.home-stat-card.is-revealed:hover,
+.home-stat-card.is-played:hover {
     transform: translateY(-6px) scale(1.03);
     box-shadow: 0 16px 40px rgba(249, 115, 22, 0.15);
     transition: transform 0.4s var(--apple-ease-out), box-shadow 0.4s ease;
 }
 
 /* 3D tilt */
-[data-tilt].is-revealed {
+[data-tilt].is-revealed,
+[data-tilt].is-played {
     transition: transform 0.2s ease-out, box-shadow 0.35s ease;
 }
 
-[data-tilt].is-revealed:hover {
+[data-tilt].is-revealed:hover,
+[data-tilt].is-played:hover {
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1);
 }
 
@@ -325,13 +328,17 @@
 
 @media (prefers-reduced-motion: reduce) {
     .home-fx,
+    .home-vfx,
     .apple-hero-in,
     .apple-reveal,
     .testimonials-reveal,
     .testimonials-card,
     .home-hero-float-target,
     .hero-scroll-content,
-    .hero-scroll-video {
+    .hero-scroll-video,
+    .home-section-ambient,
+    .home-badge-shimmer,
+    .home-service-icon {
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
@@ -339,6 +346,10 @@
         clip-path: none !important;
         animation: none !important;
         --reveal-opacity: 1 !important;
+    }
+
+    .home-vfx {
+        opacity: 1 !important;
     }
 
     .home-scroll-progress {
@@ -352,4 +363,248 @@
     .home-fx-img {
         transform: none;
     }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Viewport-triggered animation variants (not scroll-scrubbed)
+   ═══════════════════════════════════════════════════════════ */
+
+.home-vfx {
+    opacity: 0;
+    will-change: opacity, transform, filter;
+}
+
+.home-vfx.is-played {
+    opacity: 1;
+}
+
+.home-vfx--elastic.is-played {
+    animation: vfx-elastic 1s var(--apple-spring) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--swing.is-played {
+    animation: vfx-swing 0.95s var(--apple-ease-out) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--skew.is-played {
+    animation: vfx-skew 0.85s var(--apple-ease-out) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--diagonal.is-played {
+    animation: vfx-diagonal 0.9s var(--apple-ease-out) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--zoom-in.is-played {
+    animation: vfx-zoom-in 0.8s var(--apple-ease-out) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--flip-y.is-played {
+    animation: vfx-flip-y 0.95s var(--apple-ease-out) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--roll.is-played {
+    animation: vfx-roll 0.9s var(--apple-ease-out) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--unfold.is-played {
+    animation: vfx-unfold 0.85s var(--apple-ease-out) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--slide-left.is-played {
+    animation: vfx-slide-left 0.85s var(--apple-ease-out) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--slide-right.is-played {
+    animation: vfx-slide-right 0.85s var(--apple-ease-out) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--wave.is-played {
+    animation: vfx-wave 1.05s var(--apple-spring) forwards;
+    animation-delay: var(--vfx-delay, 0ms);
+}
+
+.home-vfx--float-after.is-played {
+    animation: vfx-elastic 0.9s var(--apple-spring) forwards,
+               home-float-soft 5s ease-in-out infinite;
+    animation-delay: var(--vfx-delay, 0ms), calc(var(--vfx-delay, 0ms) + 900ms);
+}
+
+@keyframes vfx-elastic {
+    0% { opacity: 0; transform: translateY(3.5rem) scale(0.72); filter: blur(14px); }
+    55% { opacity: 1; transform: translateY(-0.55rem) scale(1.05); filter: blur(0); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes vfx-swing {
+    0% { opacity: 0; transform: translateX(-3rem) rotate(-8deg) scale(0.9); filter: blur(10px); }
+    70% { opacity: 1; transform: translateX(0.35rem) rotate(1.5deg) scale(1.02); filter: blur(0); }
+    100% { opacity: 1; transform: translateX(0) rotate(0) scale(1); filter: blur(0); }
+}
+
+@keyframes vfx-skew {
+    0% { opacity: 0; transform: skewY(6deg) translateY(2.5rem) scale(0.92); filter: blur(8px); }
+    100% { opacity: 1; transform: skewY(0) translateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes vfx-diagonal {
+    0% { opacity: 0; transform: translate(-2.5rem, 3rem) scale(0.88); filter: blur(12px); }
+    100% { opacity: 1; transform: translate(0, 0) scale(1); filter: blur(0); }
+}
+
+@keyframes vfx-zoom-in {
+    0% { opacity: 0; transform: scale(0.55); filter: blur(16px); }
+    100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+@keyframes vfx-flip-y {
+    0% { opacity: 0; transform: perspective(800px) rotateY(-75deg) translateZ(-2rem); filter: blur(6px); }
+    100% { opacity: 1; transform: perspective(800px) rotateY(0) translateZ(0); filter: blur(0); }
+}
+
+@keyframes vfx-roll {
+    0% { opacity: 0; transform: rotate(-18deg) translateY(2.5rem) scale(0.85); filter: blur(10px); }
+    100% { opacity: 1; transform: rotate(0) translateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes vfx-unfold {
+    0% { opacity: 0; transform: scaleY(0.2) scaleX(0.92); transform-origin: top center; filter: blur(8px); }
+    100% { opacity: 1; transform: scaleY(1) scaleX(1); filter: blur(0); }
+}
+
+@keyframes vfx-slide-left {
+    0% { opacity: 0; transform: translateX(-4rem) scale(0.94); filter: blur(10px); }
+    100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); }
+}
+
+@keyframes vfx-slide-right {
+    0% { opacity: 0; transform: translateX(4rem) scale(0.94); filter: blur(10px); }
+    100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); }
+}
+
+@keyframes vfx-wave {
+    0% { opacity: 0; transform: translateY(2.5rem) rotate(-3deg) scale(0.9); }
+    40% { opacity: 1; transform: translateY(-0.75rem) rotate(2deg) scale(1.03); }
+    70% { transform: translateY(0.25rem) rotate(-1deg) scale(0.99); }
+    100% { opacity: 1; transform: translateY(0) rotate(0) scale(1); }
+}
+
+@keyframes home-float-soft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Ambient section motion */
+.home-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.home-section-ambient {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.home-ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.home-section.is-in-view .home-ambient-orb {
+    opacity: 1;
+}
+
+.home-ambient-orb--1 {
+    width: 22rem;
+    height: 22rem;
+    top: -6rem;
+    right: -4rem;
+    background: rgba(251, 146, 60, 0.14);
+    animation: ambient-drift-1 14s ease-in-out infinite;
+}
+
+.home-ambient-orb--2 {
+    width: 18rem;
+    height: 18rem;
+    bottom: -5rem;
+    left: -3rem;
+    background: rgba(249, 115, 22, 0.1);
+    animation: ambient-drift-2 18s ease-in-out infinite;
+}
+
+@keyframes ambient-drift-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-2rem, 1.5rem) scale(1.08); }
+}
+
+@keyframes ambient-drift-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(2rem, -1rem) scale(1.06); }
+}
+
+/* Badge shimmer */
+.home-badge-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.home-badge-shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.65) 50%, transparent 65%);
+    transform: translateX(-120%);
+    animation: badge-shimmer 4.5s ease-in-out infinite;
+}
+
+@keyframes badge-shimmer {
+    0%, 70%, 100% { transform: translateX(-120%); }
+    85% { transform: translateX(120%); }
+}
+
+/* Service icon wiggle on card hover */
+.home-service-icon {
+    transition: transform 0.35s var(--apple-ease-out);
+}
+
+article.group:hover .home-service-icon {
+    animation: icon-wiggle 0.55s var(--apple-ease-out);
+}
+
+@keyframes icon-wiggle {
+    0%, 100% { transform: rotate(0) scale(1); }
+    25% { transform: rotate(-8deg) scale(1.08); }
+    75% { transform: rotate(8deg) scale(1.08); }
+}
+
+/* Marquee saturation boost when section is visible */
+.home-section[data-section-animate="clients"].is-in-view .home-clients-track {
+    filter: saturate(1.08);
+    transition: filter 1.4s ease;
+}
+
+/* Stat card glow pulse after reveal */
+.home-stat-card.is-played {
+    animation: stat-glow 3.5s ease-in-out infinite;
+    animation-delay: calc(var(--vfx-delay, 0ms) + 800ms);
+}
+
+@keyframes stat-glow {
+    0%, 100% { box-shadow: 0 0 0 rgba(249, 115, 22, 0); }
+    50% { box-shadow: 0 8px 28px rgba(249, 115, 22, 0.12); }
 }

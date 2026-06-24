@@ -84,10 +84,10 @@
                     <div class="text-center">
                         <div
                             class="text-4xl sm:text-5xl md:text-6xl font-black bg-gradient-to-r from-white via-orange-200 to-orange-300 bg-clip-text text-transparent mb-2 sm:mb-3 hero-main-number"
-                            data-count="24"
+                            data-count="5"
                             data-count-suffix="+"
                         >0</div>
-                        <div class="text-white text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2">Years of Excellence</div>
+                        <div class="text-white text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2">Years Experience</div>
                         <div class="text-slate-300 text-xs sm:text-sm">Trusted by Fortune 500 companies worldwide</div>
                     </div>
                 </div>
@@ -96,9 +96,8 @@
                     <div class="apple-hero-in home-hero-float-target relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20 text-center" style="--hero-delay: 1020ms">
                         <div
                             class="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-300 to-orange-400 bg-clip-text text-transparent mb-1 sm:mb-2"
-                            data-count="3500"
+                            data-count="100"
                             data-count-suffix="+"
-                            data-count-comma="true"
                         >0</div>
                         <div class="text-slate-300 text-xs sm:text-sm font-medium">Projects Delivered</div>
                     </div>

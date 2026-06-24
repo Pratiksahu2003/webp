@@ -1,5 +1,5 @@
 /**
- * Apple-grade homepage animation engine — scroll-scrub + entrance sequences.
+ * Apple-grade homepage animation engine — scroll-scrub + viewport keyframes + ambient motion.
  */
 class HomeAppleAnimations {
     constructor() {
@@ -10,6 +10,7 @@ class HomeAppleAnimations {
         this.scrollTicking = false;
         this.parallaxTicking = false;
         this.fxItems = [];
+        this.vfxItems = [];
         this.init();
     }
 
@@ -28,10 +29,12 @@ class HomeAppleAnimations {
         this.registerSectionEffects();
         this.initHeroSequence();
         this.setupScrollRevealEngine();
+        this.setupViewportPlayAnimations();
         this.setupSectionParallax();
         this.setupHeroScrollEffects();
         this.setupCardTilt();
         this.setupMagneticButtons();
+        this.setupSectionObservers();
 
         setTimeout(() => this.revealStuckElements(), 4500);
     }
@@ -53,23 +56,25 @@ class HomeAppleAnimations {
     }
 
     revealAll() {
-        this.root.querySelectorAll('.home-fx, .apple-reveal, .apple-hero-in, .testimonials-reveal').forEach(el => {
-            el.classList.add('is-revealed');
+        this.root.querySelectorAll('.home-fx, .home-vfx, .apple-reveal, .apple-hero-in, .testimonials-reveal').forEach(el => {
+            el.classList.add('is-revealed', 'is-played');
             el.style.setProperty('--reveal-opacity', '1');
         });
         this.root.querySelectorAll('.testimonials-card').forEach(el => {
-            el.classList.add('is-visible', 'is-revealed');
+            el.classList.add('is-visible', 'is-revealed', 'is-played');
             el.style.setProperty('--reveal-opacity', '1');
         });
         this.root.querySelectorAll('.home-process-step').forEach(el => el.classList.add('is-active'));
         this.root.querySelectorAll('.home-hero-float-target').forEach(el => el.classList.add('is-float-ready'));
+        this.root.querySelectorAll('.home-section[data-section-animate]').forEach(el => el.classList.add('is-in-view'));
     }
 
     revealStuckElements() {
-        this.fxItems.forEach(item => {
-            if (parseFloat(item.el.style.getPropertyValue('--reveal-opacity') || '0') < 0.5) {
+        [...this.fxItems, ...this.vfxItems].forEach(item => {
+            const opacity = parseFloat(item.el.style.getPropertyValue('--reveal-opacity') || '0');
+            if (opacity < 0.5 && !item.el.classList.contains('is-played')) {
                 item.el.style.setProperty('--reveal-opacity', '1');
-                item.el.classList.add('is-revealed');
+                item.el.classList.add('is-revealed', 'is-played');
             }
         });
     }
@@ -79,6 +84,30 @@ class HomeAppleAnimations {
         el.classList.add('home-fx', `home-fx--${effect}`);
         el.style.setProperty('--reveal-delay', `${delay}ms`);
         this.fxItems.push({ el, delay, effect });
+    }
+
+    vfx(el, effect, delay = 0) {
+        if (!el || el.classList.contains('home-vfx')) return;
+        el.classList.add('home-vfx', `home-vfx--${effect}`);
+        el.style.setProperty('--vfx-delay', `${delay}ms`);
+        this.vfxItems.push({ el, delay, effect });
+    }
+
+    vfxChildren(section, selector, effects, stagger = 110, max = 640) {
+        const list = Array.isArray(effects) ? effects : [effects];
+        section.querySelectorAll(selector).forEach((el, i) => {
+            this.vfx(el, list[i % list.length], Math.min(i * stagger, max));
+        });
+    }
+
+    vfxHeader(section, effect = 'zoom-in') {
+        const header = section.querySelector('.home-section-header, .text-center.mb-12, .text-center.mb-16');
+        if (!header) return;
+
+        this.vfx(header, effect, 0);
+        header.querySelectorAll(':scope > p, :scope > h2, :scope > a, :scope > div').forEach((el, i) => {
+            this.vfx(el, i % 2 === 0 ? 'slide-left' : 'slide-right', 80 + i * 70);
+        });
     }
 
     fxHeader(section, effect = 'up') {
@@ -104,88 +133,95 @@ class HomeAppleAnimations {
     }
 
     registerSectionEffects() {
+        const cardEffects = ['elastic', 'swing', 'skew', 'diagonal', 'flip-y', 'roll', 'zoom-in', 'wave'];
+
         this.root.querySelectorAll('[data-section-animate]').forEach(section => {
             const type = section.dataset.sectionAnimate;
 
             switch (type) {
                 case 'stats':
-                    this.fxHeader(section, 'blur');
-                    this.fxChildren(section, '.grid > div', 'scale', 120);
+                    this.vfxHeader(section, 'zoom-in');
+                    this.vfxChildren(section, '.grid > div', ['elastic', 'wave', 'roll', 'swing'], 130);
                     break;
 
                 case 'clients':
-                    this.fxHeader(section, 'up');
-                    this.fx(section.querySelector('[data-apple-parallax], .relative.overflow-hidden'), 'clip', 250);
+                    this.vfxHeader(section, 'swing');
+                    this.fx(section.querySelector('[data-apple-parallax], .relative.overflow-hidden'), 'clip', 200);
+                    this.vfx(section.querySelector('.home-clients-track'), 'unfold', 350);
                     break;
 
                 case 'services':
-                    this.fxHeader(section, 'up');
-                    this.fxAlternate(section, 'article', 150);
-                    this.fx(section.querySelector('.mt-12'), 'bounce', 500);
-                    section.querySelectorAll('article').forEach(el => el.setAttribute('data-tilt', ''));
+                    this.vfxHeader(section, 'skew');
+                    section.querySelectorAll('article').forEach((el, i) => {
+                        this.vfx(el, cardEffects[i % cardEffects.length], i * 100);
+                        if (i < 3) el.setAttribute('data-tilt', '');
+                    });
+                    this.vfx(section.querySelector('.mt-12'), 'elastic', 520);
                     break;
 
                 case 'cases':
-                    this.fxHeader(section, 'up');
-                    this.fxChildren(section, '.home-filter-btn', 'pop', 70, 350);
-                    this.fxChildren(section, '.home-case-study-item', 'rise', 160);
-                    this.fx(section.querySelector('.mt-10'), 'fade', 550);
+                    this.vfxHeader(section, 'slide-left');
+                    this.vfxChildren(section, '.home-filter-btn', ['roll', 'zoom-in', 'elastic'], 70, 350);
+                    this.vfxChildren(section, '.home-case-study-item', ['diagonal', 'wave', 'swing', 'elastic'], 140);
+                    this.vfx(section.querySelector('.mt-10'), 'flip-y', 500);
                     break;
 
                 case 'about':
-                    this.fx(section.querySelector('.home-about-text'), 'left', 0);
+                    this.vfx(section.querySelector('.home-about-text'), 'slide-left', 0);
                     section.querySelectorAll('.home-about-text .home-section-header > *').forEach((el, i) => {
-                        this.fx(el, 'left', i * 80);
+                        this.vfx(el, i % 2 === 0 ? 'slide-left' : 'unfold', i * 90);
                     });
-                    this.fx(section.querySelector('.home-about-text a'), 'left', 320);
-                    this.fxChildren(section, '.grid.grid-cols-2 > div', 'pop', 110);
-                    this.fx(section.querySelector('.home-about-badge'), 'bounce', 500);
+                    this.vfx(section.querySelector('.home-about-text a'), 'elastic', 320);
+                    this.vfxChildren(section, '.grid.grid-cols-2 > div', ['wave', 'flip-y', 'roll', 'zoom-in'], 120);
+                    this.vfx(section.querySelector('.home-about-badge'), 'float-after', 480);
                     break;
 
                 case 'process':
-                    this.fxHeader(section, 'up');
+                    this.vfxHeader(section, 'unfold');
                     section.querySelectorAll('.grid > .relative').forEach((el, i) => {
                         el.classList.add('home-process-step');
-                        this.fx(el, 'bounce', i * 200);
+                        this.vfx(el, 'flip-y', i * 180);
                     });
                     break;
 
                 case 'industries':
-                    this.fxHeader(section, 'up');
-                    this.fxChildren(section, 'article', 'rotate', 100);
-                    section.querySelectorAll('article').forEach(el => el.setAttribute('data-tilt', ''));
+                    this.vfxHeader(section, 'diagonal');
+                    section.querySelectorAll('article').forEach((el, i) => {
+                        this.vfx(el, cardEffects[(i + 2) % cardEffects.length], i * 90);
+                        el.setAttribute('data-tilt', '');
+                    });
                     break;
 
                 case 'awards':
-                    this.fxHeader(section, 'up');
-                    this.fxChildren(section, '.grid > div', 'flip', 85, 480);
+                    this.vfxHeader(section, 'zoom-in');
+                    this.vfxChildren(section, '.grid > div', ['flip-y', 'roll', 'elastic', 'swing', 'zoom-in', 'wave'], 75, 500);
                     break;
 
                 case 'blog':
-                    this.fxHeader(section, 'up');
+                    this.vfxHeader(section, 'slide-right');
                     section.querySelectorAll('article').forEach((el, i) => {
-                        this.fx(el, 'rise', i * 150);
+                        this.vfx(el, ['wave', 'diagonal', 'swing'][i % 3], i * 130);
                         const img = el.querySelector('img');
                         if (img) img.classList.add('home-fx-img');
                     });
-                    this.fx(section.querySelector('.mt-10'), 'fade', 500);
+                    this.vfx(section.querySelector('.mt-10'), 'elastic', 480);
                     break;
 
                 default:
-                    this.fxHeader(section, 'up');
-                    this.fxChildren(section, 'article, .grid > div', 'up', 90);
+                    this.vfxHeader(section, 'zoom-in');
+                    this.vfxChildren(section, 'article, .grid > div', cardEffects, 90);
             }
         });
 
         const testimonials = document.getElementById('testimonials-showcase');
         if (testimonials) {
             testimonials.dataset.sectionAnimate = 'testimonials';
-            this.fxHeader(testimonials, 'blur');
+            this.vfxHeader(testimonials, 'unfold');
             testimonials.querySelectorAll('.testimonials-reveal').forEach((el, i) => {
                 el.classList.add('apple-reveal');
-                this.fxItems.push({ el, delay: i * 120, effect: 'up', isReveal: true });
+                this.vfx(el, ['slide-left', 'slide-right', 'zoom-in'][i % 3], i * 100);
             });
-            this.fxChildren(testimonials, '.testimonials-card', 'slide-up', 120);
+            this.vfxChildren(testimonials, '.testimonials-card', ['wave', 'elastic', 'flip-y'], 120);
         }
 
         const tech = document.getElementById('technology-stack');
@@ -193,12 +229,53 @@ class HomeAppleAnimations {
             tech.dataset.sectionAnimate = 'tech';
             const techHeader = tech.querySelector('.text-center.mb-12, .text-center.mb-16');
             if (techHeader) {
-                this.fx(techHeader, 'scale', 0);
-                techHeader.querySelectorAll('p, h2, a').forEach((el, i) => this.fx(el, 'scale', i * 80));
+                this.vfx(techHeader, 'zoom-in', 0);
+                techHeader.querySelectorAll('p, h2, a').forEach((el, i) => this.vfx(el, 'swing', i * 80));
             }
-            this.fxChildren(tech, '.tech-stack-tab', 'pop', 60, 360);
-            this.fxChildren(tech, '.tech-stack-item', 'fade-scale', 90, 450);
+            this.vfxChildren(tech, '.tech-stack-tab', ['roll', 'elastic', 'swing'], 60, 360);
+            this.vfxChildren(tech, '.tech-stack-item', ['zoom-in', 'diagonal', 'flip-y'], 85, 450);
         }
+    }
+
+    setupViewportPlayAnimations() {
+        if (!this.vfxItems.length) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+
+                const el = entry.target;
+                el.classList.add('is-played', 'is-revealed');
+                el.style.setProperty('--reveal-opacity', '1');
+
+                if (el.classList.contains('home-process-step')) {
+                    el.classList.add('is-active');
+                }
+
+                const counter = el.matches('[data-count]') ? el : el.querySelector('[data-count]');
+                if (counter) {
+                    this.animateCounter(counter);
+                }
+
+                observer.unobserve(el);
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -5% 0px',
+        });
+
+        this.vfxItems.forEach(({ el }) => observer.observe(el));
+    }
+
+    setupSectionObservers() {
+        const sections = this.root.querySelectorAll('.home-section[data-section-animate]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                entry.target.classList.toggle('is-in-view', entry.isIntersecting);
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -10% 0px' });
+
+        sections.forEach(section => observer.observe(section));
     }
 
     splitHeroTitle() {
@@ -248,7 +325,7 @@ class HomeAppleAnimations {
     setupScrollRevealEngine() {
         const revealEls = [
             ...this.fxItems.map(item => item.el),
-            ...this.root.querySelectorAll('.apple-reveal:not(.home-fx)'),
+            ...this.root.querySelectorAll('.apple-reveal:not(.home-fx):not(.home-vfx)'),
         ];
 
         const update = () => {
@@ -274,28 +351,20 @@ class HomeAppleAnimations {
 
                 el.style.setProperty('--reveal-opacity', opacity.toFixed(4));
 
-                if (opacity >= 0.97) {
-                    if (!el.classList.contains('is-revealed')) {
-                        el.classList.add('is-revealed');
+                if (opacity >= 0.97 && !el.classList.contains('is-revealed')) {
+                    el.classList.add('is-revealed');
 
-                        if (el.classList.contains('home-process-step')) {
-                            el.classList.add('is-active');
-                        }
+                    if (el.classList.contains('home-process-step')) {
+                        el.classList.add('is-active');
+                    }
 
-                        const counter = el.matches('[data-count]')
-                            ? el
-                            : el.querySelector('[data-count]');
-                        if (counter) {
-                            this.animateCounter(counter);
-                        }
+                    const counter = el.matches('[data-count]')
+                        ? el
+                        : el.querySelector('[data-count]');
+                    if (counter) {
+                        this.animateCounter(counter);
                     }
                 }
-            });
-
-            this.root.querySelectorAll('.home-section[data-section-animate]').forEach(section => {
-                const rect = section.getBoundingClientRect();
-                const inView = rect.top < vh * 0.85 && rect.bottom > vh * 0.1;
-                section.classList.toggle('is-in-view', inView);
             });
 
             this.scrollTicking = false;
@@ -430,7 +499,7 @@ class HomeAppleAnimations {
 
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
-                if (!card.classList.contains('is-revealed')) return;
+                if (!card.classList.contains('is-played') && !card.classList.contains('is-revealed')) return;
                 const rect = card.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width - 0.5;
                 const y = (e.clientY - rect.top) / rect.height - 0.5;

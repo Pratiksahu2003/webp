@@ -13,7 +13,7 @@
 
 <div class="home-section-header mb-12 lg:mb-16 {{ $alignClass }}">
     @if($badge)
-    <p class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.18em] text-orange-600 bg-orange-50 border border-orange-100 mb-5">
+    <p class="home-badge-shimmer inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.18em] text-orange-600 bg-orange-50 border border-orange-100 mb-5">
         {{ $badge }}
     </p>
     @endif

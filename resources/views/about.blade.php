@@ -1,7 +1,7 @@
 @extends('layouts.website')
 
 @section('title', 'About Us - VanTroZ')
-@section('description', 'Learn about VanTroZ - Your trusted IT partner with 24+ years of experience in software development.')
+@section('description', 'Learn about VanTroZ - Your trusted IT partner with 5+ years of experience in software development.')
 
 @section('content')
 
@@ -9,7 +9,7 @@
     variant="brand"
     badge="Our Story"
     title="About VanTroZ"
-    subtitle="Your trusted IT partner for over 24 years — delivering software excellence with transparency and craft."
+    subtitle="Your trusted IT partner for over 5 years — delivering software excellence with transparency and craft."
 />
 
 <!-- About Content -->
@@ -33,7 +33,7 @@
                 <div class="space-y-4">
                     <div class="flex justify-between items-center">
                         <span class="text-gray-600">Experience</span>
-                        <span class="text-2xl font-bold text-orange-600">25+ years</span>
+                        <span class="text-2xl font-bold text-orange-600">5+ years</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-gray-600">Clients</span>
@@ -44,8 +44,8 @@
                         <span class="text-2xl font-bold text-orange-600">275+</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-600">Projects Completed</span>
-                        <span class="text-2xl font-bold text-orange-600">3,500+</span>
+                        <span class="text-gray-600">Projects Delivered</span>
+                        <span class="text-2xl font-bold text-orange-600">100+</span>
                     </div>
                 </div>
             </div>
