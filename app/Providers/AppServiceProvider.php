@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\View\Composers\CatalogNavigationComposer;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,5 +24,7 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Route::bind('package', function ($value) {
             return \App\Models\ServicePackage::findOrFail($value);
         });
+
+        View::composer(['layouts.website', 'components.footer'], CatalogNavigationComposer::class);
     }
 }

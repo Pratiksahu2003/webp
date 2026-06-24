@@ -56,6 +56,65 @@
 
                 <!-- Clean Desktop Navigation -->
                 <div class="hidden xl:flex items-center space-x-8 flex-1 justify-center">
+                    @if(isset($catalogServices) && $catalogServices->isNotEmpty())
+                    <!-- Dynamic Services Mega Menu -->
+                    <div class="relative group">
+                        <button type="button" class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-200 hover:text-orange-600">
+                            Services
+                            <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute top-full left-1/2 -translate-x-1/2 w-[min(90vw,48rem)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
+                            <div class="bg-white rounded-xl shadow-xl border border-gray-200 py-5 px-6 mt-2">
+                                <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                                    @foreach($catalogServices as $service)
+                                    <div>
+                                        <a href="{{ route('catalog.services.show', $service) }}" class="font-semibold text-gray-900 hover:text-orange-600 transition-colors">{{ $service->title }}</a>
+                                        <div class="mt-2 space-y-1.5">
+                                            @foreach($service->activeSubServices as $subService)
+                                            <a href="{{ route('services.sub-service', [$service, $subService]) }}" class="block text-sm text-gray-600 hover:text-orange-500 transition-colors">{{ $subService->title }}</a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                                <div class="border-t border-gray-100 mt-4 pt-3">
+                                    <a href="{{ route('catalog.services') }}" class="text-orange-600 font-semibold text-sm hover:text-orange-700">View All Services →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+
+                    @if(isset($webDevelopmentService) && $webDevelopmentService->activeSubServices->isNotEmpty())
+                    <!-- Web Development Menu -->
+                    <div class="relative group">
+                        <button type="button" class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">
+                            Web Development
+                            <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
+                            <div class="bg-white rounded-xl shadow-xl border border-gray-200 py-4 mt-2">
+                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
+                                    <a href="{{ route('catalog.services.show', $webDevelopmentService) }}" class="text-xs font-semibold text-orange-600 hover:text-orange-700 uppercase tracking-wide">
+                                        All Web Development →
+                                    </a>
+                                </div>
+                                <div class="px-2 space-y-0.5">
+                                    @foreach($webDevelopmentService->activeSubServices as $subService)
+                                    <a href="{{ route('services.sub-service', [$webDevelopmentService, $subService]) }}" class="block px-3 py-2.5 text-sm text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">
+                                        {{ $subService->title }}
+                                    </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+
                     <!-- Clean Navigation Links -->
                     <a href="{{ route('case-studies') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">Case Studies</a>
                     <a href="{{ route('about') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">About Us</a>
@@ -77,9 +136,15 @@
                     </a>
 
                     @auth
+                    @if(auth()->user()->isAdmin())
                     <a href="{{ route('admin.dashboard') }}" class="bg-orange-500 text-white px-3 py-2 rounded-lg text-xs font-medium hover:bg-orange-600 transition-colors duration-200">
                         Admin
                     </a>
+                    @else
+                    <a href="{{ route('customer.dashboard') }}" class="bg-orange-500 text-white px-3 py-2 rounded-lg text-xs font-medium hover:bg-orange-600 transition-colors duration-200">
+                        My Orders
+                    </a>
+                    @endif
                     @endauth
                 </div>
 
@@ -97,6 +162,42 @@
         <!-- Mobile menu - Enhanced for iOS -->
         <div class="mobile-menu hidden lg:hidden ios-smooth-scroll ios-safe-area-padding">
             <div class="px-4 pt-4 pb-6 space-y-2 bg-white border-t border-gray-200 ios-safe-area-padding">
+                @if(isset($catalogServices) && $catalogServices->isNotEmpty())
+                <div class="pb-3 mb-3 border-b border-gray-100">
+                    <p class="px-3 py-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">Services</p>
+                    @foreach($catalogServices as $service)
+                    <details class="px-3 group">
+                        <summary class="py-2 text-base font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between">
+                            {{ $service->title }}
+                            <svg class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </summary>
+                        <div class="pl-3 pb-2 space-y-1">
+                            @foreach($service->activeSubServices as $subService)
+                            <a href="{{ route('services.sub-service', [$service, $subService]) }}" class="block py-1.5 text-sm text-gray-600 hover:text-orange-600">{{ $subService->title }}</a>
+                            @endforeach
+                            <a href="{{ route('catalog.services.show', $service) }}" class="block py-1.5 text-sm text-orange-600 font-medium">View {{ $service->title }} →</a>
+                        </div>
+                    </details>
+                    @endforeach
+                    <a href="{{ route('catalog.services') }}" class="block px-3 py-2 text-orange-600 font-semibold">Browse All Services</a>
+                </div>
+                @endif
+
+                @if(isset($webDevelopmentService) && $webDevelopmentService->activeSubServices->isNotEmpty())
+                <details class="px-3 group border-b border-gray-100 pb-3 mb-3">
+                    <summary class="py-2 text-base font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between">
+                        Web Development
+                        <svg class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="pl-3 pb-2 space-y-1">
+                        @foreach($webDevelopmentService->activeSubServices as $subService)
+                        <a href="{{ route('services.sub-service', [$webDevelopmentService, $subService]) }}" class="block py-1.5 text-sm text-gray-600 hover:text-orange-600">{{ $subService->title }}</a>
+                        @endforeach
+                        <a href="{{ route('catalog.services.show', $webDevelopmentService) }}" class="block py-1.5 text-sm text-orange-600 font-medium">View All Web Development →</a>
+                    </div>
+                </details>
+                @endif
+
                 <a href="{{ route('case-studies') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Case Studies</a>
                 <a href="{{ route('about') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">About Us</a>
                 <a href="{{ route('blog.index') }}" class="text-gray-900 hover:text-orange-600 block px-3 py-2 text-base font-medium">Blog</a>
@@ -115,7 +216,11 @@
                 
                 @auth
                 <div class="pt-2">
+                    @if(auth()->user()->isAdmin())
                     <a href="{{ route('admin.dashboard') }}" class="bg-orange-500 text-white block px-3 py-2 text-base font-medium rounded-md">Admin</a>
+                    @else
+                    <a href="{{ route('customer.dashboard') }}" class="bg-orange-500 text-white block px-3 py-2 text-base font-medium rounded-md">My Orders</a>
+                    @endif
                 </div>
                 @endauth
             </div>

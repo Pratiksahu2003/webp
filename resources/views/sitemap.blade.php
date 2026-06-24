@@ -48,6 +48,34 @@
             </div>
         </div>
 
+        @if(isset($catalogServices) && $catalogServices->isNotEmpty())
+        <!-- Service Catalog -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Service Catalog</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-50 rounded-lg p-6 md:col-span-2 lg:col-span-3">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                        <a href="{{ route('catalog.services') }}" class="hover:text-orange-600">All Services</a>
+                    </h3>
+                </div>
+                @foreach($catalogServices as $service)
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">
+                        <a href="{{ route('catalog.services.show', $service) }}" class="hover:text-orange-600">{{ $service->title }}</a>
+                    </h3>
+                    <ul class="space-y-2">
+                        @foreach($service->activeSubServices as $subService)
+                        <li>
+                            <a href="{{ route('services.sub-service', [$service, $subService]) }}" class="text-gray-600 hover:text-orange-600 transition-colors">{{ $subService->title }}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
+
         <!-- Portfolio & Case Studies -->
         <div class="mb-12">
             <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Portfolio & Case Studies</h2>

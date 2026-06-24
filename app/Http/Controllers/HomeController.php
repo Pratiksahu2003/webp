@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Models\Service;
 use App\Models\CaseStudy;
@@ -10,21 +9,19 @@ use App\Models\Technology;
 use App\Models\Testimonial;
 use App\Models\Client;
 use App\Models\BlogPost;
-use App\Models\Setting;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $sections = Section::active()->ordered()->get();
-        $services = Service::active()->ordered()->get();
         $caseStudies = CaseStudy::active()->ordered()->take(4)->get();
         $technologies = Technology::active()->ordered()->get();
         $testimonials = Testimonial::active()->ordered()->get();
         $clients = Client::active()->ordered()->get();
         $blogPosts = BlogPost::published()->orderBy('published_at', 'desc')->take(6)->get();
         
-        return view('home', compact('sections', 'services', 'caseStudies', 'technologies', 'testimonials', 'clients', 'blogPosts'));
+        return view('home', compact('sections', 'caseStudies', 'technologies', 'testimonials', 'clients', 'blogPosts'));
     }
 
     public function about()
@@ -86,6 +83,13 @@ class HomeController extends Controller
 
     public function sitemap()
     {
-        return view('sitemap');
+        $catalogServices = Service::query()
+            ->with(['activeSubServices' => fn ($query) => $query->ordered()])
+            ->active()
+            ->ordered()
+            ->whereHas('subServices', fn ($query) => $query->where('status', true))
+            ->get();
+
+        return view('sitemap', compact('catalogServices'));
     }
 }
