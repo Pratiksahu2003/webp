@@ -32,10 +32,6 @@
                 alt="{{ $blogPost->title }}"
                 class="w-full h-64 object-cover rounded-lg mb-8"
                 onerror="this.style.display='none'">
-            @else
-            <div class="w-full h-64 bg-gray-200 rounded-lg mb-8 flex items-center justify-center">
-                <span class="text-gray-500">No featured image</span>
-            </div>
             @endif
 
             <div class="text-gray-700 leading-relaxed">

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             CaseStudySeeder::class,
             TestimonialSeeder::class,
             ClientSeeder::class,
+            BlogPostSeeder::class,
         ]);
     }
 }

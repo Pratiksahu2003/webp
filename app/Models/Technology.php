@@ -49,6 +49,16 @@ class Technology extends Model
         return $this->belongsToMany(SubService::class, 'sub_service_technology');
     }
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    public function stackSlug(): ?string
+    {
+        return \App\Support\TechnologyStack::slugForCategory($this->category ?? '');
+    }
+
     public function scopeActive($query)
     {
         return $query->where(function ($q) {

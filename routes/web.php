@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TechnologyController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
@@ -10,7 +11,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/case-studies', [HomeController::class, 'caseStudies'])->name('case-studies');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::get('/technologies', [HomeController::class, 'technologies'])->name('technologies');
+Route::get('/technologies', [TechnologyController::class, 'index'])->name('technologies');
+Route::get('/technologies/stack/{stack}', [TechnologyController::class, 'stack'])->name('technologies.stack');
+Route::get('/technologies/{technology:slug}', [TechnologyController::class, 'show'])->name('technologies.show');
 Route::get('/careers', [HomeController::class, 'careers'])->name('careers');
 Route::get('/portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
 

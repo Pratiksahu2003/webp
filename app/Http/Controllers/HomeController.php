@@ -43,13 +43,6 @@ class HomeController extends Controller
         return view('contact', compact('sections'));
     }
 
-    public function technologies()
-    {
-        $technologies = Technology::active()->ordered()->get();
-        $sections = Section::active()->ordered()->get();
-        return view('technologies', compact('technologies', 'sections'));
-    }
-
     public function careers()
     {
         return view('careers');
