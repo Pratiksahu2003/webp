@@ -4,51 +4,40 @@
 @section('description', $subService->short_description)
 
 @section('content')
-{{-- Hero --}}
-<section class="compact-page-header relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white" data-no-viewport-hero>
-    @if($service->banner_image)
-        <div class="absolute inset-0 opacity-15 bg-cover bg-center pointer-events-none" style="background-image:url('{{ Storage::url($service->banner_image) }}')"></div>
-    @endif
-    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent pointer-events-none"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+<x-page-hero
+    variant="brand"
+    :badge="$service->title"
+    :title="$subService->title"
+    :subtitle="$subService->short_description"
+    :background="$service->banner_image ? Storage::url($service->banner_image) : null"
+    align="left"
+>
+    <x-slot:breadcrumbs>
         <x-catalog-breadcrumbs light :items="[
             ['label' => 'Home', 'url' => route('home')],
             ['label' => 'Services', 'url' => route('catalog.services')],
             ['label' => $service->title, 'url' => route('catalog.services.show', $service)],
             ['label' => $subService->title],
         ]" />
+    </x-slot:breadcrumbs>
 
-        <div class="max-w-3xl">
-            <span class="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/20 text-orange-300 text-sm font-medium mb-3">
-                {{ $service->title }}
-            </span>
-            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3">{{ $subService->title }}</h1>
-            <p class="text-base sm:text-lg text-slate-300 leading-relaxed">{{ $subService->short_description }}</p>
-
-            <div class="mt-5 flex flex-wrap gap-3">
-                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-2.5">
-                    <span class="text-slate-400 text-sm">From</span>
-                    <span class="text-lg font-bold text-orange-400">₹{{ number_format($subService->starting_price) }}</span>
-                </div>
-                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-2.5">
-                    <span class="text-slate-400 text-sm">Delivery</span>
-                    <span class="text-lg font-bold text-white">{{ $subService->delivery_days }} <span class="text-sm font-medium text-slate-300">Days</span></span>
-                </div>
-            </div>
-
-            <div class="mt-6 flex flex-wrap gap-3">
-                <a href="#packages" class="inline-flex items-center px-5 py-2.5 bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold text-sm transition-colors">
-                    View Packages
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                </a>
-                <a href="{{ route('contact') }}" class="inline-flex items-center px-5 py-2.5 border border-white/30 hover:bg-white/10 rounded-lg font-semibold text-sm transition-colors">
-                    Get Custom Quote
-                </a>
-            </div>
-        </div>
+    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-2.5">
+        <span class="text-slate-400 text-sm">From</span>
+        <span class="text-lg font-bold text-orange-400">₹{{ number_format($subService->starting_price) }}</span>
     </div>
-</section>
+    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-2.5">
+        <span class="text-slate-400 text-sm">Delivery</span>
+        <span class="text-lg font-bold text-white">{{ $subService->delivery_days }} <span class="text-sm font-medium text-slate-300">Days</span></span>
+    </div>
+    <a href="#packages" class="inline-flex items-center px-5 py-2.5 bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold text-sm transition-colors">
+        View Packages
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </a>
+    <a href="{{ route('contact') }}" class="inline-flex items-center px-5 py-2.5 border border-white/30 hover:bg-white/10 rounded-lg font-semibold text-sm transition-colors">
+        Get Custom Quote
+    </a>
+</x-page-hero>
 
 {{-- Overview --}}
 <section class="py-10 lg:py-12 bg-white">

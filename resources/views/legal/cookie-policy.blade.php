@@ -4,27 +4,14 @@
 @section('description', 'Learn about how ' . config('company.name') . ' uses cookies to enhance your browsing experience and provide personalized services.')
 
 @section('content')
-<!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-gray-50 via-white to-orange-50">
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-orange-100/30 to-orange-100/30 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-orange-100/20 to-orange-100/20 rounded-full blur-3xl"></div>
-    </div>
-    
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Cookie <span class="text-orange-600">Policy</span>
-            </h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                This Cookie Policy explains how {{ config('company.name') }} uses cookies and similar technologies when you visit our website.
-            </p>
-            <div class="mt-6 text-sm text-gray-500">
-                Last updated: {{ date('F d, Y') }}
-            </div>
-        </div>
-    </div>
-</section>
+
+<x-page-hero
+    variant="legal"
+    badge="Legal"
+    title="Cookie |Policy"
+    subtitle="This Cookie Policy explains how {{ config('company.name') }} uses cookies and similar technologies when you visit our website."
+    :meta="'Last updated: ' . date('F d, Y')"
+/>
 
 <!-- Content Section -->
 <section class="py-16 bg-white">

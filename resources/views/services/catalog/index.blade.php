@@ -4,18 +4,24 @@
 @section('description', 'Browse our service catalog and choose the right package for your business.')
 
 @section('content')
-<section class="py-10 lg:py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <x-catalog-breadcrumbs :items="[
+
+<x-page-hero
+    variant="brand"
+    badge="Service Catalog"
+    title="Our Services"
+    subtitle="Browse our service catalog, explore sub-services, and purchase packages online with secure payment."
+    align="left"
+>
+    <x-slot:breadcrumbs>
+        <x-catalog-breadcrumbs light :items="[
             ['label' => 'Home', 'url' => route('home')],
             ['label' => 'Services'],
         ]" />
+    </x-slot:breadcrumbs>
+</x-page-hero>
 
-        <div class="mb-10">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Our Services</h1>
-            <p class="text-gray-600 text-lg max-w-3xl">Browse our service catalog, explore sub-services, and purchase packages online with secure payment.</p>
-        </div>
-
+<section class="py-10 lg:py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @if($services->isEmpty())
             <div class="bg-white rounded-2xl shadow-sm p-12 text-center">
                 <p class="text-gray-500">Services are being updated. Please check back soon or <a href="{{ route('contact') }}" class="text-orange-600 font-semibold">contact us</a>.</p>

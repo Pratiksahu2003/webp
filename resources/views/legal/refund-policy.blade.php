@@ -4,27 +4,14 @@
 @section('description', 'Refund Policy for ' . config('company.name') . ' - Learn about our refund and cancellation policies for software development services.')
 
 @section('content')
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-r from-green-700 to-green-800 text-white py-20 overflow-hidden">
-    <!-- Background Video -->
-    <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover z-0">
-        <source src="{{ asset('banner/common.mp4') }}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-green-900 bg-opacity-60 z-10"></div>
-    
-    <!-- Content -->
-    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">Refund Policy</h1>
-            <p class="text-xl mb-8 max-w-3xl mx-auto">
-                Our refund policy for software development services and digital products.
-            </p>
-        </div>
-    </div>
-</section>
+
+<x-page-hero
+    variant="legal"
+    badge="Legal"
+    title="Refund Policy"
+    subtitle="Our refund policy for software development services and digital products."
+    :meta="'Last updated: ' . date('F d, Y')"
+/>
 
 <!-- Refund Policy Content -->
 <section class="py-20 bg-white">

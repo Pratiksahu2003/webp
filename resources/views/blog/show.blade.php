@@ -4,60 +4,24 @@
 @section('description', $blogPost->excerpt)
 
 @section('content')
-<!-- Compressed Hero Section -->
-<section class="compact-page-header relative overflow-hidden min-h-0 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900" data-no-viewport-hero>
-    @if($blogPost->banner_image)
-    <!-- Background Image -->
-    <div class="absolute inset-0">
-        <img src="{{ asset('storage/' . $blogPost->banner_image) }}"
-            alt="{{ $blogPost->title }}"
-            class="w-full h-full object-cover opacity-30"
-            onerror="this.style.display='none'">
-    </div>
-    @endif
 
-    <!-- Modern Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-slate-900/60 to-indigo-900/80"></div>
-
-    <!-- Compressed Content -->
-    <div class="relative z-10 py-8 lg:py-10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center text-white">
-                <div class="flex items-center justify-center mb-4">
-                    @if($blogPost->category)
-                    <span class="bg-indigo-500/20 backdrop-blur-sm text-indigo-200 text-xs font-medium px-3 py-1.5 rounded-full border border-indigo-400/30">{{ $blogPost->category }}</span>
-                    @endif
-                    @if($blogPost->published_at)
-                    <span class="text-slate-300 text-xs ml-3 bg-slate-800/40 backdrop-blur-sm px-3 py-1.5 rounded-full">{{ $blogPost->published_at->format('M d, Y') }}</span>
-                    @else
-                    <span class="text-slate-300 text-xs ml-3 bg-slate-800/40 backdrop-blur-sm px-3 py-1.5 rounded-full">{{ $blogPost->created_at->format('M d, Y') }}</span>
-                    @endif
-                </div>
-                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white leading-tight">{{ $blogPost->title }}</h1>
-                <p class="text-lg mb-6 max-w-2xl mx-auto text-slate-200 leading-relaxed">{{ $blogPost->excerpt }}</p>
-                <div class="flex items-center justify-center text-white/90 space-x-6">
-                    <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
-                        <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-3 shadow-md">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="font-medium" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">By {{ $blogPost->author }}</span>
-                    </div>
-                    <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
-                        <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-3 shadow-md">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="font-medium" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">{{ $blogPost->views }} views</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<x-page-hero
+    variant="blog"
+    :badge="$blogPost->category"
+    :title="$blogPost->title"
+    :subtitle="$blogPost->excerpt"
+    :background="$blogPost->banner_image ? asset('storage/' . $blogPost->banner_image) : null"
+    :meta="($blogPost->published_at ?? $blogPost->created_at)->format('M d, Y')"
+>
+    <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        By {{ $blogPost->author }}
     </div>
-</section>
+    <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+        {{ $blogPost->views }} views
+    </div>
+</x-page-hero>
 
 <!-- Compressed Article Content -->
 <section class="py-12 bg-white">

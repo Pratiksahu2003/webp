@@ -4,54 +4,21 @@
 @section('description', 'Join our team of talented professionals at Vantroz Technology Private Limited. Explore career opportunities in software development, web development, and more.')
 
 @section('content')
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-800 text-white py-24 overflow-hidden">
-    <!-- Background Video -->
-    <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover z-0">
-        <source src="{{ asset('banner/common.mp4') }}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    
-    <!-- Animated Background Elements -->
-    <div class="absolute inset-0 z-5">
-        <div class="absolute top-20 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full animate-pulse"></div>
-        <div class="absolute top-40 right-20 w-16 h-16 bg-orange-400 bg-opacity-20 rounded-full animate-bounce"></div>
-        <div class="absolute bottom-32 left-1/4 w-12 h-12 bg-purple-300 bg-opacity-15 rounded-full animate-ping"></div>
-        <div class="absolute bottom-20 right-1/3 w-24 h-24 bg-blue-300 bg-opacity-10 rounded-full animate-pulse"></div>
-    </div>
-    
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-900/70 via-indigo-900/60 to-blue-900/70 z-10"></div>
-    
-    <!-- Content -->
-    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-            <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6 border border-white/20">
-                <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                We're Hiring Amazing Talent
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-100 to-blue-100 bg-clip-text text-transparent">
-                Join Our Team
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-orange-100 leading-relaxed">
-                Build your career with us and work on exciting projects that make a difference in the world of technology
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#open-positions" class="group bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                    <span class="flex items-center">
-                        View Open Positions
-                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </span>
-                </a>
-                <a href="#company-culture" class="group bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20">
-                    Learn About Our Culture
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+
+<x-page-hero
+    variant="creative"
+    badge="We're Hiring Amazing Talent"
+    title="Join Our Team"
+    subtitle="Build your career with us and work on exciting projects that make a difference in the world of technology."
+>
+    <a href="#open-positions" class="inline-flex items-center px-6 py-3 bg-orange-500 hover:bg-orange-600 rounded-xl font-semibold text-sm transition-colors shadow-lg shadow-orange-500/20">
+        View Open Positions
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+    <a href="#company-culture" class="inline-flex items-center px-6 py-3 border border-white/30 hover:bg-white/10 rounded-xl font-semibold text-sm transition-colors">
+        Learn About Our Culture
+    </a>
+</x-page-hero>
 
 <!-- Company Culture Section -->
 <section id="company-culture" class="py-24 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">

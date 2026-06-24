@@ -4,21 +4,26 @@
 @section('description', $service->short_description ?? Str::limit(strip_tags($service->description), 160))
 
 @section('content')
-<section class="py-10 lg:py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <x-catalog-breadcrumbs :items="[
+
+<x-page-hero
+    variant="brand"
+    badge="Services"
+    :title="$service->title"
+    :subtitle="$service->short_description ?? Str::limit(strip_tags($service->description), 160)"
+    :background="$service->banner_image ? Storage::url($service->banner_image) : null"
+    align="left"
+>
+    <x-slot:breadcrumbs>
+        <x-catalog-breadcrumbs light :items="[
             ['label' => 'Home', 'url' => route('home')],
             ['label' => 'Services', 'url' => route('catalog.services')],
             ['label' => $service->title],
         ]" />
+    </x-slot:breadcrumbs>
+</x-page-hero>
 
-        <div class="mb-10">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ $service->title }}</h1>
-            @if($service->short_description)
-                <p class="text-gray-600 text-lg max-w-3xl">{{ $service->short_description }}</p>
-            @endif
-        </div>
-
+<section class="py-10 lg:py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @if($service->activeSubServices->isEmpty())
             <div class="bg-white rounded-2xl shadow-sm p-12 text-center">
                 <p class="text-gray-500">No sub-services available yet. <a href="{{ route('contact') }}" class="text-orange-600 font-semibold">Contact us</a> for a custom quote.</p>
