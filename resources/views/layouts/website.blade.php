@@ -15,19 +15,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#ffffff">
     <meta name="apple-touch-fullscreen" content="yes">
-    
-    <!-- iOS Safari Touch Icons - Enhanced -->
-    <link rel="apple-touch-icon" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="167x167" href="{{ asset('logo/logo.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('logo/logo.png') }}">
+
+    <x-favicon />
 
     <title>@yield('title', config('company.name') . ' - IT Partner')</title>
     <meta name="description" content="@yield('description', config('company.name') . ' - ' . config('company.tagline') . ' for software development, web development, mobile app development, and more.')">

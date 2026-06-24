@@ -34,8 +34,8 @@ return [
 
     'branding' => [
         'logo' => [
-            'light' => '/images/logo-light.png',
-            'dark' => '/images/logo-dark.png',
+            'light' => '/logo/logo.png',
+            'dark' => '/logo/logo.png',
             'favicon' => '/favicon.ico',
         ],
         'colors' => [

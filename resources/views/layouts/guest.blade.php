@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <x-favicon />
+
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
