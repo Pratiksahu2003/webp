@@ -144,6 +144,23 @@ function showChartDetails(value) {
 
 
 /**
+ * Activity feed interactions (dashboard only)
+ */
+function initializeActivityFeed() {
+    const feedItems = document.querySelectorAll('[data-activity-item]');
+
+    feedItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(4px)';
+        });
+
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
+}
+
+/**
  * Task management functionality
  */
 function initializeTaskManagement() {

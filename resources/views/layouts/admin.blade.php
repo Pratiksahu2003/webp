@@ -273,6 +273,7 @@
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                         </svg>
                     </div>
+                    <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ Logo" class="h-8 w-auto mr-2">
                 </div>
             </div>
 
@@ -347,10 +348,7 @@
                             </div>
                             <div class="flex items-center">
                                 <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ Logo" class="h-8 w-auto mr-2">
-                                <div>
-                                    <h1 class="text-gray-800 font-bold text-xl">VanTroZ</h1>
-                                    <p class="text-gray-500 text-xs font-medium">Admin Panel</p>
-                                </div>
+                               
                             </div>
                         </div>
                         <button @click="sidebarOpen = false"
@@ -363,7 +361,6 @@
                     </div>
                 </div>
                 <nav class="flex-1 px-4 py-4 space-y-1">
-                    <!-- Same navigation as desktop -->
                     <a href="{{ route('admin.dashboard') }}"
                         class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -374,7 +371,42 @@
                         </svg>
                         Home
                     </a>
-                    <!-- Add other mobile nav items here -->
+
+                    <div class="pt-4">
+                        <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Content</p>
+                        <div class="mt-2 space-y-1">
+                            <a href="{{ route('admin.pages.index') }}"
+                                class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.pages.*') ? 'active' : '' }}">
+                                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                    </path>
+                                </svg>
+                                Pages
+                            </a>
+
+                            <a href="{{ route('admin.blog-posts.index') }}"
+                                class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.blog-posts.*') ? 'active' : '' }}">
+                                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                                    </path>
+                                </svg>
+                                Blog Posts
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 pb-4">
+                        <a href="{{ route('admin.profile.edit') }}"
+                            class="zoho-nav-item flex items-center px-3 py-2.5 text-sm font-medium rounded-md {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            Profile
+                        </a>
+                    </div>
                 </nav>
             </div>
         </div>
@@ -397,18 +429,7 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <!-- Search -->
-                    <div class="relative hidden md:block">
-                        <input type="text" placeholder="Search everything..."
-                            class="w-80 pl-11 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent focus:bg-white transition-all duration-200">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center">
-                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                        </div>
-                    </div>
+                  
 
                     <!-- User Menu -->
                     <div x-data="{ open: false }" class="relative">

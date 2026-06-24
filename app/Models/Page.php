@@ -15,17 +15,29 @@ class Page extends Model
         'content',
         'meta_title',
         'meta_description',
+        'template',
+        'page_builder_data',
+        'seo_settings',
+        'page_settings',
+        'featured_image',
+        'is_published',
+        'published_at',
         'is_active',
-        'sort_order'
+        'sort_order',
     ];
 
     protected $casts = [
+        'page_builder_data' => 'array',
+        'seo_settings' => 'array',
+        'page_settings' => 'array',
+        'is_published' => 'boolean',
         'is_active' => 'boolean',
+        'published_at' => 'datetime',
     ];
 
     public function getRouteKeyName()
     {
-        return 'slug';
+        return request()->is('admin/*') ? 'id' : 'slug';
     }
 
     public function scopeActive($query)

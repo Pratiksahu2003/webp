@@ -12,7 +12,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        $pages = Page::with('sections')->latest()->paginate(15);
+        $pages = Page::latest()->paginate(15);
         return view('admin.pages.index', compact('pages'));
     }
 
@@ -65,13 +65,11 @@ class PageController extends Controller
 
     public function show(Page $page)
     {
-        $page->load('sections');
         return view('admin.pages.show', compact('page'));
     }
 
     public function edit(Page $page)
     {
-        $page->load('sections');
         return view('admin.pages.edit', compact('page'));
     }
 
@@ -131,19 +129,15 @@ class PageController extends Controller
     /**
      * Show the page builder interface
      */
-    public function builder(Page $page = null)
+    public function builder(?Page $page = null)
     {
-        if ($page) {
-            $page->load('sections');
-        }
-        
         return view('admin.pages.builder', compact('page'));
     }
 
     /**
      * Save page builder data
      */
-    public function saveBuilder(Request $request, Page $page = null)
+    public function saveBuilder(Request $request, ?Page $page = null)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -213,5 +207,47 @@ class PageController extends Controller
             'message' => 'Page status updated.',
             'is_active' => $page->is_active
         ]);
+    }
+
+    /**
+     * Bulk actions for multiple pages
+     */
+    public function bulkAction(Request $request)
+    {
+        $request->validate([
+            'action' => 'required|in:delete,publish,draft',
+            'selected_pages' => 'required|array|min:1',
+            'selected_pages.*' => 'exists:pages,id',
+        ]);
+
+        $pages = Page::whereIn('id', $request->selected_pages);
+        $count = $pages->count();
+
+        switch ($request->action) {
+            case 'delete':
+                $pages->delete();
+                $message = "{$count} pages deleted successfully!";
+                break;
+
+            case 'publish':
+                $pages->update([
+                    'is_published' => true,
+                    'published_at' => now(),
+                ]);
+                $message = "{$count} pages published successfully!";
+                break;
+
+            case 'draft':
+                $pages->update([
+                    'is_published' => false,
+                    'published_at' => null,
+                ]);
+                $message = "{$count} pages moved to draft!";
+                break;
+        }
+
+        return redirect()
+            ->route('admin.pages.index')
+            ->with('success', $message);
     }
 }

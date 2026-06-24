@@ -50,10 +50,6 @@ function initMobileMenu() {
     const navbar = document.getElementById('navbar');
     
     if (!mobileMenuButton || !mobileMenu) {
-        console.warn('Mobile menu button or menu not found', {
-            button: !!mobileMenuButton,
-            menu: !!mobileMenu
-        });
         return;
     }
     

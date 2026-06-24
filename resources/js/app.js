@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
         links.forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
+
+                // Allow normal navigation in the admin panel
+                if (window.location.pathname.startsWith('/admin') || (href && href.startsWith('/admin'))) {
+                    return;
+                }
                 
                 if (href && !e.metaKey && !e.ctrlKey) {
                     e.preventDefault();
