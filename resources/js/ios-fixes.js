@@ -219,18 +219,10 @@ if (isIOSSafari()) {
 // This needs to run outside the iOS-only block to work on all mobile devices
 const fixHeroSection = () => {
         // Target multiple possible selectors
-        const heroSections = document.querySelectorAll('#home-hero-section, .hero-section, section[class*="hero"], section:first-of-type');
-        
-        if (heroSections.length === 0) {
-            // Try to find the first section on home page
-            const firstSection = document.querySelector('section:first-of-type');
-            if (firstSection && firstSection.querySelector('video')) {
-                heroSections.push(firstSection);
-            }
-        }
+        const heroSections = document.querySelectorAll('#home-hero-section, .hero-section, section[class*="hero"]');
         
         heroSections.forEach(section => {
-            if (!section) return;
+            if (!section || section.classList.contains('compact-page-header') || section.hasAttribute('data-no-viewport-hero')) return;
             
             section.classList.add('ios-viewport-height', 'ios-hardware-acceleration');
             

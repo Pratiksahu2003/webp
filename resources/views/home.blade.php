@@ -222,27 +222,41 @@
             </p>
         </div>
 
-        <!-- Service Cards Grid -->
+        @if(isset($catalogServices) && $catalogServices->isNotEmpty())
+        @php
+            $featuredServices = $catalogServices->take(3);
+            $additionalServices = $catalogServices->skip(3);
+        @endphp
+
+        @if($featuredServices->isNotEmpty())
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            <!-- Custom Software Card -->
+            @foreach($featuredServices as $service)
             <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
                 <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div class="relative">
-                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 overflow-hidden">
+                        @if($service->icon)
+                            <img src="{{ Storage::url($service->icon) }}" alt="{{ $service->title }}" class="w-7 h-7 object-contain">
+                        @else
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        @endif
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Custom Software</h3>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">{{ $service->title }}</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        Tailored solutions that perfectly fit your business needs, and scale with your growth.
+                        {{ $service->short_description ?? Str::limit(strip_tags($service->description), 120) }}
                     </p>
+                    @if($service->activeSubServices->isNotEmpty())
                     <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">SaaS</span>
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">CRM</span>
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">ERP</span>
+                        @foreach($service->activeSubServices->take(3) as $subService)
+                        <a href="{{ route('services.sub-service', [$service, $subService]) }}" class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full hover:bg-orange-200 transition-colors">
+                            {{ $subService->title }}
+                        </a>
+                        @endforeach
                     </div>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                    @endif
+                    <a href="{{ route('catalog.services.show', $service) }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -250,153 +264,47 @@
                     </a>
                 </div>
             </div>
-
-            <!-- Web Development Card -->
-            <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative">
-                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Web Development</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Modern, responsive web applications built with cutting-edge technologies and best practices.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">React</span>
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">PHP</span>
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">JS</span>
-                    </div>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
-                        Learn more
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Mobile Apps Card -->
-            <div class="group relative bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative">
-                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile Apps</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Native and cross-platform mobile applications that deliver exceptional user experiences.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">iOS</span>
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">Android</span>
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">Flutter</span>
-                    </div>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors">
-                        Learn more
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+            @endforeach
         </div>
+        @endif
 
-        <!-- Additional Services Grid -->
+        @if($additionalServices->isNotEmpty())
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Data Science & AI -->
+            @foreach($additionalServices as $index => $service)
             <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300">
                 <div class="flex items-start space-x-4 mb-6">
                     <div class="flex-shrink-0">
-                        <span class="text-2xl font-bold text-orange-600">04/</span>
+                        <span class="text-2xl font-bold text-orange-600">{{ str_pad($index + 4, 2, '0', STR_PAD_LEFT) }}/</span>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900">Data Science & AI</h3>
+                        <h3 class="text-xl font-bold text-gray-900">{{ $service->title }}</h3>
                     </div>
                 </div>
 
+                @if($service->activeSubServices->isNotEmpty())
                 <div class="space-y-3 mb-6">
-                    <div class="text-gray-700">AWS & Cloud</div>
-                    <div class="text-gray-700">Big Data Solutions</div>
-                    <div class="text-gray-700">IoT Development</div>
-                    <div class="text-gray-700">NFT marketplace</div>
-                    <div class="text-gray-700">Artificial Intelligence</div>
-                    <div class="text-gray-700">DevOps Services</div>
-                    <div class="text-gray-700">AI ChatBot</div>
-                    <div class="text-gray-700">Generative AI</div>
+                    @foreach($service->activeSubServices as $subService)
+                    <a href="{{ route('services.sub-service', [$service, $subService]) }}" class="block text-gray-700 hover:text-orange-600 transition-colors">
+                        {{ $subService->title }}
+                    </a>
+                    @endforeach
                 </div>
+                @endif
 
+                @if($service->short_description || $service->description)
                 <p class="text-gray-600 mb-6 leading-relaxed">
-                    Make every business decision a data-driven one with stats, insights and analysis that positions you ahead of the competition
+                    {{ $service->short_description ?? Str::limit(strip_tags($service->description), 160) }}
                 </p>
+                @endif
 
-                <a href="{{ route('contact') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+                <a href="{{ route('catalog.services.show', $service) }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
                     Learn more →
                 </a>
             </div>
-
-            <!-- QA & Software Testing -->
-            <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300">
-                <div class="flex items-start space-x-4 mb-6">
-                    <div class="flex-shrink-0">
-                        <span class="text-2xl font-bold text-orange-600">05/</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900">QA & Software Testing</h3>
-                    </div>
-                </div>
-
-                <div class="space-y-3 mb-6">
-                    <div class="text-gray-700">Test Automation</div>
-                    <div class="text-gray-700">Cybersecurity</div>
-                    <div class="text-gray-700">Functional Testing</div>
-                    <div class="text-gray-700">Performance Testing</div>
-                    <div class="text-gray-700">Mobile App Testing</div>
-                    <div class="text-gray-700">QA Consulting</div>
-                    <div class="text-gray-700">Load Testing Services</div>
-                </div>
-
-                <p class="text-gray-600 mb-6 leading-relaxed">
-                    Ensure the fault tolerance, stability, and correct operation of your digital solution with software QA testing services by VanTroZ
-                </p>
-
-                <a href="{{ route('contact') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
-                    Learn more →
-                </a>
-            </div>
-
-            <!-- UX/UI Design -->
-            <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300">
-                <div class="flex items-start space-x-4 mb-6">
-                    <div class="flex-shrink-0">
-                        <span class="text-2xl font-bold text-orange-600">06/</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900">UX/UI Design</h3>
-                    </div>
-                </div>
-
-                <div class="space-y-3 mb-6">
-                    <div class="text-gray-700">UX Review</div>
-                    <div class="text-gray-700">Product Design</div>
-                    <div class="text-gray-700">Rapid UX Prototyping</div>
-                    <div class="text-gray-700">Mobile App Design</div>
-                    <div class="text-gray-700">Web Design Services</div>
-                </div>
-
-                <p class="text-gray-600 mb-6 leading-relaxed">
-                    Get a UX/UI design inspired by the desires and needs of your users by entrusting its implementation to VanTroZ experts.
-                </p>
-
-                <a href="{{ route('contact') }}" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
-                    Learn more →
-                </a>
-            </div>
+            @endforeach
         </div>
+        @endif
+        @endif
     </div>
 </section>
 

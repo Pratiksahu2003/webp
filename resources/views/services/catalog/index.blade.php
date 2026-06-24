@@ -4,7 +4,7 @@
 @section('description', 'Browse our service catalog and choose the right package for your business.')
 
 @section('content')
-<section class="py-16 bg-gray-50 min-h-screen">
+<section class="py-10 lg:py-12 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <x-catalog-breadcrumbs :items="[
             ['label' => 'Home', 'url' => route('home')],

@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
             return \App\Models\ServicePackage::findOrFail($value);
         });
 
-        View::composer(['layouts.website', 'components.footer'], CatalogNavigationComposer::class);
+        View::composer(['layouts.website', 'components.footer', 'home'], CatalogNavigationComposer::class);
     }
 }

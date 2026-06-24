@@ -4,7 +4,7 @@
 @section('description', $service->short_description ?? Str::limit(strip_tags($service->description), 160))
 
 @section('content')
-<section class="py-16 bg-gray-50 min-h-screen">
+<section class="py-10 lg:py-12 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <x-catalog-breadcrumbs :items="[
             ['label' => 'Home', 'url' => route('home')],

@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Compressed Hero Section -->
-<section class="relative overflow-hidden min-h-[400px] bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900">
+<section class="compact-page-header relative overflow-hidden min-h-0 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900" data-no-viewport-hero>
     @if($blogPost->banner_image)
     <!-- Background Image -->
     <div class="absolute inset-0">
@@ -20,8 +20,8 @@
     <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-slate-900/60 to-indigo-900/80"></div>
 
     <!-- Compressed Content -->
-    <div class="relative z-10 py-12">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+    <div class="relative z-10 py-8 lg:py-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center text-white">
                 <div class="flex items-center justify-center mb-4">
                     @if($blogPost->category)
