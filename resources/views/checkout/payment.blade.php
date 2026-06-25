@@ -8,6 +8,7 @@
     $service = $order->service;
     $subService = $order->subService;
     $paymentToken = $checkout['token'] ?? null;
+    $failureUrl = route('checkout.failure', $order);
     $mockCallbackUrl = route('payment.callback', [
         'order' => $order->order_number,
         'status' => 'success',
@@ -57,9 +58,12 @@
                 <p class="text-xs text-gray-400 mt-4">Secured by Nimbbl. UPI, cards, net banking &amp; more.</p>
             @else
                 <p class="text-red-600 mb-4">Payment could not be initialized. Please contact support or try again.</p>
-                @if($order->package)
-                    <a href="{{ route('checkout.show', $order->package) }}" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold">Try Again</a>
-                @endif
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    @if($order->package)
+                        <a href="{{ route('checkout.show', $order->package) }}" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold">Try Again</a>
+                    @endif
+                    <a href="{{ $failureUrl }}?reason=failed&message={{ urlencode('Payment gateway could not be initialized.') }}" class="inline-block border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-semibold">View Details</a>
+                </div>
             @endif
         </div>
     </div>
@@ -80,6 +84,45 @@ document.getElementById('pay-btn')?.addEventListener('click', function () {
 const payBtn = document.getElementById('pay-btn');
 const token = @json($paymentToken);
 const callbackUrl = @json(route('payment.callback'));
+const failureUrl = @json($failureUrl);
+const orderNumber = @json($order->order_number);
+const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content ?? '';
+
+function paymentStatus(response) {
+    const payload = response?.payload ?? response ?? {};
+    const status = String(payload.status ?? '').toLowerCase();
+    const txnStatus = String(payload.transaction?.status ?? '').toLowerCase();
+
+    if (status === 'success' || txnStatus === 'succeeded') {
+        return 'success';
+    }
+
+    if (status === 'pending' || txnStatus === 'pending') {
+        return 'pending';
+    }
+
+    if (['cancelled', 'canceled', 'cancel'].includes(status)) {
+        return 'cancelled';
+    }
+
+    return 'failed';
+}
+
+async function sendCallback(response) {
+    const result = await fetch(callbackUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,
+            'X-Requested-With': 'XMLHttpRequest',
+        },
+        body: JSON.stringify({ callback: response, order: orderNumber }),
+    });
+
+    const data = await result.json();
+    window.location.href = data.redirect ?? failureUrl;
+}
 
 async function openCheckout() {
     payBtn.disabled = true;
@@ -88,12 +131,27 @@ async function openCheckout() {
     try {
         const { default: Checkout } = await import('https://cdn.jsdelivr.net/npm/nimbbl_sonic@latest');
         const checkout = new Checkout({ token });
-        checkout.open({ callback_url: callbackUrl });
+
+        checkout.open({
+            callback_handler: async function (response) {
+                payBtn.textContent = 'Processing payment...';
+
+                const status = paymentStatus(response);
+
+                if (status === 'success' || status === 'pending') {
+                    await sendCallback(response);
+                    return;
+                }
+
+                const reason = status === 'cancelled' ? 'cancelled' : 'failed';
+                window.location.href = failureUrl + '?reason=' + reason;
+            },
+        });
     } catch (error) {
         console.error('Nimbbl checkout failed:', error);
         payBtn.disabled = false;
         payBtn.textContent = 'Pay Securely with Nimbbl';
-        alert('Unable to open payment gateway. Please try again.');
+        window.location.href = failureUrl + '?reason=failed&message=' + encodeURIComponent('Unable to open payment gateway. Please try again.');
     }
 }
 

@@ -34,13 +34,13 @@ Route::get('/catalog/services', [\App\Http\Controllers\ServiceCatalogController:
 Route::get('/catalog/services/{service:slug}', [\App\Http\Controllers\ServiceCatalogController::class, 'show'])->name('catalog.services.show');
 Route::get('/services/{service:slug}/{subService:slug}', [\App\Http\Controllers\ServiceCatalogController::class, 'subService'])->name('services.sub-service');
 
+Route::get('/checkout/success/{order:order_number}', [\App\Http\Controllers\PaymentController::class, 'success'])->name('checkout.success');
+Route::get('/checkout/failure/{order:order_number?}', [\App\Http\Controllers\PaymentController::class, 'failure'])->name('checkout.failure');
 Route::get('/checkout/{package}', [\App\Http\Controllers\CheckoutController::class, 'show'])->name('checkout.show');
 Route::post('/checkout/{package}', [\App\Http\Controllers\CheckoutController::class, 'store'])->name('checkout.store');
-Route::get('/payment/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])->name('payment.callback');
+Route::match(['get', 'post'], '/payment/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])->name('payment.callback');
 Route::post('/payment/webhook', [\App\Http\Controllers\PaymentController::class, 'webhook'])->name('payment.webhook');
 Route::get('/invoice/{order}/download', [\App\Http\Controllers\PaymentController::class, 'downloadInvoice'])->name('invoice.download')->middleware('signed');
-Route::get('/checkout/success/{order}', [\App\Http\Controllers\PaymentController::class, 'success'])->name('checkout.success');
-Route::get('/checkout/failure/{order?}', [\App\Http\Controllers\PaymentController::class, 'failure'])->name('checkout.failure');
 
 // Admin Routes - Registered in bootstrap/app.php
 

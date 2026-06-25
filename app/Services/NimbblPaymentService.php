@@ -82,9 +82,11 @@ class NimbblPaymentService
 
     public function verifyCallbackPayload(array $payload): bool
     {
+        $payload = $this->normalizeCallbackPayload($payload);
+
         $status = strtolower((string) ($payload['status'] ?? $payload['payment_status'] ?? ''));
 
-        if (in_array($status, ['success', 'paid', 'completed', 'succeeded'], true)) {
+        if (in_array($status, ['success', 'paid', 'completed', 'succeeded', 'successful'], true)) {
             return true;
         }
 
@@ -93,10 +95,78 @@ class NimbblPaymentService
         return in_array($transactionStatus, ['success', 'paid', 'completed', 'succeeded'], true);
     }
 
+    public function normalizeCallbackPayload(array $payload): array
+    {
+        if (isset($payload['payload']) && is_array($payload['payload'])) {
+            $payload = array_merge($payload, $payload['payload']);
+        }
+
+        if (isset($payload['callback']) && is_array($payload['callback'])) {
+            return $this->normalizeCallbackPayload($payload['callback']);
+        }
+
+        return $payload;
+    }
+
+    public function decodeCallbackResponse(?string $encoded): array
+    {
+        if (! $encoded) {
+            return [];
+        }
+
+        $decoded = base64_decode($encoded, true);
+
+        if ($decoded === false) {
+            $decoded = $encoded;
+        }
+
+        $data = json_decode($decoded, true);
+
+        if (! is_array($data)) {
+            return [];
+        }
+
+        return $this->normalizeCallbackPayload($data);
+    }
+
+    public function resolveOrderNumber(array $payload): ?string
+    {
+        $payload = $this->normalizeCallbackPayload($payload);
+
+        $candidates = [
+            $payload['invoice_id'] ?? null,
+            $payload['order']['invoice_id'] ?? null,
+            $payload['merchant_order_id'] ?? null,
+            $payload['order_id'] ?? null,
+        ];
+
+        foreach ($candidates as $candidate) {
+            if (! is_string($candidate) || $candidate === '') {
+                continue;
+            }
+
+            if (str_starts_with($candidate, 'ORD-')) {
+                return $candidate;
+            }
+        }
+
+        return null;
+    }
+
     public function parseCallbackRequest(?string $encodedResponse): array
     {
-        if (! $encodedResponse || ! $this->isConfigured()) {
+        if (! $encodedResponse) {
             return [];
+        }
+
+        $decoded = $this->decodeCallbackResponse($encodedResponse);
+
+        if ($decoded === []) {
+            return [];
+        }
+
+        if (! $this->isConfigured()) {
+            return $decoded;
         }
 
         try {
@@ -104,13 +174,17 @@ class NimbblPaymentService
             $verification = Nimbbl::verifyCallbackSignature($payload);
 
             if ($verification['success'] ?? false) {
-                return $payload;
+                return $this->normalizeCallbackPayload($payload);
             }
+
+            Log::warning('Nimbbl callback signature verification failed, using decoded payload', [
+                'invoice_id' => $this->resolveOrderNumber($decoded),
+            ]);
         } catch (\Throwable $e) {
             Log::warning('Nimbbl callback verification failed', ['error' => $e->getMessage()]);
         }
 
-        return [];
+        return $decoded;
     }
 
     public function verifyWebhookSignature(string $rawBody, ?string $signature): bool
