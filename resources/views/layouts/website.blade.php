@@ -76,7 +76,7 @@
                     </div>
                     @endif
 
-                    <x-nav-service-menu :service="$webDevelopmentService" label="Web Development" short-label="Web Dev" />
+                    <x-nav-service-menu :service="$webDevelopmentService" label="Website Development" short-label="Website Development" />
 
                     <x-nav-service-menu :service="$softwareDevelopmentService" label="Software Development" short-label="Software" />
 
@@ -152,7 +152,7 @@
             </div>
             @endif
 
-            <x-nav-service-menu-mobile :service="$webDevelopmentService" label="Web Development" />
+            <x-nav-service-menu-mobile :service="$webDevelopmentService" label="Website Development" />
 
             <x-nav-service-menu-mobile :service="$softwareDevelopmentService" label="Software Development" />
 
