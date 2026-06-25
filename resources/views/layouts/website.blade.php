@@ -43,11 +43,11 @@
                     </a>
                 </div>
 
-                <!-- Desktop Navigation -->
-                <div class="navbar-center hidden lg:flex">
+                <!-- Desktop Navigation (xl+ only — prevents overlap on tablets / small laptops) -->
+                <div class="navbar-center">
                     @if(isset($catalogServices) && $catalogServices->isNotEmpty())
-                    <!-- Services mega menu — wide screens only -->
-                    <div class="relative group hidden 2xl:block">
+                    <!-- Services mega menu — very wide screens only -->
+                    <div class="relative group navbar-mega-menu">
                         <button type="button" class="navbar-link flex items-center">
                             Services
                             <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,7 +88,7 @@
                 </div>
 
                 <!-- Desktop phone & CTA -->
-                <div class="navbar-actions hidden lg:flex">
+                <div class="navbar-actions">
                     <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" id="navbar-phone" class="navbar-phone" aria-label="Call {{ config('company.contact.phone') }}">
                         <x-country-flag />
                         <span class="navbar-phone-number">{{ config('company.contact.phone') }}</span>
@@ -108,7 +108,7 @@
                 </div>
 
                 <!-- Mobile: phone number + menu -->
-                <div class="navbar-mobile-actions lg:hidden">
+                <div class="navbar-mobile-actions">
                     <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="navbar-phone navbar-phone--header" aria-label="Call {{ config('company.contact.phone') }}">
                         <x-country-flag />
                         <span class="navbar-phone-number">{{ config('company.contact.phone') }}</span>
@@ -127,7 +127,7 @@
     </nav>
 
     <!-- Mobile menu — portal at body level so it stacks above page content -->
-    <div id="mobile-menu" class="mobile-menu lg:hidden" aria-hidden="true">
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
         <button type="button" class="mobile-menu-backdrop" aria-label="Close menu" tabindex="-1"></button>
         <div class="mobile-menu-panel ios-safe-area-padding">
             <div class="mobile-menu-scroll">

@@ -2,7 +2,7 @@
    VanTroZ - Navbar (desktop + mobile)
    ======================================== */
 
-const DESKTOP_NAV_MQ = '(min-width: 1024px)';
+const DESKTOP_NAV_MQ = '(min-width: 1280px)';
 
 function initStickyNavbar() {
     const navbar = document.getElementById('navbar');

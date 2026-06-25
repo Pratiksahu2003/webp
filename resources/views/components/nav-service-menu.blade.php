@@ -13,8 +13,8 @@
 <div class="relative group">
     <button type="button" class="navbar-link flex items-center whitespace-nowrap">
         @if($shortLabel)
-        <span class="2xl:hidden">{{ $shortLabel }}</span>
-        <span class="hidden 2xl:inline">{{ $menuLabel }}</span>
+        <span class="navbar-link-short">{{ $shortLabel }}</span>
+        <span class="navbar-link-full">{{ $menuLabel }}</span>
         @else
         {{ $menuLabel }}
         @endif
