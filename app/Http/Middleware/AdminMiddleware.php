@@ -16,8 +16,8 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         // Check if user is authenticated
-        if (!auth()->check()) {
-            return redirect()->route('login');
+        if (! auth()->check()) {
+            return redirect()->route('admin.login');
         }
 
         // Check if user has admin role

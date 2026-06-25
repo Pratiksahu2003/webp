@@ -72,9 +72,14 @@
                         </div>
                     </div>
 
-                    @if($errors->any())
+                    @php
+                        $formErrors = collect($errors->getMessages())
+                            ->except('payment')
+                            ->flatten();
+                    @endphp
+                    @if($formErrors->isNotEmpty())
                         <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
-                            <ul class="list-disc list-inside">@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>
+                            <ul class="list-disc list-inside">@foreach($formErrors as $error)<li>{{ $error }}</li>@endforeach</ul>
                         </div>
                     @endif
 
