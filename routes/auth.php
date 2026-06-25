@@ -10,14 +10,12 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('admin/login', [AdminLoginController::class, 'create'])
+    ->name('admin.login');
+
+Route::post('admin/login', [AdminLoginController::class, 'store']);
+
 Route::middleware('guest')->group(function () {
-    // Admin login routes only
-    Route::get('admin/login', [AdminLoginController::class, 'create'])
-        ->name('admin.login');
-
-    Route::post('admin/login', [AdminLoginController::class, 'store']);
-
-    // Keep password reset for admin users
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
 

@@ -25,6 +25,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
         ]);
 
+        $middleware->redirectGuestsTo(fn () => route('admin.login'));
+
         $middleware->validateCsrfTokens(except: [
             'payment/webhook',
             'nimbbl/webhook',
