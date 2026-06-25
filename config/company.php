@@ -19,6 +19,7 @@ return [
         'phone' => '+91 9205668819',
         'country_code' => '+91',
         'country_flag' => '🇮🇳',
+        'flag_image' => 'images/flags/india.svg',
     ],
 
     'address' => [

@@ -33,22 +33,22 @@
 
 <body class="font-sans antialiased text-gray-900 bg-white ios-smooth-scroll">
     <!-- Clean Professional Navigation -->
-    <nav id="navbar" class="fixed w-full top-0 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed">
+    <nav id="navbar" class="fixed w-full top-0 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed font-sans">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center ios-safe-area-padding" style="padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));">
-            <div class="flex justify-between items-center h-16 w-full">
+            <div class="navbar-shell h-16">
                 <!-- Clean Logo Section -->
-                <div class="flex items-center flex-shrink-0 justify-start">
+                <div class="navbar-brand flex-shrink-0">
                     <a href="{{ route('home') }}" class="flex items-center">
-                        <img src="{{ asset('logo/logo.png') }}" alt="{{ config('company.name') }} Logo" class="h-8 w-auto mr-3">
+                        <img src="{{ asset('logo/logo.png') }}" alt="{{ config('company.name') }} Logo" class="h-7 w-auto sm:h-8">
                     </a>
                 </div>
 
-                <!-- Clean Desktop Navigation -->
-                <div class="hidden xl:flex items-center space-x-8 flex-1 justify-center">
+                <!-- Desktop Navigation -->
+                <div class="navbar-center hidden lg:flex">
                     @if(isset($catalogServices) && $catalogServices->isNotEmpty())
-                    <!-- Dynamic Services Mega Menu -->
-                    <div class="relative group">
-                        <button type="button" class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-200 hover:text-orange-600">
+                    <!-- Services mega menu — wide screens only -->
+                    <div class="relative group hidden 2xl:block">
+                        <button type="button" class="navbar-link flex items-center">
                             Services
                             <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -76,45 +76,42 @@
                     </div>
                     @endif
 
-                    <x-nav-service-menu :service="$webDevelopmentService" label="Web Development" />
+                    <x-nav-service-menu :service="$webDevelopmentService" label="Web Development" short-label="Web Dev" />
 
-                    <x-nav-service-menu :service="$softwareDevelopmentService" label="Software Development" />
+                    <x-nav-service-menu :service="$softwareDevelopmentService" label="Software Development" short-label="Software" />
 
                     <x-nav-service-menu :service="$designService" label="Design" all-label="All Design" />
 
-                    <x-nav-service-menu :service="$digitalMarketingService" label="Digital Marketing" />
+                    <x-nav-service-menu :service="$digitalMarketingService" label="Digital Marketing" short-label="Marketing" />
 
-                    <a href="{{ route('about') }}" class="navbar-link px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">About Us</a>
+                    <a href="{{ route('about') }}" class="navbar-link whitespace-nowrap">About Us</a>
                 </div>
 
-                <!-- Clean Contact Info & CTA -->
-                <div class="hidden xl:flex items-center space-x-6 flex-shrink-0">
-                    <!-- Contact Info with Flag -->
-                    <div class="flex items-center text-sm font-medium text-gray-700">
-                        <span class="mr-2 text-lg">{{ config('company.contact.country_flag') }}</span>
-                        <span class="font-semibold">{{ config('company.contact.phone') }}</span>
-                    </div>
+                <!-- Desktop phone & CTA -->
+                <div class="navbar-actions hidden lg:flex">
+                    <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" id="navbar-phone" class="navbar-phone" aria-label="Call {{ config('company.contact.phone') }}">
+                        <x-country-flag />
+                        <span class="navbar-phone-number">{{ config('company.contact.phone') }}</span>
+                    </a>
 
-                    <!-- Clean CTA Button -->
-                    <a href="{{ route('contact') }}" class="inline-flex items-center px-6 py-2 border-2 border-orange-600 text-black font-bold rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200 text-sm uppercase tracking-wide">
+                    <a href="{{ route('contact') }}" class="navbar-cta">
                         Contact Us
                     </a>
 
                     @auth
                     @if(auth()->user()->isAdmin())
-                    <a href="{{ route('admin.dashboard') }}" class="bg-orange-500 text-white px-3 py-2 rounded-lg text-xs font-medium hover:bg-orange-600 transition-colors duration-200">
+                    <a href="{{ route('admin.dashboard') }}" class="navbar-admin-link">
                         Admin
                     </a>
                     @endif
                     @endauth
                 </div>
 
-                <!-- Mobile menu button -->
-                <div class="xl:hidden flex items-center gap-1">
-                    <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="mobile-nav-icon-btn xl:hidden" aria-label="Call {{ config('company.contact.phone') }}">
-                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
+                <!-- Mobile: phone number + menu -->
+                <div class="navbar-mobile-actions lg:hidden">
+                    <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="navbar-phone navbar-phone--header" aria-label="Call {{ config('company.contact.phone') }}">
+                        <x-country-flag />
+                        <span class="navbar-phone-number">{{ config('company.contact.phone') }}</span>
                     </a>
                     <button type="button" class="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
                         <svg class="mobile-menu-icon mobile-menu-icon--open h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -130,7 +127,7 @@
     </nav>
 
     <!-- Mobile menu — portal at body level so it stacks above page content -->
-    <div id="mobile-menu" class="mobile-menu xl:hidden" aria-hidden="true">
+    <div id="mobile-menu" class="mobile-menu lg:hidden" aria-hidden="true">
         <button type="button" class="mobile-menu-backdrop" aria-label="Close menu" tabindex="-1"></button>
         <div class="mobile-menu-panel ios-safe-area-padding">
             <div class="mobile-menu-scroll">
@@ -168,9 +165,9 @@
             </div>
 
             <div class="mobile-menu-section mobile-menu-footer">
-                <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="mobile-nav-phone">
-                    <span class="text-lg" aria-hidden="true">{{ config('company.contact.country_flag') }}</span>
-                    <span>{{ config('company.contact.phone') }}</span>
+                <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="mobile-nav-phone navbar-phone">
+                    <x-country-flag />
+                    <span class="navbar-phone-number">{{ config('company.contact.phone') }}</span>
                 </a>
                 <a href="{{ route('contact') }}" class="mobile-nav-cta">Contact Us</a>
 

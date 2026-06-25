@@ -310,16 +310,16 @@ html {
     pointer-events: auto;
 }
 
-/* Enhanced Phone Number Styling */
+/* Enhanced Phone Number Styling — inherits .navbar-phone */
 #navbar-phone {
-    color: #6b7280;
-    transition: all 0.3s ease;
+    color: #000000;
+    transition: color 0.2s ease;
     font-weight: 500;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.01em;
 }
 
 #navbar.navbar-scrolled #navbar-phone {
-    color: #6b7280;
+    color: #000000;
 }
 
 /* Enhanced Contact Button */

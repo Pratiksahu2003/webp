@@ -69,6 +69,20 @@
     position: relative;
 }
 
+@media (min-width: 1024px) {
+    .hero-stats-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 0;
+    }
+
+    .hero-stats-wrapper .home-hero-float-target.is-revealed.is-float-ready {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
 /* Typography */
 @media (max-width: 375px) {
     .hero-title-responsive {

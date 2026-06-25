@@ -67,6 +67,11 @@ class CompanyHelper
         return config('company.contact.country_flag', '🇮🇳');
     }
 
+    public static function flagImage(): string
+    {
+        return asset(config('company.contact.flag_image', 'images/flags/india.svg'));
+    }
+
     /**
      * Get logo path
      */

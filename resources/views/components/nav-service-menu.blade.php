@@ -1,6 +1,7 @@
 @props([
     'service' => null,
     'label' => null,
+    'shortLabel' => null,
     'allLabel' => null,
 ])
 
@@ -10,8 +11,13 @@
     $allLinkLabel = $allLabel ?? 'All ' . $menuLabel;
 @endphp
 <div class="relative group">
-    <button type="button" class="navbar-link px-3 py-2 text-base font-medium flex items-center transition-colors duration-200 hover:text-orange-600 whitespace-nowrap">
+    <button type="button" class="navbar-link flex items-center whitespace-nowrap">
+        @if($shortLabel)
+        <span class="2xl:hidden">{{ $shortLabel }}</span>
+        <span class="hidden 2xl:inline">{{ $menuLabel }}</span>
+        @else
         {{ $menuLabel }}
+        @endif
         <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>

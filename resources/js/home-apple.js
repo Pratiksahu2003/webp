@@ -314,6 +314,8 @@ class HomeAppleAnimations {
             el.addEventListener('animationend', (e) => {
                 if (e.animationName === 'apple-hero-enter') {
                     el.classList.add('is-float-ready');
+                    el.style.opacity = '1';
+                    el.style.filter = 'none';
                 }
             }, { once: true });
         });
@@ -396,7 +398,10 @@ class HomeAppleAnimations {
 
         const update = () => {
             const rect = hero.getBoundingClientRect();
-            const progress = Math.min(Math.max(-rect.top / (rect.height * 0.8), 0), 1);
+            // Use scrollY so navbar overlap (negative margin) doesn't fade hero on load
+            const progress = window.scrollY <= 0
+                ? 0
+                : Math.min(Math.max(window.scrollY / (rect.height * 0.8), 0), 1);
             const eased = this.easeOutCubic(progress);
 
             hero.classList.toggle('is-scrolling', progress > 0.02);

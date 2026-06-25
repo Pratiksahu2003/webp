@@ -67,12 +67,22 @@
 
 /* Float starts AFTER entrance completes */
 .home-hero-float-target.is-revealed {
+    visibility: visible;
     animation: apple-hero-enter 1.2s var(--apple-ease-out) forwards;
     animation-delay: var(--hero-delay, 0ms);
 }
 
+/* Keep visible after entrance — float animation only moves Y, not opacity */
 .home-hero-float-target.is-revealed.is-float-ready {
+    opacity: 1;
+    filter: blur(0);
+    visibility: visible;
     animation: home-hero-float 4.5s ease-in-out infinite;
+}
+
+@keyframes home-hero-float {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(-10px); opacity: 1; }
 }
 
 .home-hero-pulse {
@@ -82,11 +92,6 @@
 @keyframes home-hero-pulse {
     0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.55); }
     50% { opacity: 0.9; transform: scale(1.2); box-shadow: 0 0 0 8px rgba(251, 146, 60, 0); }
-}
-
-@keyframes home-hero-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
 }
 
 /* Hero scroll parallax */
