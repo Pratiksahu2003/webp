@@ -78,7 +78,7 @@
 
                     <x-nav-service-menu :service="$webDevelopmentService" label="Website Development" short-label="Website Development" />
 
-                    <x-nav-service-menu :service="$softwareDevelopmentService" label="Software Development" short-label="Software" />
+                    <x-nav-service-menu :service="$softwareDevelopmentService" label="Software Development" short-label="Software Development" />
 
                     <x-nav-service-menu :service="$designService" label="Design" all-label="All Design" />
 
