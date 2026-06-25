@@ -46,7 +46,7 @@
                 <!-- Desktop Navigation (xl+ only — prevents overlap on tablets / small laptops) -->
                 <div class="navbar-center">
                     @if(isset($catalogServices) && $catalogServices->isNotEmpty())
-                    <!-- Services mega menu — very wide screens only -->
+                    <!-- Services mega menu — desktop -->
                     <div class="relative group navbar-mega-menu">
                         <button type="button" class="navbar-link flex items-center">
                             Services
