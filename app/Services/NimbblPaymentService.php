@@ -19,7 +19,8 @@ class NimbblPaymentService
             return $this->mockCreateOrder($order);
         }
 
-        $order->loadMissing(['package', 'subService']);
+        $order->loadMissing(['package', 'subService', 'user']);
+        $address = $this->resolveAddress($order, $customer);
 
         $payload = [
             'invoice_id' => $order->order_number,
@@ -29,9 +30,11 @@ class NimbblPaymentService
                 'email' => $customer['email'],
                 'first_name' => $this->firstName($customer['name']),
                 'last_name' => $this->lastName($customer['name']),
-                'mobile_number' => $customer['phone'] ?? '',
+                'mobile_number' => $this->normalizePhone($customer['phone'] ?? ''),
                 'country_code' => '+91',
             ],
+            'shipping_address' => $this->nimbblAddress($address, 'Home'),
+            'billing_address' => $this->nimbblAddress($address, 'Other'),
             'order_line_items' => [[
                 'title' => $order->package->package_name ?? 'Service Package',
                 'description' => $order->subService->title ?? '',
@@ -146,5 +149,53 @@ class NimbblPaymentService
         $parts = explode(' ', trim($name));
 
         return count($parts) > 1 ? (string) end($parts) : '';
+    }
+
+    protected function resolveAddress(Order $order, array $customer): array
+    {
+        $billing = $order->billing_details ?? [];
+        $user = $order->user;
+
+        return [
+            'address_line_1' => $billing['address_line_1'] ?? $user?->address_line_1 ?? '',
+            'address_line_2' => $billing['address_line_2'] ?? $user?->address_line_2 ?? null,
+            'city' => $billing['city'] ?? $user?->city ?? '',
+            'state' => $billing['state'] ?? $user?->state ?? '',
+            'country' => $billing['country'] ?? $user?->country ?? 'India',
+            'postal_code' => $billing['postal_code'] ?? $user?->postal_code ?? '',
+        ];
+    }
+
+    protected function nimbblAddress(array $address, string $addressType): array
+    {
+        $line1 = trim((string) ($address['address_line_1'] ?? ''));
+        $line2 = trim((string) ($address['address_line_2'] ?? ''));
+        $city = trim((string) ($address['city'] ?? ''));
+
+        return [
+            'address_1' => $line1,
+            'street' => $line2 !== '' ? $line2 : $line1,
+            'landmark' => $line2 !== '' ? $line2 : $city,
+            'area' => $city !== '' ? $city : $line1,
+            'city' => $city,
+            'state' => trim((string) ($address['state'] ?? '')),
+            'pincode' => trim((string) ($address['postal_code'] ?? '')),
+            'address_type' => $addressType,
+        ];
+    }
+
+    protected function normalizePhone(string $phone): string
+    {
+        $digits = preg_replace('/\D+/', '', $phone) ?? '';
+
+        if (str_starts_with($digits, '91') && strlen($digits) > 10) {
+            $digits = substr($digits, 2);
+        }
+
+        if (str_starts_with($digits, '0') && strlen($digits) === 11) {
+            $digits = substr($digits, 1);
+        }
+
+        return $digits;
     }
 }
