@@ -19,39 +19,59 @@
             <!-- Contact Form -->
             <div>
                 <h2 class="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
-                <form class="space-y-6">
+
+                @if(session('success'))
+                <div class="mb-6 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-green-800">
+                    {{ session('success') }}
+                </div>
+                @endif
+
+                @if($errors->any())
+                <div class="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-red-800">
+                    <ul class="list-disc list-inside space-y-1">
+                        @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                <form method="POST" action="{{ route('contact.store') }}" class="space-y-6">
+                    @csrf
+
+                    <div class="hidden" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            <input type="text" id="name" name="name" value="{{ old('name') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('name') border-red-500 @enderror" required>
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            <input type="email" id="email" name="email" value="{{ old('email') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('email') border-red-500 @enderror" required>
                         </div>
                     </div>
                     
                     <div>
                         <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
-                        <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <input type="text" id="company" name="company" value="{{ old('company') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
                     
                     <div>
                         <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
                     
                     <div>
                         <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
                         <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             <option value="">Select a service</option>
-                            <option value="software-development">Software Development</option>
-                            <option value="web-development">Web Development</option>
-                            <option value="mobile-development">Mobile App Development</option>
-                            <option value="data-science">Data Science & AI</option>
-                            <option value="qa-testing">QA & Software Testing</option>
-                            <option value="ux-ui-design">UX/UI Design</option>
-                            <option value="consulting">IT Consulting</option>
+                            @foreach(\App\Models\ContactLead::SERVICES as $value => $label)
+                            <option value="{{ $value }}" @selected(old('service') === $value)>{{ $label }}</option>
+                            @endforeach
                         </select>
                     </div>
                     
@@ -59,17 +79,15 @@
                         <label for="budget" class="block text-sm font-medium text-gray-700 mb-2">Project Budget</label>
                         <select id="budget" name="budget" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             <option value="">Select budget range</option>
-                            <option value="under-10k">Under $10,000</option>
-                            <option value="10k-25k">$10,000 - $25,000</option>
-                            <option value="25k-50k">$25,000 - $50,000</option>
-                            <option value="50k-100k">$50,000 - $100,000</option>
-                            <option value="over-100k">Over $100,000</option>
+                            @foreach(\App\Models\ContactLead::BUDGETS as $value => $label)
+                            <option value="{{ $value }}" @selected(old('budget') === $value)>{{ $label }}</option>
+                            @endforeach
                         </select>
                     </div>
                     
                     <div>
                         <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Description</label>
-                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tell us about your project requirements..."></textarea>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tell us about your project requirements...">{{ old('message') }}</textarea>
                     </div>
                     
                     <button type="submit" class="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">

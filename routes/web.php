@@ -11,6 +11,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/case-studies', [HomeController::class, 'caseStudies'])->name('case-studies');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 Route::get('/technologies', [TechnologyController::class, 'index'])->name('technologies');
 Route::get('/technologies/stack/{stack}', [TechnologyController::class, 'stack'])->name('technologies.stack');
 Route::get('/technologies/{technology:slug}', [TechnologyController::class, 'show'])->name('technologies.show');

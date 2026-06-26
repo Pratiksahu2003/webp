@@ -59,6 +59,10 @@ Route::post('packages/{package}/toggle-status', [\App\Http\Controllers\Admin\Com
 Route::resource('packages', \App\Http\Controllers\Admin\Commerce\PackageController::class)->except(['show']);
 Route::post('technologies/{technology}/toggle-status', [\App\Http\Controllers\Admin\Commerce\TechnologyController::class, 'toggleStatus'])->name('technologies.toggle-status');
 Route::resource('technologies', \App\Http\Controllers\Admin\Commerce\TechnologyController::class)->except(['show']);
+Route::get('contact-leads/export', [\App\Http\Controllers\Admin\ContactLeadController::class, 'export'])->name('contact-leads.export');
+Route::patch('contact-leads/{contactLead}/status', [\App\Http\Controllers\Admin\ContactLeadController::class, 'updateStatus'])->name('contact-leads.update-status');
+Route::resource('contact-leads', \App\Http\Controllers\Admin\ContactLeadController::class)->only(['index', 'show']);
+
 Route::get('orders/export', [\App\Http\Controllers\Admin\Commerce\OrderController::class, 'export'])->name('orders.export');
 Route::patch('orders/{order}/status', [\App\Http\Controllers\Admin\Commerce\OrderController::class, 'updateStatus'])->name('orders.update-status');
 Route::resource('orders', \App\Http\Controllers\Admin\Commerce\OrderController::class)->only(['index', 'show']);

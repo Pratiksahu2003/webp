@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
+use App\Models\ContactLead;
 use App\Models\Media;
 use App\Models\Order;
 use App\Models\Page;
@@ -85,6 +86,8 @@ class DashboardController extends Controller
             'customers' => User::where(function ($query) {
                 $query->where('role', '!=', 'admin')->orWhereNull('role');
             })->count(),
+            'contactLeads' => ContactLead::count(),
+            'newContactLeads' => ContactLead::where('status', 'new')->count(),
             'media' => Media::count(),
             'pagesLastWeek' => Page::whereBetween('created_at', [$lastWeekStart, $lastWeekEnd])->count(),
             'blogPostsLastWeek' => BlogPost::whereBetween('created_at', [$lastWeekStart, $lastWeekEnd])->count(),
@@ -218,6 +221,15 @@ class DashboardController extends Controller
                 'url' => route('admin.orders.show', $order),
                 'priority' => 'high',
                 'type' => 'order',
+            ]);
+        });
+
+        ContactLead::where('status', 'new')->latest()->take(5)->get()->each(function (ContactLead $lead) use ($items) {
+            $items->push([
+                'label' => 'New contact lead: '.$lead->name,
+                'url' => route('admin.contact-leads.show', $lead),
+                'priority' => 'high',
+                'type' => 'lead',
             ]);
         });
 
