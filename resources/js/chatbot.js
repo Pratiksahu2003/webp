@@ -18,11 +18,33 @@ document.addEventListener('alpine:init', () => {
             message: null,
         },
         serviceOptions: [],
+        companyName: config.companyName || 'VanTroZ',
         booted: false,
+        showBadge: true,
+        badgeCount: 1,
 
         async init() {
-            // Prefetch quietly so the first open feels instant.
             this.bootstrap().catch(() => {});
+        },
+
+        chipIcon(chip) {
+            const id = String(chip?.id || '');
+            if (id === 'quote' || id.startsWith('service:')) return '✦';
+            if (id === 'services') return '▣';
+            if (id === 'packages') return '◈';
+            if (id === 'technologies') return '⚙';
+            if (id === 'blog') return '✎';
+            if (id === 'contact') return '☎';
+            if (id === 'cancel') return '✕';
+            if (id === 'skip') return '→';
+            return '•';
+        },
+
+        chipClass(chip) {
+            const id = String(chip?.id || '');
+            if (id === 'quote') return 'is-accent';
+            if (id === 'cancel' || id === 'skip') return 'is-muted';
+            return '';
         },
 
         async bootstrap() {
@@ -44,6 +66,9 @@ document.addEventListener('alpine:init', () => {
             const data = await response.json();
             this.quickReplies = data.quick_replies || [];
             this.serviceOptions = data.service_options || [];
+            if (data.company?.name) {
+                this.companyName = data.company.name;
+            }
 
             if (this.messages.length === 0 && data.welcome) {
                 this.messages.push({
@@ -59,6 +84,7 @@ document.addEventListener('alpine:init', () => {
         async toggle() {
             this.open = !this.open;
             if (this.open) {
+                this.showBadge = false;
                 await this.bootstrap().catch(() => {
                     if (this.messages.length === 0) {
                         this.messages.push({
@@ -68,12 +94,30 @@ document.addEventListener('alpine:init', () => {
                         });
                     }
                 });
-                this.$nextTick(() => this.scrollToEnd());
+                this.$nextTick(() => {
+                    this.scrollToEnd();
+                    this.$refs.composer?.focus?.();
+                });
             }
         },
 
         close() {
             this.open = false;
+        },
+
+        async resetChat() {
+            this.lead = this.resetLead();
+            this.draft = '';
+            this.messages = [];
+            this.booted = false;
+            await this.bootstrap().catch(() => {
+                this.messages = [{
+                    role: 'bot',
+                    text: `Hi! I'm the ${this.companyName} assistant. How can I help today?`,
+                    links: [],
+                }];
+            });
+            this.$nextTick(() => this.scrollToEnd());
         },
 
         scrollToEnd() {
@@ -167,7 +211,10 @@ document.addEventListener('alpine:init', () => {
                 });
             } finally {
                 this.busy = false;
-                this.$nextTick(() => this.scrollToEnd());
+                this.$nextTick(() => {
+                    this.scrollToEnd();
+                    this.$refs.composer?.focus?.();
+                });
             }
         },
 
