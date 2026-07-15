@@ -4,6 +4,7 @@ import './interactions';
 import './navbar';
 import './ios-fixes';
 import './home-apple';
+import './chatbot';
 
 import Alpine from 'alpinejs';
 

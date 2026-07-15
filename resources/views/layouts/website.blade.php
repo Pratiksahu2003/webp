@@ -188,6 +188,8 @@
     <!-- Footer -->
     <x-footer />
 
+    <x-chatbot-widget />
+
     <!-- VanTroZ UI System - JavaScript modules loaded via Vite -->
     
     @stack('scripts')

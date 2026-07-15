@@ -185,7 +185,7 @@
         </div>
     </div>
 
-    <div class="fixed bottom-6 right-6 z-40" style="margin-bottom: env(safe-area-inset-bottom, 0);">
+    <div class="fixed bottom-6 right-6 z-40 whatsapp-float" style="margin-bottom: env(safe-area-inset-bottom, 0);">
         <button type="button" onclick="openWhatsApp()" aria-label="Chat on WhatsApp" class="group relative w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center shadow-xl hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105">
             <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
         </button>
