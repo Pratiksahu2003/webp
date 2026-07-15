@@ -106,6 +106,13 @@
 <div class="pt-5 pb-4">
     <p class="px-3 mb-2 text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Settings</p>
     <div class="space-y-0.5">
+        <a href="{{ route('admin.settings.company-profile.edit') }}"
+            class="{{ $navLink }} {{ request()->routeIs('admin.settings.company-profile.*') ? 'active' : '' }}">
+            <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+            Company Profile
+        </a>
         <a href="{{ route('admin.settings.payment-gateway.edit') }}"
             class="{{ $navLink }} {{ request()->routeIs('admin.settings.payment-gateway.*') ? 'active' : '' }}">
             <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

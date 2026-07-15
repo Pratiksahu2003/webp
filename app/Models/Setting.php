@@ -39,6 +39,16 @@ class Setting extends Model
             }
         }
 
+        if ($setting->type === 'json') {
+            if ($setting->value === null || $setting->value === '') {
+                return $default;
+            }
+
+            $decoded = json_decode($setting->value, true);
+
+            return is_array($decoded) ? $decoded : $default;
+        }
+
         return $setting->value;
     }
 
@@ -48,6 +58,10 @@ class Setting extends Model
 
         if ($type === 'encrypted' && $value !== null && $value !== '') {
             $storedValue = Crypt::encryptString((string) $value);
+        }
+
+        if ($type === 'json' && is_array($value)) {
+            $storedValue = json_encode($value);
         }
 
         return static::updateOrCreate(

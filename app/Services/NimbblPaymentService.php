@@ -201,11 +201,14 @@ class NimbblPaymentService
     protected function lineItemsPayload(Order $order): array
     {
         return collect($order->lineItemsForDisplay())->map(function (array $item) {
+            $quantity = max((float) $item['quantity'], 0.01);
+            $lineTotal = (float) ($item['amount'] ?? 0);
+
             return [
                 'title' => $item['title'],
-                'description' => $item['description'],
-                'quantity' => (float) $item['quantity'],
-                'rate' => (float) $item['rate'],
+                'description' => trim(($item['description'] ?? '').(filled($item['hsn'] ?? null) ? ' HSN: '.$item['hsn'] : '')),
+                'quantity' => $quantity,
+                'rate' => round($lineTotal / $quantity, 2),
             ];
         })->values()->all();
     }

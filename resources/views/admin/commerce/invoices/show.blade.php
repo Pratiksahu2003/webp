@@ -26,8 +26,10 @@
                     <thead>
                         <tr class="border-b text-left text-gray-500">
                             <th class="py-2 pr-3">Description</th>
+                            <th class="py-2 pr-3">HSN</th>
                             <th class="py-2 pr-3">Qty</th>
                             <th class="py-2 pr-3">Rate</th>
+                            <th class="py-2 pr-3">GST%</th>
                             <th class="py-2">Amount</th>
                         </tr>
                     </thead>
@@ -40,16 +42,37 @@
                                     <div class="text-gray-500">{{ $item['description'] }}</div>
                                 @endif
                             </td>
+                            <td class="py-3 pr-3">{{ $item['hsn'] ?: '—' }}</td>
                             <td class="py-3 pr-3">{{ $item['quantity'] }}</td>
                             <td class="py-3 pr-3">₹{{ number_format($item['rate'], 2) }}</td>
+                            <td class="py-3 pr-3">{{ number_format($item['gst_rate'], 2) }}%</td>
                             <td class="py-3">₹{{ number_format($item['amount'], 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th colspan="3" class="pt-4 text-left">Total</th>
-                            <th class="pt-4 text-left">₹{{ number_format($invoice->amount, 2) }}</th>
+                            <th colspan="5" class="pt-3 text-left font-normal text-gray-500">Taxable</th>
+                            <th class="pt-3 text-left">₹{{ number_format($invoice->taxableSubtotal(), 2) }}</th>
+                        </tr>
+                        @if($invoice->is_interstate)
+                        <tr>
+                            <th colspan="5" class="text-left font-normal text-gray-500">IGST</th>
+                            <th class="text-left">₹{{ number_format((float) $invoice->igst_amount, 2) }}</th>
+                        </tr>
+                        @else
+                        <tr>
+                            <th colspan="5" class="text-left font-normal text-gray-500">CGST</th>
+                            <th class="text-left">₹{{ number_format((float) $invoice->cgst_amount, 2) }}</th>
+                        </tr>
+                        <tr>
+                            <th colspan="5" class="text-left font-normal text-gray-500">SGST</th>
+                            <th class="text-left">₹{{ number_format((float) $invoice->sgst_amount, 2) }}</th>
+                        </tr>
+                        @endif
+                        <tr>
+                            <th colspan="5" class="pt-2 text-left">Grand total</th>
+                            <th class="pt-2 text-left">₹{{ number_format($invoice->amount, 2) }}</th>
                         </tr>
                     </tfoot>
                 </table>

@@ -51,7 +51,7 @@ class InvoiceController extends Controller
         $customers = User::query()
             ->where('role', 'user')
             ->orderBy('name')
-            ->get(['id', 'name', 'email', 'company_name']);
+            ->get(['id', 'name', 'email', 'company_name', 'state']);
 
         $packages = ServicePackage::query()
             ->with(['subService.service'])
@@ -60,8 +60,9 @@ class InvoiceController extends Controller
             ->get();
 
         $selectedCustomerId = $request->integer('customer_id') ?: null;
+        $company = app(\App\Services\CompanyProfileService::class)->all();
 
-        return view('admin.commerce.invoices.create', compact('customers', 'packages', 'selectedCustomerId'));
+        return view('admin.commerce.invoices.create', compact('customers', 'packages', 'selectedCustomerId', 'company'));
     }
 
     public function store(StoreInvoiceRequest $request)

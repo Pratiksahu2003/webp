@@ -12,7 +12,9 @@ use Illuminate\Support\Str;
 class CheckoutService
 {
     public function __construct(
-        protected NimbblPaymentService $nimbbl
+        protected NimbblPaymentService $nimbbl,
+        protected InvoiceTaxCalculator $taxCalculator,
+        protected CompanyProfileService $companyProfile,
     ) {}
 
     public function createOrder(ServicePackage $package, array $data): Order
@@ -20,13 +22,23 @@ class CheckoutService
         return DB::transaction(function () use ($package, $data) {
             $user = $this->resolveUser($data);
             $package->load(['subService.service']);
+            $profile = $this->companyProfile->all();
+            $gstRate = (float) ($profile['default_gst_rate'] ?? 18);
+            $hsn = (string) ($profile['default_hsn_sac'] ?? '');
 
-            $lineItems = [[
+            $isInterstate = $this->taxCalculator->isInterstate(
+                $profile['state'] ?? null,
+                $data['state'] ?? $user->state
+            );
+
+            $taxed = $this->taxCalculator->calculate([[
                 'title' => $package->package_name,
                 'description' => trim($package->subService->service->title.' — '.$package->subService->title),
+                'hsn' => $hsn,
                 'quantity' => 1,
                 'rate' => (float) $package->final_price,
-            ]];
+                'gst_rate' => $gstRate,
+            ]], $isInterstate, $gstRate);
 
             return Order::create([
                 'user_id' => $user->id,
@@ -34,9 +46,16 @@ class CheckoutService
                 'service_id' => $package->subService->service_id,
                 'sub_service_id' => $package->sub_service_id,
                 'package_id' => $package->id,
-                'amount' => $package->final_price,
+                'amount' => $taxed['amount'],
+                'subtotal' => $taxed['subtotal'],
+                'tax_amount' => $taxed['tax_amount'],
+                'cgst_amount' => $taxed['cgst_amount'],
+                'sgst_amount' => $taxed['sgst_amount'],
+                'igst_amount' => $taxed['igst_amount'],
+                'is_interstate' => $taxed['is_interstate'],
+                'place_of_supply' => $data['state'] ?? ($profile['place_of_supply_default'] ?? null),
                 'invoice_title' => $package->package_name,
-                'line_items' => $lineItems,
+                'line_items' => $taxed['line_items'],
                 'payment_gateway' => 'nimbbl',
                 'payment_status' => 'pending',
                 'customer_message' => $data['customer_message'] ?? null,
@@ -50,16 +69,28 @@ class CheckoutService
         return DB::transaction(function () use ($client, $data) {
             $type = $data['type'] ?? 'custom';
             $billing = $this->billingDetailsFromUser($client);
+            $profile = $this->companyProfile->all();
+            $defaultGst = (float) ($data['default_gst_rate'] ?? $profile['default_gst_rate'] ?? 18);
+            $defaultHsn = (string) ($data['default_hsn'] ?? $profile['default_hsn_sac'] ?? '');
+            $placeOfSupply = $data['place_of_supply'] ?? $client->state ?? ($profile['place_of_supply_default'] ?? null);
+            $buyerGstin = $data['buyer_gstin'] ?? null;
+
+            $isInterstate = $this->taxCalculator->isInterstate(
+                $profile['state'] ?? null,
+                $placeOfSupply
+            );
 
             if ($type === 'package') {
                 $package = ServicePackage::with(['subService.service'])->findOrFail($data['package_id']);
 
-                $lineItems = [[
+                $taxed = $this->taxCalculator->calculate([[
                     'title' => $package->package_name,
                     'description' => trim($package->subService->service->title.' — '.$package->subService->title),
+                    'hsn' => $defaultHsn,
                     'quantity' => 1,
                     'rate' => (float) $package->final_price,
-                ]];
+                    'gst_rate' => $defaultGst,
+                ]], $isInterstate, $defaultGst);
 
                 return Order::create([
                     'user_id' => $client->id,
@@ -67,9 +98,17 @@ class CheckoutService
                     'service_id' => $package->subService->service_id,
                     'sub_service_id' => $package->sub_service_id,
                     'package_id' => $package->id,
-                    'amount' => $package->final_price,
+                    'amount' => $taxed['amount'],
+                    'subtotal' => $taxed['subtotal'],
+                    'tax_amount' => $taxed['tax_amount'],
+                    'cgst_amount' => $taxed['cgst_amount'],
+                    'sgst_amount' => $taxed['sgst_amount'],
+                    'igst_amount' => $taxed['igst_amount'],
+                    'is_interstate' => $taxed['is_interstate'],
+                    'place_of_supply' => $placeOfSupply,
+                    'buyer_gstin' => $buyerGstin,
                     'invoice_title' => $data['invoice_title'] ?? $package->package_name,
-                    'line_items' => $lineItems,
+                    'line_items' => $taxed['line_items'],
                     'payment_gateway' => 'nimbbl',
                     'payment_status' => 'pending',
                     'notes' => $data['notes'] ?? null,
@@ -77,20 +116,22 @@ class CheckoutService
                 ]);
             }
 
-            $lineItems = collect($data['line_items'] ?? [])
-                ->map(function ($item) {
+            $rawItems = collect($data['line_items'] ?? [])
+                ->map(function ($item) use ($defaultGst, $defaultHsn) {
                     return [
                         'title' => trim((string) ($item['title'] ?? '')),
                         'description' => trim((string) ($item['description'] ?? '')),
+                        'hsn' => trim((string) ($item['hsn'] ?? $defaultHsn)),
                         'quantity' => (float) ($item['quantity'] ?? 1),
                         'rate' => (float) ($item['rate'] ?? 0),
+                        'gst_rate' => (float) ($item['gst_rate'] ?? $defaultGst),
                     ];
                 })
                 ->filter(fn ($item) => $item['title'] !== '')
                 ->values()
                 ->all();
 
-            $amount = collect($lineItems)->sum(fn ($item) => round($item['quantity'] * $item['rate'], 2));
+            $taxed = $this->taxCalculator->calculate($rawItems, $isInterstate, $defaultGst);
 
             return Order::create([
                 'user_id' => $client->id,
@@ -98,9 +139,17 @@ class CheckoutService
                 'service_id' => null,
                 'sub_service_id' => null,
                 'package_id' => null,
-                'amount' => $amount,
-                'invoice_title' => $data['invoice_title'] ?? ($lineItems[0]['title'] ?? 'Custom Invoice'),
-                'line_items' => $lineItems,
+                'amount' => $taxed['amount'],
+                'subtotal' => $taxed['subtotal'],
+                'tax_amount' => $taxed['tax_amount'],
+                'cgst_amount' => $taxed['cgst_amount'],
+                'sgst_amount' => $taxed['sgst_amount'],
+                'igst_amount' => $taxed['igst_amount'],
+                'is_interstate' => $taxed['is_interstate'],
+                'place_of_supply' => $placeOfSupply,
+                'buyer_gstin' => $buyerGstin,
+                'invoice_title' => $data['invoice_title'] ?? ($taxed['line_items'][0]['title'] ?? 'Custom Invoice'),
+                'line_items' => $taxed['line_items'],
                 'payment_gateway' => 'nimbbl',
                 'payment_status' => 'pending',
                 'notes' => $data['notes'] ?? null,

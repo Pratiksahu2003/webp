@@ -132,8 +132,9 @@ class PaymentController extends Controller
     public function downloadInvoice(Request $request, Order $order)
     {
         $order->load(['user', 'service', 'subService', 'package', 'transactions']);
+        $company = app(\App\Services\CompanyProfileService::class)->all();
 
-        return view('invoices.order', compact('order'));
+        return view('invoices.order', compact('order', 'company'));
     }
 
     protected function resolveCallbackPayload(Request $request): array

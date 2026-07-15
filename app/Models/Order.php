@@ -15,13 +15,20 @@ class Order extends Model
 
     protected $fillable = [
         'order_number', 'source', 'user_id', 'service_id', 'sub_service_id', 'package_id',
-        'amount', 'invoice_title', 'line_items', 'payment_gateway', 'payment_status',
-        'transaction_id', 'customer_message', 'notes', 'billing_details', 'paid_at',
-        'invoice_sent_at',
+        'amount', 'subtotal', 'tax_amount', 'cgst_amount', 'sgst_amount', 'igst_amount',
+        'is_interstate', 'place_of_supply', 'buyer_gstin', 'invoice_title', 'line_items',
+        'payment_gateway', 'payment_status', 'transaction_id', 'customer_message', 'notes',
+        'billing_details', 'paid_at', 'invoice_sent_at',
     ];
 
     protected $casts = [
         'amount' => 'decimal:2',
+        'subtotal' => 'decimal:2',
+        'tax_amount' => 'decimal:2',
+        'cgst_amount' => 'decimal:2',
+        'sgst_amount' => 'decimal:2',
+        'igst_amount' => 'decimal:2',
+        'is_interstate' => 'boolean',
         'billing_details' => 'array',
         'line_items' => 'array',
         'paid_at' => 'datetime',
@@ -124,7 +131,7 @@ class Order extends Model
     }
 
     /**
-     * @return list<array{title: string, description: string, quantity: float|int, rate: float, amount: float}>
+     * @return list<array{title: string, description: string, hsn: string, quantity: float|int, rate: float, gst_rate: float, taxable_amount: float, tax_amount: float, amount: float}>
      */
     public function lineItemsForDisplay(): array
     {
@@ -132,16 +139,26 @@ class Order extends Model
             return collect($this->line_items)->map(function ($item) {
                 $quantity = (float) ($item['quantity'] ?? 1);
                 $rate = (float) ($item['rate'] ?? 0);
+                $gstRate = (float) ($item['gst_rate'] ?? 0);
+                $taxable = (float) ($item['taxable_amount'] ?? round($quantity * $rate, 2));
+                $tax = (float) ($item['tax_amount'] ?? round($taxable * ($gstRate / 100), 2));
 
                 return [
                     'title' => (string) ($item['title'] ?? 'Item'),
                     'description' => (string) ($item['description'] ?? ''),
+                    'hsn' => (string) ($item['hsn'] ?? ''),
                     'quantity' => $quantity,
                     'rate' => $rate,
-                    'amount' => round($quantity * $rate, 2),
+                    'gst_rate' => $gstRate,
+                    'taxable_amount' => $taxable,
+                    'tax_amount' => $tax,
+                    'amount' => (float) ($item['amount'] ?? round($taxable + $tax, 2)),
                 ];
             })->values()->all();
         }
+
+        $taxable = (float) ($this->subtotal ?? $this->amount);
+        $tax = (float) ($this->tax_amount ?? 0);
 
         if ($this->package) {
             $title = $this->package->package_name;
@@ -150,8 +167,12 @@ class Order extends Model
             return [[
                 'title' => $title,
                 'description' => $description,
+                'hsn' => '',
                 'quantity' => 1,
-                'rate' => (float) $this->amount,
+                'rate' => $taxable,
+                'gst_rate' => $taxable > 0 ? round(($tax / $taxable) * 100, 2) : 0,
+                'taxable_amount' => $taxable,
+                'tax_amount' => $tax,
                 'amount' => (float) $this->amount,
             ]];
         }
@@ -159,10 +180,19 @@ class Order extends Model
         return [[
             'title' => $this->invoice_title ?: 'Invoice',
             'description' => '',
+            'hsn' => '',
             'quantity' => 1,
-            'rate' => (float) $this->amount,
+            'rate' => $taxable,
+            'gst_rate' => $taxable > 0 ? round(($tax / $taxable) * 100, 2) : 0,
+            'taxable_amount' => $taxable,
+            'tax_amount' => $tax,
             'amount' => (float) $this->amount,
         ]];
+    }
+
+    public function taxableSubtotal(): float
+    {
+        return (float) ($this->subtotal ?? collect($this->lineItemsForDisplay())->sum('taxable_amount'));
     }
 
     public function markAsPaid(string $transactionId, array $gatewayResponse = []): bool
