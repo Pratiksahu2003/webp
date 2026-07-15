@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\OrderPaymentSuccessMail;
 use App\Models\Order;
+use App\Services\InvoicePdfService;
 use App\Services\NimbblPaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -129,12 +130,9 @@ class PaymentController extends Controller
         return view('checkout.failure', compact('order', 'errorType', 'message'));
     }
 
-    public function downloadInvoice(Request $request, Order $order)
+    public function downloadInvoice(Request $request, Order $order, InvoicePdfService $invoicePdf)
     {
-        $order->load(['user', 'service', 'subService', 'package', 'transactions']);
-        $company = app(\App\Services\CompanyProfileService::class)->all();
-
-        return view('invoices.order', compact('order', 'company'));
+        return $invoicePdf->download($order);
     }
 
     protected function resolveCallbackPayload(Request $request): array

@@ -26,7 +26,7 @@ Pay Now
 </x-mail::button>
 
 <x-mail::button :url="$invoiceUrl" color="secondary">
-View Invoice
+Download Invoice PDF
 </x-mail::button>
 
 If you have any questions, reply to this email or contact us at {{ app(\App\Services\CompanyProfileService::class)->get('email', config('company.contact.email')) }}.

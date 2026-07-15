@@ -133,7 +133,7 @@
 
             <div class="bg-white rounded-xl border border-gray-200 p-6 space-y-3">
                 <h2 class="font-semibold mb-1">Actions</h2>
-                <a href="{{ $invoiceUrl }}" target="_blank" class="block w-full text-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">View Invoice</a>
+                <a href="{{ $invoiceUrl }}" class="admin-btn admin-btn-primary w-full text-center">Download Invoice PDF</a>
 
                 @if($paymentUrl)
                     <div>
@@ -142,7 +142,7 @@
                     </div>
                     <form method="POST" action="{{ route('admin.invoices.send', $invoice) }}">
                         @csrf
-                        <button class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        <button class="admin-btn admin-btn-ink w-full">
                             {{ $invoice->invoice_sent_at ? 'Resend Invoice Email' : 'Send Invoice Email' }}
                         </button>
                     </form>
