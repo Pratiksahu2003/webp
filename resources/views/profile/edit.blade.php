@@ -139,7 +139,7 @@
                     <p class="font-semibold text-slate-900">{{ $user->name }}</p>
                     <p class="text-sm text-slate-500 mt-1">{{ $user->email }}</p>
                     <p class="mt-3">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-50 text-[#ff6b35]">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-900">
                             {{ ucfirst($user->role ?? 'admin') }}
                         </span>
                     </p>

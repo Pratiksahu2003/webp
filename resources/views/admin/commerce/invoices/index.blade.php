@@ -78,13 +78,13 @@
                         </td>
                         <td class="px-5 py-4 text-sm text-slate-500">{{ $invoice->invoice_sent_at?->format('M d, Y') ?? '—' }}</td>
                         <td class="px-5 py-4 text-right">
-                            <a href="{{ route('admin.invoices.show', $invoice) }}" class="text-sm font-semibold text-[#ff6b35] hover:text-[#f7931e]">View</a>
+                            <a href="{{ route('admin.invoices.show', $invoice) }}" class="text-sm font-semibold text-gray-900 hover:text-black">View</a>
                         </td>
                     </tr>
                     @empty
                     <tr>
                         <td colspan="7" class="px-5 py-12 text-center text-slate-500">
-                            No invoices yet. <a href="{{ route('admin.invoices.create') }}" class="text-[#ff6b35] font-semibold">Create one</a>
+                            No invoices yet. <a href="{{ route('admin.invoices.create') }}" class="text-gray-900 font-semibold">Create one</a>
                         </td>
                     </tr>
                     @endforelse

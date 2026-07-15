@@ -32,7 +32,7 @@
                     <p class="text-sm text-slate-500">Revenue this month</p>
                     <p class="text-2xl font-bold text-slate-900 mt-1">₹{{ number_format($orderStats['revenueThisMonth'], 0) }}</p>
                 </div>
-                <div class="w-10 h-10 rounded-xl bg-orange-50 text-[#ff6b35] flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-gray-100 text-gray-900 flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/></svg>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <p class="text-sm text-slate-600">{{ $invoiceStats['unpaid'] }} unpaid · {{ $invoiceStats['sentUnpaid'] }} sent</p>
-            <a href="{{ route('admin.invoices.index') }}" class="inline-block text-xs text-[#ff6b35] mt-2 hover:underline">Review receivables →</a>
+            <a href="{{ route('admin.invoices.index') }}" class="inline-block text-xs text-gray-900 mt-2 hover:underline">Review receivables →</a>
         </div>
 
         <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
@@ -67,7 +67,7 @@
                     <p class="text-sm text-slate-500">Clients</p>
                     <p class="text-2xl font-bold text-slate-900 mt-1">{{ $stats['customers'] }}</p>
                 </div>
-                <div class="w-10 h-10 rounded-xl bg-orange-50 text-[#ff6b35] flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-gray-100 text-gray-900 flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     <p class="text-sm text-slate-500">Collection rate</p>
                     <p class="text-2xl font-bold text-slate-900 mt-1">{{ $salesInsights['collectionRate'] }}%</p>
                 </div>
-                <div class="w-10 h-10 rounded-xl bg-orange-50 text-[#ff6b35] flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-gray-100 text-gray-900 flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                 </div>
             </div>
@@ -224,8 +224,8 @@
                             <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0
                                 @if($activity['color'] === 'blue') bg-blue-50 text-blue-600
                                 @elseif($activity['color'] === 'emerald') bg-emerald-50 text-emerald-600
-                                @elseif($activity['color'] === 'orange') bg-orange-50 text-orange-600
-                                @elseif($activity['color'] === 'teal') bg-orange-50 text-[#ff6b35]
+                                @elseif($activity['color'] === 'orange') bg-gray-100 text-gray-900
+                                @elseif($activity['color'] === 'teal') bg-gray-100 text-gray-900
                                 @elseif($activity['color'] === 'purple') bg-violet-50 text-violet-600
                                 @else bg-slate-100 text-slate-600 @endif">
                                 @if(in_array($activity['type'], ['invoice', 'order']))
@@ -263,12 +263,12 @@
                         Onboard client
                         <span class="text-sky-600">→</span>
                     </a>
-                    <a href="{{ route('admin.contact-leads.index') }}" class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-sm font-medium text-slate-900">
+                    <a href="{{ route('admin.contact-leads.index') }}" class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-100 text-sm font-medium text-slate-900">
                         Contact leads
                         @if($stats['newContactLeads'] > 0)
                             <span class="text-xs bg-rose-500 text-white px-2 py-0.5 rounded-full">{{ $stats['newContactLeads'] }}</span>
                         @else
-                            <span class="text-orange-600">→</span>
+                            <span class="text-gray-900">→</span>
                         @endif
                     </a>
                     <a href="{{ route('admin.settings.company-profile.edit') }}" class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-sm font-medium text-slate-900">
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         type: 'bar',
                         label: 'Revenue (₹)',
                         data: monthly.map(m => m.revenue),
-                        backgroundColor: 'rgba(255, 107, 53, 0.82)',
+                        backgroundColor: 'rgba(17, 24, 39, 0.85)',
                         borderRadius: 6,
                         yAxisID: 'y',
                         order: 2,
@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         type: 'line',
                         label: 'Orders',
                         data: monthly.map(m => m.orders),
-                        borderColor: '#f7931e',
+                        borderColor: '#111827',
                         backgroundColor: 'rgba(247, 147, 30, 0.15)',
                         tension: 0.35,
                         fill: false,
@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 datasets: [{
                     data: total ? values : [1],
                     backgroundColor: total
-                        ? ['#ff6b35', '#f7931e', '#ff8c42', '#f43f5e']
+                        ? ['#111827', '#374151', '#6b7280', '#f43f5e']
                         : ['#ececec'],
                     borderWidth: 0,
                 }],

@@ -80,16 +80,16 @@
                                 @endforeach
                             </select>
                             @if($customers->isEmpty())
-                                <p class="admin-help">No clients yet. <a href="{{ route('admin.customers.create') }}" class="text-[#ff6b35] underline">Onboard a client</a> first.</p>
+                                <p class="admin-help">No clients yet. <a href="{{ route('admin.customers.create') }}" class="text-gray-900 underline">Onboard a client</a> first.</p>
                             @endif
                         </div>
 
-                        <div x-show="selectedCustomer" x-cloak class="rounded-xl border border-orange-100 bg-orange-50/60 px-4 py-3 text-sm">
+                        <div x-show="selectedCustomer" x-cloak class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm">
                             <div class="flex flex-wrap gap-x-6 gap-y-1 text-slate-700">
                                 <span><span class="text-slate-500">Email:</span> <span x-text="selectedCustomer?.email"></span></span>
                                 <span x-show="selectedCustomer?.phone"><span class="text-slate-500">Phone:</span> <span x-text="selectedCustomer?.phone"></span></span>
                                 <span x-show="selectedCustomer?.company_name"><span class="text-slate-500">Company:</span> <span x-text="selectedCustomer?.company_name"></span></span>
-                                <span><span class="text-slate-500">Place of supply:</span> <strong class="text-[#ff6b35]" x-text="placeOfSupply || '—'"></strong></span>
+                                <span><span class="text-slate-500">Place of supply:</span> <strong class="text-gray-900" x-text="placeOfSupply || '—'"></strong></span>
                             </div>
                         </div>
                     </div>
@@ -155,11 +155,11 @@
                                         <label>Title *</label>
                                         <input type="text" :name="`line_items[${index}][title]`" x-model="item.title" :required="type === 'custom'" placeholder="e.g. Website redesign">
                                     </div>
-                                    <div class="md:col-span-4 admin-field">
+                                    <div class="md:col-span-3 admin-field">
                                         <label>Description</label>
                                         <input type="text" :name="`line_items[${index}][description]`" x-model="item.description" placeholder="Optional detail">
                                     </div>
-                                    <div class="md:col-span-1 admin-field">
+                                    <div class="md:col-span-2 admin-field">
                                         <label>Qty</label>
                                         <input type="number" step="0.01" min="0.01" :name="`line_items[${index}][quantity]`" x-model.number="item.quantity">
                                     </div>
@@ -168,10 +168,10 @@
                                         <input type="number" step="0.01" min="0" :name="`line_items[${index}][rate]`" x-model.number="item.rate" placeholder="0.00">
                                     </div>
                                 </div>
-                                <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500">
-                                    <span class="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1">Taxable <strong class="text-slate-800" x-text="'₹' + lineTaxable(item).toFixed(2)"></strong></span>
-                                    <span class="inline-flex items-center gap-1 rounded-full bg-orange-50 text-[#ff6b35] px-2.5 py-1">Line total <strong x-text="'₹' + lineTotal(item).toFixed(2)"></strong></span>
-                                    <span class="text-slate-400">HSN {{ $taxPreview['hsn'] }} · GST {{ number_format($taxPreview['gst_rate'], 0) }}%</span>
+                                <div class="admin-line-meta">
+                                    <span class="admin-line-pill">Taxable <strong x-text="'₹' + lineTaxable(item).toFixed(2)"></strong></span>
+                                    <span class="admin-line-pill is-total">Line total <strong x-text="'₹' + lineTotal(item).toFixed(2)"></strong></span>
+                                    <span class="admin-line-hsn">HSN {{ $taxPreview['hsn'] }} · GST {{ number_format($taxPreview['gst_rate'], 0) }}%</span>
                                 </div>
                             </div>
                         </template>
@@ -191,7 +191,7 @@
                             <textarea id="notes" name="notes" rows="3" placeholder="Payment terms, scope notes…">{{ old('notes') }}</textarea>
                         </div>
                         <label class="inline-flex items-center gap-2.5 !mb-0 cursor-pointer">
-                            <input type="checkbox" name="send_now" value="1" x-model="sendNow" class="rounded border-slate-300 text-[#ff6b35]">
+                            <input type="checkbox" name="send_now" value="1" x-model="sendNow" class="rounded border-slate-300 text-gray-900">
                             <span class="text-sm font-medium text-slate-700">Email invoice with payment link now</span>
                         </label>
                     </div>
@@ -211,7 +211,7 @@
                             <div class="flex justify-between gap-3"><span class="text-slate-500">GST rate</span><span class="font-semibold">{{ number_format($taxPreview['gst_rate'], 2) }}%</span></div>
                             <div class="flex justify-between gap-3"><span class="text-slate-500">HSN / SAC</span><span class="font-semibold">{{ $taxPreview['hsn'] }}</span></div>
                             <div class="flex justify-between gap-3"><span class="text-slate-500">Seller state</span><span class="font-semibold">{{ $taxPreview['seller_state'] ?: '—' }}</span></div>
-                            <div class="flex justify-between gap-3"><span class="text-slate-500">Supply</span><span class="font-semibold text-[#ff6b35]" x-text="placeOfSupply || '—'"></span></div>
+                            <div class="flex justify-between gap-3"><span class="text-slate-500">Supply</span><span class="font-semibold text-gray-900" x-text="placeOfSupply || '—'"></span></div>
                             <div class="flex justify-between gap-3"><span class="text-slate-500">Tax mode</span><span class="font-semibold" x-text="isInterstate ? 'IGST' : 'CGST + SGST'"></span></div>
                         </div>
 
@@ -222,7 +222,7 @@
                         </div>
 
                         <p class="text-xs text-slate-500 leading-relaxed">
-                            HSN, GST %, and place of supply are taken from <a href="{{ route('admin.settings.company-profile.edit') }}" class="text-[#ff6b35] underline">Company Profile</a> and the selected client’s state. Change defaults there — not on every invoice.
+                            HSN, GST %, and place of supply are taken from <a href="{{ route('admin.settings.company-profile.edit') }}" class="text-gray-900 underline">Company Profile</a> and the selected client’s state. Change defaults there — not on every invoice.
                         </p>
 
                         <div class="admin-actions !justify-stretch">

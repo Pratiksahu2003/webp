@@ -48,14 +48,14 @@
                         <td class="px-5 py-4 text-sm font-semibold">{{ $customer->orders_count }}</td>
                         <td class="px-5 py-4 text-sm text-slate-500">{{ $customer->created_at->format('M d, Y') }}</td>
                         <td class="px-5 py-4 text-right space-x-3">
-                            <a href="{{ route('admin.customers.show', $customer) }}" class="text-sm font-semibold text-[#ff6b35] hover:text-[#f7931e]">View</a>
+                            <a href="{{ route('admin.customers.show', $customer) }}" class="text-sm font-semibold text-gray-900 hover:text-black">View</a>
                             <a href="{{ route('admin.invoices.create', ['customer_id' => $customer->id]) }}" class="text-sm font-semibold text-slate-700">Invoice</a>
                         </td>
                     </tr>
                     @empty
                     <tr>
                         <td colspan="6" class="px-5 py-12 text-center text-slate-500">
-                            No clients yet. <a href="{{ route('admin.customers.create') }}" class="text-[#ff6b35] hover:text-[#f7931e] font-semibold">Onboard your first client</a>
+                            No clients yet. <a href="{{ route('admin.customers.create') }}" class="text-gray-900 hover:text-black font-semibold">Onboard your first client</a>
                         </td>
                     </tr>
                     @endforelse

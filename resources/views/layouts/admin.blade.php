@@ -37,7 +37,7 @@
             <div class="admin-sidebar admin-sidebar-mobile absolute inset-y-0 left-0 flex flex-col w-[268px]">
                 <div class="admin-sidebar-brand justify-between">
                     <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ" class="h-8 w-auto">
-                    <button type="button" @click="sidebarOpen = false" class="p-2 rounded-lg text-gray-400 hover:bg-orange-50 hover:text-[#ff6b35]">
+                    <button type="button" @click="sidebarOpen = false" class="p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-900">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
@@ -50,7 +50,7 @@
         <div class="admin-main">
             <header class="admin-topbar">
                 <div class="flex items-center gap-3 min-w-0">
-                    <button type="button" @click="sidebarOpen = true" class="lg:hidden p-2 rounded-xl border border-gray-200 bg-white text-gray-600 hover:bg-orange-50 hover:text-[#ff6b35] hover:border-orange-200">
+                    <button type="button" @click="sidebarOpen = true" class="lg:hidden p-2 rounded-xl border border-gray-200 bg-white text-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:border-gray-300">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
                     <div class="min-w-0">
@@ -64,8 +64,8 @@
                         + Invoice
                     </a>
                     <div x-data="{ open: false }" class="relative">
-                        <button type="button" @click="open = !open" class="flex items-center gap-2.5 pl-1.5 pr-2.5 py-1.5 rounded-full border border-gray-200 bg-white hover:bg-orange-50">
-                            <img class="w-8 h-8 rounded-full ring-2 ring-orange-100" src="https://www.gravatar.com/avatar/{{ md5(auth()->user()->email) }}?d=mp" alt="">
+                        <button type="button" @click="open = !open" class="flex items-center gap-2.5 pl-1.5 pr-2.5 py-1.5 rounded-full border border-gray-200 bg-white hover:bg-gray-100">
+                            <img class="w-8 h-8 rounded-full ring-2 ring-gray-200" src="https://www.gravatar.com/avatar/{{ md5(auth()->user()->email) }}?d=mp" alt="">
                             <span class="hidden sm:block text-sm font-semibold text-gray-800 max-w-[120px] truncate">{{ auth()->user()->name }}</span>
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </button>
@@ -75,8 +75,8 @@
                                 <p class="text-sm font-semibold text-gray-900 truncate">{{ auth()->user()->name }}</p>
                                 <p class="text-xs text-gray-500 truncate">{{ auth()->user()->email }}</p>
                             </div>
-                            <a href="{{ route('admin.profile.edit') }}" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-orange-50 hover:text-[#ff6b35]">Profile settings</a>
-                            <a href="{{ route('admin.settings.company-profile.edit') }}" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-orange-50 hover:text-[#ff6b35]">Company profile</a>
+                            <a href="{{ route('admin.profile.edit') }}" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Profile settings</a>
+                            <a href="{{ route('admin.settings.company-profile.edit') }}" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Company profile</a>
                             <form method="POST" action="{{ route('admin.logout') }}">
                                 @csrf
                                 <button type="submit" class="block w-full text-left px-4 py-2.5 text-sm text-rose-600 hover:bg-rose-50 border-t border-gray-100">Sign out</button>

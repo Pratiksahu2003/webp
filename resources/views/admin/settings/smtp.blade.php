@@ -60,7 +60,7 @@
             @endif
 
             <label class="inline-flex items-center gap-2.5 !mb-0 cursor-pointer">
-                <input type="checkbox" name="enabled" value="1" @checked(old('enabled', $settings['enabled'])) class="rounded border-slate-300 text-[#ff6b35]">
+                <input type="checkbox" name="enabled" value="1" @checked(old('enabled', $settings['enabled'])) class="rounded border-slate-300 text-gray-900">
                 <span class="text-sm font-medium text-slate-700">Use these SMTP settings for all outbound mail</span>
             </label>
 

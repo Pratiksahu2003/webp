@@ -1,4 +1,4 @@
-/* VanTroZ Admin Design System — logo palette (white + orange + black) */
+/* VanTroZ Admin Design System — white + black */
 
 :root {
     --admin-bg: #ffffff;
@@ -9,11 +9,11 @@
     --admin-text: #111827;
     --admin-text-muted: #6b7280;
     --admin-text-soft: #9ca3af;
-    --admin-primary: #ff6b35;
-    --admin-primary-hover: #f7931e;
-    --admin-primary-soft: #fff4ef;
-    --admin-primary-mid: #ff8c42;
-    --admin-accent: #f7931e;
+    --admin-primary: #111827;
+    --admin-primary-hover: #000000;
+    --admin-primary-soft: #f3f4f6;
+    --admin-primary-mid: #374151;
+    --admin-accent: #111827;
     --admin-danger: #e11d48;
     --admin-warning: #d97706;
     --admin-success: #059669;
@@ -23,7 +23,7 @@
     --admin-shadow-lg: 0 10px 32px rgba(17, 24, 39, 0.07);
     --admin-sidebar-w: 268px;
     --admin-font: "Plus Jakarta Sans", "Segoe UI", sans-serif;
-    --admin-gradient: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff8c42 100%);
+    --admin-gradient: linear-gradient(135deg, #111827 0%, #1f2937 55%, #000000 100%);
 }
 
 html, body {
@@ -224,7 +224,7 @@ main select:focus,
 main textarea:focus {
     outline: none !important;
     border-color: var(--admin-primary) !important;
-    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.15) !important;
+    box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.12) !important;
 }
 
 .admin-content input[type="checkbox"],
@@ -354,7 +354,7 @@ main input[type="radio"] {
 .admin-btn-primary {
     background: var(--admin-gradient);
     color: #fff;
-    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.28);
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.22);
 }
 
 .admin-btn-primary:hover {
@@ -437,13 +437,6 @@ main input[type="radio"] {
     background: #fff;
     color: var(--admin-primary);
     box-shadow: 0 1px 3px rgba(17, 24, 39, 0.08);
-}
-
-.admin-line-item {
-    border: 1px solid var(--admin-border);
-    border-radius: 12px;
-    padding: 16px;
-    background: #ffffff;
 }
 
 .admin-total-box {
@@ -550,12 +543,12 @@ main thead th {
 .zoho-btn-primary {
     background: var(--admin-gradient);
     color: #fff;
-    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.28);
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.22);
 }
 .zoho-btn-outline {
     background: #fff;
     color: var(--admin-primary);
-    border: 1px solid #ffd4c2;
+    border: 1px solid var(--admin-border-strong);
 }
 .zoho-btn-outline:hover {
     background: var(--admin-primary-soft);
@@ -567,54 +560,125 @@ main thead th {
     .admin-card-body { padding: 16px; }
 }
 
-/* Remap leftover blue/teal utilities to logo orange across admin */
+/* Remap leftover blue/teal/orange utilities to black across admin */
 .admin-shell .text-blue-600,
 .admin-shell .text-blue-700,
 .admin-shell .text-teal-600,
 .admin-shell .text-teal-700,
+.admin-shell .text-orange-600,
+.admin-shell .text-orange-700,
 .admin-shell .hover\:text-blue-700:hover,
-.admin-shell .hover\:text-teal-800:hover {
+.admin-shell .hover\:text-teal-800:hover,
+.admin-shell .hover\:text-orange-700:hover {
     color: var(--admin-primary) !important;
 }
 
 .admin-shell .bg-blue-600,
-.admin-shell .bg-teal-600 {
+.admin-shell .bg-teal-600,
+.admin-shell .bg-orange-600 {
     background-color: var(--admin-primary) !important;
 }
 
 .admin-shell .hover\:bg-blue-700:hover,
-.admin-shell .hover\:bg-teal-700:hover {
+.admin-shell .hover\:bg-teal-700:hover,
+.admin-shell .hover\:bg-orange-700:hover {
     background-color: var(--admin-primary-hover) !important;
 }
 
 .admin-shell .bg-blue-50,
-.admin-shell .bg-teal-50 {
+.admin-shell .bg-teal-50,
+.admin-shell .bg-orange-50 {
     background-color: var(--admin-primary-soft) !important;
 }
 
 .admin-shell .hover\:bg-blue-100:hover,
-.admin-shell .hover\:bg-teal-100:hover {
-    background-color: #ffe8dc !important;
+.admin-shell .hover\:bg-teal-100:hover,
+.admin-shell .hover\:bg-orange-100:hover {
+    background-color: #e5e7eb !important;
 }
 
-.admin-shell .bg-blue-100 {
-    background-color: #ffe8dc !important;
+.admin-shell .bg-blue-100,
+.admin-shell .bg-orange-100 {
+    background-color: #e5e7eb !important;
 }
 
 .admin-shell .text-blue-800,
-.admin-shell .text-teal-800 {
-    color: #c2410c !important;
+.admin-shell .text-teal-800,
+.admin-shell .text-orange-800 {
+    color: #111827 !important;
 }
 
 .admin-shell .border-blue-200,
-.admin-shell .border-teal-200 {
-    border-color: #ffd4c2 !important;
+.admin-shell .border-teal-200,
+.admin-shell .border-orange-200 {
+    border-color: #d1d5db !important;
 }
 
 .admin-shell .ring-blue-500,
+.admin-shell .ring-orange-100,
 .admin-shell .focus\:ring-blue-500:focus,
 .admin-shell .focus\:border-blue-500:focus {
-    --tw-ring-color: rgba(255, 107, 53, 0.35) !important;
+    --tw-ring-color: rgba(17, 24, 39, 0.2) !important;
     border-color: var(--admin-primary) !important;
+}
+
+.admin-shell .text-\[\#ff6b35\],
+.admin-shell .hover\:text-\[\#ff6b35\]:hover,
+.admin-shell .hover\:text-\[\#f7931e\]:hover {
+    color: var(--admin-primary) !important;
+}
+
+/* Polished invoice line items */
+.admin-line-item {
+    border: 1px solid var(--admin-border);
+    border-radius: 14px;
+    padding: 18px;
+    background: #fff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.admin-line-item:focus-within {
+    border-color: #d1d5db;
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.06);
+}
+
+.admin-line-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding-top: 4px;
+}
+
+.admin-line-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.admin-line-pill strong {
+    font-weight: 700;
+    color: #111827;
+}
+
+.admin-line-pill.is-total {
+    background: #111827;
+    color: #fff;
+}
+
+.admin-line-pill.is-total strong {
+    color: #fff;
+}
+
+.admin-line-hsn {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-left: auto;
 }
 
