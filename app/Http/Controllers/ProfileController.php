@@ -6,9 +6,12 @@ use App\Http\Requests\ProfileUpdateRequest;
 use App\Services\TwoFactorService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -51,16 +54,16 @@ class ProfileController extends Controller
         $data = $request->safe()->only(['name', 'email', 'phone']);
 
         if ($request->boolean('remove_avatar') && filled($user->avatar)) {
-            Storage::disk('public')->delete($user->avatar);
+            $this->deleteAvatarFile($user->avatar);
             $data['avatar'] = null;
         }
 
         if ($request->hasFile('avatar')) {
             if (filled($user->avatar)) {
-                Storage::disk('public')->delete($user->avatar);
+                $this->deleteAvatarFile($user->avatar);
             }
 
-            $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
+            $data['avatar'] = $this->storeAvatarInPublic($request->file('avatar'), (int) $user->id);
         }
 
         $user->fill($data);
@@ -83,7 +86,7 @@ class ProfileController extends Controller
         $user = $request->user();
 
         if (filled($user->avatar)) {
-            Storage::disk('public')->delete($user->avatar);
+            $this->deleteAvatarFile($user->avatar);
         }
 
         Auth::logout();
@@ -94,5 +97,41 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::route('admin.login');
+    }
+
+    protected function storeAvatarInPublic(UploadedFile $file, int $userId): string
+    {
+        $directory = public_path('avatars');
+
+        if (! File::isDirectory($directory)) {
+            File::makeDirectory($directory, 0755, true);
+        }
+
+        $extension = strtolower($file->getClientOriginalExtension() ?: $file->extension() ?: 'jpg');
+        $filename = 'user-'.$userId.'-'.Str::lower(Str::random(12)).'.'.$extension;
+        $file->move($directory, $filename);
+
+        return 'avatars/'.$filename;
+    }
+
+    protected function deleteAvatarFile(?string $path): void
+    {
+        if (! filled($path)) {
+            return;
+        }
+
+        $relative = ltrim(str_replace('\\', '/', $path), '/');
+        $publicPath = public_path($relative);
+
+        if (File::isFile($publicPath)) {
+            File::delete($publicPath);
+
+            return;
+        }
+
+        // Legacy files previously stored on the public disk (storage/app/public).
+        if (Storage::disk('public')->exists($relative)) {
+            Storage::disk('public')->delete($relative);
+        }
     }
 }

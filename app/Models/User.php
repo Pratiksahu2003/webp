@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class User extends Authenticatable
 {
@@ -100,10 +100,28 @@ class User extends Authenticatable
 
     public function avatarUrl(): string
     {
-        if (filled($this->avatar) && Storage::disk('public')->exists($this->avatar)) {
-            return Storage::disk('public')->url($this->avatar);
+        if (! filled($this->avatar)) {
+            return $this->gravatarUrl();
         }
 
+        $relative = ltrim(str_replace('\\', '/', (string) $this->avatar), '/');
+        $publicPath = public_path($relative);
+
+        if (File::isFile($publicPath)) {
+            return asset($relative);
+        }
+
+        // Legacy storage/app/public avatars
+        $legacy = storage_path('app/public/'.$relative);
+        if (File::isFile($legacy)) {
+            return asset('storage/'.$relative);
+        }
+
+        return $this->gravatarUrl();
+    }
+
+    protected function gravatarUrl(): string
+    {
         return 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?d=mp&s=200';
     }
 }

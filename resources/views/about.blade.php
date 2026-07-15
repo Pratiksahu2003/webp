@@ -136,13 +136,13 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+<section class="py-20 bg-gradient-to-r from-[#ff6b35] to-[#f7931e] text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Work With Us?</h2>
-        <p class="text-xl mb-8 max-w-3xl mx-auto">
+        <p class="text-xl mb-8 max-w-3xl mx-auto text-white/90">
             Let's discuss your project and see how we can help you achieve your goals
         </p>
-        <a href="{{ route('contact') }}" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
+        <a href="{{ route('contact') }}" class="inline-flex items-center justify-center bg-[#111827] hover:bg-black text-white px-8 py-3.5 rounded-lg font-semibold transition-colors shadow-lg shadow-black/20">
             Get Started Today
         </a>
     </div>

@@ -104,12 +104,12 @@
 <!-- Newsletter Section -->
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-blue-600 rounded-lg p-8 text-center text-white">
+        <div class="rounded-2xl p-8 text-center text-white bg-gradient-to-r from-[#ff6b35] to-[#f7931e]">
             <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
-            <p class="text-xl mb-6">Subscribe to our newsletter for the latest insights and updates</p>
-            <form class="max-w-md mx-auto flex gap-4">
-                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg text-gray-900">
-                <button type="submit" class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
+            <p class="text-xl mb-6 text-white/90">Subscribe to our newsletter for the latest insights and updates</p>
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg text-gray-900 bg-white border-0 focus:ring-2 focus:ring-black/20">
+                <button type="submit" class="bg-[#111827] hover:bg-black text-white px-6 py-3 rounded-lg font-semibold transition-colors">
                     Subscribe
                 </button>
             </form>

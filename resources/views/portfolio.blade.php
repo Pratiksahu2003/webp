@@ -302,13 +302,13 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 bg-blue-600">
+<section class="py-20 bg-gradient-to-r from-[#ff6b35] to-[#f7931e]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
-        <p class="text-xl text-orange-100 mb-8 max-w-3xl mx-auto">
+        <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
             Let's discuss your ideas and create something amazing together.
         </p>
-        <a href="{{ route('contact') }}" class="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+        <a href="{{ route('contact') }}" class="inline-flex items-center justify-center bg-[#111827] hover:bg-black text-white px-8 py-3.5 rounded-lg font-semibold transition-colors shadow-lg shadow-black/20">
             Get Started Today
         </a>
     </div>
