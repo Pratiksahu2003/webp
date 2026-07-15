@@ -10,70 +10,87 @@ class ProfileTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutMiddleware(\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class);
+    }
+
+    private function adminUser(array $overrides = []): User
+    {
+        return User::factory()->create(array_merge([
+            'role' => 'admin',
+            'email_verified_at' => now(),
+        ], $overrides));
+    }
+
     public function test_profile_page_is_displayed(): void
     {
-        $user = User::factory()->create();
+        $user = $this->adminUser();
 
         $response = $this
             ->actingAs($user)
-            ->get('/profile');
+            ->get(route('admin.profile.edit'));
 
         $response->assertOk();
     }
 
     public function test_profile_information_can_be_updated(): void
     {
-        $user = User::factory()->create();
+        $user = $this->adminUser();
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
+            ->patch(route('admin.profile.update'), [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
+                'phone' => '9876543210',
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect(route('admin.profile.edit'));
 
         $user->refresh();
 
         $this->assertSame('Test User', $user->name);
         $this->assertSame('test@example.com', $user->email);
+        $this->assertSame('9876543210', $user->phone);
         $this->assertNull($user->email_verified_at);
     }
 
     public function test_email_verification_status_is_unchanged_when_the_email_address_is_unchanged(): void
     {
-        $user = User::factory()->create();
+        $user = $this->adminUser();
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
+            ->patch(route('admin.profile.update'), [
                 'name' => 'Test User',
                 'email' => $user->email,
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect(route('admin.profile.edit'));
 
         $this->assertNotNull($user->refresh()->email_verified_at);
     }
 
     public function test_user_can_delete_their_account(): void
     {
-        $user = User::factory()->create();
+        $user = $this->adminUser();
 
         $response = $this
             ->actingAs($user)
-            ->delete('/profile', [
+            ->delete(route('admin.profile.destroy'), [
                 'password' => 'password',
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/');
+            ->assertRedirect(route('admin.login'));
 
         $this->assertGuest();
         $this->assertNull($user->fresh());
@@ -81,18 +98,18 @@ class ProfileTest extends TestCase
 
     public function test_correct_password_must_be_provided_to_delete_account(): void
     {
-        $user = User::factory()->create();
+        $user = $this->adminUser();
 
         $response = $this
             ->actingAs($user)
-            ->from('/profile')
-            ->delete('/profile', [
+            ->from(route('admin.profile.edit'))
+            ->delete(route('admin.profile.destroy'), [
                 'password' => 'wrong-password',
             ]);
 
         $response
             ->assertSessionHasErrorsIn('userDeletion', 'password')
-            ->assertRedirect('/profile');
+            ->assertRedirect(route('admin.profile.edit'));
 
         $this->assertNotNull($user->fresh());
     }

@@ -72,6 +72,10 @@
             <svg class="w-5 h-5 mr-3 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
             Payment Gateway
         </a>
+        <a href="{{ route('admin.settings.smtp.edit') }}" class="{{ $navLink }} {{ request()->routeIs('admin.settings.smtp.*') ? 'active' : '' }}">
+            <svg class="w-5 h-5 mr-3 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            SMTP / Email
+        </a>
         <a href="{{ route('admin.profile.edit') }}" class="{{ $navLink }} {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}">
             <svg class="w-5 h-5 mr-3 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
             Profile

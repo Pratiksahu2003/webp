@@ -70,14 +70,18 @@ class CheckoutService
             $type = $data['type'] ?? 'custom';
             $billing = $this->billingDetailsFromUser($client);
             $profile = $this->companyProfile->all();
-            $defaultGst = (float) ($data['default_gst_rate'] ?? $profile['default_gst_rate'] ?? 18);
-            $defaultHsn = (string) ($data['default_hsn'] ?? $profile['default_hsn_sac'] ?? '');
-            $placeOfSupply = $data['place_of_supply'] ?? $client->state ?? ($profile['place_of_supply_default'] ?? null);
-            $buyerGstin = $data['buyer_gstin'] ?? null;
+            $defaultGst = (float) ($profile['default_gst_rate'] ?? 18);
+            $defaultHsn = trim((string) ($data['default_hsn'] ?? $profile['default_hsn_sac'] ?? '998314'));
+            $placeOfSupply = filled($data['place_of_supply'] ?? null)
+                ? trim((string) $data['place_of_supply'])
+                : trim((string) ($client->state ?: ($profile['place_of_supply_default'] ?? '')));
+            $buyerGstin = filled($data['buyer_gstin'] ?? null)
+                ? strtoupper(trim((string) $data['buyer_gstin']))
+                : null;
 
             $isInterstate = $this->taxCalculator->isInterstate(
                 $profile['state'] ?? null,
-                $placeOfSupply
+                $placeOfSupply !== '' ? $placeOfSupply : null
             );
 
             if ($type === 'package') {
@@ -105,7 +109,7 @@ class CheckoutService
                     'sgst_amount' => $taxed['sgst_amount'],
                     'igst_amount' => $taxed['igst_amount'],
                     'is_interstate' => $taxed['is_interstate'],
-                    'place_of_supply' => $placeOfSupply,
+                    'place_of_supply' => $placeOfSupply !== '' ? $placeOfSupply : null,
                     'buyer_gstin' => $buyerGstin,
                     'invoice_title' => $data['invoice_title'] ?? $package->package_name,
                     'line_items' => $taxed['line_items'],
@@ -118,10 +122,12 @@ class CheckoutService
 
             $rawItems = collect($data['line_items'] ?? [])
                 ->map(function ($item) use ($defaultGst, $defaultHsn) {
+                    $hsn = trim((string) ($item['hsn'] ?? ''));
+
                     return [
                         'title' => trim((string) ($item['title'] ?? '')),
                         'description' => trim((string) ($item['description'] ?? '')),
-                        'hsn' => trim((string) ($item['hsn'] ?? $defaultHsn)),
+                        'hsn' => $hsn !== '' ? $hsn : $defaultHsn,
                         'quantity' => (float) ($item['quantity'] ?? 1),
                         'rate' => (float) ($item['rate'] ?? 0),
                         'gst_rate' => (float) ($item['gst_rate'] ?? $defaultGst),
@@ -146,7 +152,7 @@ class CheckoutService
                 'sgst_amount' => $taxed['sgst_amount'],
                 'igst_amount' => $taxed['igst_amount'],
                 'is_interstate' => $taxed['is_interstate'],
-                'place_of_supply' => $placeOfSupply,
+                'place_of_supply' => $placeOfSupply !== '' ? $placeOfSupply : null,
                 'buyer_gstin' => $buyerGstin,
                 'invoice_title' => $data['invoice_title'] ?? ($taxed['line_items'][0]['title'] ?? 'Custom Invoice'),
                 'line_items' => $taxed['line_items'],

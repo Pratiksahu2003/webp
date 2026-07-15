@@ -37,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
 
         try {
             app(\App\Services\PaymentGatewaySettingsService::class)->applyToConfig();
+            app(\App\Services\SmtpSettingsService::class)->applyToConfig();
         } catch (\Throwable) {
             // Settings table may not exist during early installs / migrations.
         }

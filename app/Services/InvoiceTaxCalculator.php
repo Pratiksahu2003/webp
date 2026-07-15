@@ -35,13 +35,14 @@ class InvoiceTaxCalculator
             $quantity = round((float) ($item['quantity'] ?? 1), 2);
             $rate = round((float) ($item['rate'] ?? 0), 2);
             $gstRate = round((float) ($item['gst_rate'] ?? $defaultGstRate ?? 0), 2);
+            $hsn = trim((string) ($item['hsn'] ?? ''));
             $taxable = round($quantity * $rate, 2);
             $tax = round($taxable * ($gstRate / 100), 2);
 
             $lineItems[] = [
                 'title' => $title,
                 'description' => trim((string) ($item['description'] ?? '')),
-                'hsn' => trim((string) ($item['hsn'] ?? '')),
+                'hsn' => $hsn,
                 'quantity' => $quantity,
                 'rate' => $rate,
                 'gst_rate' => $gstRate,

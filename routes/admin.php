@@ -64,6 +64,11 @@ Route::get('settings/payment-gateway', [\App\Http\Controllers\Admin\PaymentGatew
 Route::put('settings/payment-gateway', [\App\Http\Controllers\Admin\PaymentGatewayController::class, 'update'])->name('settings.payment-gateway.update');
 Route::delete('settings/payment-gateway', [\App\Http\Controllers\Admin\PaymentGatewayController::class, 'destroy'])->name('settings.payment-gateway.destroy');
 
+Route::get('settings/smtp', [\App\Http\Controllers\Admin\SmtpSettingsController::class, 'edit'])->name('settings.smtp.edit');
+Route::put('settings/smtp', [\App\Http\Controllers\Admin\SmtpSettingsController::class, 'update'])->name('settings.smtp.update');
+Route::delete('settings/smtp', [\App\Http\Controllers\Admin\SmtpSettingsController::class, 'destroy'])->name('settings.smtp.destroy');
+Route::post('settings/smtp/test', [\App\Http\Controllers\Admin\SmtpSettingsController::class, 'test'])->name('settings.smtp.test');
+
 Route::get('settings/company-profile', [\App\Http\Controllers\Admin\CompanyProfileController::class, 'edit'])->name('settings.company-profile.edit');
 Route::put('settings/company-profile', [\App\Http\Controllers\Admin\CompanyProfileController::class, 'update'])->name('settings.company-profile.update');
 
