@@ -169,43 +169,20 @@
     position: relative;
     width: 2.65rem;
     height: 2.65rem;
-    border-radius: 0.9rem;
-    background: #fff;
+    border-radius: 0.85rem;
+    background: #ffffff;
     display: grid;
     place-items: center;
     flex-shrink: 0;
     overflow: hidden;
-    box-shadow: 0 0 0 2px rgba(255, 140, 66, 0.35);
+    box-shadow: 0 0 0 2px rgba(255, 140, 66, 0.4);
 }
 
 .vtz-chatbot-avatar-img {
-    width: 78%;
-    height: 78%;
+    width: 1.55rem;
+    height: 1.55rem;
     object-fit: contain;
-    position: relative;
-    z-index: 1;
-}
-
-.vtz-chatbot-avatar-fallback {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-weight: 800;
-    color: var(--vtz-orange);
-    background: #fff7ed;
-}
-
-.vtz-chatbot-online {
-    position: absolute;
-    right: -2px;
-    bottom: -2px;
-    width: 0.7rem;
-    height: 0.7rem;
-    border-radius: 9999px;
-    background: #22c55e;
-    border: 2px solid #0b1220;
-    z-index: 2;
+    display: block;
 }
 
 .vtz-chatbot-title {

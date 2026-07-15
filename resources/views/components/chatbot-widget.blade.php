@@ -7,7 +7,7 @@
         leadUrl: @js(route('chatbot.lead')),
         csrf: @js(csrf_token()),
         companyName: @js(config('company.name')),
-        logoUrl: @js(asset('logo/logo.png')),
+        logoUrl: @js(asset('favicon.svg')),
     })"
     x-cloak
 >
@@ -51,9 +51,14 @@
         <header class="vtz-chatbot-header">
             <div class="vtz-chatbot-brand">
                 <div class="vtz-chatbot-avatar" aria-hidden="true">
-                    <img src="{{ asset('logo/logo.png') }}" alt="" class="vtz-chatbot-avatar-img" onerror="this.style.display='none'">
-                    <span class="vtz-chatbot-avatar-fallback">V</span>
-                    <span class="vtz-chatbot-online" title="Online"></span>
+                    <img
+                        src="{{ asset('favicon.svg') }}"
+                        alt=""
+                        class="vtz-chatbot-avatar-img"
+                        width="40"
+                        height="40"
+                        onerror="this.onerror=null;this.src='{{ asset('favicon-32x32.png') }}';"
+                    >
                 </div>
                 <div class="vtz-chatbot-header-text">
                     <h2 class="vtz-chatbot-title">{{ config('company.name') }} Assistant</h2>
