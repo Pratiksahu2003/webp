@@ -394,6 +394,32 @@ body.mobile-menu-open footer {
     z-index: 2;
 }
 
+/* Phone in top bar: hide on true mobile, show on tablet+ until desktop nav */
+.navbar-mobile-actions .navbar-phone {
+    display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    .navbar-mobile-actions .navbar-phone {
+        display: inline-flex;
+    }
+
+    .navbar-mobile-actions .navbar-phone-number {
+        display: inline;
+    }
+
+    .navbar-mobile-actions .navbar-phone--compact {
+        font-size: clamp(0.75rem, 1.6vw, 0.875rem);
+        gap: 0.3rem;
+        max-width: min(100%, 14rem);
+        overflow: hidden;
+    }
+
+    .navbar-mobile-actions .navbar-phone-flag {
+        width: 1.1rem;
+    }
+}
+
 /* Short / full nav labels */
 .navbar-link-short {
     display: inline;
@@ -555,6 +581,7 @@ a.navbar-phone:visited {
 }
 
 .navbar-phone-number {
+    display: inline;
     font-family: var(--site-font);
     font-size: inherit;
     font-weight: inherit;
@@ -563,6 +590,15 @@ a.navbar-phone:visited {
     line-height: inherit;
     color: inherit;
     -webkit-text-fill-color: currentColor;
+}
+
+/* Phone digits stay visible on tablet / desktop / large screens */
+@media (min-width: 768px) {
+    #navbar .navbar-phone-number,
+    .navbar-actions .navbar-phone-number,
+    .navbar-mobile-actions .navbar-phone-number {
+        display: inline !important;
+    }
 }
 
 .navbar-phone--header {

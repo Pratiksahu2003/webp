@@ -107,8 +107,13 @@
                     @endauth
                 </div>
 
-                <!-- Mobile menu button -->
+                <!-- Tablet + small-laptop phone (desktop actions take over at xl) -->
                 <div class="navbar-mobile-actions">
+                    <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="navbar-phone navbar-phone--compact" aria-label="Call {{ config('company.contact.phone') }}">
+                        <x-country-flag />
+                        <span class="navbar-phone-number">{{ config('company.contact.phone') }}</span>
+                    </a>
+
                     <button type="button" class="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
                         <svg class="mobile-menu-icon mobile-menu-icon--open h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
