@@ -19,9 +19,8 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-50">
             <div>
-                <a href="/" class="flex flex-col items-center">
-                    <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ Logo" class="w-20 h-20">
-                    <span class="text-lg font-bold text-gray-700 mt-2">VanTroZ</span>
+                <a href="/" class="inline-flex items-center justify-center">
+                    <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ Logo" class="h-12 w-auto">
                 </a>
             </div>
 
