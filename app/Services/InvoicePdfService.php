@@ -30,7 +30,9 @@ class InvoicePdfService
         ])
             ->setPaper('a4', 'portrait')
             ->setOption('isHtml5ParserEnabled', true)
-            ->setOption('defaultFont', 'DejaVu Sans');
+            ->setOption('defaultFont', 'DejaVu Sans')
+            ->setOption('dpi', 96)
+            ->setOption('isFontSubsettingEnabled', true);
     }
 
     public function download(Order $order): Response
@@ -63,6 +65,12 @@ class InvoicePdfService
                 continue;
             }
 
+            $resized = $this->resizeImageForPdf($path, 220);
+
+            if ($resized) {
+                return $resized;
+            }
+
             $mime = mime_content_type($path) ?: 'image/png';
             $data = base64_encode((string) file_get_contents($path));
 
@@ -70,5 +78,55 @@ class InvoicePdfService
         }
 
         return null;
+    }
+
+    protected function resizeImageForPdf(string $path, int $maxWidth): ?string
+    {
+        if (! function_exists('imagecreatefromstring')) {
+            return null;
+        }
+
+        $binary = @file_get_contents($path);
+        if ($binary === false) {
+            return null;
+        }
+
+        $source = @imagecreatefromstring($binary);
+        if ($source === false) {
+            return null;
+        }
+
+        $width = imagesx($source);
+        $height = imagesy($source);
+
+        if ($width <= 0 || $height <= 0) {
+            imagedestroy($source);
+
+            return null;
+        }
+
+        if ($width > $maxWidth) {
+            $newWidth = $maxWidth;
+            $newHeight = (int) max(1, round($height * ($maxWidth / $width)));
+            $canvas = imagecreatetruecolor($newWidth, $newHeight);
+            imagealphablending($canvas, false);
+            imagesavealpha($canvas, true);
+            $transparent = imagecolorallocatealpha($canvas, 0, 0, 0, 127);
+            imagefilledrectangle($canvas, 0, 0, $newWidth, $newHeight, $transparent);
+            imagecopyresampled($canvas, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+            imagedestroy($source);
+            $source = $canvas;
+        }
+
+        ob_start();
+        imagepng($source, null, 6);
+        $png = ob_get_clean();
+        imagedestroy($source);
+
+        if ($png === false || $png === '') {
+            return null;
+        }
+
+        return 'data:image/png;base64,'.base64_encode($png);
     }
 }
