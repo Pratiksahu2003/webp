@@ -8,7 +8,7 @@
     $greeting = now()->hour < 12 ? 'Good morning' : (now()->hour < 17 ? 'Good afternoon' : 'Good evening');
 @endphp
 
-<div class="p-6 lg:p-8 bg-slate-50 min-h-full">
+<div class="admin-page-wide p-6 lg:p-8">
     <div class="mb-8 flex flex-col xl:flex-row xl:items-end xl:justify-between gap-4">
         <div>
             <p class="text-sm font-medium text-slate-500 mb-1">{{ now()->format('l, d M Y') }}</p>

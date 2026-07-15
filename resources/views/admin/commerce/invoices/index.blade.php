@@ -2,76 +2,98 @@
 @section('title', 'Invoices - VanTroZ Admin')
 @section('page-title', 'Invoices')
 @section('content')
-<div class="max-w-7xl mx-auto p-6">
-    <div class="flex justify-between items-center mb-6">
+<div class="admin-page-wide">
+    <div class="admin-page-header">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Invoices</h1>
-            <p class="text-gray-600 mt-1">Create invoices and send payment links to clients</p>
+            <h1>Invoices</h1>
+            <p>Create, send, and track tax invoices with payment links</p>
         </div>
-        <a href="{{ route('admin.invoices.create') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Create Invoice</a>
+        <a href="{{ route('admin.invoices.create') }}" class="admin-btn admin-btn-primary">Create Invoice</a>
     </div>
 
-    @if(session('success'))
-        <div class="mb-4 rounded-lg bg-green-50 border border-green-200 text-green-800 px-4 py-3">{{ session('success') }}</div>
-    @endif
-
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        @foreach(['pending'=>'yellow','processing'=>'blue','paid'=>'green','failed'=>'red'] as $status => $color)
-        <div class="zoho-stat-card">
-            <div class="text-sm text-gray-500 uppercase">{{ $status }}</div>
-            <div class="text-2xl font-bold">{{ $stats[$status] ?? 0 }}</div>
-        </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+        @foreach(['pending' => 'Pending', 'processing' => 'Processing', 'paid' => 'Paid', 'failed' => 'Failed'] as $key => $label)
+            <div class="admin-card px-4 py-3">
+                <p class="text-xs text-slate-500 uppercase tracking-wide">{{ $label }}</p>
+                <p class="text-2xl font-bold text-slate-900 mt-1">{{ $stats[$key] ?? 0 }}</p>
+            </div>
         @endforeach
     </div>
 
-    <div class="bg-white rounded-xl border border-gray-200 p-6 mb-6">
-        <form class="flex flex-col md:flex-row gap-4">
-            <input type="text" name="search" placeholder="Search invoice, client..." value="{{ request('search') }}" class="flex-1 border border-gray-300 rounded-lg px-3 py-2">
-            <select name="payment_status" class="border border-gray-300 rounded-lg px-3 py-2">
-                <option value="">All statuses</option>
-                @foreach(\App\Models\Order::PAYMENT_STATUSES as $s)
-                <option value="{{ $s }}" @selected(request('payment_status')==$s)>{{ ucfirst($s) }}</option>
-                @endforeach
-            </select>
-            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">Filter</button>
-        </form>
+    <div class="admin-card mb-5">
+        <div class="admin-card-body">
+            <form class="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
+                <div class="md:col-span-6 admin-field">
+                    <label>Search</label>
+                    <input type="text" name="search" placeholder="Invoice number, client..." value="{{ request('search') }}">
+                </div>
+                <div class="md:col-span-4 admin-field">
+                    <label>Status</label>
+                    <select name="payment_status">
+                        <option value="">All statuses</option>
+                        @foreach(\App\Models\Order::PAYMENT_STATUSES as $s)
+                            <option value="{{ $s }}" @selected(request('payment_status')==$s)>{{ ucfirst($s) }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="md:col-span-2">
+                    <button class="admin-btn admin-btn-primary w-full">Filter</button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
-        <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
-                <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Invoice</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Client</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Amount</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Sent</th>
-                    <th class="px-6 py-3"></th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-                @forelse($invoices as $invoice)
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 font-medium">{{ $invoice->order_number }}</td>
-                    <td class="px-6 py-4">
-                        <div>{{ $invoice->user->name }}</div>
-                        <div class="text-sm text-gray-500">{{ $invoice->user->email }}</div>
-                    </td>
-                    <td class="px-6 py-4 text-sm">{{ $invoice->displayTitle() }}</td>
-                    <td class="px-6 py-4 text-sm">₹{{ number_format($invoice->amount, 2) }}</td>
-                    <td class="px-6 py-4"><span class="px-2 py-1 text-xs rounded-full bg-gray-100">{{ ucfirst($invoice->payment_status) }}</span></td>
-                    <td class="px-6 py-4 text-sm">{{ $invoice->invoice_sent_at?->format('M d, Y') ?? '—' }}</td>
-                    <td class="px-6 py-4"><a href="{{ route('admin.invoices.show', $invoice) }}" class="text-blue-600">View</a></td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="7" class="px-6 py-10 text-center text-gray-500">No invoices yet. <a href="{{ route('admin.invoices.create') }}" class="text-blue-600">Create one</a>.</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-        <div class="px-6 py-4 border-t">{{ $invoices->links() }}</div>
+    <div class="admin-card overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="min-w-full">
+                <thead>
+                    <tr class="border-b border-slate-200">
+                        <th class="px-5 py-3 text-left text-xs font-semibold uppercase">Invoice</th>
+                        <th class="px-5 py-3 text-left text-xs font-semibold uppercase">Client</th>
+                        <th class="px-5 py-3 text-left text-xs font-semibold uppercase">Title</th>
+                        <th class="px-5 py-3 text-left text-xs font-semibold uppercase">Amount</th>
+                        <th class="px-5 py-3 text-left text-xs font-semibold uppercase">Status</th>
+                        <th class="px-5 py-3 text-left text-xs font-semibold uppercase">Sent</th>
+                        <th class="px-5 py-3"></th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    @forelse($invoices as $invoice)
+                    <tr class="hover:bg-slate-50/80">
+                        <td class="px-5 py-4 font-semibold text-slate-900">{{ $invoice->order_number }}</td>
+                        <td class="px-5 py-4">
+                            <div class="font-medium text-slate-800">{{ $invoice->user->name }}</div>
+                            <div class="text-sm text-slate-500">{{ $invoice->user->email }}</div>
+                        </td>
+                        <td class="px-5 py-4 text-sm text-slate-600">{{ $invoice->displayTitle() }}</td>
+                        <td class="px-5 py-4 text-sm font-semibold">₹{{ number_format($invoice->amount, 2) }}</td>
+                        <td class="px-5 py-4">
+                            <span class="inline-flex px-2.5 py-1 text-xs font-semibold rounded-full
+                                @if($invoice->payment_status === 'paid') bg-emerald-50 text-emerald-700
+                                @elseif($invoice->payment_status === 'pending') bg-amber-50 text-amber-700
+                                @elseif($invoice->payment_status === 'failed') bg-rose-50 text-rose-700
+                                @else bg-slate-100 text-slate-600 @endif">
+                                {{ ucfirst($invoice->payment_status) }}
+                            </span>
+                        </td>
+                        <td class="px-5 py-4 text-sm text-slate-500">{{ $invoice->invoice_sent_at?->format('M d, Y') ?? '—' }}</td>
+                        <td class="px-5 py-4 text-right">
+                            <a href="{{ route('admin.invoices.show', $invoice) }}" class="text-sm font-semibold text-teal-700 hover:text-teal-800">View</a>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="7" class="px-5 py-12 text-center text-slate-500">
+                            No invoices yet. <a href="{{ route('admin.invoices.create') }}" class="text-teal-700 font-semibold">Create one</a>
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+        @if($invoices->hasPages())
+            <div class="px-5 py-4 border-t border-slate-100">{{ $invoices->links() }}</div>
+        @endif
     </div>
 </div>
 @endsection

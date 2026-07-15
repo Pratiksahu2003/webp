@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -26,18 +25,8 @@ Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-// Page Builder Routes
-Route::prefix('pages')->name('pages.')->group(function () {
-    Route::get('builder/{page?}', [PageController::class, 'builder'])->name('builder');
-    Route::post('builder/{page?}', [PageController::class, 'saveBuilder'])->name('save-builder');
-    Route::post('{page}/duplicate', [PageController::class, 'duplicate'])->name('duplicate');
-    Route::post('{page}/toggle-status', [PageController::class, 'toggleStatus'])->name('toggle-status');
-    Route::post('bulk-action', [PageController::class, 'bulkAction'])->name('bulk-action');
-});
-
 // Content Management - Resource Routes
 Route::resources([
-    'pages' => PageController::class,
     'blog-posts' => BlogPostController::class,
 ]);
 
@@ -90,17 +79,8 @@ Route::prefix('api')->name('api.')->group(function () {
         $results = collect();
         
         if ($query) {
-            $pages = \App\Models\Page::where('title', 'like', "%{$query}%")->limit(5)->get();
             $posts = \App\Models\BlogPost::where('title', 'like', "%{$query}%")->limit(5)->get();
-            
-            $results = $results->merge($pages->map(function ($item) {
-                return [
-                    'type' => 'page',
-                    'title' => $item->title,
-                    'url' => route('admin.pages.edit', $item)
-                ];
-            }));
-            
+
             $results = $results->merge($posts->map(function ($item) {
                 return [
                     'type' => 'blog',
