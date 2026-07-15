@@ -39,7 +39,7 @@
                 <!-- Clean Logo Section -->
                 <div class="navbar-brand flex-shrink-0">
                     <a href="{{ route('home') }}" class="flex items-center">
-                        <img src="{{ asset('logo/logo.png') }}" alt="{{ config('company.name') }} Logo" class="h-7 w-auto sm:h-8">
+                        <img src="{{ asset('logo/logo.png') }}" alt="{{ config('company.name') }} Logo" class="h-8 w-auto sm:h-8">
                     </a>
                 </div>
 

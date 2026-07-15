@@ -257,6 +257,9 @@
                     <a href="{{ route('admin.orders.index') }}" class="flex items-center p-3 bg-emerald-50 rounded-xl hover:bg-emerald-100 transition-colors">
                         <span class="font-medium text-gray-900">Manage Orders</span>
                     </a>
+                    <a href="{{ route('admin.contact-leads.index') }}" class="flex items-center p-3 bg-sky-50 rounded-xl hover:bg-sky-100 transition-colors">
+                        <span class="font-medium text-gray-900">Contact Leads @if($stats['newContactLeads'] > 0)<span class="ml-2 text-xs bg-red-500 text-white px-2 py-0.5 rounded-full">{{ $stats['newContactLeads'] }} new</span>@endif</span>
+                    </a>
                 </div>
             </div>
 
