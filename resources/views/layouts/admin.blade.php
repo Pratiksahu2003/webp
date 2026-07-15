@@ -21,14 +21,9 @@
         {{-- Desktop sidebar --}}
         <aside class="admin-sidebar">
             <div class="admin-sidebar-brand">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center shadow-lg shadow-teal-900/30">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
-                </div>
                 <div>
-                    <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ" class="h-7 w-auto">
-                    <p class="text-[10px] uppercase tracking-[0.14em] text-slate-500 mt-0.5">Admin Console</p>
+                    <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ" class="h-8 w-auto">
+                    <p class="text-[10px] uppercase tracking-[0.14em] text-gray-400 mt-0.5">Admin Console</p>
                 </div>
             </div>
             <nav class="admin-sidebar-nav">
@@ -41,13 +36,8 @@
             <div class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm" @click="sidebarOpen = false"></div>
             <div class="admin-sidebar admin-sidebar-mobile absolute inset-y-0 left-0 flex flex-col w-[268px]">
                 <div class="admin-sidebar-brand justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
-                        </div>
-                        <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ" class="h-7 w-auto">
-                    </div>
-                    <button type="button" @click="sidebarOpen = false" class="p-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white">
+                    <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ" class="h-8 w-auto">
+                    <button type="button" @click="sidebarOpen = false" class="p-2 rounded-lg text-gray-400 hover:bg-orange-50 hover:text-[#ff6b35]">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
@@ -60,11 +50,11 @@
         <div class="admin-main">
             <header class="admin-topbar">
                 <div class="flex items-center gap-3 min-w-0">
-                    <button type="button" @click="sidebarOpen = true" class="lg:hidden p-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50">
+                    <button type="button" @click="sidebarOpen = true" class="lg:hidden p-2 rounded-xl border border-gray-200 bg-white text-gray-600 hover:bg-orange-50 hover:text-[#ff6b35] hover:border-orange-200">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
                     <div class="min-w-0">
-                        <p class="text-[11px] uppercase tracking-[0.12em] text-slate-400 font-semibold hidden sm:block">VanTroZ Control</p>
+                        <p class="text-[11px] uppercase tracking-[0.12em] text-gray-400 font-semibold hidden sm:block">VanTroZ Control</p>
                         <h1 class="admin-topbar-title truncate">@yield('page-title', 'Dashboard')</h1>
                     </div>
                 </div>
@@ -74,22 +64,22 @@
                         + Invoice
                     </a>
                     <div x-data="{ open: false }" class="relative">
-                        <button type="button" @click="open = !open" class="flex items-center gap-2.5 pl-1.5 pr-2.5 py-1.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50">
-                            <img class="w-8 h-8 rounded-full ring-2 ring-teal-50" src="https://www.gravatar.com/avatar/{{ md5(auth()->user()->email) }}?d=mp" alt="">
-                            <span class="hidden sm:block text-sm font-semibold text-slate-700 max-w-[120px] truncate">{{ auth()->user()->name }}</span>
-                            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        <button type="button" @click="open = !open" class="flex items-center gap-2.5 pl-1.5 pr-2.5 py-1.5 rounded-full border border-gray-200 bg-white hover:bg-orange-50">
+                            <img class="w-8 h-8 rounded-full ring-2 ring-orange-100" src="https://www.gravatar.com/avatar/{{ md5(auth()->user()->email) }}?d=mp" alt="">
+                            <span class="hidden sm:block text-sm font-semibold text-gray-800 max-w-[120px] truncate">{{ auth()->user()->name }}</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </button>
                         <div x-show="open" @click.away="open = false" x-cloak
-                             class="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden z-50">
-                            <div class="px-4 py-3 border-b border-slate-100">
-                                <p class="text-sm font-semibold text-slate-900 truncate">{{ auth()->user()->name }}</p>
-                                <p class="text-xs text-slate-500 truncate">{{ auth()->user()->email }}</p>
+                             class="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50">
+                            <div class="px-4 py-3 border-b border-gray-100">
+                                <p class="text-sm font-semibold text-gray-900 truncate">{{ auth()->user()->name }}</p>
+                                <p class="text-xs text-gray-500 truncate">{{ auth()->user()->email }}</p>
                             </div>
-                            <a href="{{ route('admin.profile.edit') }}" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50">Profile settings</a>
-                            <a href="{{ route('admin.settings.company-profile.edit') }}" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50">Company profile</a>
+                            <a href="{{ route('admin.profile.edit') }}" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-orange-50 hover:text-[#ff6b35]">Profile settings</a>
+                            <a href="{{ route('admin.settings.company-profile.edit') }}" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-orange-50 hover:text-[#ff6b35]">Company profile</a>
                             <form method="POST" action="{{ route('admin.logout') }}">
                                 @csrf
-                                <button type="submit" class="block w-full text-left px-4 py-2.5 text-sm text-rose-600 hover:bg-rose-50 border-t border-slate-100">Sign out</button>
+                                <button type="submit" class="block w-full text-left px-4 py-2.5 text-sm text-rose-600 hover:bg-rose-50 border-t border-gray-100">Sign out</button>
                             </form>
                         </div>
                     </div>

@@ -19,7 +19,7 @@
             <a href="{{ route('admin.customers.create') }}" class="inline-flex items-center px-4 py-2 rounded-lg border border-slate-200 bg-white text-slate-700 text-sm font-medium hover:bg-slate-50">
                 Onboard Client
             </a>
-            <a href="{{ route('admin.invoices.create') }}" class="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700">
+            <a href="{{ route('admin.invoices.create') }}" class="inline-flex items-center px-4 py-2 rounded-lg admin-btn admin-btn-primary text-sm">
                 Create Invoice
             </a>
         </div>
@@ -32,7 +32,7 @@
                     <p class="text-sm text-slate-500">Revenue this month</p>
                     <p class="text-2xl font-bold text-slate-900 mt-1">₹{{ number_format($orderStats['revenueThisMonth'], 0) }}</p>
                 </div>
-                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-orange-50 text-[#ff6b35] flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/></svg>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <p class="text-sm text-slate-600">{{ $invoiceStats['unpaid'] }} unpaid · {{ $invoiceStats['sentUnpaid'] }} sent</p>
-            <a href="{{ route('admin.invoices.index') }}" class="inline-block text-xs text-blue-600 mt-2 hover:underline">Review receivables →</a>
+            <a href="{{ route('admin.invoices.index') }}" class="inline-block text-xs text-[#ff6b35] mt-2 hover:underline">Review receivables →</a>
         </div>
 
         <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
@@ -67,7 +67,7 @@
                     <p class="text-sm text-slate-500">Clients</p>
                     <p class="text-2xl font-bold text-slate-900 mt-1">{{ $stats['customers'] }}</p>
                 </div>
-                <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-orange-50 text-[#ff6b35] flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     <p class="text-sm text-slate-500">Collection rate</p>
                     <p class="text-2xl font-bold text-slate-900 mt-1">{{ $salesInsights['collectionRate'] }}%</p>
                 </div>
-                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-orange-50 text-[#ff6b35] flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                 </div>
             </div>
@@ -225,7 +225,7 @@
                                 @if($activity['color'] === 'blue') bg-blue-50 text-blue-600
                                 @elseif($activity['color'] === 'emerald') bg-emerald-50 text-emerald-600
                                 @elseif($activity['color'] === 'orange') bg-orange-50 text-orange-600
-                                @elseif($activity['color'] === 'teal') bg-teal-50 text-teal-600
+                                @elseif($activity['color'] === 'teal') bg-orange-50 text-[#ff6b35]
                                 @elseif($activity['color'] === 'purple') bg-violet-50 text-violet-600
                                 @else bg-slate-100 text-slate-600 @endif">
                                 @if(in_array($activity['type'], ['invoice', 'order']))
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         type: 'bar',
                         label: 'Revenue (₹)',
                         data: monthly.map(m => m.revenue),
-                        backgroundColor: 'rgba(37, 99, 235, 0.75)',
+                        backgroundColor: 'rgba(255, 107, 53, 0.82)',
                         borderRadius: 6,
                         yAxisID: 'y',
                         order: 2,
@@ -359,8 +359,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         type: 'line',
                         label: 'Orders',
                         data: monthly.map(m => m.orders),
-                        borderColor: '#0d9488',
-                        backgroundColor: 'rgba(13, 148, 136, 0.15)',
+                        borderColor: '#f7931e',
+                        backgroundColor: 'rgba(247, 147, 30, 0.15)',
                         tension: 0.35,
                         fill: false,
                         yAxisID: 'y1',
@@ -423,8 +423,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 datasets: [{
                     data: total ? values : [1],
                     backgroundColor: total
-                        ? ['#10b981', '#f59e0b', '#0ea5e9', '#f43f5e']
-                        : ['#e2e8f0'],
+                        ? ['#ff6b35', '#f7931e', '#ff8c42', '#f43f5e']
+                        : ['#ececec'],
                     borderWidth: 0,
                 }],
             },

@@ -56,7 +56,7 @@
                         @endforeach
                     </select>
                     @if($customers->isEmpty())
-                        <p class="admin-help">No clients yet. <a href="{{ route('admin.customers.create') }}" class="text-teal-700 underline">Onboard a client</a> first.</p>
+                        <p class="admin-help">No clients yet. <a href="{{ route('admin.customers.create') }}" class="text-[#ff6b35] underline">Onboard a client</a> first.</p>
                     @endif
                 </div>
 
@@ -172,7 +172,7 @@
                             </div>
                             <div class="admin-field">
                                 <label>Line total</label>
-                                <div class="h-[46px] flex items-center px-3 rounded-[10px] bg-teal-50 border border-teal-200 text-sm font-bold text-teal-800" x-text="'₹' + lineTotal(item).toFixed(2)"></div>
+                                <div class="h-[46px] flex items-center px-3 rounded-[10px] bg-orange-50 border border-orange-200 text-sm font-bold text-[#ff6b35]" x-text="'₹' + lineTotal(item).toFixed(2)"></div>
                             </div>
                         </div>
                     </div>
@@ -199,7 +199,7 @@
                     <textarea id="notes" name="notes" rows="3" placeholder="Shown on invoice email">{{ old('notes') }}</textarea>
                 </div>
                 <label class="inline-flex items-center gap-2.5 !mb-0 cursor-pointer">
-                    <input type="checkbox" name="send_now" value="1" @checked(old('send_now')) class="rounded border-slate-300 text-teal-700">
+                    <input type="checkbox" name="send_now" value="1" @checked(old('send_now')) class="rounded border-slate-300 text-[#ff6b35]">
                     <span class="text-sm font-medium text-slate-700">Email invoice with payment link now</span>
                 </label>
                 <div class="admin-actions pt-2">
