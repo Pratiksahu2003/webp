@@ -407,7 +407,6 @@ function exportDashboardData() {
     const data = {
         timestamp: new Date().toISOString(),
         metrics: {
-            pages: 24,
             services: 18,
             blogPosts: 42,
             clients: 156

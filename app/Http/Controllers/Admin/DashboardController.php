@@ -7,7 +7,6 @@ use App\Models\BlogPost;
 use App\Models\ContactLead;
 use App\Models\Media;
 use App\Models\Order;
-use App\Models\Page;
 use App\Models\Service;
 use App\Models\ServicePackage;
 use App\Models\SubService;
@@ -89,9 +88,6 @@ class DashboardController extends Controller
         $monthStart = now()->startOfMonth();
 
         return [
-            'pages' => Page::count(),
-            'pagesThisWeek' => Page::where('created_at', '>=', $weekStart)->count(),
-            'publishedPages' => Page::where('is_published', true)->count(),
             'blogPosts' => BlogPost::count(),
             'blogPostsThisWeek' => BlogPost::where('created_at', '>=', $weekStart)->count(),
             'publishedPosts' => BlogPost::published()->count(),
