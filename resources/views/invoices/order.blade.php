@@ -146,6 +146,62 @@
             padding: 3px 8px;
             margin-bottom: 6px;
         }
+        .bank-wrap {
+            margin-top: 8px;
+            border: 1px solid #ffd4c2;
+            background: #fffaf7;
+        }
+        .bank-head {
+            background: #111827;
+            color: #ffffff;
+            padding: 5px 8px;
+            font-size: 7.5px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .bank-head span {
+            color: #ff8c42;
+        }
+        .bank-body {
+            padding: 7px 8px 8px;
+        }
+        .bank-grid {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .bank-grid td {
+            width: 50%;
+            vertical-align: top;
+            padding: 4px 6px 4px 0;
+        }
+        .bank-grid td + td {
+            padding-left: 10px;
+            border-left: 1px solid #ffe0d0;
+        }
+        .bank-label {
+            display: block;
+            font-size: 6.5px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #c2410c;
+            margin-bottom: 1px;
+        }
+        .bank-value {
+            display: block;
+            font-size: 8.5px;
+            font-weight: 700;
+            color: #111827;
+            word-break: break-all;
+        }
+        .bank-note {
+            margin-top: 5px;
+            padding-top: 5px;
+            border-top: 1px dashed #ffd4c2;
+            font-size: 7px;
+            color: #6b7280;
+        }
         .page-foot {
             margin-top: 8px;
             text-align: center;
@@ -351,6 +407,44 @@
     </tr>
 </table>
 
+@if(!empty($company['bank_name']) || !empty($company['bank_account_number']) || !empty($company['bank_ifsc']))
+@php
+    $bankRows = array_values(array_filter([
+        !empty($company['bank_name']) ? ['Bank Name', $company['bank_name']] : null,
+        !empty($company['bank_account_name']) ? ['Account Holder', $company['bank_account_name']] : null,
+        !empty($company['bank_account_number']) ? ['Account Number', $company['bank_account_number']] : null,
+        !empty($company['bank_ifsc']) ? ['IFSC Code', $company['bank_ifsc']] : null,
+        !empty($company['bank_branch']) ? ['Branch', $company['bank_branch']] : null,
+    ]));
+@endphp
+<div class="bank-wrap">
+    <div class="bank-head">Bank Details <span>for Payment</span></div>
+    <div class="bank-body">
+        <table class="bank-grid">
+            @foreach(array_chunk($bankRows, 2) as $pair)
+                <tr>
+                    <td>
+                        <span class="bank-label">{{ $pair[0][0] }}</span>
+                        <span class="bank-value">{{ $pair[0][1] }}</span>
+                    </td>
+                    <td>
+                        @if(isset($pair[1]))
+                            <span class="bank-label">{{ $pair[1][0] }}</span>
+                            <span class="bank-value">{{ $pair[1][1] }}</span>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+        <div class="bank-note">
+            Please mention invoice number <strong class="ink">{{ $order->order_number }}</strong> in the payment reference.
+            Prefer NEFT / RTGS / IMPS. Cheques should be payable to
+            <strong class="ink">{{ $company['bank_account_name'] ?? $companyName }}</strong>.
+        </div>
+    </div>
+</div>
+@endif
+
 <table style="margin-top: 8px;">
     <tr>
         <td class="footer-box" style="width: 58%;">
@@ -374,23 +468,6 @@
         </td>
     </tr>
 </table>
-
-@if(!empty($company['bank_name']) || !empty($company['bank_account_number']))
-<table style="margin-top: 6px;">
-    <tr>
-        <td class="footer-box">
-            <div class="title">Bank Details</div>
-            <div class="muted">
-                @if(!empty($company['bank_name'])){{ $company['bank_name'] }}@endif
-                @if(!empty($company['bank_account_name'])) · {{ $company['bank_account_name'] }}@endif
-                @if(!empty($company['bank_account_number'])) · A/c {{ $company['bank_account_number'] }}@endif
-                @if(!empty($company['bank_ifsc'])) · IFSC {{ $company['bank_ifsc'] }}@endif
-                @if(!empty($company['bank_branch'])) · {{ $company['bank_branch'] }}@endif
-            </div>
-        </td>
-    </tr>
-</table>
-@endif
 
 <div class="page-foot">
     Subject to {{ $jurisdictionCourt }} jurisdiction.
