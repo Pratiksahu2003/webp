@@ -150,20 +150,20 @@
                                     <p class="text-xs font-semibold uppercase tracking-wider text-slate-400" x-text="'Item ' + (index + 1)"></p>
                                     <button type="button" @click="removeItem(index)" class="text-sm text-rose-600 hover:text-rose-700 disabled:opacity-40" :disabled="lineItems.length === 1">Remove</button>
                                 </div>
-                                <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
-                                    <div class="md:col-span-5 admin-field">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div class="admin-field">
                                         <label>Title *</label>
                                         <input type="text" :name="`line_items[${index}][title]`" x-model="item.title" :required="type === 'custom'" placeholder="e.g. Website redesign">
                                     </div>
-                                    <div class="md:col-span-3 admin-field">
+                                    <div class="admin-field">
                                         <label>Description</label>
                                         <input type="text" :name="`line_items[${index}][description]`" x-model="item.description" placeholder="Optional detail">
                                     </div>
-                                    <div class="md:col-span-2 admin-field">
+                                    <div class="admin-field">
                                         <label>Qty</label>
                                         <input type="number" step="0.01" min="0.01" :name="`line_items[${index}][quantity]`" x-model.number="item.quantity">
                                     </div>
-                                    <div class="md:col-span-2 admin-field">
+                                    <div class="admin-field">
                                         <label>Rate (ex-GST)</label>
                                         <input type="number" step="0.01" min="0" :name="`line_items[${index}][rate]`" x-model.number="item.rate" placeholder="0.00">
                                     </div>
@@ -182,17 +182,24 @@
                     <div class="admin-card-header">
                         <div>
                             <h2>Notes & delivery</h2>
-                            <p>Optional note for the client email</p>
+                            <p>Optional note and email delivery preference</p>
                         </div>
                     </div>
                     <div class="admin-card-body space-y-4">
                         <div class="admin-field">
-                            <label for="notes">Notes</label>
-                            <textarea id="notes" name="notes" rows="3" placeholder="Payment terms, scope notes…">{{ old('notes') }}</textarea>
+                            <label for="notes">Notes for client</label>
+                            <textarea id="notes" name="notes" rows="4" placeholder="Payment terms, scope notes, or anything the client should see…">{{ old('notes') }}</textarea>
                         </div>
-                        <label class="inline-flex items-center gap-2.5 !mb-0 cursor-pointer">
-                            <input type="checkbox" name="send_now" value="1" x-model="sendNow" class="rounded border-slate-300 text-gray-900">
-                            <span class="text-sm font-medium text-slate-700">Email invoice with payment link now</span>
+
+                        <label class="admin-switch" :class="sendNow ? 'is-on' : ''">
+                            <span class="admin-switch-control">
+                                <input type="checkbox" name="send_now" value="1" x-model="sendNow">
+                                <span class="admin-switch-track" aria-hidden="true"></span>
+                            </span>
+                            <span class="admin-switch-copy">
+                                <strong>Email invoice with payment link now</strong>
+                                <span x-text="sendNow ? 'Client receives the tax invoice and pay link immediately after create.' : 'Invoice is saved as draft — send manually later from invoice details.'"></span>
+                            </span>
                         </label>
                     </div>
                 </div>
