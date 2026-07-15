@@ -21,7 +21,8 @@ class PaymentLinkController extends Controller
         if (! $order->canAcceptPayment()) {
             return redirect()
                 ->route('checkout.failure', $order)
-                ->with('error', 'This invoice is no longer payable.');
+                ->with('error', 'This invoice is no longer payable.')
+                ->with('error_type', 'expired');
         }
 
         try {
@@ -29,9 +30,10 @@ class PaymentLinkController extends Controller
             $checkout = $this->checkoutService->checkoutCredentials($payment);
 
             return view('checkout.payment', [
-                'order' => $order->load(['user', 'package', 'subService', 'service']),
+                'order' => $order->fresh()->load(['user', 'package', 'subService', 'service']),
                 'checkout' => $checkout,
                 'isMock' => ! empty($checkout['mock']),
+                'paymentRetryUrl' => $order->signedPaymentUrl(),
             ]);
         } catch (\Throwable $e) {
             Log::error('Payment link initiation failed', [
@@ -39,9 +41,12 @@ class PaymentLinkController extends Controller
                 'error' => $e->getMessage(),
             ]);
 
+            // Always keep a retry path on the signed payment link when unpaid.
             return redirect()
                 ->route('checkout.failure', $order)
-                ->with('error', $e->getMessage() ?: 'Unable to start payment. Please try again.');
+                ->with('error', $e->getMessage() ?: 'Unable to start payment. Please try again.')
+                ->with('error_type', 'failed')
+                ->with('payment_retry_url', $order->signedPaymentUrl());
         }
     }
 }

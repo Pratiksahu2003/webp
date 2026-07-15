@@ -66,9 +66,8 @@ document.addEventListener('alpine:init', () => {
             const data = await response.json();
             this.quickReplies = data.quick_replies || [];
             this.serviceOptions = data.service_options || [];
-            if (data.company?.name) {
-                this.companyName = data.company.name;
-            }
+            // Keep branded casing: VanTroZ
+            this.companyName = 'VanTroZ';
 
             if (this.messages.length === 0 && data.welcome) {
                 this.messages.push({

@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 
 class ChatbotKnowledgeService
 {
-    public const CACHE_KEY = 'chatbot.knowledge.v1';
+    public const CACHE_KEY = 'chatbot.knowledge.v2';
 
     public const CACHE_TTL_SECONDS = 900;
 
@@ -29,7 +29,7 @@ class ChatbotKnowledgeService
 
     protected function build(): array
     {
-        $companyName = (string) config('company.name', 'VanTroZ');
+        $companyName = 'VanTroZ';
         $phone = (string) config('company.contact.phone', '');
         $email = (string) config('company.contact.email', '');
         $address = (string) config('company.address.primary.full', '');

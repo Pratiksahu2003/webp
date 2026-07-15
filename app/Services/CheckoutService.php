@@ -169,14 +169,34 @@ class CheckoutService
 
     public function initiatePayment(Order $order): array
     {
-        $order->load(['user', 'package', 'subService', 'service']);
-        $order->update(['payment_status' => 'processing']);
+        if ($order->isPaid()) {
+            throw new \RuntimeException('This order is already paid.');
+        }
 
-        return $this->nimbbl->createOrder($order, [
-            'name' => $order->user->name,
-            'email' => $order->user->email,
-            'phone' => $order->user->phone,
-        ]);
+        if (! $order->canAcceptPayment()) {
+            throw new \RuntimeException('This invoice is no longer payable.');
+        }
+
+        $order->load(['user', 'package', 'subService', 'service']);
+
+        try {
+            $payment = $this->nimbbl->createOrder($order, [
+                'name' => $order->user->name,
+                'email' => $order->user->email,
+                'phone' => $order->user->phone,
+            ]);
+
+            $order->update(['payment_status' => 'processing']);
+
+            return $payment;
+        } catch (\Throwable $e) {
+            // Keep the order payable so the signed /pay link can be retried.
+            if (! $order->isPaid()) {
+                $order->update(['payment_status' => 'failed']);
+            }
+
+            throw $e;
+        }
     }
 
     public function checkoutCredentials(array $paymentResponse): array

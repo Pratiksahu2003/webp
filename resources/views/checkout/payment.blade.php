@@ -8,6 +8,7 @@
     $service = $order->service;
     $subService = $order->subService;
     $paymentToken = $checkout['token'] ?? null;
+    $paymentRetryUrl = $paymentRetryUrl ?? ($order->canAcceptPayment() ? $order->signedPaymentUrl() : null);
     $failureUrl = route('checkout.failure', $order);
     $mockCallbackUrl = route('payment.callback', [
         'order' => $order->order_number,

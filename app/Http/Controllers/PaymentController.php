@@ -51,11 +51,16 @@ class PaymentController extends Controller
         }
 
         $failure = $this->resolveFailureReason($payload, $request);
-        $order->markAsFailed($payload);
+
+        // Pending/processing should remain retryable without forcing a hard failure stamp.
+        if ($failure['type'] !== 'pending') {
+            $order->markAsFailed($payload);
+        }
 
         return $this->callbackResponse($request, route('checkout.failure', $order), [
             'error' => $failure['message'],
             'error_type' => $failure['type'],
+            'payment_retry_url' => $order->canAcceptPayment() ? $order->signedPaymentUrl() : null,
         ]);
     }
 
@@ -84,8 +89,17 @@ class PaymentController extends Controller
 
         if ($this->nimbbl->verifyCallbackPayload($payload)) {
             $this->completePayment($order, $transactionId ?? 'WH-'.uniqid(), $payload);
-        } else {
-            $order->markAsFailed($payload);
+        } elseif (! $order->isPaid()) {
+            $status = strtolower((string) (
+                $payload['status']
+                ?? $payload['payment_status']
+                ?? $payload['transaction']['status']
+                ?? ''
+            ));
+
+            if (! in_array($status, ['pending', 'processing', 'initiated'], true)) {
+                $order->markAsFailed($payload);
+            }
         }
 
         return response()->json(['success' => true]);
@@ -122,12 +136,17 @@ class PaymentController extends Controller
 
         $errorType = session('error_type', $request->query('reason', 'failed'));
         $message = session('error', $request->query('message'));
+        $paymentRetryUrl = session('payment_retry_url');
 
         if (! in_array($errorType, ['failed', 'cancelled', 'not_found', 'pending', 'expired'], true)) {
             $errorType = 'failed';
         }
 
-        return view('checkout.failure', compact('order', 'errorType', 'message'));
+        if (! $paymentRetryUrl && $order && $order->canAcceptPayment()) {
+            $paymentRetryUrl = $order->signedPaymentUrl();
+        }
+
+        return view('checkout.failure', compact('order', 'errorType', 'message', 'paymentRetryUrl'));
     }
 
     public function downloadInvoice(Request $request, Order $order, InvoicePdfService $invoicePdf)

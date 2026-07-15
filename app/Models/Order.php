@@ -109,7 +109,12 @@ class Order extends Model
 
     public function canAcceptPayment(): bool
     {
-        return in_array($this->payment_status, ['pending', 'processing', 'failed'], true);
+        // Keep the signed /pay link payable until success (or refund).
+        if ($this->isPaid()) {
+            return false;
+        }
+
+        return ! in_array($this->payment_status, ['refunded'], true);
     }
 
     public function displayTitle(): string
@@ -244,11 +249,19 @@ class Order extends Model
 
     public function markAsFailed(array $gatewayResponse = []): void
     {
+        if ($this->isPaid()) {
+            return;
+        }
+
         $this->update(['payment_status' => 'failed']);
 
         $this->transactions()->create([
-            'transaction_id' => $gatewayResponse['transaction_id'] ?? null,
-            'payment_id' => $gatewayResponse['payment_id'] ?? null,
+            'transaction_id' => $gatewayResponse['transaction_id']
+                ?? $gatewayResponse['nimbbl_transaction_id']
+                ?? null,
+            'payment_id' => $gatewayResponse['payment_id']
+                ?? $gatewayResponse['nimbbl_payment_id']
+                ?? null,
             'amount' => $this->amount,
             'gateway_response' => $gatewayResponse,
             'payment_status' => 'failed',

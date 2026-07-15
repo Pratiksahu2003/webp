@@ -38,6 +38,7 @@ class CheckoutController extends Controller
                 'order' => $order->load(['package', 'subService', 'service']),
                 'checkout' => $checkout,
                 'isMock' => ! empty($checkout['mock']),
+                'paymentRetryUrl' => $order->signedPaymentUrl(),
             ]);
         } catch (\Throwable $e) {
             Log::error('Checkout payment initiation failed', [
