@@ -34,5 +34,11 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer(['layouts.website', 'components.footer', 'home'], CatalogNavigationComposer::class);
+
+        try {
+            app(\App\Services\PaymentGatewaySettingsService::class)->applyToConfig();
+        } catch (\Throwable) {
+            // Settings table may not exist during early installs / migrations.
+        }
     }
 }

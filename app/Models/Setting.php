@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
+use Throwable;
 
 class Setting extends Model
 {
@@ -14,20 +16,48 @@ class Setting extends Model
         'value',
         'type',
         'group',
-        'description'
+        'description',
     ];
 
     public static function get($key, $default = null)
     {
         $setting = static::where('key', $key)->first();
-        return $setting ? $setting->value : $default;
+
+        if (! $setting) {
+            return $default;
+        }
+
+        if ($setting->type === 'encrypted') {
+            if ($setting->value === null || $setting->value === '') {
+                return $default;
+            }
+
+            try {
+                return Crypt::decryptString($setting->value);
+            } catch (Throwable) {
+                return $default;
+            }
+        }
+
+        return $setting->value;
     }
 
-    public static function set($key, $value, $type = 'text', $group = 'general')
+    public static function set($key, $value, $type = 'text', $group = 'general', $description = null)
     {
+        $storedValue = $value;
+
+        if ($type === 'encrypted' && $value !== null && $value !== '') {
+            $storedValue = Crypt::encryptString((string) $value);
+        }
+
         return static::updateOrCreate(
             ['key' => $key],
-            ['value' => $value, 'type' => $type, 'group' => $group]
+            [
+                'value' => $storedValue,
+                'type' => $type,
+                'group' => $group,
+                'description' => $description,
+            ]
         );
     }
 

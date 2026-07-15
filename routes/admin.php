@@ -71,6 +71,10 @@ Route::resource('customers', \App\Http\Controllers\Admin\Commerce\CustomerContro
 Route::post('invoices/{invoice}/send', [\App\Http\Controllers\Admin\Commerce\InvoiceController::class, 'send'])->name('invoices.send');
 Route::resource('invoices', \App\Http\Controllers\Admin\Commerce\InvoiceController::class)->only(['index', 'create', 'store', 'show']);
 
+Route::get('settings/payment-gateway', [\App\Http\Controllers\Admin\PaymentGatewayController::class, 'edit'])->name('settings.payment-gateway.edit');
+Route::put('settings/payment-gateway', [\App\Http\Controllers\Admin\PaymentGatewayController::class, 'update'])->name('settings.payment-gateway.update');
+Route::delete('settings/payment-gateway', [\App\Http\Controllers\Admin\PaymentGatewayController::class, 'destroy'])->name('settings.payment-gateway.destroy');
+
 // API Routes for AJAX requests
 Route::prefix('api')->name('api.')->group(function () {
     // Quick actions
