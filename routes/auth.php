@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\TwoFactorChallengeController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,13 @@ Route::get('admin/login', [AdminLoginController::class, 'create'])
     ->name('admin.login');
 
 Route::post('admin/login', [AdminLoginController::class, 'store']);
+
+Route::get('admin/two-factor-challenge', [TwoFactorChallengeController::class, 'create'])
+    ->name('admin.two-factor.challenge');
+
+Route::post('admin/two-factor-challenge', [TwoFactorChallengeController::class, 'store'])
+    ->middleware('throttle:6,1')
+    ->name('admin.two-factor.challenge.store');
 
 Route::middleware('guest')->group(function () {
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])

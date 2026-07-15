@@ -29,6 +29,15 @@ class ProfileUpdateRequest extends FormRequest
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
             'phone' => ['nullable', 'string', 'max:30'],
+            'avatar' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+            'remove_avatar' => ['nullable', 'boolean'],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'remove_avatar' => $this->boolean('remove_avatar'),
+        ]);
     }
 }

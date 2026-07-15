@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -23,6 +24,7 @@ class User extends Authenticatable
         'password',
         'role',
         'phone',
+        'avatar',
         'company_name',
         'address_line_1',
         'address_line_2',
@@ -40,6 +42,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
     ];
 
     /**
@@ -52,6 +56,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'two_factor_confirmed_at' => 'datetime',
         ];
     }
 
@@ -86,5 +91,19 @@ class User extends Authenticatable
             $this->country,
             $this->postal_code,
         ])->filter()->implode(', ');
+    }
+
+    public function hasEnabledTwoFactor(): bool
+    {
+        return filled($this->two_factor_secret) && filled($this->two_factor_confirmed_at);
+    }
+
+    public function avatarUrl(): string
+    {
+        if (filled($this->avatar) && Storage::disk('public')->exists($this->avatar)) {
+            return Storage::disk('public')->url($this->avatar);
+        }
+
+        return 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?d=mp&s=200';
     }
 }

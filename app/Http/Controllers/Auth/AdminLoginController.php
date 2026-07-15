@@ -30,6 +30,20 @@ class AdminLoginController extends Controller
     {
         $request->authenticateAdmin();
 
+        $user = $request->user();
+        $remember = $request->boolean('remember');
+
+        if ($user->hasEnabledTwoFactor()) {
+            Auth::logout();
+
+            $request->session()->put([
+                'login.id' => $user->id,
+                'login.remember' => $remember,
+            ]);
+
+            return redirect()->route('admin.two-factor.challenge');
+        }
+
         $request->session()->regenerate();
 
         return redirect()->intended(route('admin.dashboard', absolute: false));

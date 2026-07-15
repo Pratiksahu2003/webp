@@ -65,7 +65,7 @@
                     </a>
                     <div x-data="{ open: false }" class="relative">
                         <button type="button" @click="open = !open" class="flex items-center gap-2.5 pl-1.5 pr-2.5 py-1.5 rounded-full border border-gray-200 bg-white hover:bg-gray-100">
-                            <img class="w-8 h-8 rounded-full ring-2 ring-gray-200" src="https://www.gravatar.com/avatar/{{ md5(auth()->user()->email) }}?d=mp" alt="">
+                            <img class="w-8 h-8 rounded-full ring-2 ring-gray-200 object-cover" src="{{ auth()->user()->avatarUrl() }}" alt="">
                             <span class="hidden sm:block text-sm font-semibold text-gray-800 max-w-[120px] truncate">{{ auth()->user()->name }}</span>
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </button>
