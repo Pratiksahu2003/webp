@@ -34,23 +34,22 @@
 <body class="font-sans antialiased text-gray-900 bg-white ios-smooth-scroll">
     <!-- Clean Professional Navigation -->
     <nav id="navbar" class="fixed w-full top-0 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed font-sans">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center ios-safe-area-padding" style="padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));">
-            <div class="navbar-shell h-16">
-                <!-- Clean Logo Section -->
-                <div class="navbar-brand flex-shrink-0">
-                    <a href="{{ route('home') }}" class="flex items-center">
-                        <img src="{{ asset('logo/logo.png') }}" alt="{{ config('company.name') }} Logo" class="h-8 w-auto sm:h-8">
+        <div class="navbar-container">
+            <div class="navbar-shell">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a href="{{ route('home') }}" class="navbar-brand-link" aria-label="{{ config('company.name') }} home">
+                        <img src="{{ asset('logo/logo.png') }}" alt="{{ config('company.name') }} Logo" width="160" height="40">
                     </a>
                 </div>
 
-                <!-- Desktop Navigation (xl+ only — prevents overlap on tablets / small laptops) -->
+                <!-- Desktop / large-tablet navigation -->
                 <div class="navbar-center">
                     @if(isset($catalogServices) && $catalogServices->isNotEmpty())
-                    <!-- Services mega menu — desktop -->
                     <div class="relative group navbar-mega-menu">
-                        <button type="button" class="navbar-link flex items-center">
+                        <button type="button" class="navbar-link flex items-center gap-1">
                             Services
-                            <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
@@ -76,38 +75,37 @@
                     </div>
                     @endif
 
-                    <x-nav-service-menu :service="$webDevelopmentService" label="Website Development" short-label="Website Development" />
+                    <x-nav-service-menu :service="$webDevelopmentService" label="Website Development" short-label="Website" />
 
-                    <x-nav-service-menu :service="$softwareDevelopmentService" label="Software Development" short-label="Software Development" />
+                    <x-nav-service-menu :service="$softwareDevelopmentService" label="Software Development" short-label="Software" />
 
                     <x-nav-service-menu :service="$designService" label="Design" all-label="All Design" />
 
                     <x-nav-service-menu :service="$digitalMarketingService" label="Digital Marketing" short-label="Marketing" />
 
-                    <a href="{{ route('about') }}" class="navbar-link whitespace-nowrap">About Us</a>
+                    <a href="{{ route('about') }}" class="navbar-link whitespace-nowrap">
+                        <span class="navbar-link-short">About</span>
+                        <span class="navbar-link-full">About Us</span>
+                    </a>
                 </div>
 
-                <!-- Desktop phone & CTA -->
+                <!-- Desktop actions -->
                 <div class="navbar-actions">
                     <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" id="navbar-phone" class="navbar-phone" aria-label="Call {{ config('company.contact.phone') }}">
                         <x-country-flag />
                         <span class="navbar-phone-number">{{ config('company.contact.phone') }}</span>
                     </a>
 
-                    <a href="{{ route('contact') }}" class="navbar-cta">
-                        Contact Us
-                    </a>
+                    <a href="{{ route('contact') }}" class="navbar-cta">Contact Us</a>
 
                     @auth
                     @if(auth()->user()->isAdmin())
-                    <a href="{{ route('admin.dashboard') }}" class="navbar-admin-link">
-                        Admin
-                    </a>
+                    <a href="{{ route('admin.dashboard') }}" class="navbar-admin-link">Admin</a>
                     @endif
                     @endauth
                 </div>
 
-                <!-- Tablet + small-laptop phone (desktop actions take over at xl) -->
+                <!-- Mobile / tablet actions -->
                 <div class="navbar-mobile-actions">
                     <a href="tel:{{ preg_replace('/[^\d+]/', '', config('company.contact.phone')) }}" class="navbar-phone navbar-phone--compact" aria-label="Call {{ config('company.contact.phone') }}">
                         <x-country-flag />

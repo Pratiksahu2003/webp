@@ -11,14 +11,14 @@
     $allLinkLabel = $allLabel ?? 'All ' . $menuLabel;
 @endphp
 <div class="relative group">
-    <button type="button" class="navbar-link flex items-center whitespace-nowrap">
+    <button type="button" class="navbar-link flex items-center gap-1 whitespace-nowrap">
         @if($shortLabel)
         <span class="navbar-link-short">{{ $shortLabel }}</span>
         <span class="navbar-link-full">{{ $menuLabel }}</span>
         @else
         {{ $menuLabel }}
         @endif
-        <svg class="w-3 h-3 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>
     </button>

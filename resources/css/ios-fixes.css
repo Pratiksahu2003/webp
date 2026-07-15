@@ -817,6 +817,7 @@
         background: #ffffff;
     }
 
+    #navbar > .navbar-container,
     #navbar > .max-w-7xl {
         height: 4rem;
         min-height: 4rem;
