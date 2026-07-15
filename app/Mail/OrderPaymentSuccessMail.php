@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Order;
+use App\Services\CompanyProfileService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
@@ -27,8 +28,18 @@ class OrderPaymentSuccessMail extends Mailable
 
     public function content(): Content
     {
+        $companyProfile = app(CompanyProfileService::class);
+        $company = $companyProfile->all();
+
         return new Content(
-            markdown: 'emails.orders.payment-success',
+            view: 'emails.orders.payment-success',
+            with: [
+                'company' => $company,
+                'companyName' => $company['legal_name'] ?? config('company.name'),
+                'supportEmail' => $company['email'] ?? config('company.contact.email'),
+                'supportPhone' => $company['phone'] ?? config('company.contact.phone'),
+                'logoUrl' => url('/logo/logo.png'),
+            ],
         );
     }
 }
