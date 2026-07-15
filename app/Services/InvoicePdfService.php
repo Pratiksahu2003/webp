@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\Order;
+use App\Support\IndianCurrency;
+use App\Support\IndianGstStates;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Barryvdh\DomPDF\PDF as DomPdf;
 use Illuminate\Http\Response;
@@ -18,6 +20,15 @@ class InvoicePdfService
         $order->loadMissing(['user', 'service', 'subService', 'package', 'transactions']);
 
         $company = $this->companyProfile->all();
+        $invoiceDate = $order->invoiceDate();
+        $dueDate = $invoiceDate->copy()->addDays(14);
+        $sellerState = (string) ($company['state'] ?? '');
+        $sellerCode = (string) ($company['state_code'] ?? IndianGstStates::codeFor($sellerState) ?? '');
+        $buyerState = (string) ($order->place_of_supply ?: ($order->user->state ?? ''));
+        $buyerCode = (string) (IndianGstStates::codeFor($buyerState) ?? '');
+        $supplyLabel = $buyerState !== ''
+            ? trim($buyerState.($buyerCode !== '' ? " ({$buyerCode})" : ''))
+            : '—';
 
         return Pdf::loadView('invoices.order', [
             'order' => $order,
@@ -25,8 +36,17 @@ class InvoicePdfService
             'companyAddress' => $this->companyProfile->fullAddress(),
             'logoPath' => $this->resolveLogoDataUri(),
             'items' => $order->lineItemsForDisplay(),
-            'jurisdictionClause' => $this->companyProfile->jurisdictionClause(),
             'jurisdictionCourt' => $this->companyProfile->jurisdictionCourt(),
+            'invoiceDate' => $invoiceDate,
+            'dueDate' => $dueDate,
+            'sellerState' => $sellerState,
+            'sellerCode' => $sellerCode,
+            'buyerState' => $buyerState,
+            'buyerCode' => $buyerCode,
+            'supplyLabel' => $supplyLabel,
+            'supplyType' => $order->is_interstate ? 'Inter-State' : 'Intra-State',
+            'amountInWords' => IndianCurrency::inWords((float) $order->amount),
+            'paymentMode' => strtoupper((string) ($order->payment_gateway ?: 'nimbbl')),
         ])
             ->setPaper('a4', 'portrait')
             ->setOption('isHtml5ParserEnabled', true)
@@ -65,7 +85,7 @@ class InvoicePdfService
                 continue;
             }
 
-            $resized = $this->resizeImageForPdf($path, 220);
+            $resized = $this->resizeImageForPdf($path, 240);
 
             if ($resized) {
                 return $resized;
