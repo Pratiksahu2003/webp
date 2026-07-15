@@ -40,6 +40,7 @@ class UpdateCompanyProfileRequest extends FormRequest
             'default_hsn_sac' => ['nullable', 'string', 'max:20'],
             'invoice_prefix' => ['nullable', 'string', 'max:20'],
             'invoice_terms' => ['nullable', 'string', 'max:5000'],
+            'jurisdiction_court' => ['nullable', 'string', 'max:255'],
             'place_of_supply_default' => ['nullable', 'string', 'max:100', Rule::in(IndianGstStates::validationValues())],
         ];
     }

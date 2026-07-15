@@ -22,6 +22,7 @@ class StoreInvoiceRequest extends FormRequest
             'type' => ['required', Rule::in(['package', 'custom'])],
             'package_id' => ['required_if:type,package', 'nullable', 'exists:packages,id'],
             'invoice_title' => ['nullable', 'string', 'max:255'],
+            'invoice_date' => ['required', 'date', 'before_or_equal:today'],
             'notes' => ['nullable', 'string', 'max:5000'],
             'place_of_supply' => ['nullable', 'string', 'max:100'],
             'buyer_gstin' => ['nullable', 'string', 'max:15'],
@@ -110,6 +111,9 @@ class StoreInvoiceRequest extends FormRequest
             'invoice_title' => filled($this->input('invoice_title'))
                 ? trim((string) $this->input('invoice_title'))
                 : null,
+            'invoice_date' => filled($this->input('invoice_date'))
+                ? $this->input('invoice_date')
+                : now()->toDateString(),
         ]);
     }
 }

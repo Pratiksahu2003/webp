@@ -118,6 +118,7 @@
                 <h2 class="font-semibold mb-3">Status</h2>
                 <p><span class="text-gray-500">Payment:</span> <strong>{{ ucfirst($invoice->payment_status) }}</strong></p>
                 <p><span class="text-gray-500">Created:</span> {{ $invoice->created_at->format('M d, Y H:i') }}</p>
+                <p><span class="text-gray-500">Invoice date:</span> {{ $invoice->invoiceDate()->format('M d, Y') }}</p>
                 <p><span class="text-gray-500">Sent:</span> {{ $invoice->invoice_sent_at?->format('M d, Y H:i') ?? 'Not sent' }}</p>
                 <p><span class="text-gray-500">Paid at:</span> {{ $invoice->paid_at?->format('M d, Y H:i') ?? '—' }}</p>
                 <p><span class="text-gray-500">Transaction:</span> {{ $invoice->transaction_id ?? '—' }}</p>

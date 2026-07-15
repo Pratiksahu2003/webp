@@ -16,7 +16,7 @@ class Order extends Model
     protected $fillable = [
         'order_number', 'source', 'user_id', 'service_id', 'sub_service_id', 'package_id',
         'amount', 'subtotal', 'tax_amount', 'cgst_amount', 'sgst_amount', 'igst_amount',
-        'is_interstate', 'place_of_supply', 'buyer_gstin', 'invoice_title', 'line_items',
+        'is_interstate', 'place_of_supply', 'buyer_gstin', 'invoice_title', 'invoice_date', 'line_items',
         'payment_gateway', 'payment_status', 'transaction_id', 'customer_message', 'notes',
         'billing_details', 'paid_at', 'invoice_sent_at',
     ];
@@ -31,6 +31,7 @@ class Order extends Model
         'is_interstate' => 'boolean',
         'billing_details' => 'array',
         'line_items' => 'array',
+        'invoice_date' => 'date',
         'paid_at' => 'datetime',
         'invoice_sent_at' => 'datetime',
     ];
@@ -193,6 +194,11 @@ class Order extends Model
     public function taxableSubtotal(): float
     {
         return (float) ($this->subtotal ?? collect($this->lineItemsForDisplay())->sum('taxable_amount'));
+    }
+
+    public function invoiceDate(): \Carbon\CarbonInterface
+    {
+        return $this->invoice_date ?? $this->created_at ?? now();
     }
 
     public function markAsPaid(string $transactionId, array $gatewayResponse = []): bool

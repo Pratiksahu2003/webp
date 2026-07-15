@@ -25,6 +25,8 @@ class InvoicePdfService
             'companyAddress' => $this->companyProfile->fullAddress(),
             'logoPath' => $this->resolveLogoDataUri(),
             'items' => $order->lineItemsForDisplay(),
+            'jurisdictionClause' => $this->companyProfile->jurisdictionClause(),
+            'jurisdictionCourt' => $this->companyProfile->jurisdictionCourt(),
         ])
             ->setPaper('a4', 'portrait')
             ->setOption('isHtml5ParserEnabled', true)

@@ -114,9 +114,16 @@
                             </label>
                         </div>
 
-                        <div class="admin-field">
-                            <label for="invoice_title">Invoice title <span class="font-normal text-slate-400">(optional)</span></label>
-                            <input id="invoice_title" type="text" name="invoice_title" value="{{ old('invoice_title') }}" placeholder="Auto-uses first item or package name">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="admin-field">
+                                <label for="invoice_date">Invoice date *</label>
+                                <input id="invoice_date" type="date" name="invoice_date" value="{{ old('invoice_date', now()->toDateString()) }}" max="{{ now()->toDateString() }}" required>
+                                <p class="admin-help">Defaults to today. You can choose an earlier closing date.</p>
+                            </div>
+                            <div class="admin-field">
+                                <label for="invoice_title">Invoice title <span class="font-normal text-slate-400">(optional)</span></label>
+                                <input id="invoice_title" type="text" name="invoice_title" value="{{ old('invoice_title') }}" placeholder="Auto-uses first item or package name">
+                            </div>
                         </div>
 
                         <div x-show="type === 'package'" x-cloak class="admin-field">

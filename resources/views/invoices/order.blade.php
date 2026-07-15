@@ -182,7 +182,7 @@
             <table class="meta" style="width: 100%; margin-top: 10px;">
                 <tr>
                     <td class="label text-right">Date</td>
-                    <td class="text-right fw-600">{{ $order->created_at->format('d M Y') }}</td>
+                    <td class="text-right fw-600">{{ $order->invoiceDate()->format('d M Y') }}</td>
                 </tr>
                 <tr>
                     <td class="label text-right">Status</td>
@@ -346,6 +346,14 @@
     <div class="text-muted">{{ $company['invoice_terms'] }}</div>
 </div>
 @endif
+
+<div class="box">
+    <div class="heading">Jurisdiction</div>
+    <div class="text-muted">{{ $jurisdictionClause }}</div>
+    @if(!empty($jurisdictionCourt))
+        <div style="margin-top: 6px;" class="fw-700">Subject to {{ $jurisdictionCourt }} courts only.</div>
+    @endif
+</div>
 
 @if($order->transaction_id)
 <p class="text-muted" style="margin-top: 10px; font-size: 9px;">Transaction ID: {{ $order->transaction_id }}</p>

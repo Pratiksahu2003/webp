@@ -42,6 +42,7 @@ class CompanyProfileService
             'default_hsn_sac' => '998314',
             'invoice_prefix' => 'INV',
             'invoice_terms' => 'Payment due as per the payment link. Goods/services once delivered are non-refundable except as per company policy.',
+            'jurisdiction_court' => trim((config('company.address.primary.city', 'Gurugram').', '.config('company.address.primary.state', 'Haryana')), ' ,'),
             'place_of_supply_default' => config('company.address.primary.state', 'Haryana'),
         ];
     }
@@ -109,6 +110,28 @@ class CompanyProfileService
             trim(($p['state'] ?? '').' '.($p['postal_code'] ?? '')),
             $p['country'] ?? null,
         ])->filter()->implode(', ');
+    }
+
+    public function jurisdictionCourt(): string
+    {
+        $profile = $this->all();
+        $configured = trim((string) ($profile['jurisdiction_court'] ?? ''));
+
+        if ($configured !== '') {
+            return $configured;
+        }
+
+        return collect([
+            $profile['city'] ?? null,
+            $profile['state'] ?? null,
+        ])->filter()->implode(', ') ?: 'Gurugram, Haryana';
+    }
+
+    public function jurisdictionClause(): string
+    {
+        $court = $this->jurisdictionCourt();
+
+        return "All legal, judicial and dispute matters arising from or relating to this invoice shall be subject to the exclusive jurisdiction of the competent courts at {$court}, where the company is registered. Courts elsewhere shall have no jurisdiction.";
     }
 
     public function isGstRegistered(): bool

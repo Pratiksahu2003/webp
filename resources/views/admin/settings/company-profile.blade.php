@@ -105,9 +105,17 @@
         </div>
 
         <div class="admin-card">
-            <div class="admin-card-header"><div><h2>Invoice terms</h2></div></div>
+            <div class="admin-card-header"><div><h2>Invoice terms & jurisdiction</h2><div class="text-sm text-slate-500 font-normal mt-1">Shown on every tax invoice PDF</div></div></div>
             <div class="admin-card-body space-y-4">
-                <div class="admin-field"><label class="sr-only">Terms</label><textarea name="invoice_terms" rows="4">{{ old('invoice_terms', $profile['invoice_terms']) }}</textarea></div>
+                <div class="admin-field">
+                    <label>Invoice terms</label>
+                    <textarea name="invoice_terms" rows="4">{{ old('invoice_terms', $profile['invoice_terms']) }}</textarea>
+                </div>
+                <div class="admin-field">
+                    <label>Registered court / jurisdiction</label>
+                    <input type="text" name="jurisdiction_court" value="{{ old('jurisdiction_court', $profile['jurisdiction_court'] ?? trim(($profile['city'] ?? '').', '.($profile['state'] ?? ''), ' ,')) }}" placeholder="e.g. Gurugram, Haryana">
+                    <p class="admin-help">All legal &amp; judicial disputes on invoices are subject only to this local registered court.</p>
+                </div>
                 <div class="admin-actions"><button type="submit" class="admin-btn admin-btn-primary">Save Company Profile</button></div>
             </div>
         </div>
