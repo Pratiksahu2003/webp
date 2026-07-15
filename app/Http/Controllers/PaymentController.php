@@ -213,7 +213,9 @@ class PaymentController extends Controller
         try {
             $order->load(['user', 'service', 'subService', 'package']);
 
-            Mail::to($order->user->email)->send(
+            app(\App\Services\SmtpSettingsService::class)->assertReadyToSend();
+
+            Mail::mailer('smtp')->to($order->user->email)->send(
                 new OrderPaymentSuccessMail($order, $order->signedInvoiceUrl())
             );
         } catch (\Throwable $e) {

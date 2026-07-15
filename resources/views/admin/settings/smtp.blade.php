@@ -59,10 +59,22 @@
                 </div>
             @endif
 
-            <label class="inline-flex items-center gap-2.5 !mb-0 cursor-pointer">
-                <input type="checkbox" name="enabled" value="1" @checked(old('enabled', $settings['enabled'])) class="rounded border-slate-300 text-gray-900">
-                <span class="text-sm font-medium text-slate-700">Use these SMTP settings for all outbound mail</span>
+            <label class="admin-switch {{ old('enabled', $settings['enabled']) ? 'is-on' : '' }}">
+                <span class="admin-switch-control">
+                    <input type="checkbox" name="enabled" value="1" @checked(old('enabled', $settings['enabled'] || filled($settings['host'])))>
+                    <span class="admin-switch-track" aria-hidden="true"></span>
+                </span>
+                <span class="admin-switch-copy">
+                    <strong>Use these SMTP settings for all outbound mail</strong>
+                    <span>Must stay on — otherwise emails only write to the server log and clients will not receive them.</span>
+                </span>
             </label>
+
+            @if(! $settings['enabled'] && filled($settings['host']))
+                <div class="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+                    SMTP details are saved but delivery was previously off (log mode). Saving again or sending mail will activate them automatically.
+                </div>
+            @endif
 
             <div class="admin-grid-2">
                 <div class="admin-field">

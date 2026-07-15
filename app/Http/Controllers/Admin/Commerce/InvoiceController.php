@@ -84,7 +84,15 @@ class InvoiceController extends Controller
         $order = $this->checkoutService->createAdminInvoice($customer, $request->validated());
 
         if ($request->boolean('send_now')) {
-            $this->invoiceService->send($order);
+            try {
+                $this->invoiceService->send($order);
+            } catch (\Throwable $e) {
+                report($e);
+
+                return redirect()
+                    ->route('admin.invoices.show', $order)
+                    ->with('error', 'Invoice created, but email failed: '.$e->getMessage());
+            }
 
             return redirect()
                 ->route('admin.invoices.show', $order)
@@ -119,7 +127,15 @@ class InvoiceController extends Controller
                 ->with('error', 'This invoice is already paid.');
         }
 
-        $this->invoiceService->send($invoice);
+        try {
+            $this->invoiceService->send($invoice);
+        } catch (\Throwable $e) {
+            report($e);
+
+            return redirect()
+                ->route('admin.invoices.show', $invoice)
+                ->with('error', $e->getMessage());
+        }
 
         return redirect()
             ->route('admin.invoices.show', $invoice)

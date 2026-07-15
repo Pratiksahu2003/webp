@@ -6,6 +6,7 @@ use App\Models\Setting;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
+use RuntimeException;
 use Throwable;
 
 class SmtpSettingsService
@@ -55,7 +56,7 @@ class SmtpSettingsService
         $hasPassword = filled(Setting::get(self::PASSWORD_KEY)) || filled(config('mail.mailers.smtp.password'));
         $enabled = (bool) ($merged['enabled'] ?? false);
         $host = (string) ($merged['host'] ?? '');
-        $fromDashboard = $enabled && filled($host);
+        $fromDashboard = $enabled && filled($host) && filled($merged['username'] ?? null) && $hasPassword;
 
         return [
             'enabled' => $enabled,
@@ -66,8 +67,9 @@ class SmtpSettingsService
             'from_address' => (string) ($merged['from_address'] ?? ''),
             'from_name' => (string) ($merged['from_name'] ?? ''),
             'is_configured' => $fromDashboard
-                ? (filled($host) && filled($merged['username'] ?? null) && $hasPassword)
-                : (in_array(config('mail.default'), ['smtp', 'failover'], true) && filled(config('mail.mailers.smtp.host'))),
+                || (in_array(config('mail.default'), ['smtp', 'failover'], true)
+                    && filled(config('mail.mailers.smtp.host'))
+                    && filled(config('mail.mailers.smtp.username'))),
             'source' => $fromDashboard
                 ? 'dashboard'
                 : ((config('mail.default') !== 'log' && filled(config('mail.mailers.smtp.host'))) ? 'environment' : 'none'),
@@ -86,21 +88,39 @@ class SmtpSettingsService
         }
 
         $stored = $this->storedMeta();
+        $password = Setting::get(self::PASSWORD_KEY);
+
+        if ($this->credentialsAreComplete($stored, $password) && ! ($stored['enabled'] ?? false)) {
+            $stored['enabled'] = true;
+            Setting::set(self::SETTING_KEY, $stored, 'json', self::GROUP, 'SMTP mail configuration');
+        }
 
         if (! ($stored['enabled'] ?? false) || blank($stored['host'] ?? null)) {
             return;
         }
 
         $encryption = $this->normalizeEncryption($stored['encryption'] ?? 'tls');
-        $scheme = $encryption === 'ssl' ? 'smtps' : null;
-        $password = Setting::get(self::PASSWORD_KEY);
+        $port = (int) ($stored['port'] ?? ($encryption === 'ssl' ? 465 : 587));
 
         Config::set('mail.default', 'smtp');
         Config::set('mail.mailers.smtp.transport', 'smtp');
+        Config::set('mail.mailers.smtp.url', null);
         Config::set('mail.mailers.smtp.host', $stored['host']);
-        Config::set('mail.mailers.smtp.port', (int) ($stored['port'] ?? 587));
+        Config::set('mail.mailers.smtp.port', $port);
         Config::set('mail.mailers.smtp.username', $stored['username'] ?? null);
-        Config::set('mail.mailers.smtp.scheme', $scheme);
+        Config::set('mail.mailers.smtp.timeout', 30);
+
+        if ($encryption === 'ssl') {
+            Config::set('mail.mailers.smtp.scheme', 'smtps');
+            Config::set('mail.mailers.smtp.encryption', 'ssl');
+        } elseif ($encryption === 'none') {
+            Config::set('mail.mailers.smtp.scheme', null);
+            Config::set('mail.mailers.smtp.encryption', null);
+        } else {
+            // STARTTLS on 587
+            Config::set('mail.mailers.smtp.scheme', null);
+            Config::set('mail.mailers.smtp.encryption', 'tls');
+        }
 
         if (filled($password)) {
             Config::set('mail.mailers.smtp.password', $password);
@@ -115,7 +135,27 @@ class SmtpSettingsService
         }
 
         Mail::purge('smtp');
-        Mail::purge();
+        Mail::forgetMailers();
+    }
+
+    /**
+     * Ensure dashboard/env SMTP is active before sending user-facing mail.
+     */
+    public function assertReadyToSend(): void
+    {
+        $this->applyToConfig();
+
+        if (config('mail.default') === 'log') {
+            throw new RuntimeException(
+                'Email delivery is still using the log driver. Open Settings → SMTP / Email, turn on “Use these SMTP settings”, save, then send a test email.'
+            );
+        }
+
+        if (blank(config('mail.mailers.smtp.host')) || blank(config('mail.from.address'))) {
+            throw new RuntimeException(
+                'SMTP host or From address is missing. Complete Settings → SMTP / Email and save again.'
+            );
+        }
     }
 
     /**
@@ -134,6 +174,15 @@ class SmtpSettingsService
             'from_name' => trim((string) ($data['from_name'] ?? '')),
         ];
 
+        // Saving complete credentials without the checkbox usually means the admin intended to go live.
+        $password = array_key_exists('password', $data) && filled($data['password'])
+            ? (string) $data['password']
+            : Setting::get(self::PASSWORD_KEY);
+
+        if (! $payload['enabled'] && $this->credentialsAreComplete($payload, $password)) {
+            $payload['enabled'] = true;
+        }
+
         Setting::set(self::SETTING_KEY, $payload, 'json', self::GROUP, 'SMTP mail configuration');
 
         if (array_key_exists('password', $data) && filled($data['password'])) {
@@ -149,11 +198,13 @@ class SmtpSettingsService
     {
         Setting::where('key', self::SETTING_KEY)->delete();
         Setting::where('key', self::PASSWORD_KEY)->delete();
+        Mail::purge('smtp');
+        Mail::forgetMailers();
     }
 
     public function sendTest(string $toEmail): void
     {
-        $this->applyToConfig();
+        $this->assertReadyToSend();
 
         $fromAddress = config('mail.from.address');
         $fromName = config('mail.from.name');
@@ -171,6 +222,17 @@ class SmtpSettingsService
                 }
             }
         );
+    }
+
+    /**
+     * @param  array<string, mixed>  $stored
+     */
+    protected function credentialsAreComplete(array $stored, mixed $password): bool
+    {
+        return filled($stored['host'] ?? null)
+            && filled($stored['username'] ?? null)
+            && filled($stored['from_address'] ?? null)
+            && filled($password);
     }
 
     /**
