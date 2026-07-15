@@ -94,6 +94,12 @@ class InvoiceTaxCalculator
 
     protected function normalizeState(?string $state): string
     {
+        $canonical = \App\Support\IndianGstStates::canonicalName($state);
+
+        if ($canonical !== null) {
+            return strtolower($canonical);
+        }
+
         return strtolower(trim(preg_replace('/\s+/', ' ', (string) $state) ?? ''));
     }
 }

@@ -10,22 +10,24 @@
             <h1 class="text-2xl font-bold text-gray-900">Services</h1>
             <p class="text-gray-600 mt-1">Manage main service offerings</p>
         </div>
-        <a href="{{ route('admin.services.create') }}" class="mt-4 sm:mt-0 inline-flex items-center px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+        <a href="{{ route('admin.services.create') }}" class="mt-4 sm:mt-0 admin-btn admin-btn-primary">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
             Add Service
         </a>
     </div>
 
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
-        <form class="flex flex-col sm:flex-row gap-4">
-            <input type="text" name="search" placeholder="Search services..." value="{{ request('search') }}" class="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
-            <select name="status" class="border border-gray-300 rounded-lg px-3 py-2">
-                <option value="">All Status</option>
-                <option value="1" @selected(request('status')==='1')>Active</option>
-                <option value="0" @selected(request('status')==='0')>Inactive</option>
-            </select>
-            <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">Filter</button>
-        </form>
+    <div class="admin-card mb-6">
+        <div class="admin-card-body">
+            <form method="GET" class="admin-filter">
+                <input type="text" name="search" placeholder="Search services..." value="{{ request('search') }}">
+                <select name="status">
+                    <option value="">All statuses</option>
+                    <option value="1" @selected(request('status')==='1')>Active</option>
+                    <option value="0" @selected(request('status')==='0')>Inactive</option>
+                </select>
+                <button type="submit" class="admin-btn admin-btn-primary">Filter</button>
+            </form>
+        </div>
     </div>
 
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
@@ -55,7 +57,7 @@
                         <td class="px-6 py-4">
                             <label class="inline-flex items-center cursor-pointer">
                                 <input type="checkbox" class="status-toggle sr-only peer" @checked($service->status) data-url="{{ route('admin.services.toggle-status', $service) }}">
-                                <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+                                <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-[#ff6b35] after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
                             </label>
                         </td>
                         <td class="px-6 py-4">

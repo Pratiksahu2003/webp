@@ -22,23 +22,21 @@
 
     <div class="admin-card mb-5">
         <div class="admin-card-body">
-            <form class="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
-                <div class="md:col-span-6 admin-field">
-                    <label>Search</label>
-                    <input type="text" name="search" placeholder="Invoice number, client..." value="{{ request('search') }}">
+            <form method="GET" class="admin-filter-grid">
+                <div class="admin-field">
+                    <label for="invoice-search">Search</label>
+                    <input id="invoice-search" type="text" name="search" placeholder="Invoice number, client..." value="{{ request('search') }}">
                 </div>
-                <div class="md:col-span-4 admin-field">
-                    <label>Status</label>
-                    <select name="payment_status">
+                <div class="admin-field">
+                    <label for="invoice-status">Status</label>
+                    <select id="invoice-status" name="payment_status">
                         <option value="">All statuses</option>
                         @foreach(\App\Models\Order::PAYMENT_STATUSES as $s)
                             <option value="{{ $s }}" @selected(request('payment_status')==$s)>{{ ucfirst($s) }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="md:col-span-2">
-                    <button class="admin-btn admin-btn-primary w-full">Filter</button>
-                </div>
+                <button type="submit" class="admin-btn admin-btn-primary">Filter</button>
             </form>
         </div>
     </div>
@@ -78,13 +76,13 @@
                         </td>
                         <td class="px-5 py-4 text-sm text-slate-500">{{ $invoice->invoice_sent_at?->format('M d, Y') ?? '—' }}</td>
                         <td class="px-5 py-4 text-right">
-                            <a href="{{ route('admin.invoices.show', $invoice) }}" class="text-sm font-semibold text-gray-900 hover:text-black">View</a>
+                            <a href="{{ route('admin.invoices.show', $invoice) }}" class="text-sm font-semibold text-[#ff6b35] hover:text-[#ea580c]">View</a>
                         </td>
                     </tr>
                     @empty
                     <tr>
                         <td colspan="7" class="px-5 py-12 text-center text-slate-500">
-                            No invoices yet. <a href="{{ route('admin.invoices.create') }}" class="text-gray-900 font-semibold">Create one</a>
+                            No invoices yet. <a href="{{ route('admin.invoices.create') }}" class="text-[#ff6b35] font-semibold hover:text-[#ea580c]">Create one</a>
                         </td>
                     </tr>
                     @endforelse

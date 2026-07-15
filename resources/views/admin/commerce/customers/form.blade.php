@@ -44,10 +44,12 @@
             <label>City *</label>
             <input type="text" name="city" value="{{ old('city', $c->city ?? '') }}" required>
         </div>
-        <div class="admin-field">
-            <label>State *</label>
-            <input type="text" name="state" value="{{ old('state', $c->state ?? '') }}" required>
-        </div>
+        <x-admin.india-state-select
+            name="state"
+            :value="old('state', $c->state ?? '')"
+            label="State"
+            :required="true"
+        />
         <div class="admin-field">
             <label>Country *</label>
             <input type="text" name="country" value="{{ old('country', $c->country ?? 'India') }}" required>

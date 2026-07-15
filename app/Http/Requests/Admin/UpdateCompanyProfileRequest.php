@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Support\IndianGstStates;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCompanyProfileRequest extends FormRequest
 {
@@ -21,7 +23,7 @@ class UpdateCompanyProfileRequest extends FormRequest
             'address_line_1' => ['required', 'string', 'max:255'],
             'address_line_2' => ['nullable', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:100'],
-            'state' => ['required', 'string', 'max:100'],
+            'state' => ['required', 'string', 'max:100', Rule::in(IndianGstStates::validationValues())],
             'state_code' => ['nullable', 'string', 'max:2'],
             'postal_code' => ['nullable', 'string', 'max:20'],
             'country' => ['required', 'string', 'max:100'],
@@ -38,16 +40,24 @@ class UpdateCompanyProfileRequest extends FormRequest
             'default_hsn_sac' => ['nullable', 'string', 'max:20'],
             'invoice_prefix' => ['nullable', 'string', 'max:20'],
             'invoice_terms' => ['nullable', 'string', 'max:5000'],
-            'place_of_supply_default' => ['nullable', 'string', 'max:100'],
+            'place_of_supply_default' => ['nullable', 'string', 'max:100', Rule::in(IndianGstStates::validationValues())],
         ];
     }
 
     protected function prepareForValidation(): void
     {
+        $state = IndianGstStates::canonicalName($this->input('state'));
+        $place = $this->filled('place_of_supply_default')
+            ? IndianGstStates::canonicalName($this->input('place_of_supply_default'))
+            : null;
+
         $this->merge([
             'pan' => $this->filled('pan') ? strtoupper(trim((string) $this->input('pan'))) : null,
             'gstin' => $this->filled('gstin') ? strtoupper(trim((string) $this->input('gstin'))) : null,
             'bank_ifsc' => $this->filled('bank_ifsc') ? strtoupper(trim((string) $this->input('bank_ifsc'))) : null,
+            'state' => $state ?: $this->input('state'),
+            'state_code' => $state ? IndianGstStates::codeFor($state) : $this->input('state_code'),
+            'place_of_supply_default' => $place,
         ]);
     }
 }

@@ -8,7 +8,7 @@
             <h1 class="text-2xl font-bold text-gray-900">Contact Leads</h1>
             <p class="text-gray-600 mt-1">Track and manage Contact Us form submissions</p>
         </div>
-        <a href="{{ route('admin.contact-leads.export', request()->query()) }}" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Export CSV</a>
+        <a href="{{ route('admin.contact-leads.export', request()->query()) }}" class="admin-btn admin-btn-ink">Export CSV</a>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
@@ -18,17 +18,19 @@
         @endforeach
     </div>
 
-    <div class="bg-white rounded-xl border border-gray-200 p-6 mb-6">
-        <form class="flex flex-col md:flex-row gap-4">
-            <input type="text" name="search" placeholder="Search name, email, company, phone, IP..." value="{{ request('search') }}" class="flex-1 border border-gray-300 rounded-lg px-3 py-2">
-            <select name="status" class="border border-gray-300 rounded-lg px-3 py-2">
-                <option value="">All statuses</option>
-                @foreach(\App\Models\ContactLead::STATUSES as $status)
-                <option value="{{ $status }}" @selected(request('status') === $status)>{{ ucfirst($status) }}</option>
-                @endforeach
-            </select>
-            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">Filter</button>
-        </form>
+    <div class="admin-card mb-6">
+        <div class="admin-card-body">
+            <form method="GET" class="admin-filter">
+                <input type="text" name="search" placeholder="Search name, email, company, phone, IP..." value="{{ request('search') }}">
+                <select name="status">
+                    <option value="">All statuses</option>
+                    @foreach(\App\Models\ContactLead::STATUSES as $status)
+                        <option value="{{ $status }}" @selected(request('status') === $status)>{{ ucfirst($status) }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" class="admin-btn admin-btn-primary">Filter</button>
+            </form>
+        </div>
     </div>
 
     <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">

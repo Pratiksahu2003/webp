@@ -79,7 +79,19 @@ class CompanyProfileService
         $profile = array_merge($this->all(), $data);
 
         $profile['default_gst_rate'] = (float) ($profile['default_gst_rate'] ?? 18);
-        $profile['state_code'] = $this->normalizeStateCode((string) ($profile['state_code'] ?? ''));
+
+        $canonicalState = \App\Support\IndianGstStates::canonicalName($profile['state'] ?? null);
+        if ($canonicalState) {
+            $profile['state'] = $canonicalState;
+            $profile['state_code'] = \App\Support\IndianGstStates::codeFor($canonicalState) ?? $this->normalizeStateCode((string) ($profile['state_code'] ?? ''));
+        } else {
+            $profile['state_code'] = $this->normalizeStateCode((string) ($profile['state_code'] ?? ''));
+        }
+
+        $canonicalPlace = \App\Support\IndianGstStates::canonicalName($profile['place_of_supply_default'] ?? null);
+        if ($canonicalPlace) {
+            $profile['place_of_supply_default'] = $canonicalPlace;
+        }
 
         Setting::set(self::SETTING_KEY, $profile, 'json', self::GROUP, 'Company invoice & tax profile');
 

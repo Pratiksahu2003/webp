@@ -1,4 +1,4 @@
-/* VanTroZ Admin Design System — white + black */
+/* VanTroZ Admin Design System — white + black + orange */
 
 :root {
     --admin-bg: #ffffff;
@@ -9,11 +9,12 @@
     --admin-text: #111827;
     --admin-text-muted: #6b7280;
     --admin-text-soft: #9ca3af;
-    --admin-primary: #111827;
-    --admin-primary-hover: #000000;
-    --admin-primary-soft: #f3f4f6;
-    --admin-primary-mid: #374151;
-    --admin-accent: #111827;
+    --admin-ink: #111827;
+    --admin-primary: #ff6b35;
+    --admin-primary-hover: #ea580c;
+    --admin-primary-soft: #fff4ef;
+    --admin-primary-mid: #ff8c42;
+    --admin-accent: #ff6b35;
     --admin-danger: #e11d48;
     --admin-warning: #d97706;
     --admin-success: #059669;
@@ -23,7 +24,7 @@
     --admin-shadow-lg: 0 10px 32px rgba(17, 24, 39, 0.07);
     --admin-sidebar-w: 268px;
     --admin-font: "Plus Jakarta Sans", "Segoe UI", sans-serif;
-    --admin-gradient: linear-gradient(135deg, #111827 0%, #1f2937 55%, #000000 100%);
+    --admin-gradient: linear-gradient(135deg, #ff6b35 0%, #f7931e 55%, #ff8c42 100%);
 }
 
 html, body {
@@ -224,7 +225,7 @@ main select:focus,
 main textarea:focus {
     outline: none !important;
     border-color: var(--admin-primary) !important;
-    box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.12) !important;
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.18) !important;
 }
 
 .admin-content input[type="checkbox"],
@@ -265,9 +266,9 @@ main input[type="radio"] {
 }
 
 .admin-switch.is-on {
-    background: #111827;
-    border-color: #111827;
-    color: #fff !important;
+    background: var(--admin-primary-soft);
+    border-color: #ffd4c2;
+    color: var(--admin-ink) !important;
 }
 
 .admin-switch-control {
@@ -301,7 +302,7 @@ main input[type="radio"] {
 }
 
 .admin-switch.is-on .admin-switch-track {
-    background: #fff;
+    background: var(--admin-primary);
 }
 
 .admin-switch-track::after {
@@ -319,7 +320,7 @@ main input[type="radio"] {
 
 .admin-switch.is-on .admin-switch-track::after {
     transform: translateX(18px);
-    background: #111827;
+    background: #fff;
 }
 
 .admin-switch-copy {
@@ -456,29 +457,43 @@ main input[type="radio"] {
     transition: all 0.15s ease;
     text-decoration: none;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .admin-btn-primary {
-    background: var(--admin-gradient);
-    color: #fff;
-    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.22);
+    background: var(--admin-gradient) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.28);
 }
 
 .admin-btn-primary:hover {
     filter: brightness(1.05);
-    color: #fff;
+    color: #fff !important;
+}
+
+.admin-btn-ink {
+    background: #111827 !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.2);
+}
+
+.admin-btn-ink:hover {
+    background: #000 !important;
+    color: #fff !important;
 }
 
 .admin-btn-secondary {
-    background: #fff;
-    border-color: var(--admin-border);
-    color: #374151;
+    background: #fff !important;
+    border-color: var(--admin-border) !important;
+    color: #374151 !important;
 }
 
 .admin-btn-secondary:hover {
-    background: var(--admin-surface-soft);
-    color: var(--admin-text);
-    border-color: var(--admin-primary-mid);
+    background: var(--admin-surface-soft) !important;
+    color: var(--admin-text) !important;
+    border-color: var(--admin-primary-mid) !important;
 }
 
 .admin-btn-ghost {
@@ -489,6 +504,75 @@ main input[type="radio"] {
 .admin-btn-ghost:hover {
     color: var(--admin-primary);
     background: var(--admin-primary-soft);
+}
+
+/* Shared list Filter / Search bars */
+.admin-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 12px;
+}
+
+.admin-filter > input,
+.admin-filter > select,
+.admin-filter .admin-filter-grow,
+.admin-filter .admin-filter-grow > input,
+.admin-filter .admin-filter-grow > select {
+    flex: 1 1 200px;
+    min-width: 0;
+    width: auto !important;
+    max-width: none;
+}
+
+.admin-filter > select {
+    flex: 0 1 220px;
+}
+
+.admin-filter > .admin-btn,
+.admin-filter > button.admin-btn,
+.admin-filter > a.admin-btn {
+    flex: 0 0 auto;
+    width: auto !important;
+    min-height: 46px;
+    align-self: stretch;
+}
+
+.admin-filter-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    align-items: end;
+}
+
+@media (min-width: 768px) {
+    .admin-filter-grid {
+        grid-template-columns: minmax(0, 1.4fr) minmax(180px, 0.7fr) auto;
+    }
+
+    .admin-filter-grid.admin-filter-grid-search {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .admin-filter-grid.admin-filter-grid-multi {
+        grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(140px, 0.55fr)) auto;
+    }
+}
+
+.admin-filter-grid .admin-field {
+    margin: 0;
+}
+
+.admin-filter-grid .admin-btn {
+    min-height: 46px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .admin-filter-grid .admin-btn {
+        width: auto;
+        min-width: 110px;
+    }
 }
 
 .admin-alert {
@@ -650,12 +734,12 @@ main thead th {
 .zoho-btn-primary {
     background: var(--admin-gradient);
     color: #fff;
-    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.22);
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.28);
 }
 .zoho-btn-outline {
     background: #fff;
     color: var(--admin-primary);
-    border: 1px solid var(--admin-border-strong);
+    border: 1px solid #ffd4c2;
 }
 .zoho-btn-outline:hover {
     background: var(--admin-primary-soft);
@@ -667,71 +751,58 @@ main thead th {
     .admin-card-body { padding: 16px; }
 }
 
-/* Remap leftover blue/teal/orange utilities to black across admin */
+/* Remap leftover blue/teal utilities to brand orange accents */
 .admin-shell .text-blue-600,
 .admin-shell .text-blue-700,
 .admin-shell .text-teal-600,
 .admin-shell .text-teal-700,
-.admin-shell .text-orange-600,
-.admin-shell .text-orange-700,
 .admin-shell .hover\:text-blue-700:hover,
-.admin-shell .hover\:text-teal-800:hover,
-.admin-shell .hover\:text-orange-700:hover {
+.admin-shell .hover\:text-teal-800:hover {
     color: var(--admin-primary) !important;
 }
 
 .admin-shell .bg-blue-600,
-.admin-shell .bg-teal-600,
-.admin-shell .bg-orange-600 {
+.admin-shell .bg-teal-600 {
     background-color: var(--admin-primary) !important;
 }
 
 .admin-shell .hover\:bg-blue-700:hover,
-.admin-shell .hover\:bg-teal-700:hover,
-.admin-shell .hover\:bg-orange-700:hover {
+.admin-shell .hover\:bg-teal-700:hover {
     background-color: var(--admin-primary-hover) !important;
 }
 
 .admin-shell .bg-blue-50,
-.admin-shell .bg-teal-50,
-.admin-shell .bg-orange-50 {
+.admin-shell .bg-teal-50 {
     background-color: var(--admin-primary-soft) !important;
 }
 
 .admin-shell .hover\:bg-blue-100:hover,
-.admin-shell .hover\:bg-teal-100:hover,
-.admin-shell .hover\:bg-orange-100:hover {
-    background-color: #e5e7eb !important;
+.admin-shell .hover\:bg-teal-100:hover {
+    background-color: #ffe8dc !important;
 }
 
-.admin-shell .bg-blue-100,
-.admin-shell .bg-orange-100 {
-    background-color: #e5e7eb !important;
+.admin-shell .bg-blue-100 {
+    background-color: #ffe8dc !important;
 }
 
 .admin-shell .text-blue-800,
-.admin-shell .text-teal-800,
-.admin-shell .text-orange-800 {
-    color: #111827 !important;
+.admin-shell .text-teal-800 {
+    color: #9a3412 !important;
 }
 
 .admin-shell .border-blue-200,
-.admin-shell .border-teal-200,
-.admin-shell .border-orange-200 {
-    border-color: #d1d5db !important;
+.admin-shell .border-teal-200 {
+    border-color: #ffd4c2 !important;
 }
 
 .admin-shell .ring-blue-500,
-.admin-shell .ring-orange-100,
 .admin-shell .focus\:ring-blue-500:focus,
 .admin-shell .focus\:border-blue-500:focus {
-    --tw-ring-color: rgba(17, 24, 39, 0.2) !important;
+    --tw-ring-color: rgba(255, 107, 53, 0.35) !important;
     border-color: var(--admin-primary) !important;
 }
 
-.admin-shell .text-\[\#ff6b35\],
-.admin-shell .hover\:text-\[\#ff6b35\]:hover,
-.admin-shell .hover\:text-\[\#f7931e\]:hover {
+.admin-shell a.text-gray-900:hover {
     color: var(--admin-primary) !important;
 }
 
@@ -745,8 +816,8 @@ main thead th {
 }
 
 .admin-line-item:focus-within {
-    border-color: #d1d5db;
-    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.06);
+    border-color: #ffd4c2;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.12);
 }
 
 .admin-line-meta {
@@ -775,12 +846,58 @@ main thead th {
 }
 
 .admin-line-pill.is-total {
-    background: #111827;
-    color: #fff;
+    background: var(--admin-primary-soft);
+    color: var(--admin-primary);
 }
 
 .admin-line-pill.is-total strong {
-    color: #fff;
+    color: #c2410c;
+}
+
+.admin-stat {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    padding: 16px 18px;
+    box-shadow: var(--admin-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-stat::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--admin-primary);
+}
+
+.admin-stat-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--admin-text-muted);
+}
+
+.admin-stat-value {
+    margin-top: 6px;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--admin-ink);
+    letter-spacing: -0.03em;
+}
+
+.admin-empty {
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--admin-text-muted);
+}
+
+.admin-empty strong {
+    color: var(--admin-ink);
 }
 
 .admin-line-hsn {

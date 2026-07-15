@@ -43,8 +43,26 @@
                     <div class="admin-field span-2"><label>Address line 1 *</label><input type="text" name="address_line_1" value="{{ old('address_line_1', $profile['address_line_1']) }}" required></div>
                     <div class="admin-field span-2"><label>Address line 2</label><input type="text" name="address_line_2" value="{{ old('address_line_2', $profile['address_line_2']) }}"></div>
                     <div class="admin-field"><label>City *</label><input type="text" name="city" value="{{ old('city', $profile['city']) }}" required></div>
-                    <div class="admin-field"><label>State *</label><input type="text" name="state" value="{{ old('state', $profile['state']) }}" required></div>
-                    <div class="admin-field"><label>GST state code</label><input type="text" name="state_code" value="{{ old('state_code', $profile['state_code']) }}" maxlength="2" placeholder="06"></div>
+                    <div class="contents" x-data="{
+                        state: @js(\App\Support\IndianGstStates::canonicalName(old('state', $profile['state'])) ?? old('state', $profile['state'])),
+                        codes: @js(\App\Support\IndianGstStates::all()),
+                        get code() {
+                            const entry = Object.entries(this.codes).find(([, name]) => name === this.state);
+                            return entry ? entry[0] : '';
+                        }
+                    }">
+                        <x-admin.india-state-select
+                            name="state"
+                            :value="old('state', $profile['state'])"
+                            label="State"
+                            x-model="state"
+                        />
+                        <div class="admin-field">
+                            <label for="state_code">GST state code</label>
+                            <input id="state_code" type="text" name="state_code" :value="code" value="{{ old('state_code', $profile['state_code']) }}" maxlength="2" readonly>
+                            <p class="admin-help">Auto-filled from GST state mapping</p>
+                        </div>
+                    </div>
                     <div class="admin-field"><label>PIN code</label><input type="text" name="postal_code" value="{{ old('postal_code', $profile['postal_code']) }}"></div>
                     <div class="admin-field"><label>Country *</label><input type="text" name="country" value="{{ old('country', $profile['country']) }}" required></div>
                 </div>
@@ -61,7 +79,13 @@
                     <div class="admin-field"><label>CIN</label><input type="text" name="cin" value="{{ old('cin', $profile['cin']) }}"></div>
                     <div class="admin-field"><label>Default GST %</label><input type="number" step="0.01" min="0" max="100" name="default_gst_rate" value="{{ old('default_gst_rate', $profile['default_gst_rate']) }}" required><p class="admin-help">Example: 18 → final = price + 18% GST</p></div>
                     <div class="admin-field"><label>Default HSN / SAC</label><input type="text" name="default_hsn_sac" value="{{ old('default_hsn_sac', $profile['default_hsn_sac']) }}"></div>
-                    <div class="admin-field"><label>Default place of supply</label><input type="text" name="place_of_supply_default" value="{{ old('place_of_supply_default', $profile['place_of_supply_default']) }}"></div>
+                    <x-admin.india-state-select
+                        name="place_of_supply_default"
+                        :value="old('place_of_supply_default', $profile['place_of_supply_default'])"
+                        label="Default place of supply"
+                        :required="false"
+                        placeholder="Same as company state if empty"
+                    />
                     <div class="admin-field"><label>Invoice prefix</label><input type="text" name="invoice_prefix" value="{{ old('invoice_prefix', $profile['invoice_prefix']) }}"></div>
                 </div>
             </div>

@@ -153,73 +153,31 @@
         </div>
     </div>
 
-    <!-- Enhanced Search and Filters -->
-    <div class="zoho-card animate-slide-up mb-8">
-        <div class="p-6">
-            <form method="GET" action="{{ route('admin.blog-posts.index') }}" class="space-y-4">
-                <div class="flex flex-col lg:flex-row gap-4">
-                    <!-- Search Input -->
-            <div class="flex-1">
-                <label for="search" class="sr-only">Search posts</label>
-                <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </div>
-                    <input type="text" 
-                           id="search" 
-                           name="search" 
-                                   placeholder="Search by title, content, author..." 
-                           value="{{ request('search') }}"
-                                   class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 hover:bg-white transition-colors">
-                </div>
-            </div>
-
-                    <!-- Filter Controls -->
-                    <div class="flex flex-wrap items-center gap-3">
-                        <!-- Status Filter -->
-                        <select name="status" class="border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 hover:bg-white transition-colors">
-                    <option value="">All Status</option>
-                            <option value="published" {{ request('status') === 'published' ? 'selected' : '' }}>Published</option>
-                            <option value="draft" {{ request('status') === 'draft' ? 'selected' : '' }}>Draft</option>
-                            <option value="scheduled" {{ request('status') === 'scheduled' ? 'selected' : '' }}>Scheduled</option>
+    <div class="admin-card mb-8">
+        <div class="admin-card-body">
+            <form method="GET" action="{{ route('admin.blog-posts.index') }}" class="admin-filter">
+                <input type="text" id="search" name="search" placeholder="Search by title, content, author…" value="{{ request('search') }}">
+                <select name="status">
+                    <option value="">All statuses</option>
+                    <option value="published" @selected(request('status') === 'published')>Published</option>
+                    <option value="draft" @selected(request('status') === 'draft')>Draft</option>
+                    <option value="scheduled" @selected(request('status') === 'scheduled')>Scheduled</option>
                 </select>
-
-                        <!-- Category Filter -->
-                        <select name="category" class="border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 hover:bg-white transition-colors">
-                    <option value="">All Categories</option>
-                            @foreach($categories as $category)
-                                <option value="{{ $category }}" {{ request('category') === $category ? 'selected' : '' }}>{{ $category }}</option>
-                            @endforeach
-                        </select>
-
-                        <!-- Featured Filter -->
-                        <select name="featured" class="border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 hover:bg-white transition-colors">
-                            <option value="">All Posts</option>
-                            <option value="1" {{ request('featured') === '1' ? 'selected' : '' }}>Featured Only</option>
-                            <option value="0" {{ request('featured') === '0' ? 'selected' : '' }}>Not Featured</option>
+                <select name="category">
+                    <option value="">All categories</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category }}" @selected(request('category') === $category)>{{ $category }}</option>
+                    @endforeach
                 </select>
-
-                        <!-- Filter Button -->
-                        <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium">
-                            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z"></path>
-                            </svg>
-                    Filter
-                </button>
-
-                        <!-- Clear Filters -->
-                        @if(request()->hasAny(['search', 'status', 'category', 'featured']))
-                            <a href="{{ route('admin.blog-posts.index') }}" class="px-4 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors">
-                                <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                </svg>
-                                Clear
-                            </a>
-                        @endif
-            </div>
-                </div>
+                <select name="featured">
+                    <option value="">All posts</option>
+                    <option value="1" @selected(request('featured') === '1')>Featured only</option>
+                    <option value="0" @selected(request('featured') === '0')>Not featured</option>
+                </select>
+                <button type="submit" class="admin-btn admin-btn-primary">Filter</button>
+                @if(request()->hasAny(['search', 'status', 'category', 'featured']))
+                    <a href="{{ route('admin.blog-posts.index') }}" class="admin-btn admin-btn-secondary">Clear</a>
+                @endif
             </form>
         </div>
     </div>

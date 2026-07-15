@@ -16,10 +16,10 @@
             <p class="text-slate-600 mt-1">Sales, invoices, clients, and site health in one place.</p>
         </div>
         <div class="flex flex-wrap gap-2">
-            <a href="{{ route('admin.customers.create') }}" class="inline-flex items-center px-4 py-2 rounded-lg border border-slate-200 bg-white text-slate-700 text-sm font-medium hover:bg-slate-50">
+            <a href="{{ route('admin.customers.create') }}" class="admin-btn admin-btn-ink text-sm">
                 Onboard Client
             </a>
-            <a href="{{ route('admin.invoices.create') }}" class="inline-flex items-center px-4 py-2 rounded-lg admin-btn admin-btn-primary text-sm">
+            <a href="{{ route('admin.invoices.create') }}" class="admin-btn admin-btn-primary text-sm">
                 Create Invoice
             </a>
         </div>
@@ -32,7 +32,7 @@
                     <p class="text-sm text-slate-500">Revenue this month</p>
                     <p class="text-2xl font-bold text-slate-900 mt-1">₹{{ number_format($orderStats['revenueThisMonth'], 0) }}</p>
                 </div>
-                <div class="w-10 h-10 rounded-xl bg-gray-100 text-gray-900 flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-[#fff4ef] text-[#ff6b35] flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/></svg>
                 </div>
             </div>
@@ -53,12 +53,12 @@
                     <p class="text-sm text-slate-500">Outstanding invoices</p>
                     <p class="text-2xl font-bold text-slate-900 mt-1">₹{{ number_format($invoiceStats['outstandingAmount'], 0) }}</p>
                 </div>
-                <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-[#fff4ef] text-[#111827] flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"/></svg>
                 </div>
             </div>
             <p class="text-sm text-slate-600">{{ $invoiceStats['unpaid'] }} unpaid · {{ $invoiceStats['sentUnpaid'] }} sent</p>
-            <a href="{{ route('admin.invoices.index') }}" class="inline-block text-xs text-gray-900 mt-2 hover:underline">Review receivables →</a>
+            <a href="{{ route('admin.invoices.index') }}" class="inline-block text-xs text-[#ff6b35] mt-2 font-semibold hover:text-[#ea580c]">Review receivables →</a>
         </div>
 
         <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
@@ -67,7 +67,7 @@
                     <p class="text-sm text-slate-500">Clients</p>
                     <p class="text-2xl font-bold text-slate-900 mt-1">{{ $stats['customers'] }}</p>
                 </div>
-                <div class="w-10 h-10 rounded-xl bg-gray-100 text-gray-900 flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-[#111827] text-[#ff6b35] flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     <p class="text-sm text-slate-500">Collection rate</p>
                     <p class="text-2xl font-bold text-slate-900 mt-1">{{ $salesInsights['collectionRate'] }}%</p>
                 </div>
-                <div class="w-10 h-10 rounded-xl bg-gray-100 text-gray-900 flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-[#fff4ef] text-[#111827] flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                 </div>
             </div>
