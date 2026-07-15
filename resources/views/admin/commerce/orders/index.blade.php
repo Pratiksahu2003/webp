@@ -36,7 +36,7 @@
         </tr></thead><tbody class="divide-y divide-gray-200">@foreach($orders as $order)<tr class="hover:bg-gray-50">
             <td class="px-6 py-4 font-medium">{{ $order->order_number }}</td>
             <td class="px-6 py-4"><div>{{ $order->user->name }}</div><div class="text-sm text-gray-500">{{ $order->user->email }}</div></td>
-            <td class="px-6 py-4 text-sm">{{ $order->subService->title }} / {{ $order->package->package_name }}</td>
+            <td class="px-6 py-4 text-sm">{{ $order->displayTitle() }}</td>
             <td class="px-6 py-4 text-sm">₹{{ number_format($order->amount,2) }}</td>
             <td class="px-6 py-4"><span class="px-2 py-1 text-xs rounded-full bg-gray-100">{{ ucfirst($order->payment_status) }}</span></td>
             <td class="px-6 py-4 text-sm">{{ $order->created_at->format('M d, Y') }}</td>

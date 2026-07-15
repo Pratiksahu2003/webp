@@ -6,8 +6,13 @@ Hi {{ $order->user->name }},
 Thank you for your payment. Your order **{{ $order->order_number }}** has been confirmed.
 
 **Order details**
+- **Item:** {{ $order->displayTitle() }}
+@if($order->service || $order->subService)
 - **Service:** {{ $order->service->title ?? 'N/A' }} — {{ $order->subService->title ?? 'N/A' }}
-- **Package:** {{ $order->package->package_name ?? 'N/A' }}
+@endif
+@if($order->package)
+- **Package:** {{ $order->package->package_name }}
+@endif
 - **Amount paid:** ₹{{ number_format($order->amount, 2) }}
 @if($order->transaction_id)
 - **Transaction ID:** {{ $order->transaction_id }}

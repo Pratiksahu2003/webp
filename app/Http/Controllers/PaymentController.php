@@ -131,8 +131,6 @@ class PaymentController extends Controller
 
     public function downloadInvoice(Request $request, Order $order)
     {
-        abort_unless($order->payment_status === 'paid', 404);
-
         $order->load(['user', 'service', 'subService', 'package', 'transactions']);
 
         return view('invoices.order', compact('order'));

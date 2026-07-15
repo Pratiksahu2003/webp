@@ -41,6 +41,7 @@ Route::post('/checkout/{package}', [\App\Http\Controllers\CheckoutController::cl
 Route::match(['get', 'post'], '/payment/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])->name('payment.callback');
 Route::post('/payment/webhook', [\App\Http\Controllers\PaymentController::class, 'webhook'])->name('payment.webhook');
 Route::get('/invoice/{order}/download', [\App\Http\Controllers\PaymentController::class, 'downloadInvoice'])->name('invoice.download')->middleware('signed');
+Route::get('/pay/{order}', [\App\Http\Controllers\PaymentLinkController::class, 'show'])->name('payment.link')->middleware('signed');
 
 // Admin Routes - Registered in bootstrap/app.php
 

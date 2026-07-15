@@ -21,16 +21,90 @@ class CheckoutService
             $user = $this->resolveUser($data);
             $package->load(['subService.service']);
 
+            $lineItems = [[
+                'title' => $package->package_name,
+                'description' => trim($package->subService->service->title.' — '.$package->subService->title),
+                'quantity' => 1,
+                'rate' => (float) $package->final_price,
+            ]];
+
             return Order::create([
                 'user_id' => $user->id,
+                'source' => 'checkout',
                 'service_id' => $package->subService->service_id,
                 'sub_service_id' => $package->sub_service_id,
                 'package_id' => $package->id,
                 'amount' => $package->final_price,
+                'invoice_title' => $package->package_name,
+                'line_items' => $lineItems,
                 'payment_gateway' => 'nimbbl',
                 'payment_status' => 'pending',
                 'customer_message' => $data['customer_message'] ?? null,
                 'billing_details' => $this->billingDetails($data),
+            ]);
+        });
+    }
+
+    public function createAdminInvoice(User $client, array $data): Order
+    {
+        return DB::transaction(function () use ($client, $data) {
+            $type = $data['type'] ?? 'custom';
+            $billing = $this->billingDetailsFromUser($client);
+
+            if ($type === 'package') {
+                $package = ServicePackage::with(['subService.service'])->findOrFail($data['package_id']);
+
+                $lineItems = [[
+                    'title' => $package->package_name,
+                    'description' => trim($package->subService->service->title.' — '.$package->subService->title),
+                    'quantity' => 1,
+                    'rate' => (float) $package->final_price,
+                ]];
+
+                return Order::create([
+                    'user_id' => $client->id,
+                    'source' => 'admin',
+                    'service_id' => $package->subService->service_id,
+                    'sub_service_id' => $package->sub_service_id,
+                    'package_id' => $package->id,
+                    'amount' => $package->final_price,
+                    'invoice_title' => $data['invoice_title'] ?? $package->package_name,
+                    'line_items' => $lineItems,
+                    'payment_gateway' => 'nimbbl',
+                    'payment_status' => 'pending',
+                    'notes' => $data['notes'] ?? null,
+                    'billing_details' => $billing,
+                ]);
+            }
+
+            $lineItems = collect($data['line_items'] ?? [])
+                ->map(function ($item) {
+                    return [
+                        'title' => trim((string) ($item['title'] ?? '')),
+                        'description' => trim((string) ($item['description'] ?? '')),
+                        'quantity' => (float) ($item['quantity'] ?? 1),
+                        'rate' => (float) ($item['rate'] ?? 0),
+                    ];
+                })
+                ->filter(fn ($item) => $item['title'] !== '')
+                ->values()
+                ->all();
+
+            $amount = collect($lineItems)->sum(fn ($item) => round($item['quantity'] * $item['rate'], 2));
+
+            return Order::create([
+                'user_id' => $client->id,
+                'source' => 'admin',
+                'service_id' => null,
+                'sub_service_id' => null,
+                'package_id' => null,
+                'amount' => $amount,
+                'invoice_title' => $data['invoice_title'] ?? ($lineItems[0]['title'] ?? 'Custom Invoice'),
+                'line_items' => $lineItems,
+                'payment_gateway' => 'nimbbl',
+                'payment_status' => 'pending',
+                'notes' => $data['notes'] ?? null,
+                'billing_details' => $billing,
             ]);
         });
     }
@@ -52,7 +126,7 @@ class CheckoutService
         return $this->nimbbl->checkoutCredentials($paymentResponse);
     }
 
-    protected function resolveUser(array $data): User
+    public function resolveUser(array $data): User
     {
         $user = User::where('email', $data['email'])->first();
 
@@ -82,7 +156,7 @@ class CheckoutService
         ]));
     }
 
-    protected function billingDetails(array $data): array
+    public function billingDetails(array $data): array
     {
         return [
             'name' => $data['name'],
@@ -96,5 +170,21 @@ class CheckoutService
             'country' => $data['country'],
             'postal_code' => $data['postal_code'],
         ];
+    }
+
+    public function billingDetailsFromUser(User $user): array
+    {
+        return $this->billingDetails([
+            'name' => $user->name,
+            'email' => $user->email,
+            'phone' => $user->phone ?? '',
+            'company_name' => $user->company_name,
+            'address_line_1' => $user->address_line_1 ?? '',
+            'address_line_2' => $user->address_line_2,
+            'city' => $user->city ?? '',
+            'state' => $user->state ?? '',
+            'country' => $user->country ?? 'India',
+            'postal_code' => $user->postal_code ?? '',
+        ]);
     }
 }

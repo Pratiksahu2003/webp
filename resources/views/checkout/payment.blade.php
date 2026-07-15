@@ -32,8 +32,8 @@
             <p class="text-gray-600 mb-8">Order <strong>{{ $order->order_number }}</strong></p>
 
             <div class="max-w-md mx-auto bg-gray-50 rounded-xl p-6 mb-8 text-left">
-                <p class="text-sm text-gray-500">Package</p>
-                <p class="font-semibold mb-3">{{ $order->package->package_name ?? 'Service Package' }}</p>
+                <p class="text-sm text-gray-500">{{ $order->isCustom() ? 'Invoice' : 'Package' }}</p>
+                <p class="font-semibold mb-3">{{ $order->displayTitle() }}</p>
                 @if($subService)
                     <p class="text-sm text-gray-500">Sub-Service</p>
                     <p class="font-semibold mb-3">{{ $subService->title }}</p>

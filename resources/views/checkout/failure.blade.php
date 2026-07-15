@@ -83,6 +83,11 @@
                                 <p class="text-gray-500">Package</p>
                                 <p class="font-semibold text-gray-900">{{ $package->package_name }}</p>
                             </div>
+                        @elseif($order)
+                            <div>
+                                <p class="text-gray-500">Invoice</p>
+                                <p class="font-semibold text-gray-900">{{ $order->displayTitle() }}</p>
+                            </div>
                         @endif
                         @if($subService)
                             <div>

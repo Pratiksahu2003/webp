@@ -25,6 +25,14 @@ class AppServiceProvider extends ServiceProvider
             return \App\Models\ServicePackage::findOrFail($value);
         });
 
+        \Illuminate\Support\Facades\Route::bind('invoice', function ($value) {
+            return \App\Models\Order::where('source', 'admin')->findOrFail($value);
+        });
+
+        \Illuminate\Support\Facades\Route::bind('customer', function ($value) {
+            return \App\Models\User::where('role', 'user')->findOrFail($value);
+        });
+
         View::composer(['layouts.website', 'components.footer', 'home'], CatalogNavigationComposer::class);
     }
 }

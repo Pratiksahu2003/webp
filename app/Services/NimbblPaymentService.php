@@ -35,12 +35,7 @@ class NimbblPaymentService
             ],
             'shipping_address' => $this->nimbblAddress($address, 'Home'),
             'billing_address' => $this->nimbblAddress($address, 'Other'),
-            'order_line_items' => [[
-                'title' => $order->package->package_name ?? 'Service Package',
-                'description' => $order->subService->title ?? '',
-                'quantity' => 1,
-                'rate' => (float) $order->amount,
-            ]],
+            'order_line_items' => $this->lineItemsPayload($order),
             'callback_url' => route('payment.callback'),
             'redirect_url' => route('payment.callback'),
         ];
@@ -201,6 +196,18 @@ class NimbblPaymentService
         $expected = hash_hmac('sha256', $rawBody, $secret);
 
         return hash_equals($expected, $signature);
+    }
+
+    protected function lineItemsPayload(Order $order): array
+    {
+        return collect($order->lineItemsForDisplay())->map(function (array $item) {
+            return [
+                'title' => $item['title'],
+                'description' => $item['description'],
+                'quantity' => (float) $item['quantity'],
+                'rate' => (float) $item['rate'],
+            ];
+        })->values()->all();
     }
 
     protected function mockCreateOrder(Order $order): array

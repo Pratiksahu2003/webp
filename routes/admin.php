@@ -63,6 +63,10 @@ Route::get('orders/export', [\App\Http\Controllers\Admin\Commerce\OrderControlle
 Route::patch('orders/{order}/status', [\App\Http\Controllers\Admin\Commerce\OrderController::class, 'updateStatus'])->name('orders.update-status');
 Route::resource('orders', \App\Http\Controllers\Admin\Commerce\OrderController::class)->only(['index', 'show']);
 
+Route::resource('customers', \App\Http\Controllers\Admin\Commerce\CustomerController::class);
+Route::post('invoices/{invoice}/send', [\App\Http\Controllers\Admin\Commerce\InvoiceController::class, 'send'])->name('invoices.send');
+Route::resource('invoices', \App\Http\Controllers\Admin\Commerce\InvoiceController::class)->only(['index', 'create', 'store', 'show']);
+
 // API Routes for AJAX requests
 Route::prefix('api')->name('api.')->group(function () {
     // Quick actions

@@ -8,9 +8,16 @@
         <div class="lg:col-span-2 space-y-6">
             <div class="bg-white rounded-xl border border-gray-200 p-6 space-y-3">
                 <h2 class="font-semibold text-lg mb-2">Order Details</h2>
+                <p><span class="text-gray-500">Title:</span> {{ $order->displayTitle() }}</p>
+                @if($order->service)
                 <p><span class="text-gray-500">Service:</span> {{ $order->service->title }}</p>
+                @endif
+                @if($order->subService)
                 <p><span class="text-gray-500">Sub Service:</span> {{ $order->subService->title }}</p>
+                @endif
+                @if($order->package)
                 <p><span class="text-gray-500">Package:</span> {{ $order->package->package_name }}</p>
+                @endif
                 <p><span class="text-gray-500">Amount:</span> <strong>₹{{ number_format($order->amount,2) }}</strong></p>
                 <p><span class="text-gray-500">Transaction ID:</span> {{ $order->transaction_id ?? '—' }}</p>
                 <p><span class="text-gray-500">Customer Message:</span><br>{{ $order->customer_message ?? '—' }}</p>
