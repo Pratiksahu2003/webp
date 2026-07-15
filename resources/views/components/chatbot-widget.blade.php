@@ -18,11 +18,13 @@
         aria-controls="vtz-chatbot-panel"
         :aria-label="open ? 'Close chat' : 'Open chat assistant'"
     >
-        <svg x-show="!open" class="vtz-chatbot-launcher-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+        {{-- Standard chat bubble icon --}}
+        <svg x-show="!open" class="vtz-chatbot-launcher-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
         </svg>
-        <svg x-show="open" class="vtz-chatbot-launcher-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        {{-- Close icon (open state) --}}
+        <svg x-show="open" x-cloak class="vtz-chatbot-launcher-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
         </svg>
         <span class="vtz-chatbot-launcher-pulse" x-show="!open" aria-hidden="true"></span>
     </button>
@@ -59,7 +61,14 @@
                     <div class="vtz-chatbot-bubble" x-text="item.text"></div>
                     <div class="vtz-chatbot-links" x-show="item.links && item.links.length">
                         <template x-for="(link, li) in (item.links || [])" :key="li">
-                            <a class="vtz-chatbot-link" :href="link.url" x-text="link.label"></a>
+                            <a
+                                class="vtz-chatbot-link"
+                                :href="link.url"
+                                x-text="link.label"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                @click.stop
+                            ></a>
                         </template>
                     </div>
                 </div>

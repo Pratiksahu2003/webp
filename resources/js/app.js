@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
 
+                // Keep chatbot links from hijacking / reloading the current page
+                if (link.closest('#vantroz-chatbot') || link.classList.contains('vtz-chatbot-link')) {
+                    return;
+                }
+
                 // Allow normal navigation in the admin panel
                 if (window.location.pathname.startsWith('/admin') || (href && href.startsWith('/admin'))) {
                     return;
