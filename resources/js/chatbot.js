@@ -18,7 +18,7 @@ document.addEventListener('alpine:init', () => {
             message: null,
         },
         serviceOptions: [],
-        companyName: config.companyName || 'VanTroZ',
+        companyName: config.companyName || 'Vantroz',
         booted: false,
         showBadge: true,
         badgeCount: 1,
@@ -66,8 +66,7 @@ document.addEventListener('alpine:init', () => {
             const data = await response.json();
             this.quickReplies = data.quick_replies || [];
             this.serviceOptions = data.service_options || [];
-            // Keep branded casing: VanTroZ
-            this.companyName = 'VanTroZ';
+            this.companyName = 'Vantroz';
 
             if (this.messages.length === 0 && data.welcome) {
                 this.messages.push({

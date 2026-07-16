@@ -6,7 +6,7 @@
         messageUrl: @js(route('chatbot.message')),
         leadUrl: @js(route('chatbot.lead')),
         csrf: @js(csrf_token()),
-        companyName: @js('VanTroZ'),
+        companyName: @js('Vantroz'),
         logoUrl: @js(asset('favicon.svg')),
     })"
     x-cloak
@@ -18,7 +18,7 @@
         @click="toggle()"
         :aria-expanded="open.toString()"
         aria-controls="vtz-chatbot-panel"
-        :aria-label="open ? 'Close chat' : 'Open VanTroZ assistant'"
+        :aria-label="open ? 'Close chat' : 'Open Vantroz assistant'"
     >
         <span class="vtz-chatbot-launcher-inner">
             <svg x-show="!open" class="vtz-chatbot-launcher-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -45,7 +45,7 @@
         x-transition:leave-end="vtz-chat-leave-end"
         role="dialog"
         aria-modal="true"
-        aria-label="VanTroZ chat assistant"
+        aria-label="Vantroz chat assistant"
         @keydown.escape.window="open && close()"
     >
         <header class="vtz-chatbot-header">
@@ -61,7 +61,7 @@
                     >
                 </div>
                 <div class="vtz-chatbot-header-text">
-                    <h2 class="vtz-chatbot-title">VanTroZ Assistant</h2>
+                    <h2 class="vtz-chatbot-title">Vantroz Assistant</h2>
                     <p class="vtz-chatbot-status">
                         <span class="vtz-chatbot-status-dot"></span>
                         Online · replies instantly
@@ -85,7 +85,7 @@
 
         <div class="vtz-chatbot-messages" x-ref="messages">
             <div class="vtz-chatbot-intro" x-show="messages.length <= 1 && !busy">
-                <p class="vtz-chatbot-intro-title">Ask anything about VanTroZ</p>
+                <p class="vtz-chatbot-intro-title">Ask anything about Vantroz</p>
                 <p class="vtz-chatbot-intro-text">Services, packages, tech stack, blog insights — or get a quote in under a minute.</p>
             </div>
 
@@ -93,7 +93,7 @@
                 <div class="vtz-chatbot-row" :class="item.role === 'user' ? 'is-user' : 'is-bot'">
                     <div class="vtz-chatbot-meta" x-show="item.role === 'bot'">
                         <span class="vtz-chatbot-meta-avatar" aria-hidden="true">V</span>
-                        <span class="vtz-chatbot-meta-name">VanTroZ Bot</span>
+                        <span class="vtz-chatbot-meta-name">Vantroz Bot</span>
                     </div>
                     <div class="vtz-chatbot-bubble" x-text="item.text"></div>
                     <div class="vtz-chatbot-links" x-show="item.links && item.links.length">
