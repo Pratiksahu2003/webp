@@ -36,8 +36,8 @@ class NimbblPaymentService
             'shipping_address' => $this->nimbblAddress($address, 'Home'),
             'billing_address' => $this->nimbblAddress($address, 'Other'),
             'order_line_items' => $this->lineItemsPayload($order),
-            'callback_url' => route('payment.callback'),
-            'redirect_url' => route('payment.callback'),
+            'callback_url' => route('payment.callback', ['order' => $order->order_number]),
+            'redirect_url' => route('payment.callback', ['order' => $order->order_number]),
         ];
 
         $response = Nimbbl::createOrder($payload, $order->user_id, $order);

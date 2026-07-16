@@ -11,6 +11,8 @@
     $paymentToken = $checkout['token'] ?? null;
     $paymentRetryUrl = $paymentRetryUrl ?? ($order->canAcceptPayment() ? $order->rememberPaymentRetry() : null);
     $failureUrl = route('checkout.failure', $order);
+    $paymentCallbackUrl = route('payment.callback', ['order' => $order->order_number]);
+    $checkoutScript = config('nimbbl.checkout_script', 'https://cdn.jsdelivr.net/npm/nimbbl_sonic@latest');
     $mockCallbackUrl = route('payment.callback', [
         'order' => $order->order_number,
         'status' => 'success',
@@ -54,10 +56,13 @@
                     Complete Test Payment
                 </button>
             @elseif($paymentToken)
-                <button id="pay-btn" type="button" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-                    Pay Securely with Nimbbl
+                <div id="payment-redirect-status" class="mb-6 rounded-xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-800">
+                    Redirecting you to the secure Nimbbl checkout page…
+                </div>
+                <button id="pay-btn" type="button" disabled class="bg-orange-500 hover:bg-orange-600 disabled:opacity-70 disabled:cursor-wait text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+                    Continue to Secure Checkout
                 </button>
-                <p class="text-xs text-gray-400 mt-4">Secured by Nimbbl. UPI, cards, net banking &amp; more.</p>
+                <p class="text-xs text-gray-400 mt-4">You will be redirected to Nimbbl to pay with UPI, cards, net banking &amp; more.</p>
             @else
                 <p class="text-red-600 mb-4">Payment could not be initialized. Please contact support or try again.</p>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center">
@@ -86,80 +91,49 @@ document.getElementById('pay-btn')?.addEventListener('click', function () {
 @elseif($paymentToken)
 <script type="module">
 const payBtn = document.getElementById('pay-btn');
+const redirectStatus = document.getElementById('payment-redirect-status');
 const token = @json($paymentToken);
-const callbackUrl = @json(route('payment.callback'));
+const callbackUrl = @json($paymentCallbackUrl);
 const failureUrl = @json($failureUrl);
-const orderNumber = @json($order->order_number);
-const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content ?? '';
+const checkoutScript = @json($checkoutScript);
+let checkoutStarted = false;
 
-function paymentStatus(response) {
-    const payload = response?.payload ?? response ?? {};
-    const status = String(payload.status ?? '').toLowerCase();
-    const txnStatus = String(payload.transaction?.status ?? '').toLowerCase();
-
-    if (status === 'success' || txnStatus === 'succeeded') {
-        return 'success';
+function setRedirectState(message, disableButton = true) {
+    if (redirectStatus) {
+        redirectStatus.textContent = message;
     }
 
-    if (status === 'pending' || txnStatus === 'pending') {
-        return 'pending';
+    if (payBtn) {
+        payBtn.disabled = disableButton;
+        payBtn.textContent = disableButton ? 'Redirecting to secure checkout...' : 'Continue to Secure Checkout';
     }
-
-    if (['cancelled', 'canceled', 'cancel'].includes(status)) {
-        return 'cancelled';
-    }
-
-    return 'failed';
-}
-
-async function sendCallback(response) {
-    const result = await fetch(callbackUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-CSRF-TOKEN': csrfToken,
-            'X-Requested-With': 'XMLHttpRequest',
-        },
-        body: JSON.stringify({ callback: response, order: orderNumber }),
-    });
-
-    const data = await result.json();
-    window.location.href = data.redirect ?? failureUrl;
 }
 
 async function openCheckout() {
-    payBtn.disabled = true;
-    payBtn.textContent = 'Opening secure checkout...';
+    if (checkoutStarted) {
+        return;
+    }
+
+    checkoutStarted = true;
+    setRedirectState('Redirecting you to the secure Nimbbl checkout page…');
 
     try {
-        const { default: Checkout } = await import('https://cdn.jsdelivr.net/npm/nimbbl_sonic@latest');
+        const { default: Checkout } = await import(checkoutScript);
         const checkout = new Checkout({ token });
 
         checkout.open({
-            callback_handler: async function (response) {
-                payBtn.textContent = 'Processing payment...';
-
-                const status = paymentStatus(response);
-
-                if (status === 'success' || status === 'pending') {
-                    await sendCallback(response);
-                    return;
-                }
-
-                const reason = status === 'cancelled' ? 'cancelled' : 'failed';
-                window.location.href = failureUrl + '?reason=' + reason;
-            },
+            callback_url: callbackUrl,
+            redirect: true,
         });
     } catch (error) {
         console.error('Nimbbl checkout failed:', error);
-        payBtn.disabled = false;
-        payBtn.textContent = 'Pay Securely with Nimbbl';
-        window.location.href = failureUrl + '?reason=failed&message=' + encodeURIComponent('Unable to open payment gateway. Please try again.');
+        checkoutStarted = false;
+        setRedirectState('Unable to open the payment page automatically. Click the button below to try again.', false);
     }
 }
 
 payBtn?.addEventListener('click', openCheckout);
+openCheckout();
 </script>
 @endif
 @endpush
