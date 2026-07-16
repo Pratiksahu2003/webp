@@ -10,8 +10,7 @@
     $subService = $order?->subService;
     $package = $order?->package;
     $paymentRetryUrl = $paymentRetryUrl
-        ?? session('payment_retry_url')
-        ?? (($order && $order->canAcceptPayment()) ? $order->signedPaymentUrl() : null);
+        ?? (($order && $order->canAcceptPayment()) ? $order->rememberPaymentRetry() : null);
 
     $states = [
         'failed' => [
@@ -127,6 +126,10 @@
                 <div class="flex flex-col sm:flex-row gap-3 justify-center">
                     @if($paymentRetryUrl && ($errorType ?? 'failed') !== 'pending')
                         <a href="{{ $paymentRetryUrl }}" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors text-center shadow-lg shadow-orange-500/20">
+                            Try Payment Again
+                        </a>
+                    @elseif($order && $order->canAcceptPayment() && ($errorType ?? 'failed') !== 'pending')
+                        <a href="{{ route('checkout.retry', $order) }}" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors text-center shadow-lg shadow-orange-500/20">
                             Try Payment Again
                         </a>
                     @elseif($order && $package && ($errorType ?? 'failed') !== 'pending')

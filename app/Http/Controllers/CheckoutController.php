@@ -30,6 +30,7 @@ class CheckoutController extends Controller
         try {
             $order = $this->checkoutService->createOrder($package, $request->validated());
             Auth::login($order->user);
+            $order->rememberPaymentRetry();
 
             $payment = $this->checkoutService->initiatePayment($order);
             $checkout = $this->checkoutService->checkoutCredentials($payment);
@@ -38,7 +39,7 @@ class CheckoutController extends Controller
                 'order' => $order->load(['package', 'subService', 'service']),
                 'checkout' => $checkout,
                 'isMock' => ! empty($checkout['mock']),
-                'paymentRetryUrl' => $order->signedPaymentUrl(),
+                'paymentRetryUrl' => $order->rememberPaymentRetry(),
             ]);
         } catch (\Throwable $e) {
             Log::error('Checkout payment initiation failed', [

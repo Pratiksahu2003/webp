@@ -117,6 +117,40 @@ class Order extends Model
         return ! in_array($this->payment_status, ['refunded'], true);
     }
 
+    public function nimbblInvoiceId(): string
+    {
+        $attempt = $this->transactions()->count() + 1;
+
+        return $this->order_number.'-'.$attempt;
+    }
+
+    public function prepareForPaymentRetry(): void
+    {
+        if ($this->isPaid()) {
+            return;
+        }
+
+        if (in_array($this->payment_status, ['failed', 'cancelled', 'processing'], true)) {
+            $this->update(['payment_status' => 'pending']);
+        }
+    }
+
+    public function rememberPaymentRetry(): string
+    {
+        session([
+            'payment_retry_order_id' => $this->id,
+            'payment_retry_order_number' => $this->order_number,
+        ]);
+
+        return route('checkout.retry', $this);
+    }
+
+    public static function canRetryFromSession(self $order): bool
+    {
+        return (int) session('payment_retry_order_id') === (int) $order->id
+            || session('payment_retry_order_number') === $order->order_number;
+    }
+
     public function displayTitle(): string
     {
         if ($this->invoice_title) {

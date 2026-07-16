@@ -9,7 +9,7 @@
     $service = $order->service;
     $subService = $order->subService;
     $paymentToken = $checkout['token'] ?? null;
-    $paymentRetryUrl = $paymentRetryUrl ?? ($order->canAcceptPayment() ? $order->signedPaymentUrl() : null);
+    $paymentRetryUrl = $paymentRetryUrl ?? ($order->canAcceptPayment() ? $order->rememberPaymentRetry() : null);
     $failureUrl = route('checkout.failure', $order);
     $mockCallbackUrl = route('payment.callback', [
         'order' => $order->order_number,
@@ -61,7 +61,9 @@
             @else
                 <p class="text-red-600 mb-4">Payment could not be initialized. Please contact support or try again.</p>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                    @if($order->package)
+                    @if($order->canAcceptPayment())
+                        <a href="{{ route('checkout.retry', $order) }}" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold">Try Again</a>
+                    @elseif($order->package)
                         <a href="{{ route('checkout.show', $order->package) }}" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold">Try Again</a>
                     @endif
                     <a href="{{ $failureUrl }}?reason=failed&message={{ urlencode('Payment gateway could not be initialized.') }}" class="inline-block border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-semibold">View Details</a>

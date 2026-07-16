@@ -23,7 +23,7 @@ class NimbblPaymentService
         $address = $this->resolveAddress($order, $customer);
 
         $payload = [
-            'invoice_id' => $order->order_number,
+            'invoice_id' => $order->nimbblInvoiceId(),
             'total_amount' => (float) $order->amount,
             'currency' => config('nimbbl.currency', 'INR'),
             'user' => [
@@ -140,12 +140,23 @@ class NimbblPaymentService
                 continue;
             }
 
-            if (str_starts_with($candidate, 'ORD-')) {
-                return $candidate;
+            $orderNumber = $this->normalizeMerchantInvoiceId($candidate);
+
+            if ($orderNumber !== null) {
+                return $orderNumber;
             }
         }
 
         return null;
+    }
+
+    protected function normalizeMerchantInvoiceId(string $candidate): ?string
+    {
+        if (! str_starts_with($candidate, 'ORD-')) {
+            return null;
+        }
+
+        return preg_replace('/-(?:R)?\d+$/', '', $candidate) ?: null;
     }
 
     public function parseCallbackRequest(?string $encodedResponse): array

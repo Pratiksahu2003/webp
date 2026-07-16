@@ -55,12 +55,12 @@ class PaymentController extends Controller
         // Pending/processing should remain retryable without forcing a hard failure stamp.
         if ($failure['type'] !== 'pending') {
             $order->markAsFailed($payload);
+            $order->rememberPaymentRetry();
         }
 
         return $this->callbackResponse($request, route('checkout.failure', $order), [
             'error' => $failure['message'],
             'error_type' => $failure['type'],
-            'payment_retry_url' => $order->canAcceptPayment() ? $order->signedPaymentUrl() : null,
         ]);
     }
 
@@ -110,6 +110,8 @@ class PaymentController extends Controller
         $order->load(['package', 'subService', 'service', 'user']);
 
         if ($order->payment_status === 'paid') {
+            session()->forget(['payment_retry_order_id', 'payment_retry_order_number']);
+
             return view('checkout.success', compact('order'));
         }
 
@@ -136,14 +138,14 @@ class PaymentController extends Controller
 
         $errorType = session('error_type', $request->query('reason', 'failed'));
         $message = session('error', $request->query('message'));
-        $paymentRetryUrl = session('payment_retry_url');
+        $paymentRetryUrl = null;
 
         if (! in_array($errorType, ['failed', 'cancelled', 'not_found', 'pending', 'expired'], true)) {
             $errorType = 'failed';
         }
 
-        if (! $paymentRetryUrl && $order && $order->canAcceptPayment()) {
-            $paymentRetryUrl = $order->signedPaymentUrl();
+        if ($order && $order->canAcceptPayment()) {
+            $paymentRetryUrl = $order->rememberPaymentRetry();
         }
 
         return view('checkout.failure', compact('order', 'errorType', 'message', 'paymentRetryUrl'));
@@ -228,6 +230,8 @@ class PaymentController extends Controller
         if (! $order->markAsPaid($transactionId, $payload)) {
             return;
         }
+
+        session()->forget(['payment_retry_order_id', 'payment_retry_order_number']);
 
         try {
             $order->load(['user', 'service', 'subService', 'package']);

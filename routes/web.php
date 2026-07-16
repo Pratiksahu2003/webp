@@ -40,6 +40,7 @@ Route::get('/services/{service:slug}/{subService:slug}', [\App\Http\Controllers\
 
 Route::get('/checkout/success/{order:order_number}', [\App\Http\Controllers\PaymentController::class, 'success'])->name('checkout.success');
 Route::get('/checkout/failure/{order:order_number?}', [\App\Http\Controllers\PaymentController::class, 'failure'])->name('checkout.failure');
+Route::get('/checkout/retry/{order:order_number}', [\App\Http\Controllers\PaymentLinkController::class, 'retry'])->name('checkout.retry');
 Route::get('/checkout/{package}', [\App\Http\Controllers\CheckoutController::class, 'show'])->name('checkout.show');
 Route::post('/checkout/{package}', [\App\Http\Controllers\CheckoutController::class, 'store'])->name('checkout.store');
 Route::match(['get', 'post'], '/payment/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])->name('payment.callback');

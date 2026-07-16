@@ -178,6 +178,7 @@ class CheckoutService
         }
 
         $order->load(['user', 'package', 'subService', 'service']);
+        $order->prepareForPaymentRetry();
 
         try {
             $payment = $this->nimbbl->createOrder($order, [
@@ -190,9 +191,14 @@ class CheckoutService
 
             return $payment;
         } catch (\Throwable $e) {
-            // Keep the order payable so the signed /pay link can be retried.
             if (! $order->isPaid()) {
                 $order->update(['payment_status' => 'failed']);
+                $order->transactions()->create([
+                    'transaction_id' => null,
+                    'amount' => $order->amount,
+                    'gateway_response' => ['error' => $e->getMessage()],
+                    'payment_status' => 'failed',
+                ]);
             }
 
             throw $e;

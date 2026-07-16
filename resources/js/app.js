@@ -29,8 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // Allow normal navigation in the admin panel
-                if (window.location.pathname.startsWith('/admin') || (href && href.startsWith('/admin'))) {
+                // Allow normal navigation in the admin panel and checkout/payment flows
+                if (
+                    window.location.pathname.startsWith('/admin')
+                    || (href && href.startsWith('/admin'))
+                    || (href && /^\/(checkout|pay|payment)(\/|$)/.test(href))
+                ) {
                     return;
                 }
                 
