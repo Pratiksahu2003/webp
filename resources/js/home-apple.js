@@ -16,15 +16,25 @@ class HomeAppleAnimations {
 
     init() {
         this.injectScrollProgress();
+        this.initHeroVideo();
 
-        if (this.reducedMotion) {
+        const heroStatic = document.getElementById('home-hero-section')?.classList.contains('hero-static');
+
+        if (this.reducedMotion || heroStatic) {
             this.revealAll();
-            this.initHeroVideo();
             this.root.querySelectorAll('[data-count]').forEach(el => this.setCounterFinal(el));
+            if (heroStatic) {
+                this.registerSectionEffects();
+                this.setupScrollRevealEngine();
+                this.setupViewportPlayAnimations();
+                this.setupSectionParallax();
+                this.setupCardTilt();
+                this.setupSectionObservers();
+                return;
+            }
             return;
         }
 
-        this.initHeroVideo();
         this.splitHeroTitle();
         this.registerSectionEffects();
         this.initHeroSequence();

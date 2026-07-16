@@ -117,8 +117,25 @@ html, body {
 }
 
 .admin-sidebar-mobile {
+    display: flex !important;
+    flex-direction: column;
     background: #ffffff;
     box-shadow: var(--admin-shadow-lg);
+    z-index: 60;
+}
+
+@media (min-width: 1024px) {
+    .admin-sidebar-mobile {
+        display: none !important;
+    }
+}
+
+.admin-mobile-sidebar-overlay {
+    z-index: 10050;
+}
+
+.admin-mobile-sidebar-panel {
+    z-index: 10051;
 }
 
 .admin-main {

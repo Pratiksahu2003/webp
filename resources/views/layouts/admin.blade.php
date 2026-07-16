@@ -12,7 +12,6 @@
 
     @vite(['resources/css/app.css', 'resources/css/dashboard.css', 'resources/js/app.js', 'resources/js/dashboard.js'])
 
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @stack('styles')
 </head>
@@ -32,16 +31,43 @@
         </aside>
 
         {{-- Mobile sidebar --}}
-        <div x-show="sidebarOpen" class="lg:hidden fixed inset-0 z-50" x-cloak>
-            <div class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm" @click="sidebarOpen = false"></div>
-            <div class="admin-sidebar admin-sidebar-mobile absolute inset-y-0 left-0 flex flex-col w-[268px]">
+        <div
+            x-show="sidebarOpen"
+            x-cloak
+            @keydown.escape.window="sidebarOpen = false"
+            class="admin-mobile-sidebar-overlay lg:hidden fixed inset-0"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Admin navigation"
+        >
+            <div
+                x-show="sidebarOpen"
+                x-transition:enter="transition-opacity ease-out duration-200"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="transition-opacity ease-in duration-150"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
+                class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm"
+                @click="sidebarOpen = false"
+            ></div>
+            <div
+                x-show="sidebarOpen"
+                x-transition:enter="transition-transform ease-out duration-200"
+                x-transition:enter-start="-translate-x-full"
+                x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition-transform ease-in duration-150"
+                x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="-translate-x-full"
+                class="admin-sidebar admin-sidebar-mobile admin-mobile-sidebar-panel absolute inset-y-0 left-0 w-[268px] max-w-[85vw]"
+            >
                 <div class="admin-sidebar-brand justify-between">
                     <img src="{{ asset('logo/logo.png') }}" alt="VanTroZ" class="h-8 w-auto">
-                    <button type="button" @click="sidebarOpen = false" class="p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-900">
+                    <button type="button" @click="sidebarOpen = false" class="p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-900" aria-label="Close menu">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
-                <nav class="admin-sidebar-nav">
+                <nav class="admin-sidebar-nav" @click="if ($event.target.closest('a')) sidebarOpen = false">
                     @include('admin.partials.sidebar-nav')
                 </nav>
             </div>
@@ -50,7 +76,7 @@
         <div class="admin-main">
             <header class="admin-topbar">
                 <div class="flex items-center gap-3 min-w-0">
-                    <button type="button" @click="sidebarOpen = true" class="lg:hidden p-2 rounded-xl border border-gray-200 bg-white text-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:border-gray-300">
+                    <button type="button" @click="sidebarOpen = true" class="lg:hidden p-2 rounded-xl border border-gray-200 bg-white text-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:border-gray-300" aria-label="Open menu" :aria-expanded="sidebarOpen">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
                     <div class="min-w-0">
