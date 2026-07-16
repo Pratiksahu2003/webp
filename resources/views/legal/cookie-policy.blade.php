@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'Cookie Policy - ' . config('company.name'))
-@section('description', 'Learn about how ' . config('company.name') . ' uses cookies to enhance your browsing experience and provide personalized services.')
+@section('title', 'Cookie Policy | ' . config('company.name'))
+@section('description', 'Learn how ' . config('company.name') . ' uses cookies to improve browsing experience and deliver personalized services.')
+@section('robots', 'index, follow')
 
 @section('content')
 

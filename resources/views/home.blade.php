@@ -1,7 +1,9 @@
 ﻿@extends('layouts.website')
 
-@section('title', 'VanTroZ - Software Development Company')
-@section('description', 'VanTroZ - IT partner. Driving Business Growth. Partner with dedicated IT experts who get your business.')
+@section('title', config('company.seo.default_title'))
+@section('description', config('company.seo.default_description'))
+@section('keywords', 'software development company Gurugram, web development, mobile app development, custom software, VanTroZ, IT partner India')
+@section('og_type', 'website')
 
 @section('content')
 <div id="home-page" class="home-apple">

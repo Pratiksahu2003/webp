@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'Service Catalog - ' . config('company.name'))
-@section('description', 'Browse our service catalog and choose the right package for your business.')
+@section('title', 'IT Services & Packages | VanTroZ Service Catalog')
+@section('description', 'Browse VanTroZ service catalog for web development, software, mobile apps, and digital packages tailored for growing businesses.')
+@section('keywords', 'VanTroZ services, software packages, web development packages, IT services Gurugram')
 
 @section('content')
 
@@ -19,6 +20,12 @@
         ]" />
     </x-slot:breadcrumbs>
 </x-page-hero>
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share title="VanTroZ Services" description="Browse IT services and packages from VanTroZ." />
+    </div>
+</section>
 
 <section class="py-10 lg:py-12 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

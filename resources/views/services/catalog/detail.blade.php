@@ -1,7 +1,40 @@
 @extends('layouts.website')
 
-@section('title', $subService->title . ' - ' . $service->title)
-@section('description', $subService->short_description)
+@php
+    $detailTitle = $subService->title.' | '.$service->title.' | '.config('company.name');
+    $detailDescription = $subService->short_description
+        ?: Str::limit(strip_tags((string) $subService->description), 160)
+        ?: ('Get '.$subService->title.' from VanTroZ — professional '.$service->title.' packages.');
+    $detailSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Service',
+        'name' => $subService->title,
+        'description' => $detailDescription,
+        'provider' => ['@id' => url('/').'#localbusiness'],
+        'url' => route('services.sub-service', [$service, $subService]),
+        'offers' => [
+            '@type' => 'Offer',
+            'priceCurrency' => 'INR',
+            'price' => (string) $subService->starting_price,
+            'availability' => 'https://schema.org/InStock',
+        ],
+        'isRelatedTo' => [
+            '@type' => 'Service',
+            'name' => $service->title,
+            'url' => route('catalog.services.show', $service),
+        ],
+    ];
+@endphp
+
+@section('title', $detailTitle)
+@section('description', $detailDescription)
+@section('keywords', $subService->title.', '.$service->title.', VanTroZ, software packages Gurugram')
+@section('og_image', $service->banner_image ? Storage::url($service->banner_image) : '')
+@section('canonical', route('services.sub-service', [$service, $subService]))
+
+@push('schema')
+<script type="application/ld+json">{!! json_encode($detailSchema, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_HEX_TAG|JSON_HEX_AMP) !!}</script>
+@endpush
 
 @section('content')
 
@@ -38,6 +71,12 @@
         Get Custom Quote
     </a>
 </x-page-hero>
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share :title="$subService->title" :description="$detailDescription" />
+    </div>
+</section>
 
 {{-- Overview --}}
 <section class="py-10 lg:py-12 bg-white">

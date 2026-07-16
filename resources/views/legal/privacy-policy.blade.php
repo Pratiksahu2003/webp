@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'Privacy Policy - ' . config('company.name'))
-@section('description', 'Privacy Policy for ' . config('company.name') . ' - Learn how we collect, use, and protect your personal information.')
+@section('title', 'Privacy Policy | ' . config('company.name'))
+@section('description', 'Privacy Policy for ' . config('company.legal_name') . ' — how VanTroZ collects, uses, and protects your personal information.')
+@section('robots', 'index, follow')
 
 @section('content')
 

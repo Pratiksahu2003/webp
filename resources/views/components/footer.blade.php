@@ -114,9 +114,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
                         <div class="text-gray-600 text-sm leading-relaxed">
-                            <p>{{ config('company.address.primary.street') }}</p>
+                            <p>{{ config('company.address.primary.line1') }}</p>
                             <p>{{ config('company.address.primary.city') }}, {{ config('company.address.primary.state') }}</p>
-                            <p>{{ config('company.address.primary.country') }} {{ config('company.address.primary.zip') }}</p>
+                            <p>{{ config('company.address.primary.country') }}{{ config('company.address.primary.postal_code') ? ' '.config('company.address.primary.postal_code') : '' }}</p>
                         </div>
                     </li>
                     <li class="flex items-center gap-3">

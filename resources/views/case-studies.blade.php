@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'Case Studies - VanTroZ')
-@section('description', 'Explore our successful projects and see how we help businesses achieve their goals.')
+@section('title', 'Case Studies | VanTroZ Client Success Stories')
+@section('description', 'Read VanTroZ case studies on how we help businesses grow with custom software, websites, and digital products.')
+@section('keywords', 'VanTroZ case studies, software success stories, digital transformation results')
 
 @section('content')
 
@@ -11,6 +12,12 @@
     title="Case Studies"
     subtitle="Discover how we've helped businesses achieve their goals with tailored digital solutions."
 />
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share title="VanTroZ Case Studies" description="Client success stories in software and digital products." />
+    </div>
+</section>
 
 <!-- Filter Section -->
 <section class="py-8 bg-white border-b">

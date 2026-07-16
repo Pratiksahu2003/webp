@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'Portfolio - Our Work at Vantroz Technology Private Limited')
-@section('description', 'Explore our portfolio of successful projects including web applications, mobile apps, and custom software solutions developed by Vantroz Technology Private Limited.')
+@section('title', 'Portfolio | VanTroZ Software & Web Development Projects')
+@section('description', 'Explore VanTroZ portfolio projects — web applications, mobile apps, and custom software solutions delivered for growing businesses.')
+@section('keywords', 'VanTroZ portfolio, software projects, web app case work, mobile app portfolio')
 
 @section('content')
 
@@ -19,6 +20,12 @@
         View Our Work
     </a>
 </x-page-hero>
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share title="VanTroZ Portfolio" description="Explore our software and web development projects." />
+    </div>
+</section>
 
 <!-- Portfolio Filter -->
 <section class="py-12 bg-gradient-to-r from-gray-50 to-blue-50 border-b border-gray-200">

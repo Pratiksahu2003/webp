@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'Blog - VanTroZ')
-@section('description', 'Stay updated with the latest insights, trends, and news in software development and technology.')
+@section('title', 'Blog & Insights | VanTroZ Software Development')
+@section('description', 'Stay updated with VanTroZ insights on software development, web technology, mobile apps, and digital growth for businesses.')
+@section('keywords', 'VanTroZ blog, software development insights, web technology articles')
 
 @section('content')
 
@@ -11,6 +12,12 @@
     title="Blog"
     subtitle="Stay updated with the latest trends, insights, and news in software development and technology."
 />
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share title="VanTroZ Blog" description="Software development insights and technology news." />
+    </div>
+</section>
 
 <!-- Blog Posts -->
 <section class="py-20 bg-white">

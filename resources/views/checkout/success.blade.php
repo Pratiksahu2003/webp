@@ -2,6 +2,7 @@
 
 @section('title', 'Payment Successful')
 @section('description', 'Your payment was completed successfully.')
+@section('robots', 'noindex, nofollow')
 
 @section('content')
 @php

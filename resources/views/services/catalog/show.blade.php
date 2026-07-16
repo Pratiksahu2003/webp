@@ -1,7 +1,30 @@
 @extends('layouts.website')
 
-@section('title', $service->title . ' - ' . config('company.name'))
-@section('description', $service->short_description ?? Str::limit(strip_tags($service->description), 160))
+@php
+    $serviceTitle = $service->getEffectiveSeoTitle();
+    $serviceDescription = $service->getEffectiveSeoDescription();
+    $serviceImage = $service->getSeoImage();
+    $serviceSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Service',
+        'name' => $service->title,
+        'description' => $serviceDescription,
+        'provider' => ['@id' => url('/').'#localbusiness'],
+        'url' => route('catalog.services.show', $service),
+        'areaServed' => 'IN',
+        'serviceType' => $service->title,
+    ];
+@endphp
+
+@section('title', $serviceTitle)
+@section('description', $serviceDescription)
+@section('keywords', $service->seo_keywords ?: ($service->title.', VanTroZ services, software development Gurugram'))
+@section('og_image', $serviceImage ? Storage::url($serviceImage) : '')
+@section('canonical', route('catalog.services.show', $service))
+
+@push('schema')
+<script type="application/ld+json">{!! json_encode($serviceSchema, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_HEX_TAG|JSON_HEX_AMP) !!}</script>
+@endpush
 
 @section('content')
 
@@ -21,6 +44,12 @@
         ]" />
     </x-slot:breadcrumbs>
 </x-page-hero>
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share :title="$service->title" :description="$serviceDescription" />
+    </div>
+</section>
 
 <section class="py-10 lg:py-12 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

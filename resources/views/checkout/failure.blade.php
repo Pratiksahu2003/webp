@@ -2,6 +2,7 @@
 
 @section('title', 'Payment Failed')
 @section('description', 'Your payment could not be completed.')
+@section('robots', 'noindex, nofollow')
 
 @section('content')
 @php

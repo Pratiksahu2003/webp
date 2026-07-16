@@ -2,6 +2,7 @@
 
 @section('title', 'Payment - Order ' . $order->order_number)
 @section('description', 'Complete your payment securely.')
+@section('robots', 'noindex, nofollow')
 
 @section('content')
 @php

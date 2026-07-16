@@ -141,6 +141,24 @@ class BlogPost extends Model
         return $this->twitter_description ?: $this->getEffectiveOgDescription();
     }
 
+    public function getEffectiveOgImage(): ?string
+    {
+        return $this->og_image
+            ?: $this->banner_image
+            ?: $this->featured_image
+            ?: null;
+    }
+
+    public function getEffectiveTwitterImage(): ?string
+    {
+        return $this->twitter_image ?: $this->getEffectiveOgImage();
+    }
+
+    public function getCanonicalUrl(): string
+    {
+        return $this->canonical_url ?: route('blog.show', $this);
+    }
+
     // Calculate reading time based on word count
     public function calculateReadingTime()
     {

@@ -1,7 +1,21 @@
 @extends('layouts.website')
 
-@section('title', 'Contact Us - ' . config('company.name'))
-@section('description', 'Get in touch with ' . config('company.name') . ' for your software development needs. Contact us for a free consultation.')
+@section('title', 'Contact VanTroZ | Software Development Company in Gurugram')
+@section('description', 'Contact VanTroZ in Gurugram for web development, mobile apps, and custom software. Call ' . config('company.contact.phone') . ' or email ' . config('company.contact.email') . ' for a free consultation.')
+@section('keywords', 'contact VanTroZ, software company Gurugram contact, hire developers India')
+
+@push('schema')
+@php
+    $contactSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'ContactPage',
+        'name' => 'Contact VanTroZ',
+        'url' => route('contact'),
+        'mainEntity' => ['@id' => url('/').'#localbusiness'],
+    ];
+@endphp
+<script type="application/ld+json">{!! json_encode($contactSchema, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_HEX_TAG|JSON_HEX_AMP) !!}</script>
+@endpush
 
 @section('content')
 
@@ -11,6 +25,12 @@
     title="Contact Us"
     subtitle="Ready to start your project? Let's discuss how we can help you build something exceptional."
 />
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share title="Contact VanTroZ" description="Get in touch for software development in Gurugram." />
+    </div>
+</section>
 
 <!-- Contact Section -->
 <section class="py-20 bg-white">

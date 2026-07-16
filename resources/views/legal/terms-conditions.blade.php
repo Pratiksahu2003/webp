@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'Terms & Conditions - Vantroz Technology Private Limited')
-@section('description', 'Terms and Conditions for Vantroz Technology Private Limited - Read our terms of service and usage policies.')
+@section('title', 'Terms & Conditions | ' . config('company.name'))
+@section('description', 'Terms and Conditions for ' . config('company.legal_name') . ' — service terms, usage policies, and client agreements.')
+@section('robots', 'index, follow')
 
 @section('content')
 

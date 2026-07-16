@@ -1,7 +1,9 @@
 @extends('layouts.website')
 
-@section('title', $technology->name . ' - Technology Stack - VanTroZ')
-@section('description', Str::limit(strip_tags($technology->description ?? ''), 160))
+@section('title', $technology->name . ' Development | VanTroZ Technologies')
+@section('description', filled($technology->description) ? Str::limit(strip_tags($technology->description), 160) : ('Discover how VanTroZ uses '.$technology->name.' to build scalable software solutions.'))
+@section('keywords', $technology->name . ', ' . $technology->name . ' development, VanTroZ')
+@section('og_image', $technology->icon ? (str_starts_with($technology->icon, 'http') ? $technology->icon : asset($technology->icon)) : '')
 
 @section('content')
 
@@ -33,6 +35,12 @@
     </a>
     @endif
 </x-page-hero>
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share :title="$technology->name.' | VanTroZ'" :description="'How VanTroZ uses '.$technology->name.' in software delivery.'" />
+    </div>
+</section>
 
 <section class="py-12 lg:py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

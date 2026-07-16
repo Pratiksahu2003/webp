@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', $stackData['label'] . ' Stack - VanTroZ')
+@section('title', $stackData['label'] . ' Stack | VanTroZ Technologies')
 @section('description', $stackData['description'])
+@section('keywords', $stackData['label'] . ', VanTroZ technologies, software development stack')
 
 @section('content')
 
@@ -25,6 +26,12 @@
         <span class="text-lg font-bold text-white">{{ $technologies->count() }} Technologies</span>
     </div>
 </x-page-hero>
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share :title="$stackData['label'].' Stack | VanTroZ'" :description="$stackData['description']" />
+    </div>
+</section>
 
 <section class="py-12 lg:py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

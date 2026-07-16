@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'Refund Policy - ' . config('company.name'))
-@section('description', 'Refund Policy for ' . config('company.name') . ' - Learn about our refund and cancellation policies for software development services.')
+@section('title', 'Refund Policy | ' . config('company.name'))
+@section('description', 'Refund and cancellation policy for ' . config('company.name') . ' software development services and packages.')
+@section('robots', 'index, follow')
 
 @section('content')
 

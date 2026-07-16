@@ -18,8 +18,48 @@
 
     <x-favicon />
 
-    <title>@yield('title', config('company.name') . ' - IT Partner')</title>
-    <meta name="description" content="@yield('description', config('company.name') . ' - ' . config('company.tagline') . ' for software development, web development, mobile app development, and more.')">
+    @php
+        $seoTitle = trim($__env->yieldContent('title'));
+        $seoDescription = trim($__env->yieldContent('description'));
+        $seoImage = trim($__env->yieldContent('image'));
+        $seoOgImage = trim($__env->yieldContent('og_image'));
+        $seoCanonical = trim($__env->yieldContent('canonical'));
+        $seoRobots = trim($__env->yieldContent('robots'));
+        $seoOgType = trim($__env->yieldContent('og_type'));
+        $seoKeywords = trim($__env->yieldContent('keywords'));
+        $seoOgTitle = trim($__env->yieldContent('og_title'));
+        $seoOgDescription = trim($__env->yieldContent('og_description'));
+        $seoTwitterTitle = trim($__env->yieldContent('twitter_title'));
+        $seoTwitterDescription = trim($__env->yieldContent('twitter_description'));
+        $seoTwitterImage = trim($__env->yieldContent('twitter_image'));
+        $seoTwitterCard = trim($__env->yieldContent('twitter_card'));
+        $seoArticlePublished = trim($__env->yieldContent('article_published_time'));
+        $seoArticleModified = trim($__env->yieldContent('article_modified_time'));
+        $seoArticleAuthor = trim($__env->yieldContent('article_author'));
+        $seoArticleSection = trim($__env->yieldContent('article_section'));
+    @endphp
+
+    <x-seo-meta
+        :title="$seoTitle !== '' ? $seoTitle : null"
+        :description="$seoDescription !== '' ? $seoDescription : null"
+        :image="$seoImage !== '' ? $seoImage : null"
+        :og-image="$seoOgImage !== '' ? $seoOgImage : null"
+        :canonical="$seoCanonical !== '' ? $seoCanonical : null"
+        :robots="$seoRobots !== '' ? $seoRobots : null"
+        :og-type="$seoOgType !== '' ? $seoOgType : 'website'"
+        :keywords="$seoKeywords !== '' ? $seoKeywords : null"
+        :og-title="$seoOgTitle !== '' ? $seoOgTitle : null"
+        :og-description="$seoOgDescription !== '' ? $seoOgDescription : null"
+        :twitter-title="$seoTwitterTitle !== '' ? $seoTwitterTitle : null"
+        :twitter-description="$seoTwitterDescription !== '' ? $seoTwitterDescription : null"
+        :twitter-image="$seoTwitterImage !== '' ? $seoTwitterImage : null"
+        :twitter-card="$seoTwitterCard !== '' ? $seoTwitterCard : null"
+        :article-published-time="$seoArticlePublished !== '' ? $seoArticlePublished : null"
+        :article-modified-time="$seoArticleModified !== '' ? $seoArticleModified : null"
+        :article-author="$seoArticleAuthor !== '' ? $seoArticleAuthor : null"
+        :article-section="$seoArticleSection !== '' ? $seoArticleSection : null"
+    />
+    @stack('schema')
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

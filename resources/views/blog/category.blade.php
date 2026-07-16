@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', ucfirst($category) . ' Articles - VanTroZ Blog')
-@section('description', 'Explore articles in the ' . $category . ' category on our blog.')
+@section('title', ucfirst($category) . ' Articles | VanTroZ Blog')
+@section('description', 'Explore ' . $category . ' articles from VanTroZ — practical insights on software, technology, and digital products.')
+@section('keywords', $category . ', VanTroZ blog, software development articles')
 
 @section('content')
 
@@ -11,6 +12,12 @@
     :title="ucfirst($category)"
     :subtitle="'Articles and insights about ' . $category"
 />
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share :title="ucfirst($category).' Articles | VanTroZ'" :description="'Explore '.$category.' insights from VanTroZ.'" />
+    </div>
+</section>
 
 <!-- Breadcrumb -->
 <section class="py-4 bg-gray-50">

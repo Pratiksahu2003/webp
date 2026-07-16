@@ -2,6 +2,7 @@
 
 @section('title', 'Checkout - ' . $package->package_name)
 @section('description', 'Complete your order for ' . $package->subService->title)
+@section('robots', 'noindex, nofollow')
 
 @section('content')
 @php

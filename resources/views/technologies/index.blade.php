@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'Technologies - VanTroZ')
-@section('description', 'Explore our technology stack and the cutting-edge tools we use to build robust solutions.')
+@section('title', 'Technologies We Use | VanTroZ Tech Stack')
+@section('description', 'Explore the VanTroZ technology stack — modern frameworks, languages, and tools we use to build robust web and mobile solutions.')
+@section('keywords', 'VanTroZ tech stack, Laravel, React, Flutter, software technologies')
 
 @section('content')
 
@@ -11,6 +12,12 @@
     title="Technology Stack"
     subtitle="Cutting-edge technologies and frameworks powering our solutions."
 />
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share title="VanTroZ Technologies" description="Explore the tech stack we use to build robust solutions." />
+    </div>
+</section>
 
 <section class="py-16 lg:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

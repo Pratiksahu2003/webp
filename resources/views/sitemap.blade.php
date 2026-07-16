@@ -1,7 +1,7 @@
 @extends('layouts.website')
 
-@section('title', 'Sitemap - ' . config('company.name'))
-@section('description', 'Navigate through all pages and sections of ' . config('company.name') . ' website with our comprehensive sitemap.')
+@section('title', 'Sitemap | ' . config('company.name'))
+@section('description', 'Browse all public pages on the ' . config('company.name') . ' website — services, blog, technologies, and company information.')
 
 @section('content')
 <!-- Hero Section -->

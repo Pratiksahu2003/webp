@@ -1,7 +1,60 @@
 @extends('layouts.website')
 
-@section('title', $blogPost->title . ' - VanTroZ Blog')
-@section('description', $blogPost->excerpt)
+@php
+    $metaTitle = $blogPost->getEffectiveMetaTitle().' | '.config('company.name').' Blog';
+    $metaDescription = $blogPost->getEffectiveMetaDescription();
+    $ogImage = $blogPost->getEffectiveOgImage();
+    $canonical = $blogPost->getCanonicalUrl();
+    $publishedAt = optional($blogPost->published_at ?? $blogPost->created_at)->toIso8601String();
+    $modifiedAt = optional($blogPost->updated_at)->toIso8601String();
+    $articleSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BlogPosting',
+        'headline' => $blogPost->getEffectiveMetaTitle(),
+        'description' => $metaDescription,
+        'image' => $ogImage ? [asset('storage/'.$ogImage)] : [url(config('company.seo.default_image'))],
+        'datePublished' => $publishedAt,
+        'dateModified' => $modifiedAt,
+        'author' => [
+            '@type' => 'Person',
+            'name' => $blogPost->author ?: config('company.name'),
+        ],
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => config('company.name'),
+            'logo' => [
+                '@type' => 'ImageObject',
+                'url' => url(config('company.branding.logo.light', '/logo/logo.png')),
+            ],
+        ],
+        'mainEntityOfPage' => [
+            '@type' => 'WebPage',
+            '@id' => $canonical,
+        ],
+        'url' => $canonical,
+    ];
+@endphp
+
+@section('title', $metaTitle)
+@section('description', $metaDescription)
+@section('keywords', is_array($blogPost->meta_keywords) ? implode(', ', $blogPost->meta_keywords) : ($blogPost->meta_keywords ?? ''))
+@section('canonical', $canonical)
+@section('og_type', $blogPost->og_type ?: 'article')
+@section('og_title', $blogPost->getEffectiveOgTitle())
+@section('og_description', $blogPost->getEffectiveOgDescription())
+@section('og_image', $ogImage ?: '')
+@section('twitter_card', $blogPost->twitter_card ?: 'summary_large_image')
+@section('twitter_title', $blogPost->getEffectiveTwitterTitle())
+@section('twitter_description', $blogPost->getEffectiveTwitterDescription())
+@section('twitter_image', $blogPost->getEffectiveTwitterImage() ?: '')
+@section('article_published_time', $publishedAt ?: '')
+@section('article_modified_time', $modifiedAt ?: '')
+@section('article_author', $blogPost->author ?: config('company.name'))
+@section('article_section', $blogPost->category ?: 'Blog')
+
+@push('schema')
+<script type="application/ld+json">{!! json_encode($articleSchema, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_HEX_TAG|JSON_HEX_AMP) !!}</script>
+@endpush
 
 @section('content')
 
@@ -22,6 +75,16 @@
         {{ $blogPost->views }} views
     </div>
 </x-page-hero>
+
+<section class="py-6 bg-white border-b border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share
+            :url="$canonical"
+            :title="$blogPost->getEffectiveOgTitle()"
+            :description="$blogPost->getEffectiveOgDescription()"
+        />
+    </div>
+</section>
 
 <!-- Compressed Article Content -->
 <section class="py-12 bg-white">
@@ -49,6 +112,14 @@
             </div>
             @endif
         </article>
+
+        <div class="mt-10 pt-8 border-t border-gray-200">
+            <x-social-share
+                :url="$canonical"
+                :title="$blogPost->getEffectiveOgTitle()"
+                :description="$blogPost->getEffectiveOgDescription()"
+            />
+        </div>
     </div>
 </section>
 

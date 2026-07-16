@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'About Us - VanTroZ')
-@section('description', 'Learn about VanTroZ - Your trusted IT partner with 5+ years of experience in software development.')
+@section('title', 'About VanTroZ | Software Development Company in Gurugram')
+@section('description', 'Learn about VanTroZ (Vantroz Technology Private Limited) — a Gurugram IT partner with 5+ years of experience in web, mobile, and custom software development.')
+@section('keywords', 'about VanTroZ, software company Gurugram, Vantroz Technology, IT partner India')
 
 @section('content')
 
@@ -11,6 +12,12 @@
     title="About VanTroZ"
     subtitle="Your trusted IT partner for over 5 years — delivering software excellence with transparency and craft."
 />
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share title="About VanTroZ" description="Your trusted IT partner for software development in Gurugram." />
+    </div>
+</section>
 
 <!-- About Content -->
 <section class="py-20 bg-white">

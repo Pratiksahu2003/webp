@@ -89,4 +89,25 @@ class Service extends Model
     {
         return (bool) ($this->status ?? $this->is_active);
     }
+
+    public function getEffectiveSeoTitle(): string
+    {
+        return $this->seo_title
+            ?: ($this->title.' | '.config('company.name'));
+    }
+
+    public function getEffectiveSeoDescription(): string
+    {
+        if (filled($this->seo_description)) {
+            return $this->seo_description;
+        }
+
+        return $this->short_description
+            ?: Str::limit(strip_tags((string) $this->description), 160);
+    }
+
+    public function getSeoImage(): ?string
+    {
+        return $this->banner_image ?: $this->image;
+    }
 }

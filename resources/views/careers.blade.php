@@ -1,7 +1,8 @@
 @extends('layouts.website')
 
-@section('title', 'Careers - Join Our Team at Vantroz Technology Private Limited')
-@section('description', 'Join our team of talented professionals at Vantroz Technology Private Limited. Explore career opportunities in software development, web development, and more.')
+@section('title', 'Careers at VanTroZ | Jobs in Software Development Gurugram')
+@section('description', 'Join VanTroZ (Vantroz Technology Private Limited) in Gurugram. Explore careers in software development, web development, mobile apps, and digital delivery.')
+@section('keywords', 'VanTroZ careers, software jobs Gurugram, developer jobs India')
 
 @section('content')
 
@@ -19,6 +20,12 @@
         Learn About Our Culture
     </a>
 </x-page-hero>
+
+<section class="py-4 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-social-share title="Careers at VanTroZ" description="Join our software development team in Gurugram." />
+    </div>
+</section>
 
 <!-- Company Culture Section -->
 <section id="company-culture" class="py-24 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
