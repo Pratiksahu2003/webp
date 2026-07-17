@@ -43,13 +43,13 @@
                     </div>
                 </div>
 
-                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl font-black text-white leading-[1.08] tracking-tight hero-title-responsive">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-6xl font-black text-white leading-[1.05] tracking-tight hero-title-responsive">
                     <span class="inline">Build the </span>
                     <span class="inline bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">Future</span>
                     <span class="inline"> of Business</span>
                 </h1>
 
-                <p class="max-w-xl text-sm sm:text-base lg:text-lg text-slate-300 leading-snug font-light hero-subtitle-responsive">
+                <p class="max-w-2xl text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed font-light hero-subtitle-responsive">
                     We craft <span class="text-white font-medium">exceptional digital experiences</span> that transform ideas into scalable solutions for real business growth.
                 </p>
 

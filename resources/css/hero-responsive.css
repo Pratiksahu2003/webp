@@ -163,24 +163,57 @@
 }
 
 /* Typography */
+#home-hero-section .hero-title-responsive {
+    letter-spacing: -0.02em;
+}
+
+#home-hero-section .hero-subtitle-responsive {
+    max-width: 38rem;
+}
+
 @media (max-width: 375px) {
     .hero-title-responsive {
-        font-size: clamp(1.625rem, 7vw, 2rem);
-        line-height: 1.15;
+        font-size: clamp(1.875rem, 8vw, 2.25rem);
+        line-height: 1.1;
     }
 
     .hero-subtitle-responsive {
-        font-size: clamp(0.875rem, 3.5vw, 1rem);
+        font-size: clamp(0.9375rem, 4vw, 1.0625rem);
+        line-height: 1.55;
     }
 }
 
 @media (min-width: 376px) and (max-width: 640px) {
     .hero-title-responsive {
-        font-size: clamp(1.875rem, 7.5vw, 2.5rem);
+        font-size: clamp(2.125rem, 8vw, 2.75rem);
+        line-height: 1.08;
     }
 
     .hero-subtitle-responsive {
-        font-size: clamp(0.9375rem, 4vw, 1.125rem);
+        font-size: clamp(1rem, 4.25vw, 1.1875rem);
+        line-height: 1.6;
+    }
+}
+
+@media (min-width: 1024px) {
+    #home-hero-section .hero-title-responsive {
+        font-size: clamp(3rem, 3.6vw, 3.875rem);
+        line-height: 1.04;
+    }
+
+    #home-hero-section .hero-subtitle-responsive {
+        font-size: clamp(1.125rem, 1.35vw, 1.3125rem);
+        line-height: 1.65;
+    }
+}
+
+@media (min-width: 1280px) {
+    #home-hero-section .hero-title-responsive {
+        font-size: clamp(3.25rem, 3.8vw, 4rem);
+    }
+
+    #home-hero-section .hero-subtitle-responsive {
+        font-size: 1.3125rem;
     }
 }
 
