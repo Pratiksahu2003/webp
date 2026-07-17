@@ -5,7 +5,7 @@
 :root {
     --home-nav-height: 4rem;
     --home-hero-height-scale: 1.5;
-    --home-hero-extra-height: 60px;
+    --home-hero-extra-height: 150px;
 }
 
 #home-hero-section,
