@@ -5,6 +5,7 @@
 :root {
     --home-nav-height: 4rem;
     --home-hero-height-scale: 1.5;
+    --home-hero-extra-height: 60px;
 }
 
 #home-hero-section,
@@ -26,6 +27,8 @@
     padding-top: calc(0.75rem * var(--home-hero-height-scale)) !important;
     padding-bottom: calc(0.75rem * var(--home-hero-height-scale)) !important;
     row-gap: calc(0.75rem * var(--home-hero-height-scale)) !important;
+    margin-top: calc(var(--home-hero-extra-height) / 2);
+    margin-bottom: calc(var(--home-hero-extra-height) / 2);
 }
 
 @media (min-width: 640px) {

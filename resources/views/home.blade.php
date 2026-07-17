@@ -65,16 +65,16 @@
                     </div>
                 </div>
 
-                <div class="flex flex-row gap-2 sm:gap-2.5 pt-0.5">
-                    <a href="{{ route('contact') }}" class="inline-flex flex-1 min-w-0 items-center justify-center px-2.5 py-2 sm:flex-none sm:px-5 sm:py-2.5 bg-gradient-to-r from-white to-slate-100 text-slate-900 font-bold rounded-lg shadow-lg text-xs sm:text-sm">
+                <div class="flex flex-row gap-2 sm:gap-2.5 lg:gap-2 pt-0.5">
+                    <a href="{{ route('contact') }}" class="inline-flex flex-1 min-w-0 items-center justify-center px-2.5 py-2 sm:flex-none sm:px-5 sm:py-2.5 lg:px-3.5 lg:py-1.5 bg-gradient-to-r from-white to-slate-100 text-slate-900 font-bold rounded-lg lg:rounded-md shadow-lg text-xs sm:text-sm lg:text-xs">
                         <span class="truncate">Start Your Project</span>
-                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1 sm:ml-1.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-3 lg:h-3 ml-1 sm:ml-1.5 lg:ml-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                         </svg>
                     </a>
-                    <a href="{{ route('portfolio') }}" class="inline-flex flex-1 min-w-0 items-center justify-center px-2.5 py-2 sm:flex-none sm:px-5 sm:py-2.5 border border-white/30 text-white font-semibold rounded-lg backdrop-blur-sm text-xs sm:text-sm">
+                    <a href="{{ route('portfolio') }}" class="inline-flex flex-1 min-w-0 items-center justify-center px-2.5 py-2 sm:flex-none sm:px-5 sm:py-2.5 lg:px-3.5 lg:py-1.5 border border-white/30 text-white font-semibold rounded-lg lg:rounded-md backdrop-blur-sm text-xs sm:text-sm lg:text-xs">
                         <span class="truncate">View Our Work</span>
-                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1 sm:ml-1.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-3 lg:h-3 ml-1 sm:ml-1.5 lg:ml-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                         </svg>
                     </a>
