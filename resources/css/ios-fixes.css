@@ -861,7 +861,7 @@
     #home-hero-section.home-hero {
         margin-top: 0 !important;
         padding-top: 0 !important;
-        padding-bottom: 1.5rem;
+        padding-bottom: calc(1.5rem * var(--home-hero-height-scale));
         min-height: auto;
         height: auto;
         position: relative;
