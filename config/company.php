@@ -66,4 +66,8 @@ return [
         'locale' => 'en_IN',
         'twitter_handle' => '@Vantroz_IT',
     ],
+
+    'tracking' => [
+        'meta_pixel_id' => env('META_PIXEL_ID', '1082371090779811'),
+    ],
 ];

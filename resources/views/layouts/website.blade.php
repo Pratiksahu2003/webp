@@ -69,9 +69,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- VanTroZ UI System - CSS modules loaded via Vite -->
+
+    <x-meta-pixel />
 </head>
 
 <body class="font-sans antialiased text-gray-900 bg-white ios-smooth-scroll">
+    <x-meta-pixel noscript />
     <!-- Clean Professional Navigation -->
     <nav id="navbar" class="fixed w-full top-0 bg-white border-b border-gray-200 transition-all duration-200 ios-fixed font-sans">
         <div class="navbar-container">
